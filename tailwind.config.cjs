@@ -1,6 +1,6 @@
 const config = {
 	mode: 'jit',
-	purge: ['./src/**/*.{html,js,svelte,ts}'],
+	purge: ['./src/app.html', './src/**/*.{html,js,svelte,ts}'],
 	darkMode: false,
 	theme: {
 		extend: {}
