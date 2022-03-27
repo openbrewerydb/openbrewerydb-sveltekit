@@ -1,2 +1,2 @@
-<h1>News</h1>
+<h1 class="text-2xl">News</h1>
 
