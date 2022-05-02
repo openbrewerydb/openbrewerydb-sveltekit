@@ -1,6 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import '../app.css';
+	import logo from '../../static/obdb-logo.png';
 
 	let showMenu = false;
 
@@ -22,11 +23,7 @@
 							<div class="flex items-center justify-between w-full md:w-auto">
 								<a href="/">
 									<span class="sr-only">Open Brewery DB</span>
-									<img
-										class="h-12 w-auto sm:h-16"
-										src="/static/obdb-logo.png"
-										alt="Open Brewery DB Logo"
-									/>
+									<img class="h-12 w-auto sm:h-16" src={logo} alt="Open Brewery DB Logo" />
 								</a>
 								<div class="-mr-2 flex items-center md:hidden">
 									<button

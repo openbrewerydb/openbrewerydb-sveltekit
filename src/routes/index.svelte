@@ -1,6 +1,10 @@
+<script lang="ts">
+	import logo from '../../static/obdb-logo.png';
+</script>
+
 <div class="text-center">
 	<div class="w-full sm:w-96 mx-auto my-6">
-		<img class="" src="/static/obdb-logo.png" alt="Open Brewery DB Logo" />
+		<img class="" src={logo} alt="Open Brewery DB Logo" />
 	</div>
 	<h1 class="text-lg tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
 		<span class="block xl:inline">Free and open-source</span>
