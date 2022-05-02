@@ -11,7 +11,7 @@
 </script>
 
 <div class="flex flex-col">
-	<div class="relative bg-amber-50 overflow-hidden p-3">
+	<div class="relative overflow-hidden p-3">
 		<div class="relative pt-6 pb-16 sm:pb-24">
 			<div>
 				<div class="max-w-7xl mx-auto px-4 sm:px-6">
