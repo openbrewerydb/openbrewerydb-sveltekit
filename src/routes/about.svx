@@ -1,1 +1,7 @@
 # About
+
+Created and maintained by [Chris J Mears](https://chrisjmears.com/) and [Wandering Leaf Studios LLC](https://wanderingleafstudios.com/).
+
+Initial dataset from [Brewers Association](https://www.brewersassociation.org/).
+
+Logo compiled via [Symbolicons](https://symbolicons.com/).
