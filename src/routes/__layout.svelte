@@ -132,27 +132,32 @@
               <div class="px-2 pt-2 pb-3">
                 <a
                   href="/start"
+                  on:click={toggleMenu}
                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   >Getting Started</a
                 >
                 <a
                   href="/documentation"
+                  on:click={toggleMenu}
                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   >Docs</a
                 >
                 <a
                   href="/contribute"
+                  on:click={toggleMenu}
                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   >Contribute</a
                 >
                 <a
                   href="/about"
+                  on:click={toggleMenu}
                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   >About</a
                 >
               </div>
               <a
                 href="/login"
+                on:click={toggleMenu}
                 class="block w-full px-5 py-3 text-center font-medium text-yellow-600 bg-gray-50 hover:bg-gray-100"
               >
                 Log in
