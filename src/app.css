@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.markdown {
+  h1 {
+    @apply text-4xl my-4;
+  }
+
+  p {
+    @apply mt-2;
+  }
+
+  a {
+    @apply text-amber-700 underline;
+  }
+
+  a:hover {
+    @apply text-amber-900;
+  }
+
+  a:active {
+    @apply text-amber-600;
+  }
+}

@@ -88,7 +88,12 @@ const config = {
   // See the available options at https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/config.md
 
   // options passed to svelte.preprocess (https://svelte.dev/docs#compile-time-svelte-preprocess)
-  preprocess: [mdsvex(), sveltePreprocess()],
+  preprocess: [
+    mdsvex({
+      layout: "./src/layouts/MarkdownLayout.svelte",
+    }),
+    sveltePreprocess(),
+  ],
 };
 
 export default config;
