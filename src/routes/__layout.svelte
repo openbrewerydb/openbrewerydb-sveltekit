@@ -1,12 +1,12 @@
 <script>
-  import { fade } from "svelte/transition";
-  import "../app.css";
-  import logo from "../../static/obdb-logo.png";
+  import { fade } from "svelte/transition"
+  import "../app.css"
+  import logo from "../../static/obdb-logo.png"
 
-  let showMenu = false;
+  let showMenu = false
 
   function toggleMenu() {
-    showMenu = !showMenu;
+    showMenu = !showMenu
   }
 </script>
 
@@ -35,7 +35,7 @@
                   <button
                     on:click={toggleMenu}
                     type="button"
-                    class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
+                    class="bg-amber-200 rounded-md p-2 inline-flex items-center justify-center text-gray-600 hover:text-gray-800 hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
                     aria-expanded="false"
                   >
                     <span class="sr-only">Open main menu</span>
@@ -62,21 +62,21 @@
             <div class="hidden md:flex md:space-x-10">
               <a
                 href="/start"
-                class="font-medium text-gray-500 hover:text-gray-900"
+                class="font-medium text-gray-600 hover:text-gray-900"
                 >Getting Started</a
               >
               <a
                 href="/documentation"
-                class="font-medium text-gray-500 hover:text-gray-900">Docs</a
+                class="font-medium text-gray-600 hover:text-gray-900">Docs</a
               >
               <a
                 href="/contribute"
-                class="font-medium text-gray-500 hover:text-gray-900"
+                class="font-medium text-gray-600 hover:text-gray-900"
                 >Contribute</a
               >
               <a
                 href="/about"
-                class="font-medium text-gray-500 hover:text-gray-900">About</a
+                class="font-medium text-gray-600 hover:text-gray-900">About</a
               >
             </div>
             <div
@@ -107,7 +107,7 @@
                   <button
                     on:click={toggleMenu}
                     type="button"
-                    class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
+                    class="bg-white rounded-md p-2 inline-flex items-center justify-center text-amber-600 hover:text-amber-800 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
                   >
                     <span class="sr-only">Close menu</span>
                     <!-- Heroicon name: outline/x -->
