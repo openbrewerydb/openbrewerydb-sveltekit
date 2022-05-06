@@ -1,0 +1,5 @@
+# Documentation
+
+- [List Breweries](/docs/list)
+- [Get a Single Brewery](/docs/single)
+- [Search Breweries](/docs/search)
