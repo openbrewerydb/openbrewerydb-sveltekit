@@ -4,7 +4,7 @@
 
 Get a single brewery.
 
-### Example Output
+### Example Single Brewery Output
 
 `https://api.openbrewerydb.org/breweries/madtree-brewing-cincinnati`
 
@@ -36,7 +36,7 @@ Get a single brewery.
 
 Returns a list of breweries.
 
-### Example Output
+### Example List Breweries Output
 
 `https://api.openbrewerydb.org/breweries`
 
@@ -193,7 +193,7 @@ Search for breweries based on a search term.
 
 **Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-#### Example Output
+#### Example Search Output
 
 `https://api.openbrewerydb.org/breweries/search?query=dog`
 
@@ -231,7 +231,7 @@ Return a list of names and ids of breweries based on a search term. This endpoin
 - For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 - The maximum number of breweries returned is **15**.
 
-#### Example Output
+#### Example Autocomplete Output
 
 `https://api.openbrewerydb.org/breweries/autocomplete?query=dog`
 
