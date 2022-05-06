@@ -70,6 +70,10 @@
                 class="font-medium text-gray-600 hover:text-gray-900">Docs</a
               >
               <a
+                href="/faq"
+                class="font-medium text-gray-600 hover:text-gray-900">FAQ</a
+              >
+              <a
                 href="/contribute"
                 class="font-medium text-gray-600 hover:text-gray-900"
                 >Contribute</a
@@ -141,6 +145,12 @@
                   on:click={toggleMenu}
                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   >Docs</a
+                >
+                <a
+                  href="/faq"
+                  on:click={toggleMenu}
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  >FAQ</a
                 >
                 <a
                   href="/contribute"
