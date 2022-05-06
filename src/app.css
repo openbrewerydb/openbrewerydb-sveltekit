@@ -50,7 +50,7 @@
   }
 
   code:not([class]) {
-    @apply bg-amber-200 p-1 text-amber-800 inline-block rounded my-2;
+    @apply bg-amber-200 p-1 text-amber-800 inline-block rounded overflow-y-auto w-full md:w-auto whitespace-nowrap;
   }
 
   hr {
