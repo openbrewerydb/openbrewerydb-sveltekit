@@ -5,3 +5,75 @@ Created and maintained by [Chris J Mears](https://chrisjmears.com/) and [Wanderi
 Initial dataset from [Brewers Association](https://www.brewersassociation.org/).
 
 Logo compiled via [Symbolicons](https://symbolicons.com/).
+
+---
+
+## Projects
+
+### Flutter
+
+#### hopyard (built with Flutter)
+
+[iOS](https://apps.apple.com/us/app/hopyard/id1592361161) and [Android](https://play.google.com/store/apps/details?id=dev.sudden.hopyard) app built and maintained by [@claytonjacobs](https://github.com/claytonjacobs)
+
+#### [Open Brewery DB Flutter Package](https://pub.dev/packages/open_brewery_db)
+
+A Flutter package for the API built and maintained by [@claytonjacobs](https://github.com/claytonjacobs)
+
+### Java
+
+#### [Java API client](https://github.com/noebrito/openbrewerydb-java)
+
+A Java client for the API built and maintained by [@noebrito](https://github.com/noebrito/)
+
+#### [OpenBrewery](https://github.com/readbeard/OpenBrewery)
+
+An Android application developed using most of the bleeding edge technologies provided by Google. Built and maintaied by [@readbeard](https://github.com/readbeard)
+
+### JavaScript
+
+#### [Beer Me](https://github.com/blueink38/beer-me)
+
+A group project search-based React app built using the Open Brewery DB API to enable users to search breweries, and then save the ones they would like to visit later. Maintained by [@jnunez1229](https://github.com/jnunez1229), [@blueink38](https://github.com/blueink38), [@dragoonkite](https://github.com/dragoonkite), [@cocobeware83](https://github.com/cocobeware83), [@rocketorangemen](https://github.com/rocketorangemen)
+
+#### [BrewTalk](https://github.com/tashiad/brewtalk)
+
+A search-based React app built using the Open Brewery DB API and the random dad jokes API. Maintained by [@tashiad](https://github.com/tashiad)
+
+#### [GraphQL Server (NestJS)](https://github.com/jhugs/nestjs-graphql)
+
+A simple GraphQL server that uses the Open Brewery DB API. Maintained by [@jhugs](https://github.com/jhugs)
+
+#### [Lager Than Life](https://github.com/gpadmaku1/lager-than-life)
+
+A search-based React app built using the API and maintained by [@gpadmaku1](https://github.com/gpadmaku1)
+
+#### [Local Brew](https://local-brew-finder.herokuapp.com)
+
+An Angular app with "search by current location" feature that uses the browser GPS coords. Also, implemented "by_page" with home-made pagination logic (since there is no "next" dataset). Built and [maintained](https://github.com/peterdillon/LocalBrew) by [@peterdillon](https://github.com/peterdillon)
+
+#### [Open Brewery React App](https://github.com/ramos07/OpenBreweryReactApp)
+
+A React interface for the API built and maintained by [@ramos07](https://github.com/ramos07)
+
+### .NET
+
+#### [GraphQL Server (.NET Core)](https://github.com/myty/openbrewerydb-graphql-dotnet)
+
+An Open Brewery DB GraphQL server implementation in .NET Core and maintained by [@myty](https://github.com/myty/)
+
+### Python
+
+#### [Python API wrapper](https://github.com/jrbourbeau/openbrewerydb-python)
+
+A Python interface for the API built and maintained by [@jrbourbeau](https://github.com/jrbourbeau/)
+
+### Swift
+
+#### [OpenBreweryKit](https://github.com/augustshultz/OpenBreweryKit)
+
+A Swift interface for the API built and maintained by [@augustshultz](https://github.com/augustshultz/)
+
+### Add Project
+
+Have a project? [Open a pull request](https://github.com/openbrewerydb/openbrewerydb-sveltekit/)!
