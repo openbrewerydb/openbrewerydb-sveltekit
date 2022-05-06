@@ -1,7 +1,35 @@
----
-title: "List Breweries"
-metaTitle: "List Breweries"
-metaDescription: "List and filter breweries"
+# Documentation
+
+## Single Brewery
+
+Get a single brewery.
+
+### Example Output
+
+`https://api.openbrewerydb.org/breweries/madtree-brewing-cincinnati`
+
+```javascript
+{
+  id: "madtree-brewing-cincinnati",
+  name: "MadTree Brewing",
+  brewery_type: "regional",
+  street: "3301 Madison Rd",
+  address_2: null,
+  address_3: null,
+  city: "Cincinnati",
+  state: "Ohio",
+  county_province: null,
+  postal_code: "45209-1132",
+  country: "United States",
+  longitude: "-84.4239715",
+  latitude: "39.1563725",
+  phone: "5138368733",
+  website_url: "http://www.madtreebrewing.com",
+  updated_at: "2021-10-23T02:24:55.243Z",
+  created_at: "2021-10-23T02:24:55.243Z"
+}
+```
+
 ---
 
 ## List Breweries
@@ -154,3 +182,73 @@ Sort the results by one or more fields.
 `https://api.openbrewerydb.org/breweries?by_state=ohio&sort=type,name:asc`
 
 `https://api.openbrewerydb.org/breweries?by_city=san_diego&sort=name:desc`
+
+---
+
+## Search Breweries
+
+### Search
+
+Search for breweries based on a search term.
+
+**Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+
+#### Example Output
+
+`https://api.openbrewerydb.org/breweries/search?query=dog`
+
+```javascript
+[
+  {
+    id: 530,
+    name: "Diving Dog Brewhouse",
+    brewery_type: "micro",
+    street: "1802 Telegraph Ave",
+    address_2: null,
+    address_3: null,
+    city: "Oakland",
+    county_province: null,
+    state: "California",
+    postal_code: "94612-2110",
+    country: "United States",
+    longitude: "-122.2698881",
+    latitude: "37.807739",
+    phone: "5103061914",
+    website_url: "http://www.divingdogbrew.com",
+    updated_at: "2018-08-23T23:27:26.494Z",
+    created_at: "2018-08-23T23:24:11.758Z"
+  },
+  ...
+]
+```
+
+### Autocomplete
+
+Return a list of names and ids of breweries based on a search term. This endpoint is typically used for a drop-down selection.
+
+**Notes:**
+
+- For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+- The maximum number of breweries returned is **15**.
+
+#### Example Output
+
+`https://api.openbrewerydb.org/breweries/autocomplete?query=dog`
+
+```javascript
+[
+  {
+    id: "4263",
+    name: "Lead Dog Brewing"
+  },
+  {
+    id: "5359",
+    name: "Boss Dog Brewing"
+  },
+  {
+    id: "5925",
+    name: "Running Dogs Brewery"
+  },
+  ...
+]
+```

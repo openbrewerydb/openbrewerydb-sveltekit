@@ -52,4 +52,8 @@
   code:not([class]) {
     @apply bg-amber-200 p-1 text-amber-800 inline-block rounded my-2;
   }
+
+  hr {
+    @apply my-10 w-full border-t border-t-2 border-gray-500 block;
+  }
 }
