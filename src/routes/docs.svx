@@ -3,35 +3,15 @@ title: Documentation
 layout: page
 ---
 
+<script>import RunButton from '../components/RunButton.svelte'</script>
+
 ## Single Brewery
 
 Get a single brewery.
 
-### Example Single Brewery Output
+`https://api.openbrewerydb.org/brewery/[OBDB-ID]`
 
-`https://api.openbrewerydb.org/breweries/madtree-brewing-cincinnati`
-
-```javascript
-{
-  id: "madtree-brewing-cincinnati",
-  name: "MadTree Brewing",
-  brewery_type: "regional",
-  street: "3301 Madison Rd",
-  address_2: null,
-  address_3: null,
-  city: "Cincinnati",
-  state: "Ohio",
-  county_province: null,
-  postal_code: "45209-1132",
-  country: "United States",
-  longitude: "-84.4239715",
-  latitude: "39.1563725",
-  phone: "5138368733",
-  website_url: "http://www.madtreebrewing.com",
-  updated_at: "2021-10-23T02:24:55.243Z",
-  created_at: "2021-10-23T02:24:55.243Z"
-}
-```
+<RunButton endpoint="https://api.openbrewerydb.org/breweries/madtree-brewing-cincinnati" />
 
 ---
 
@@ -39,56 +19,23 @@ Get a single brewery.
 
 Returns a list of breweries.
 
-### Example List Breweries Output
-
-`https://api.openbrewerydb.org/breweries`
-
-```javascript
-[
-  ...
-  {
-    id: 299,
-    name: "Almanac Beer Company",
-    brewery_type: "micro",
-    street: "651B W Tower Ave",
-    address_2: null,
-    address_3: null,
-    city: "Alameda",
-    state: "California",
-    county_province: null,
-    postal_code: "94501-5047",
-    country: "United States",
-    longitude: "-122.306283180899",
-    latitude: "37.7834497667258",
-    phone: "4159326531",
-    website_url: "http://almanacbeer.com",
-    updated_at: "2018-08-23T23:24:11.758Z",
-    created_at: "2018-08-23T23:24:11.758Z"
-  },
-  ...
-]
-```
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?per_page=3" />
 
 ### `by_city`
 
 Filter breweries by city.
 
-**Note:** For the parameters, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+**Note:** For the parameters, you can use underscores or
+[url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-#### `by_city` Examples
-
-`https://api.openbrewerydb.org/breweries?by_city=san_diego`
-
-`https://api.openbrewerydb.org/breweries?by_city=san%20diego`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_city=san_diego&per_page=3" />
 
 ### `by_dist`
 
 Sort the results by distance from an origin point, denoted by
 `latitude,longitude`.
 
-#### `by_dist` Example
-
-`https://api.openbrewerydb.org/breweries?by_dist=38.8977,77.0365`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_dist=38.8977,77.0365&per_page=3" />
 
 ### `by_name`
 
@@ -96,11 +43,7 @@ Filter breweries by name.
 
 **Note:** For the parameters, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-#### `by_name` Examples
-
-`https://api.openbrewerydb.org/breweries?by_name=cooper`
-
-`https://api.openbrewerydb.org/breweries?by_name=modern%20times`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_name=cooper&per_page=3" />
 
 ### `by_state`
 
@@ -108,13 +51,7 @@ Filter breweries by state.
 
 **Note:** Full state name is required; no abbreviations. For the parameters, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-#### `by_state` Examples
-
-`https://api.openbrewerydb.org/breweries?by_state=ohio`
-
-`https://api.openbrewerydb.org/breweries?by_state=new_york`
-
-`https://api.openbrewerydb.org/breweries?by_state=new%20mexico`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_state=new_york&per_page=3" />
 
 ### `by_postal`
 
@@ -124,13 +61,7 @@ May be filtered by basic (5 digit) postal code or more precisely filtered by pos
 
 **Note:** If filtering by postal+4 the search must include either a hyphen or an underscore.
 
-#### `by_postal` Examples
-
-`https://api.openbrewerydb.org/breweries?by_postal=44107`
-
-`https://api.openbrewerydb.org/breweries?by_postal=44107-4020`
-
-`https://api.openbrewerydb.org/breweries?by_postal=44107_4020`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_postal=44107&per_page=3" />
 
 ### `by_type`
 
@@ -149,17 +80,13 @@ Must be one of:
 - `proprietor` - Similar to contract brewing but refers more to a brewery incubator.
 - `closed` - A location which has been closed.
 
-#### `by_type` Example
-
-`https://api.openbrewerydb.org/breweries?by_type=micro`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_type=micro&per_page=3" />
 
 ### `page`
 
 The offset or page of breweries to return.
 
-#### `page` Example
-
-`https://api.openbrewerydb.org/breweries?page=15`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?page=15&per_page=3" />
 
 ### `per_page`
 
@@ -167,9 +94,7 @@ Number of breweries to return each call.
 
 **Note:** Default per page is 20. Max per page is 50.
 
-#### `per_page` Example
-
-`https://api.openbrewerydb.org/breweries?per_page=25`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?per_page=2" />
 
 ### `sort`
 
@@ -180,11 +105,7 @@ Sort the results by one or more fields.
 
 **Note:** `by_dist` does not work with the `sort` filter since it is a filter of its own.
 
-#### `sort` Examples
-
-`https://api.openbrewerydb.org/breweries?by_state=ohio&sort=type,name:asc`
-
-`https://api.openbrewerydb.org/breweries?by_city=san_diego&sort=name:desc`
+<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_state=ohio&sort=type,name:asc&per_page=3" />
 
 ---
 
@@ -196,34 +117,7 @@ Search for breweries based on a search term.
 
 **Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-#### Example Search Output
-
-`https://api.openbrewerydb.org/breweries/search?query=dog`
-
-```javascript
-[
-  {
-    id: 530,
-    name: "Diving Dog Brewhouse",
-    brewery_type: "micro",
-    street: "1802 Telegraph Ave",
-    address_2: null,
-    address_3: null,
-    city: "Oakland",
-    county_province: null,
-    state: "California",
-    postal_code: "94612-2110",
-    country: "United States",
-    longitude: "-122.2698881",
-    latitude: "37.807739",
-    phone: "5103061914",
-    website_url: "http://www.divingdogbrew.com",
-    updated_at: "2018-08-23T23:27:26.494Z",
-    created_at: "2018-08-23T23:24:11.758Z"
-  },
-  ...
-]
-```
+<RunButton endpoint="https://api.openbrewerydb.org/breweries/search?query=dog&per_page=3" />
 
 ### Autocomplete
 
@@ -236,22 +130,4 @@ Return a list of names and ids of breweries based on a search term. This endpoin
 
 #### Example Autocomplete Output
 
-`https://api.openbrewerydb.org/breweries/autocomplete?query=dog`
-
-```javascript
-[
-  {
-    id: "4263",
-    name: "Lead Dog Brewing"
-  },
-  {
-    id: "5359",
-    name: "Boss Dog Brewing"
-  },
-  {
-    id: "5925",
-    name: "Running Dogs Brewery"
-  },
-  ...
-]
-```
+<RunButton endpoint="https://api.openbrewerydb.org/breweries/autocomplete?query=dog" />

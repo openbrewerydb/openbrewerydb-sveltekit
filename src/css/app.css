@@ -1,4 +1,4 @@
-@import "./prismajs-theme.css";
+@import './prismajs-theme.css';
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +7,22 @@
 .markdown {
   h1 {
     @apply text-4xl my-4;
+  }
+
+  h2 {
+    @apply text-3xl mt-6 mb-4;
+  }
+
+  h3 {
+    @apply text-2xl mt-6 mb-4;
+  }
+
+  h4 {
+    @apply text-xl my-2;
+  }
+
+  h5 {
+    @apply text-lg my-1;
   }
 
   h1,
@@ -21,22 +37,6 @@
     a:hover {
       @apply underline;
     }
-  }
-
-  h2 {
-    @apply text-3xl my-4;
-  }
-
-  h3 {
-    @apply text-2xl my-4;
-  }
-
-  h4 {
-    @apply text-xl my-2;
-  }
-
-  h5 {
-    @apply text-lg my-1;
   }
 
   p {
