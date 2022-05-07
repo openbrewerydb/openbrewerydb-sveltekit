@@ -43,8 +43,8 @@
       <NavMenuItem href="/docs" on:click={toggleMenu} isMobile={true}
         >Docs</NavMenuItem
       >
-      <NavMenuItem href="/faqs" on:click={toggleMenu} isMobile={true}
-        >FAQs</NavMenuItem
+      <NavMenuItem href="/faq" on:click={toggleMenu} isMobile={true}
+        >FAQ</NavMenuItem
       >
       <NavMenuItem href="/about" on:click={toggleMenu} isMobile={true}
         >About</NavMenuItem
