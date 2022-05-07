@@ -40,19 +40,19 @@
       </div>
     </div>
     <div class="px-2 pt-2 pb-3">
-      <NavMenuItem href="/docs" on:click={toggleMenu} isMobile={true}
+      <NavMenuItem href="/docs" {toggleMenu} isMobile={true}
         >Docs</NavMenuItem
       >
-      <NavMenuItem href="/faq" on:click={toggleMenu} isMobile={true}
+      <NavMenuItem href="/faq" {toggleMenu} isMobile={true}
         >FAQ</NavMenuItem
       >
-      <NavMenuItem href="/about" on:click={toggleMenu} isMobile={true}
+      <NavMenuItem href="/about" {toggleMenu} isMobile={true}
         >About</NavMenuItem
       >
     </div>
     <NavMenuItem
       href="/login"
-      on:click={toggleMenu}
+      {toggleMenu}
       class="block w-full px-5 py-3 text-center font-medium text-yellow-600 bg-gray-50 hover:bg-gray-100"
     >
       Log in
