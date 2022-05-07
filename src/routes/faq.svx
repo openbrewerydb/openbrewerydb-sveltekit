@@ -1,6 +1,6 @@
 ---
 title: "Frequently Asked Questions"
-metaTitle: "Open Brewery DB | FAQ"
+layout: page
 ---
 
 ## What is Open Brewery DB?

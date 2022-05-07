@@ -1,4 +1,7 @@
-# Documentation
+---
+title: Documentation
+layout: page
+---
 
 ## Single Brewery
 
