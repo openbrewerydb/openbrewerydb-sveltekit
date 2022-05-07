@@ -2,7 +2,7 @@
   import Nav from "../components/Nav.svelte"
   import MobileNav from "../components/MobileNav.svelte"
 
-  import "../app.css"
+  import "../css/app.css"
 
   let showMenu = false
 

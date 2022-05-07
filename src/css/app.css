@@ -1,4 +1,4 @@
-@import "./duotone.css";
+@import "./prismajs-theme.css";
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +7,20 @@
 .markdown {
   h1 {
     @apply text-4xl my-4;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    a {
+      @apply no-underline;
+    }
+
+    a:hover {
+      @apply underline;
+    }
   }
 
   h2 {
@@ -50,7 +64,7 @@
   }
 
   code:not([class]) {
-    @apply bg-amber-200 p-1 text-amber-800 inline-block rounded overflow-y-auto w-full md:w-auto whitespace-nowrap;
+    @apply bg-amber-200 p-1 text-amber-800 rounded overflow-y-auto w-full md:w-auto whitespace-nowrap;
   }
 
   hr {
