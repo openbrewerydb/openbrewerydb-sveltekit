@@ -1,6 +1,6 @@
 <script>
   export let title = 'Open Brewery DB';
-  export let coverImageUrl = '/obdb-og.jpg';
+  export let coverImageUrl = '/obdb-og.png';
 </script>
 
 <svelte:head>
