@@ -1,5 +1,5 @@
 ---
-title: "Frequently Asked Questions"
+title: 'Frequently Asked Questions'
 layout: page
 ---
 
@@ -48,7 +48,7 @@ There is absolutely nothing wrong with those services. Some charge money for pre
 
 ## Who is responsible for this project?
 
-Open Brewery DB was created and is maintained by [Chris J Mears](https://chrisjmears.com), who is a beer-drinking data scientist who also has a rescue dog, Cooper. Chris and Cooper live in San Diego, CA.
+Open Brewery DB was created and is maintained by [Chris J Mears](https://chrisjmears.com), who is a (now occasional) beer-drinking software engineer and data-geek. He is a rescue dog dad for Cooper. They currently live in San Diego, CA.
 
 ## I have other questions
 
