@@ -1,13 +1,14 @@
 <script lang="ts">
-  import Nav from "../components/Nav.svelte"
-  import MobileNav from "../components/MobileNav.svelte"
+  import Nav from '../components/Nav.svelte';
+  import MobileNav from '../components/MobileNav.svelte';
 
-  import "../css/app.css"
+  import '../css/app.css';
+  import Footer from '../components/Footer.svelte';
 
-  let showMenu = false
+  let showMenu = false;
 
   function toggleMenu() {
-    showMenu = !showMenu
+    showMenu = !showMenu;
   }
 </script>
 
@@ -28,3 +29,5 @@
     </div>
   </div>
 </div>
+
+<Footer />
