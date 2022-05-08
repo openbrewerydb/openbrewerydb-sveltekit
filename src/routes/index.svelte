@@ -4,10 +4,11 @@
 </script>
 
 <svelte:head>
-  <title>Open Brewery DB | Open-source brewery dataset and API</title>
+  <title>Open Brewery DB</title>
+  <meta property="og:title" content="Open Brewery DB" />
   <meta
-    property="og:title"
-    content="Open Brewery DB | A worldwide open-source brewery dataset and API"
+    property="og:description"
+    content="A worldwide open-source brewery dataset and API"
   />
   <meta property="og:image" content="/obdb-og.png" />
 </svelte:head>
