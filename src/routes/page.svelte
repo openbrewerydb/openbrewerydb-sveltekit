@@ -1,7 +1,6 @@
 <script>
-  // These props get filled in from the page's front matter
-  export let title
-  export let coverImageUrl
+  export let title;
+  export let coverImageUrl;
 </script>
 
 <svelte:head>
@@ -15,5 +14,4 @@
   <div>
     <slot />
   </div>
-  <a href="/blog">Back to articles</a>
 </article>

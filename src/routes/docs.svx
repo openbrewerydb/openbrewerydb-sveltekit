@@ -9,7 +9,7 @@ layout: page
 
 Get a single brewery.
 
-`https://api.openbrewerydb.org/brewery/[OBDB-ID]`
+`https://api.openbrewerydb.org/breweries/{obdb-id}`
 
 <RunButton endpoint="https://api.openbrewerydb.org/breweries/madtree-brewing-cincinnati" />
 
@@ -18,6 +18,8 @@ Get a single brewery.
 ## List Breweries
 
 Returns a list of breweries.
+
+`https://api.openbrewerydb.org/breweries`
 
 <RunButton endpoint="https://api.openbrewerydb.org/breweries?per_page=3" />
 
@@ -117,6 +119,8 @@ Search for breweries based on a search term.
 
 **Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
+`https://api.openbrewerydb.org/breweries/search?query={search}`
+
 <RunButton endpoint="https://api.openbrewerydb.org/breweries/search?query=dog&per_page=3" />
 
 ### Autocomplete
@@ -128,6 +132,6 @@ Return a list of names and ids of breweries based on a search term. This endpoin
 - For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 - The maximum number of breweries returned is **15**.
 
-#### Example Autocomplete Output
+`https://api.openbrewerydb.org/breweries/autocomplete?query={search}`
 
 <RunButton endpoint="https://api.openbrewerydb.org/breweries/autocomplete?query=dog" />
