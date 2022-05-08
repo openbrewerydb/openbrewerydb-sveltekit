@@ -66,7 +66,3 @@
     </p>
   </div>
 </div>
-
-<div class="md:max-w-md mx-auto mt-10">
-  <NewsletterForm />
-</div>
