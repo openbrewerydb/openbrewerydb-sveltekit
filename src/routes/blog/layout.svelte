@@ -1,7 +1,7 @@
 <script>
 	// These props get filled in from the page's front matter
-	export let title
-	export let coverImageUrl
+	export let title = "Open Brewery DB Article"
+	export let coverImageUrl = '/obdb-og.jpg';
 </script>
 
 <svelte:head>

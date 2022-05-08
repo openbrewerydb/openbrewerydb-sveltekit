@@ -3,6 +3,15 @@
   import logo from '../../static/obdb-logo.png';
 </script>
 
+<svelte:head>
+  <title>Open Brewery DB - Free and open-source brewery dataset and API</title>
+  <meta
+    property="og:title"
+    content="Open Brewery DB | Free and open-source brewery dataset and API"
+  />
+  <meta property="og:image" content="/obdb-og.jpg" />
+</svelte:head>
+
 <div class="text-center">
   <div class="w-full sm:w-96 mx-auto my-6">
     <img class="" src={logo} alt="Open Brewery DB Logo" />

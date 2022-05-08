@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Nav from '../components/Nav.svelte';
+  import Footer from '../components/Footer.svelte';
   import MobileNav from '../components/MobileNav.svelte';
+  import Nav from '../components/Nav.svelte';
 
   import '../css/app.css';
-  import Footer from '../components/Footer.svelte';
 
   let showMenu = false;
 

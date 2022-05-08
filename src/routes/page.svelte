@@ -1,11 +1,11 @@
 <script>
-  export let title;
-  export let coverImageUrl;
+  export let title = 'Open Brewery DB';
+  export let coverImageUrl = '/obdb-og.jpg';
 </script>
 
 <svelte:head>
-  <title>{title}</title>
-  <meta property="og:title" content={title} />
+  <title>Open Brewery DB | {title}</title>
+  <meta property="og:title" content="Open Brewery DB | {title}" />
   <meta property="og:image" content={coverImageUrl} />
 </svelte:head>
 
