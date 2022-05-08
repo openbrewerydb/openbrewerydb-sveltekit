@@ -1,5 +1,6 @@
 <script lang="ts">
-  import logo from "../../static/obdb-logo.png"
+  import NewsletterForm from '../components/NewsletterForm.svelte';
+  import logo from '../../static/obdb-logo.png';
 </script>
 
 <div class="text-center">
@@ -54,4 +55,8 @@
       data analysts.
     </p>
   </div>
+</div>
+
+<div class="md:max-w-md mx-auto mt-10">
+  <NewsletterForm />
 </div>
