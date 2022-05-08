@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { fade } from "svelte/transition"
-  import NavMenuItem from "./NavMenuItem.svelte"
+  import { fade } from 'svelte/transition';
+  import NavMenuItem from './NavMenuItem.svelte';
 
-  export let toggleMenu: () => void
+  export let toggleMenu: () => void;
 </script>
 
 <div
@@ -40,14 +40,10 @@
       </div>
     </div>
     <div class="px-2 pt-2 pb-3">
-      <NavMenuItem href="/docs" {toggleMenu} isMobile={true}
-        >Docs</NavMenuItem
-      >
-      <NavMenuItem href="/faq" {toggleMenu} isMobile={true}
-        >FAQ</NavMenuItem
-      >
-      <NavMenuItem href="/about" {toggleMenu} isMobile={true}
-        >About</NavMenuItem
+      <NavMenuItem href="/" {toggleMenu} isMobile={true}>Home</NavMenuItem>
+      <NavMenuItem href="/docs" {toggleMenu} isMobile={true}>Docs</NavMenuItem>
+      <NavMenuItem href="/faq" {toggleMenu} isMobile={true}>FAQ</NavMenuItem>
+      <NavMenuItem href="/about" {toggleMenu} isMobile={true}>About</NavMenuItem
       >
     </div>
     <NavMenuItem

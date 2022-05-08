@@ -1,8 +1,8 @@
 <script lang="ts">
-  import logo from "../../static/obdb-logo.png"
-  import NavMenuItem from "./NavMenuItem.svelte"
+  import logo from '../../static/obdb-logo.png';
+  import NavMenuItem from './NavMenuItem.svelte';
 
-  export let toggleMenu: () => void
+  export let toggleMenu: () => void;
 </script>
 
 <nav

@@ -1,7 +1,7 @@
 <script lang="ts">
   export let href: string;
   export let isMobile = false;
-  export let toggleMenu;
+  export let toggleMenu = undefined;
 
   let classes: string = undefined;
   export { classes as class };
