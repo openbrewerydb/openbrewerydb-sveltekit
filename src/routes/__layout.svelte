@@ -13,8 +13,8 @@
 </script>
 
 <div class="flex flex-col">
-  <div class="relative overflow-hidden p-3">
-    <div class="relative pt-6 pb-6">
+  <div class="relative overflow-hidden">
+    <div class="relative pt-6">
       <div class="px-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
           <Nav {toggleMenu} />
