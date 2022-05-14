@@ -1,5 +1,5 @@
-/documentation /docs
-/documentation/* /docs
-/credits /about
-/hacktoberfest2020 /
-/dataset https://github.com/openbrewerydb/openbrewerydb
+# Redirects
+/documentation/*    /docs
+/credits            /about
+/hacktoberfest2020  /
+/dataset            https://github.com/openbrewerydb/openbrewerydb
