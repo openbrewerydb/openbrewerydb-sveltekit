@@ -10,7 +10,7 @@
       </div>
 
       <div class="px-5 py-2">
-        <NavMenuItem href="/docs">Docs</NavMenuItem>
+        <NavMenuItem href="/documentation">Docs</NavMenuItem>
       </div>
 
       <div class="px-5 py-2">

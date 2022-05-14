@@ -3,7 +3,7 @@ title: Documentation
 layout: page
 ---
 
-<script>import RunButton from '../components/RunButton.svelte'</script>
+<script>import RunButton from '../../components/RunButton.svelte'</script>
 
 ## Single Brewery
 

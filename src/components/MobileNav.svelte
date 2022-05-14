@@ -41,7 +41,7 @@
     </div>
     <div class="px-2 pt-2 pb-3">
       <NavMenuItem href="/" {toggleMenu} isMobile={true}>Home</NavMenuItem>
-      <NavMenuItem href="/docs" {toggleMenu} isMobile={true}>Docs</NavMenuItem>
+      <NavMenuItem href="/documentation" {toggleMenu} isMobile={true}>Docs</NavMenuItem>
       <NavMenuItem href="/faq" {toggleMenu} isMobile={true}>FAQ</NavMenuItem>
       <NavMenuItem href="/projects" {toggleMenu} isMobile={true}
         >Projects</NavMenuItem
