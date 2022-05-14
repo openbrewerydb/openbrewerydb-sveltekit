@@ -1,4 +1,5 @@
 <script lang="ts">
+  import smallLogo from '../../static/obdb-logo-sm.png';
   import logo from '../../static/obdb-logo.png';
   import NavMenuItem from './NavMenuItem.svelte';
 
@@ -15,7 +16,7 @@
         <span class="sr-only">Open Brewery DB</span>
         <img
           class="h-12 w-auto sm:h-16"
-          src={logo}
+          src={smallLogo}
           alt="Open Brewery DB Logo"
         />
       </a>
