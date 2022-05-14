@@ -1,5 +1,4 @@
 <script lang="ts">
-  import NewsletterForm from '../components/NewsletterForm.svelte';
   import logo from '../../static/obdb-logo.png';
 </script>
 
