@@ -43,6 +43,9 @@
       <NavMenuItem href="/" {toggleMenu} isMobile={true}>Home</NavMenuItem>
       <NavMenuItem href="/docs" {toggleMenu} isMobile={true}>Docs</NavMenuItem>
       <NavMenuItem href="/faq" {toggleMenu} isMobile={true}>FAQ</NavMenuItem>
+      <NavMenuItem href="/projects" {toggleMenu} isMobile={true}
+        >Projects</NavMenuItem
+      >
       <NavMenuItem href="/about" {toggleMenu} isMobile={true}>About</NavMenuItem
       >
     </div>
