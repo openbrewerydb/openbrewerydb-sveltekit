@@ -1,3 +1,23 @@
 [build]
   command = "npm run build"
   publish = "build"
+
+[[redirects]]
+  from = "/documentation"
+  to = "/docs"
+
+[[redirects]]
+  from = "/documentation/*"
+  to = "/docs"
+
+[[redirects]]
+  from = "/credits"
+  to = "/about"
+
+[[redirects]]
+  from = "/hacktoberfest2020"
+  to = "/"
+
+[[redirects]]
+  from = "/dataset"
+  to = "https://github.com/openbrewerydb/openbrewerydb"
