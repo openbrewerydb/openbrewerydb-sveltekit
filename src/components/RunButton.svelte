@@ -7,7 +7,7 @@
   $: comment = '// GET ' + endpoint + '\n';
 
   async function handleClick() {
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, { cache: 'reload' });
     if (response.ok) {
       const result = await response.json();
       const string = comment + JSON.stringify(result, null, 4);
