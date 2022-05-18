@@ -1,22 +1,22 @@
-import adapter from "@sveltejs/adapter-netlify";
-import { mdsvex } from "mdsvex";
-import sveltePreprocess from "svelte-preprocess";
-import abbr from "remark-abbr";
-import urls from "rehype-urls";
-import slug from "rehype-slug";
-import autoLinkHeadings from "rehype-autolink-headings";
-import addClasses from "rehype-add-classes";
+import adapter from '@sveltejs/adapter-netlify';
+import { mdsvex } from 'mdsvex';
+import sveltePreprocess from 'svelte-preprocess';
+import abbr from 'remark-abbr';
+import urls from 'rehype-urls';
+import slug from 'rehype-slug';
+import autoLinkHeadings from 'rehype-autolink-headings';
+import addClasses from 'rehype-add-classes';
 
 function processUrl(url, node) {
-  if (node.tagName === "a") {
-    node.properties.class = "text-link";
+  if (node.tagName === 'a') {
+    node.properties.class = 'text-link';
 
-    if (!url.href.startsWith("/")) {
+    if (!url.href.startsWith('/')) {
       // Open external links in new tab
-      node.properties.target = "_blank";
+      node.properties.target = '_blank';
       // Fix a security concern with offsite links
       // See: https://web.dev/external-anchors-use-rel-noopener/
-      node.properties.rel = "noopener";
+      node.properties.rel = 'noopener';
     }
   }
 }
@@ -27,7 +27,7 @@ const config = {
   compilerOptions: {},
 
   // an array of file extensions that should be treated as Svelte components
-  extensions: [".svelte", ".svx"],
+  extensions: ['.svelte', '.svx'],
 
   kit: {
     adapter: adapter({
@@ -41,53 +41,53 @@ const config = {
       split: false,
     }),
     amp: false,
-    appDir: "_app",
+    appDir: '_app',
     browser: {
       hydrate: true,
       router: true,
     },
     csp: {
-      mode: "auto",
+      mode: 'auto',
       directives: {
-        "default-src": undefined,
+        'default-src': undefined,
         // ...
       },
     },
-    endpointExtensions: [".js", ".ts"],
+    endpointExtensions: ['.js', '.ts'],
     files: {
-      assets: "static",
-      hooks: "src/hooks",
-      lib: "src/lib",
-      params: "src/params",
-      routes: "src/routes",
-      serviceWorker: "src/service-worker",
-      template: "src/app.html",
+      assets: 'static',
+      hooks: 'src/hooks',
+      lib: 'src/lib',
+      params: 'src/params',
+      routes: 'src/routes',
+      serviceWorker: 'src/service-worker',
+      template: 'src/app.html',
     },
     floc: false,
     inlineStyleThreshold: 0,
     methodOverride: {
-      parameter: "_method",
+      parameter: '_method',
       allowed: [],
     },
-    outDir: ".svelte-kit",
+    outDir: '.svelte-kit',
     package: {
-      dir: "package",
+      dir: 'package',
       emitTypes: true,
       // excludes all .d.ts and files starting with _ as the name
       exports: (filepath) => !/^_|\/_|\.d\.ts$/.test(filepath),
       files: () => true,
     },
     paths: {
-      assets: "",
-      base: "",
+      assets: '',
+      base: '',
     },
     prerender: {
       concurrency: 1,
       crawl: true,
       default: false,
       enabled: true,
-      entries: ["*"],
-      onError: "fail",
+      entries: ['*'],
+      onError: 'fail',
     },
     routes: (filepath) =>
       !/(?:(?:^_|\/_)|(?:^\.|\/\.)(?!well-known))/.test(filepath),
@@ -95,7 +95,7 @@ const config = {
       register: true,
       files: (filepath) => !/\.DS_Store/.test(filepath),
     },
-    trailingSlash: "never",
+    trailingSlash: 'never',
     version: {
       name: Date.now().toString(),
       pollInterval: 0,
@@ -110,15 +110,15 @@ const config = {
   preprocess: [
     mdsvex({
       layout: {
-        page: "./src/routes/page.svelte",
-        blog: "./src/routes/blog/layout.svelte",
+        page: './src/routes/page.svelte',
+        blog: './src/routes/blog/layout.svelte',
       },
       remarkPlugins: [abbr], // adds support for footnote-like abbreviations
       rehypePlugins: [
         [urls, processUrl], // adds rel and target to <a> elements
         slug, // adds slug to <h1>-<h6> elements
-        [autoLinkHeadings, { behavior: "wrap" }], // adds a <a> around slugged <h1>-<h6> elements
-        [addClasses, { "ul,ol": "list" }], // add classes to these elements
+        [autoLinkHeadings, { behavior: 'wrap' }], // adds a <a> around slugged <h1>-<h6> elements
+        [addClasses, { ul: 'list-disc', ol: 'list-decimal' }], // add classes to these elements
       ],
     }),
     sveltePreprocess(),
