@@ -3,7 +3,31 @@ title: Documentation
 layout: page
 ---
 
-<script>import RunButton from '../../components/RunButton.svelte'</script>
+<script>
+  import RunButton from '../../components/RunButton.svelte';
+  import NavTabs from '../../components/NavTabs.svelte';
+
+  const data = [
+    {
+      id: 'single-brewery',
+      label: 'Single Brewery'
+    },
+    {
+      id: 'list-breweries',
+      label: 'List Breweries'
+    },
+    {
+      'id': 'random-brewery',
+      'label': 'Random Brewery'
+    },
+    {
+      'id': 'search-breweries',
+      'label': 'Search Breweries'
+    }
+  ];
+</script>
+
+<NavTabs {data} />
 
 ## Single Brewery
 
