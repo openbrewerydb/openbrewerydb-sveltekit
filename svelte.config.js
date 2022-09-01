@@ -98,8 +98,8 @@ const config = {
   preprocess: [
     mdsvex({
       layout: {
-        page: './src/routes/page.svelte',
-        blog: './src/routes/blog/layout.svelte',
+        page: './src/layouts/page.svelte',
+        blog: './src/layouts/blog.svelte',
       },
       remarkPlugins: [abbr], // adds support for footnote-like abbreviations
       rehypePlugins: [
