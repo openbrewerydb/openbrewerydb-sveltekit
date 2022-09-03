@@ -40,7 +40,6 @@ const config = {
       // if `edge` is true, this option cannot be used
       split: false,
     }),
-    amp: false,
     appDir: '_app',
     browser: {
       hydrate: true,
@@ -53,7 +52,7 @@ const config = {
         // ...
       },
     },
-    endpointExtensions: ['.js', '.ts'],
+    moduleExtensions: ['.js', '.ts'],
     files: {
       assets: 'static',
       hooks: 'src/hooks',
@@ -63,20 +62,12 @@ const config = {
       serviceWorker: 'src/service-worker',
       template: 'src/app.html',
     },
-    floc: false,
     inlineStyleThreshold: 0,
     methodOverride: {
       parameter: '_method',
       allowed: [],
     },
     outDir: '.svelte-kit',
-    package: {
-      dir: 'package',
-      emitTypes: true,
-      // excludes all .d.ts and files starting with _ as the name
-      exports: (filepath) => !/^_|\/_|\.d\.ts$/.test(filepath),
-      files: () => true,
-    },
     paths: {
       assets: '',
       base: '',
@@ -89,8 +80,6 @@ const config = {
       entries: ['*'],
       onError: 'fail',
     },
-    routes: (filepath) =>
-      !/(?:(?:^_|\/_)|(?:^\.|\/\.)(?!well-known))/.test(filepath),
     serviceWorker: {
       register: true,
       files: (filepath) => !/\.DS_Store/.test(filepath),
@@ -100,7 +89,6 @@ const config = {
       name: Date.now().toString(),
       pollInterval: 0,
     },
-    vite: () => ({}),
   },
 
   // SvelteKit uses vite-plugin-svelte. Its options can be provided directly here.
@@ -110,8 +98,8 @@ const config = {
   preprocess: [
     mdsvex({
       layout: {
-        page: './src/routes/page.svelte',
-        blog: './src/routes/blog/layout.svelte',
+        page: './src/layouts/page.svelte',
+        blog: './src/layouts/blog.svelte',
       },
       remarkPlugins: [abbr], // adds support for footnote-like abbreviations
       rehypePlugins: [

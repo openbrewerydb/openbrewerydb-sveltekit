@@ -1,5 +1,5 @@
 <script lang="ts">
-  import logo from '../../static/obdb-logo.png';
+  import logo from '../obdb-logo.png';
 </script>
 
 <svelte:head>
