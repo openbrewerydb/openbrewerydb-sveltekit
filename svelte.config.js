@@ -41,10 +41,6 @@ const config = {
       split: false,
     }),
     appDir: '_app',
-    browser: {
-      hydrate: true,
-      router: true,
-    },
     csp: {
       mode: 'auto',
       directives: {
@@ -55,30 +51,18 @@ const config = {
     moduleExtensions: ['.js', '.ts'],
     files: {
       assets: 'static',
-      hooks: 'src/hooks',
+      hooks: { server: '', client: '' },
       lib: 'src/lib',
       params: 'src/params',
       routes: 'src/routes',
       serviceWorker: 'src/service-worker',
-      template: 'src/app.html',
+      appTemplate: 'src/app.html',
     },
     inlineStyleThreshold: 0,
-    methodOverride: {
-      parameter: '_method',
-      allowed: [],
-    },
     outDir: '.svelte-kit',
     paths: {
       assets: '',
       base: '',
-    },
-    prerender: {
-      concurrency: 1,
-      crawl: true,
-      default: false,
-      enabled: true,
-      entries: ['*'],
-      onError: 'fail',
     },
     serviceWorker: {
       register: true,
