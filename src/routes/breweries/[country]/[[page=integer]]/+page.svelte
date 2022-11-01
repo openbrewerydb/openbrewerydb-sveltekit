@@ -1,21 +1,23 @@
 <script>
+  import { snakeCase } from 'snake-case';
   import BreweriesTable from '../../../../components/BreweriesTable.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
 
-  $: breweryState = data.breweries[0]?.county_province
-    ? data.breweries[0]?.county_province
-    : data.breweries[0]?.state;
+  $: firstBrewery = data.breweries[0];
+  $: country = firstBrewery?.country ?? '';
+  $: page = data.page ?? 1;
 </script>
 
 <div class="px-4 sm:px-6 lg:px-8">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
       <h1 class="text-xl font-semibold text-gray-900">
-        Breweries in {breweryState ?? ''}, {data.breweries[0]?.country ?? ''}
-        ({data.breweries.length} breweries)
+        Breweries in {data.breweries[0]?.country ?? ''}
       </h1>
+      <p class="mt-2 text-sm text-gray-700">{data.breweries.length}
+        breweries (page {page})</p>
     </div>
   </div>
   <div class="mt-8 flex flex-col">
@@ -26,6 +28,16 @@
         >
           <BreweriesTable breweries={data.breweries} />
         </div>
+        <ul class="mt-4 flex gap-4">
+          {#if page > 1}
+            <li>
+              <a href="/breweries/{snakeCase(country)}/{+page - 1}">Previous</a>
+            </li>
+          {/if}
+          <li>
+            <a href="/breweries/{snakeCase(country)}/{+page + 1}">Next</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

@@ -59,7 +59,9 @@
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6"
-          ><a href="/breweries/{snakeCase(brewery.id)}">{brewery.name}</a></td
+          ><a href="/breweries/{snakeCase(brewery.id)}" class="underline"
+            >{brewery.name}</a
+          ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.street}</td
@@ -68,21 +70,23 @@
           ><a
             href="/breweries/{snakeCase(brewery.country)}/{snakeCase(
               breweryState
-            )}/{snakeCase(brewery.city)}">{brewery.city}</a
+            )}/{snakeCase(brewery.city)}"
+            class="underline">{brewery.city}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           ><a
             href="/breweries/{snakeCase(brewery.country)}/{snakeCase(
               breweryState
-            )}">{breweryState}</a
+            )}"
+            class="underline">{breweryState}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.postal_code}</td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          ><a href="/breweries/{snakeCase(brewery.country)}"
+          ><a href="/breweries/{snakeCase(brewery.country)}" class="underline"
             >{brewery.country}</a
           ></td
         >
