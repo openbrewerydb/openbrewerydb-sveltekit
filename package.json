@@ -10,6 +10,7 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@inqling/svelte-icons": "^2.1.0",
     "@sveltejs/adapter-netlify": "^1.0.0-next.82",
     "@sveltejs/kit": "^1.0.0-next.528",
     "@tailwindcss/forms": "^0.5",
@@ -30,7 +31,6 @@
     "rehype-slug": "^5.0.1",
     "rehype-urls": "^1.1.1",
     "remark-abbr": "^1.4.1",
-    "snake-case": "^3.0.4",
     "svelte": "^3.52",
     "svelte-check": "^2.9",
     "svelte-preprocess": "^4.10",
