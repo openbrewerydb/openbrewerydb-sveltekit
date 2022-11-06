@@ -1,5 +1,5 @@
 <script lang="ts">
-  import smallLogo from '../obdb-logo-sm.png';
+  import smallLogo from '$lib/assets/obdb-logo-sm.png';
   import NavMenuItem from './NavMenuItem.svelte';
 
   export let toggleMenu: () => void;

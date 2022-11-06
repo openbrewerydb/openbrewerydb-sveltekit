@@ -10,5 +10,5 @@ export async function load({ fetch, params }) {
     }`
   );
   const breweries = await res.json();
-  return { breweries, page };
+  return { breweries, country, page };
 }

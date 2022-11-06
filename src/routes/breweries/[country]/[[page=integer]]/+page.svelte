@@ -1,43 +1,40 @@
 <script>
-  import { snakeCase } from 'snake-case';
-  import BreweriesTable from '../../../../components/BreweriesTable.svelte';
+  import BreweriesTable from '$lib/components/BreweriesTable.svelte';
+  import Pagination from '$lib/components/Pagination.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
 
-  $: firstBrewery = data.breweries[0];
-  $: country = firstBrewery?.country ?? '';
+  $: breweries = data.breweries;
+  $: firstBrewery = breweries[0];
+  $: country = data.country ?? '';
   $: page = data.page ?? 1;
 </script>
 
-<div class="px-4 sm:px-6 lg:px-8">
-  <div class="sm:flex sm:items-center">
+<div class="">
+  <div class="sm:flex sm:items-end">
     <div class="sm:flex-auto">
       <h1 class="text-xl font-semibold text-gray-900">
-        Breweries in {data.breweries[0]?.country ?? ''}
+        Breweries in {firstBrewery?.country ?? ''}
       </h1>
-      <p class="mt-2 text-sm text-gray-700">{data.breweries.length}
-        breweries (page {page})</p>
+      <p class="mt-2 text-sm text-gray-700">
+        {breweries.length}
+        breweries (page {page})
+      </p>
     </div>
+    <Pagination {country} {page} />
   </div>
-  <div class="mt-8 flex flex-col">
+  <div class="mt-4 flex flex-col">
     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
         <div
           class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
         >
-          <BreweriesTable breweries={data.breweries} />
+          <BreweriesTable {breweries} />
         </div>
-        <ul class="mt-4 flex gap-4">
-          {#if page > 1}
-            <li>
-              <a href="/breweries/{snakeCase(country)}/{+page - 1}">Previous</a>
-            </li>
-          {/if}
-          <li>
-            <a href="/breweries/{snakeCase(country)}/{+page + 1}">Next</a>
-          </li>
-        </ul>
+        <div class="flex justify-end">
+          <Pagination {country} {page} />
+        </div>
       </div>
     </div>
   </div>

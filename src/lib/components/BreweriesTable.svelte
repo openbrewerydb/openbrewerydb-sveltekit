@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { snakeCase } from 'snake-case';
+  import Map from '@inqling/svelte-icons/outline/map.svelte';
+  import Link from '@inqling/svelte-icons/outline/link.svelte';
   import type { Brewery } from '$lib/types';
 
-  export let breweries: Brewery[];
+  export let breweries: Brewery[] = [];
 </script>
 
 <table class="min-w-full divide-y divide-gray-300">
@@ -59,36 +60,26 @@
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6"
-          ><a href="/breweries/{snakeCase(brewery.id)}" class="underline"
-            >{brewery.name}</a
+          ><a href="/breweries/{brewery.id}">{brewery.name}</a></td
+        >
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+          >{brewery.street ?? ''}</td
+        >
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+          ><a href="/breweries/{brewery.country}/{breweryState}/{brewery.city}"
+            >{brewery.city}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          >{brewery.street}</td
-        >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          ><a
-            href="/breweries/{snakeCase(brewery.country)}/{snakeCase(
-              breweryState
-            )}/{snakeCase(brewery.city)}"
-            class="underline">{brewery.city}</a
-          ></td
-        >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          ><a
-            href="/breweries/{snakeCase(brewery.country)}/{snakeCase(
-              breweryState
-            )}"
-            class="underline">{breweryState}</a
+          ><a href="/breweries/{brewery.country}/{breweryState}"
+            >{breweryState}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.postal_code}</td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          ><a href="/breweries/{snakeCase(brewery.country)}" class="underline"
-            >{brewery.country}</a
-          ></td
+          ><a href="/breweries/{brewery.country}">{brewery.country}</a></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.brewery_type}</td
@@ -97,12 +88,19 @@
           class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
         >
           {#if brewery.latitude && brewery.longitude}
-            <a href="#" class="text-amber-600 hover:text-amber-900">Map</a>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query={brewery.latitude},{brewery.longitude}"
+              target="_blank"
+              rel="noreferrer"
+              class="text-amber-600 hover:text-amber-900"><Map /></a
+            >
           {/if}
           {#if brewery.website_url}
             <a
               href={brewery.website_url}
-              class="text-amber-600 hover:text-amber-900">Website</a
+              target="_blank"
+              rel="noreferrer"
+              class="text-amber-600 hover:text-amber-900"><Link /></a
             >
           {/if}
         </td>

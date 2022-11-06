@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Footer from '../components/Footer.svelte';
-  import MobileNav from '../components/MobileNav.svelte';
-  import Nav from '../components/Nav.svelte';
+  import Footer from '$lib/components/Footer.svelte';
+  import MobileNav from '$lib/components/MobileNav.svelte';
+  import Nav from '$lib/components/Nav.svelte';
 
   import '../css/app.css';
 
