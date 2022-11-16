@@ -1,3 +1,5 @@
+import { API_URL } from '$lib/utils';
+
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params }) {
   const { country, state, city, page } = params;
@@ -5,7 +7,7 @@ export async function load({ fetch, params }) {
   // TODO: Check for valid country, state, and city
 
   const res = await fetch(
-    `https://api.openbrewerydb.org/breweries/?by_country=${country}&by_state=${state}&by_city=${city}&page=${
+    `${API_URL}/breweries/?by_country=${country}&by_state=${state}&by_city=${city}&page=${
       page ?? 1
     }`
   );
