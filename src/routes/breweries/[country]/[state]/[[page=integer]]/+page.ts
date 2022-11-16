@@ -1,4 +1,4 @@
-import { API_URL } from "$lib/utils";
+import { API_URL } from '$lib/utils';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params }) {

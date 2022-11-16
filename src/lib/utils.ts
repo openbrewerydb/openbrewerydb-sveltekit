@@ -1,6 +1,7 @@
-import { PUBLIC_API_URL } from '$env/static/public';
+import * as env from '$env/static/public';
 
-export const API_URL: string = PUBLIC_API_URL || 'https://api.openbrewerydb.org';
+export const API_URL: string =
+  env?.PUBLIC_API_URL || 'https://api.openbrewerydb.org';
 
 export const mappings = {
   countries: {
