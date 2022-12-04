@@ -25,7 +25,7 @@ layout: page
       label: 'Search Breweries'
     },
     {
-      id: 'meta-breweries',
+      id: 'metadata',
       label: 'Metadata'
     }
   ];
