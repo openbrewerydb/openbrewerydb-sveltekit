@@ -23,6 +23,10 @@ layout: page
     {
       id: 'search-breweries',
       label: 'Search Breweries'
+    },
+    {
+      id: 'meta-breweries',
+      label: 'Metadata'
     }
   ];
 </script>
@@ -177,3 +181,23 @@ Return a list of names and ids of breweries based on a search term. This endpoin
 `https://api.openbrewerydb.org/breweries/autocomplete?query={search}`
 
 <RunButton endpoint="https://api.openbrewerydb.org/breweries/autocomplete?query=dog" />
+
+---
+
+## Metadata
+
+Metadata takes the same filters as [List Breweries](#list-breweries).
+
+`https://api.openbrewerydb.org/breweries/meta`
+
+### Show all breweries meta data
+
+<RunButton endpoint="https://api.openbrewerydb.org/breweries/meta" />
+
+### Show South Korean breweries meta data
+
+<RunButton endpoint="https://api.openbrewerydb.org/breweries/meta?by_country=south_korea" />
+
+### Show micro breweries meta data
+
+<RunButton endpoint="https://api.openbrewerydb.org/breweries/meta?by_type=micro" />
