@@ -1,8 +1,6 @@
 <script lang="ts">
   export let meta;
 
-  $: console.log({ meta });
-
   $: page = +meta.page;
   $: perPage = +meta.per_page;
   $: total = +meta.total;

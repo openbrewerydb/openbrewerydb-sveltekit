@@ -7,8 +7,6 @@
   /** @type {import('./$types').PageData} */
   export let data;
 
-  $: console.log(data);
-
   $: breweries = data.breweries;
   $: meta = data.meta;
   $: country = data.country ?? '';
