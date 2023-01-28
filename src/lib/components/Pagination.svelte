@@ -1,8 +1,12 @@
 <script lang="ts">
-  export let page = 1;
+  import type { Metadata } from '$lib/types';
+
+  export let meta: Metadata;
   export let country: string;
   export let state: string | undefined = undefined;
   export let city: string | undefined = undefined;
+
+  $: page = +meta.page;
 </script>
 
 <ul class="mt-4 text-sm flex gap-4">
@@ -11,15 +15,17 @@
       <a
         href="/breweries/{country}{state ? `/${state}` : ''}{city
           ? `/${city}`
-          : ''}/{+page - 1}">Previous</a
+          : ''}/{page - 1}">Previous</a
       >
     </li>
   {/if}
-  <li>
-    <a
-      href="/breweries/{country}{state ? `/${state}` : ''}{city
-        ? `/${city}`
-        : ''}/{+page + 1}">Next</a
-    >
-  </li>
+  {#if page < +meta.total / +meta.per_page}
+    <li>
+      <a
+        href="/breweries/{country}{state ? `/${state}` : ''}{city
+          ? `/${city}`
+          : ''}/{page + 1}">Next</a
+      >
+    </li>
+  {/if}
 </ul>

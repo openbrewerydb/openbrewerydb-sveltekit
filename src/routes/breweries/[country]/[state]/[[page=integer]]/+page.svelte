@@ -1,33 +1,25 @@
 <script>
   import BreweriesTable from '$lib/components/BreweriesTable.svelte';
+  import DirectoryHeading from '$lib/components/DirectoryHeading.svelte';
+  import DirectoryMeta from '$lib/components/DirectoryMeta.svelte';
   import Pagination from '$lib/components/Pagination.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
 
   $: breweries = data.breweries ?? [];
-  $: firstBrewery = breweries[0];
   $: country = data.country ?? '';
-  $: page = data.page ?? 1;
   $: state = data.state ?? '';
-  $: stateLabel =
-    (firstBrewery?.county_province
-      ? firstBrewery.county_province
-      : firstBrewery?.state) ?? '';
+  $: meta = data.meta;
 </script>
 
 <div class="">
   <div class="sm:flex sm:items-end">
     <div class="sm:flex-auto">
-      <h1 class="text-xl font-semibold text-gray-900">
-        Breweries in {stateLabel ?? ''}, {firstBrewery.country ?? ''}
-      </h1>
-      <p class="mt-2 text-sm text-gray-700">
-        {breweries.length}
-        breweries (page {page})
-      </p>
+      <DirectoryHeading {country} {state} />
+      <DirectoryMeta {meta} />
     </div>
-    <Pagination {country} {state} {page} />
+    <Pagination {country} {state} {meta} />
   </div>
   <div class="mt-8 flex flex-col">
     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -38,7 +30,7 @@
           <BreweriesTable {breweries} />
         </div>
         <div class="flex justify-end">
-          <Pagination {country} {state} {page} />
+          <Pagination {country} {meta} />
         </div>
       </div>
     </div>

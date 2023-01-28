@@ -48,3 +48,9 @@ export interface Brewery {
   latitude: Float64Array;
   tags: string[];
 }
+
+export interface Metadata {
+  total: string;
+  per_page: string;
+  page: string;
+}
