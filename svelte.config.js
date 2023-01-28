@@ -12,11 +12,8 @@ function processUrl(url, node) {
     node.properties.class = 'text-link';
 
     if (!url.href.startsWith('/')) {
-      // Open external links in new tab
       node.properties.target = '_blank';
-      // Fix a security concern with offsite links
-      // See: https://web.dev/external-anchors-use-rel-noopener/
-      node.properties.rel = 'noopener';
+      node.properties.rel = 'noreferrer';
     }
   }
 }
@@ -68,7 +65,6 @@ const config = {
       register: true,
       files: (filepath) => !/\.DS_Store/.test(filepath),
     },
-    trailingSlash: 'never',
     version: {
       name: Date.now().toString(),
       pollInterval: 0,
