@@ -60,7 +60,7 @@
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 max-w-xs truncate"
-          ><a href="/breweries/{brewery.id}">{brewery.name}</a></td
+          ><a href="/b/{brewery.id}">{brewery.name}</a></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.street ?? ''}</td
