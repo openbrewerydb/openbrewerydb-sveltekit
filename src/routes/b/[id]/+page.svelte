@@ -71,7 +71,7 @@
     >
   </dd>
   <dt class="font-semibold">Postal Code:</dt>
-  <dd>{brewery.postal_code}</dd>
+  <dd>{brewery.postal_code || ''}</dd>
   <dt class="font-semibold">Country:</dt>
   <dd>
     <a
@@ -80,5 +80,5 @@
     >
   </dd>
   <dt class="font-semibold">Phone:</dt>
-  <dd>{brewery.phone}</dd>
+  <dd>{brewery.phone || ''}</dd>
 </dl>
