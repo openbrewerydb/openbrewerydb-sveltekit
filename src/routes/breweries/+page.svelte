@@ -22,7 +22,7 @@
   {#each Object.entries(mappings.countries) as [id, country]}
     <li>
       <a
-        class="underline text-gray-900 hover:text-amber-600"
+        class="text-amber-600 hover:text-amber-900"
         href="/breweries/{country.label}">{country.label}</a
       >
     </li>

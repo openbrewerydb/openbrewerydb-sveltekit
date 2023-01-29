@@ -60,26 +60,34 @@
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 max-w-xs truncate"
-          ><a href="/b/{brewery.id}">{brewery.name}</a></td
+          ><a class="text-amber-600 hover:text-amber-900" href="/b/{brewery.id}"
+            >{brewery.name}</a
+          ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.street ?? ''}</td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          ><a href="/breweries/{brewery.country}/{breweryState}/{brewery.city}"
+          ><a
+            class="text-amber-600 hover:text-amber-900"
+            href="/breweries/{brewery.country}/{breweryState}/{brewery.city}"
             >{brewery.city}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          ><a href="/breweries/{brewery.country}/{breweryState}"
-            >{breweryState}</a
+          ><a
+            class="text-amber-600 hover:text-amber-900"
+            href="/breweries/{brewery.country}/{breweryState}">{breweryState}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.postal_code}</td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          ><a href="/breweries/{brewery.country}">{brewery.country}</a></td
+          ><a
+            class="text-amber-600 hover:text-amber-900"
+            href="/breweries/{brewery.country}">{brewery.country}</a
+          ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           >{brewery.brewery_type}</td
