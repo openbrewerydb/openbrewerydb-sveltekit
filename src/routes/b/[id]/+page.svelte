@@ -25,7 +25,7 @@
 </svelte:head>
 
 <div class="flex items-center gap-x-3">
-  <h1 class="text-4xl my-4">{brewery.name}</h1>
+  <h1 class="text-4xl">{brewery.name}</h1>
   <div>
     {#if brewery.latitude && brewery.longitude}
       <a
@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<dl class="grid grid-cols-2 max-w-sm">
+<dl class="grid grid-cols-2 max-w-sm my-3">
   <dt class="font-semibold">Type:</dt>
   <dd>{brewery.brewery_type}</dd>
   <dt class="font-semibold">Address:</dt>

@@ -6,7 +6,7 @@
   export let country: string;
 </script>
 
-<h1 class="text-4xl my-4">
+<h1 class="text-4xl">
   Breweries in {city ? titleCase(city) + ', ' : ''}{state
     ? titleCase(state) + ', '
     : ''}{titleCase(country) ?? ''}
