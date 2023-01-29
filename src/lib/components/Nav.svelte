@@ -1,5 +1,5 @@
 <script lang="ts">
-  import smallLogo from '../obdb-logo-sm.png';
+  import smallLogo from '$lib/assets/obdb-logo-sm.png';
   import NavMenuItem from './NavMenuItem.svelte';
 
   export let toggleMenu: () => void;
@@ -48,6 +48,7 @@
     </div>
   </div>
   <div class="hidden md:flex md:space-x-10">
+    <NavMenuItem href="/breweries">Breweries</NavMenuItem>
     <NavMenuItem href="/documentation">Docs</NavMenuItem>
     <NavMenuItem href="/faq">FAQ</NavMenuItem>
     <NavMenuItem href="/projects">Projects</NavMenuItem>
