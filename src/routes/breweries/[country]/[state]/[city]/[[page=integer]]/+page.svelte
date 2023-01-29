@@ -13,28 +13,24 @@
   $: city = data.city ?? '';
   $: state = data.state ?? '';
   $: meta = data.meta;
-</script>
-
-<svelte:head>
-  <title>{`Breweries in ${locationString({
+  $: pageTitle = `Breweries in ${locationString({
     country,
     state,
     city,
-  })} | Open Brewery DB`}</title>
-  <meta
-    property="og:title"
-    content={`Breweries in ${locationString({
-      country,
-      state,
-      city,
-    })} | Open Brewery DB`}
-  />
-  <meta
-    property="og:description"
-    content={`Breweries in ${locationString({ country, state, city })} - Page ${
-      meta.page
-    }`}
-  />
+  })} | Open Brewery DB`;
+  $: pageDescription = `Breweries in ${locationString({
+    country,
+    state,
+    city,
+  })} - Page ${meta.page}`;
+</script>
+
+<svelte:head>
+  <title>{pageTitle}</title>
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
 </svelte:head>
 
 <div class="">

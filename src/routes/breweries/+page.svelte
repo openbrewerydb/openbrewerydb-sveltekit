@@ -3,9 +3,17 @@
 </script>
 
 <svelte:head>
-  <title>List Breweries | Open Brewery DB</title>
-  <meta property="og:title" content="Open Brewery DB | List Breweries" />
-  <meta property="og:image" content="/obdb-og.png" />
+  <title>Breweries | Open Brewery DB</title>
+  <meta property="og:title" content="Breweries | Open Brewery DB" />
+  <meta
+    property="og:description"
+    content="A worldwide open-source brewery dataset and API"
+  />
+  <meta name="twitter:title" content="Breweries | Open Brewery DB" />
+  <meta
+    name="twitter:description"
+    content="A worldwide open-source brewery dataset and API"
+  />
 </svelte:head>
 
 <h1 class="text-4xl my-4">List Breweries</h1>
