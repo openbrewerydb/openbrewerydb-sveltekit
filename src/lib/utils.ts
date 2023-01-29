@@ -41,3 +41,18 @@ export function titleCase(str) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 }
+
+export function locationString({
+  country,
+  city,
+  state,
+}: {
+  country: string;
+  city?: string;
+  state?: string;
+}) {
+  const cityPart = city ? titleCase(city) + ', ' : '';
+  const statePart = state ? titleCase(state) + ', ' : '';
+  const countryPart = titleCase(country) ?? '';
+  return cityPart + statePart + countryPart;
+}

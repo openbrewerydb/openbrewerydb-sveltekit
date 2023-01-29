@@ -3,6 +3,7 @@
   import DirectoryHeading from '$lib/components/DirectoryHeading.svelte';
   import DirectoryMeta from '$lib/components/DirectoryMeta.svelte';
   import Pagination from '$lib/components/Pagination.svelte';
+  import { locationString } from '$lib/utils';
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -14,10 +15,32 @@
   $: meta = data.meta;
 </script>
 
+<svelte:head>
+  <title>{`Breweries in ${locationString({
+    country,
+    state,
+    city,
+  })} | Open Brewery DB`}</title>
+  <meta
+    property="og:title"
+    content={`Breweries in ${locationString({
+      country,
+      state,
+      city,
+    })} | Open Brewery DB`}
+  />
+  <meta
+    property="og:description"
+    content={`Breweries in ${locationString({ country, state, city })} - Page ${
+      meta.page
+    }`}
+  />
+</svelte:head>
+
 <div class="">
   <div class="sm:flex sm:items-end">
     <div class="sm:flex-auto">
-      <DirectoryHeading {country} {state} />
+      <DirectoryHeading {country} {state} {city} />
       <DirectoryMeta {meta} />
     </div>
     <Pagination {country} {state} {city} {meta} />

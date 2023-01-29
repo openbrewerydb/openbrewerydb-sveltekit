@@ -2,6 +2,33 @@
   import logo from '$lib/assets/obdb-logo.png';
 </script>
 
+<svelte:head>
+  <title>Open Brewery DB</title>
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Open Brewery DB" />
+  <meta
+    property="og:description"
+    content="A worldwide open-source brewery dataset and API"
+  />
+  <meta
+    property="og:image"
+    content="https://www.openbrewerydb.org/obdb-og.png"
+  />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@openbrewerydb" />
+  <meta name="twitter:title" content="Open Brewery DB" />
+  <meta
+    name="twitter:description"
+    content="A worldwide open-source brewery dataset and API"
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.openbrewerydb.org/obdb-og.png"
+  />
+</svelte:head>
+
 <div class="text-center">
   <div class="w-full sm:w-96 mx-auto my-6">
     <img class="" src={logo} alt="Open Brewery DB Logo" />
