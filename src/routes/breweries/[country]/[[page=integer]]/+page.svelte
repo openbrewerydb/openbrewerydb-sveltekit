@@ -3,6 +3,7 @@
   import DirectoryHeading from '$lib/components/DirectoryHeading.svelte';
   import DirectoryMeta from '$lib/components/DirectoryMeta.svelte';
   import Pagination from '$lib/components/Pagination.svelte';
+  import { mappings } from '$lib/utils';
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -10,7 +11,16 @@
   $: breweries = data.breweries;
   $: meta = data.meta;
   $: country = data.country ?? '';
+  $: countryLabel = mappings?.countries[country]?.label || '';
 </script>
+
+<svelte:head>
+  <meta property="og:title" content={`Open Brewery DB - ${countryLabel}`} />
+  <meta
+    property="og:description"
+    content={`List of breweries in ${countryLabel} - Page ${meta.page}`}
+  />
+</svelte:head>
 
 <div class="">
   <div class="sm:flex sm:items-end">

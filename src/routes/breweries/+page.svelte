@@ -9,7 +9,7 @@
     <li>
       <a
         class="underline text-gray-900 hover:text-amber-600"
-        href="/breweries/{id}">{country.label}</a
+        href="/breweries/{country.label}">{country.label}</a
       >
     </li>
   {/each}
