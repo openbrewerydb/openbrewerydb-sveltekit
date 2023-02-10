@@ -33,6 +33,10 @@ An Android application developed using most of the bleeding edge technologies pr
 
 A group project search-based React app built using the Open Brewery DB API to enable users to search breweries, and then save the ones they would like to visit later. Maintained by [@jnunez1229](https://github.com/jnunez1229), [@blueink38](https://github.com/blueink38), [@dragoonkite](https://github.com/dragoonkite), [@cocobeware83](https://github.com/cocobeware83), [@rocketorangemen](https://github.com/rocketorangemen)
 
+#### [Brewery Buddy 🍻](https://brewerybuddy.netlify.app/)
+
+A React.js application built using the OpenBreweryDB API along with React Leaflet, to query a maintained database of breweries around the world and display their location on a map. [Built and maintained](https://github.com/jordbort/project-2-brewery-app) by [@jordbort](https://github.com/jordbort) and [@coreyloftus](https://github.com/coreyloftus)
+
 #### [BrewTalk](https://github.com/tashiad/brewtalk)
 
 A search-based React app built using the Open Brewery DB API and the random dad jokes API. Maintained by [@tashiad](https://github.com/tashiad)
