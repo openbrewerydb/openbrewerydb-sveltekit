@@ -1,6 +1,5 @@
 <script>
-  import Map from '@inqling/svelte-icons/outline/map.svelte';
-  import Link from '@inqling/svelte-icons/outline/link.svelte';
+  import { Map, Link } from '@inqling/svelte-icons/heroicon-24-outline';
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -13,7 +12,6 @@
   $: pageDescription = `${brewery.name}, ${brewery.city}, ${
     brewery.county_province ? brewery.county_province : brewery.state
   }`;
-  $: console.log(brewery);
 </script>
 
 <svelte:head>

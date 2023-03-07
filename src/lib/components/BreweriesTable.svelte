@@ -1,6 +1,5 @@
 <script lang="ts">
-  import Map from '@inqling/svelte-icons/outline/map.svelte';
-  import Link from '@inqling/svelte-icons/outline/link.svelte';
+  import { Link, Map } from '@inqling/svelte-icons/heroicon-24-outline';
   import type { Brewery } from '$lib/types';
 
   export let breweries: Brewery[] = [];
