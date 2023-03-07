@@ -82,7 +82,7 @@
       </a>
     </div>
     <p class="mt-8 text-center text-base">
-      &copy; 2022 Open Brewery DB. All rights reserved.
+      &copy; 2023 Open Brewery DB. All rights reserved.
     </p>
   </div>
 </footer>
