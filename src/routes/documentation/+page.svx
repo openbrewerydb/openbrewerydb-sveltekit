@@ -122,7 +122,7 @@ The offset or page of breweries to return.
 
 Number of breweries to return each call.
 
-**Note:** Default per page is 20. Max per page is 50.
+**Note:** Default per page 50. Max per page is 200.
 
 <RunButton endpoint="https://api.openbrewerydb.org/breweries?per_page=2" />
 
