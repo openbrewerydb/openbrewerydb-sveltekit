@@ -9,29 +9,31 @@ Open Brewery DB is a free dataset and API with public information on breweries, 
 
 ## Why Open Brewery DB?
 
-The goal of this project is to keep an up-to-date, community-driven, and publically available database of breweries for the betterment of the beer community and the joy of web developers and data analysts.
+This project aims to keep an up-to-date, community-driven, and publicly available database of breweries for the betterment of the beer community and the joy of web developers and data analysts.
 
 ## How did it start?
 
-Open Brewery DB started after I wanted to create an interactive map of dog-friendly breweries. As I began the project, we realized there was no easy way to get data on breweries. While there are other websites and resources available, none had an easy-to-use, publically-accessible API. Open Brewery DB was born!
+Open Brewery DB started after I wanted to create an interactive map of dog-friendly breweries. As I began the project, we realized there was no easy way to get brewery data. While other websites and resources are available, none had an easy-to-use, publicly-accessible API. Open Brewery DB was born!
 
 ## Will Open Brewery DB always be free?
 
-Yes! Absolutely, always, 100% free.
+Yes! The [dataset](https://github.com/openbrewerydb/openbrewerydb/) will always be free and open-source.
+
+The API is free and open (i.e., no need for authentication). Cloudflare has made this possible because they prevent annoying DDoS attacks, provides caching, and is complexly free. If that ever changes, we might need to re-evaluate, but so far, all is good!
 
 ## How old is the data?
 
-As of today (Sept 2020), the data is mostly from Summer 2018. It was scraped from [Brewers Association](https://www.brewersassociation.org/).
+The data was initially scraped from [Brewers Association](https://www.brewersassociation.org/) around August 2018.
 
-## How often is the data update?
+Since then, the data has been updated via the [GitHub dataset repository](https://github.com/openbrewerydb/openbrewerydb/), typically a city at a time. [See commit history](https://github.com/openbrewerydb/openbrewerydb/commits/master)
 
-I'm actively working on getting more up-to-date data. [Join the Discord](https://discord.gg/WMPB3VZ) if you'd liked to help out!
+## How often is the data updated?
+
+We are working on an editing UI and an automated pipeline for regular batch imports. [Join Discord](https://discord.gg/WMPB3VZ) if you'd like to help!
 
 ## Can I use Open Brewery DB for production use or for-profit?
 
-At this time, I only advise using the API for personal projects. It's not very stable and is suseptible to outages due to DDoS attacks.
-
-Note: Version 2 of the API will have basic authentication and rate limits. Timeline TBD.
+At this time, I recommend using the API for personal projects. Though it is pretty stable, it is a community-supported project and cannot uphold service level agreements (SLAs).
 
 You are welcome to use the [dataset](https://github.com/openbrewerydb/openbrewerydb/) for any projects with credit to Open Brewery DB.
 
@@ -42,13 +44,13 @@ There is absolutely nothing wrong with those services. Some charge money for pre
 ## How can I help?
 
 - [Join the Discord](https://discord.gg/WMPB3VZ). We are a friendly bunch!
-- You can contribute to the codebase through the Github Issues for the API server, documentation website, or dataset.
-- You can also help keep the brewery information up to date by submitting a pull request to the dataset repository.
+- You can contribute to the codebase through the GitHub Issues for the API server, documentation website, or dataset.
+- You can also help keep the brewery information current by submitting a pull request to the dataset repository.
 - Subscribe to the newsletter to get updates.
 
 ## Who is responsible for this project?
 
-Open Brewery DB was created and is maintained by [Chris J Mears](https://chrisjmears.com), who is a (now occasional) beer-drinking software engineer and data-geek. He is a rescue dog dad for Cooper. They currently live in San Diego, CA.
+Open Brewery DB was created and is maintained by [Chris J Mears](https://chrisjmears.com), who is a (now occasional) beer-drinking software engineer and data geek. He is a rescue dog dad for Cooper, and they currently live in San Diego, CA.
 
 ## I have other questions
 
