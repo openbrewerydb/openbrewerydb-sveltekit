@@ -1,10 +1,14 @@
 import * as env from '$env/static/public';
 
 export const API_URL: string =
-  env?.PUBLIC_API_URL || 'https://api.openbrewerydb.org';
+  env?.PUBLIC_API_URL || 'https://api.openbrewerydb.org/v1';
 
 export const mappings = {
   countries: {
+    austria: {
+      label: 'Austria',
+      id: 'austria',
+    },
     england: {
       label: 'England',
       id: 'england',
@@ -13,6 +17,10 @@ export const mappings = {
       label: 'France',
       id: 'france',
     },
+    isle_of_man: {
+      label: 'Isle of Man',
+      id: 'isle-of-man',
+    },
     ireland: {
       label: 'Ireland',
       id: 'ireland',
@@ -20,6 +28,10 @@ export const mappings = {
     poland: {
       label: 'Poland',
       id: 'poland',
+    },
+    portugal: {
+      label: 'Portugal',
+      id: 'portugal',
     },
     scotland: {
       label: 'Scotland',

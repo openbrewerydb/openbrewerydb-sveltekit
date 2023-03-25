@@ -37,9 +37,9 @@ layout: page
 
 Get a single brewery.
 
-`https://api.openbrewerydb.org/breweries/{obdb-id}`
+`https://api.openbrewerydb.org/v1/breweries/{obdb-id}`
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/madtree-brewing-cincinnati" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0" />
 
 ---
 
@@ -47,9 +47,9 @@ Get a single brewery.
 
 Returns a list of breweries.
 
-`https://api.openbrewerydb.org/breweries`
+`https://api.openbrewerydb.org/v1/breweries`
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?per_page=3" />
 
 ### `by_city`
 
@@ -58,14 +58,14 @@ Filter breweries by city.
 **Note:** For the parameters, you can use underscores or
 [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_city=san_diego&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_city=san_diego&per_page=3" />
 
 ### `by_dist`
 
 Sort the results by distance from an origin point, denoted by
 `latitude,longitude`.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_dist=38.8977,77.0365&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_dist=38.8977,77.0365&per_page=3" />
 
 ### `by_name`
 
@@ -73,7 +73,7 @@ Filter breweries by name.
 
 **Note:** For the parameters, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_name=cooper&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_name=cooper&per_page=3" />
 
 ### `by_state`
 
@@ -81,7 +81,7 @@ Filter breweries by state.
 
 **Note:** Full state name is required; no abbreviations. For the parameters, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_state=new_york&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_state=new_york&per_page=3" />
 
 ### `by_postal`
 
@@ -91,7 +91,7 @@ May be filtered by basic (5 digit) postal code or more precisely filtered by pos
 
 **Note:** If filtering by postal+4 the search must include either a hyphen or an underscore.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_postal=44107&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_postal=44107&per_page=3" />
 
 ### `by_type`
 
@@ -110,13 +110,13 @@ Must be one of:
 - `proprietor` - Similar to contract brewing but refers more to a brewery incubator.
 - `closed` - A location which has been closed.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_type=micro&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_type=micro&per_page=3" />
 
 ### `page`
 
 The offset or page of breweries to return.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?page=15&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?page=15&per_page=3" />
 
 ### `per_page`
 
@@ -124,7 +124,7 @@ Number of breweries to return each call.
 
 **Note:** Default per page 50. Max per page is 200.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?per_page=2" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?per_page=2" />
 
 ### `sort`
 
@@ -135,7 +135,7 @@ Sort the results by one or more fields.
 
 **Note:** `by_dist` does not work with the `sort` filter since it is a filter of its own.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries?by_state=ohio&sort=type,name:asc&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_state=ohio&sort=type,name:asc&per_page=3" />
 
 ---
 
@@ -143,9 +143,9 @@ Sort the results by one or more fields.
 
 Get a random brewery.
 
-`https://api.openbrewerydb.org/breweries/random`
+`https://api.openbrewerydb.org/v1/breweries/random`
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/random" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random" />
 
 ### `size`
 
@@ -153,7 +153,7 @@ Number of breweries to return each call.
 
 **Note:** Default is 1. Max per page is 50.
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/random?size=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random?size=3" />
 
 ---
 
@@ -165,9 +165,9 @@ Search for breweries based on a search term.
 
 **Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
-`https://api.openbrewerydb.org/breweries/search?query={search}`
+`https://api.openbrewerydb.org/v1/breweries/search?query={search}`
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/search?query=dog&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/search?query=dog&per_page=3" />
 
 ### Autocomplete
 
@@ -178,9 +178,9 @@ Return a list of names and ids of breweries based on a search term. This endpoin
 - For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 - The maximum number of breweries returned is **15**.
 
-`https://api.openbrewerydb.org/breweries/autocomplete?query={search}`
+`https://api.openbrewerydb.org/v1/breweries/autocomplete?query={search}`
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/autocomplete?query=dog" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/autocomplete?query=dog" />
 
 ---
 
@@ -188,16 +188,16 @@ Return a list of names and ids of breweries based on a search term. This endpoin
 
 Metadata takes the same filters as [List Breweries](#list-breweries).
 
-`https://api.openbrewerydb.org/breweries/meta`
+`https://api.openbrewerydb.org/v1/breweries/meta`
 
 ### Show all breweries meta data
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/meta" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/meta" />
 
 ### Show South Korean breweries meta data
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/meta?by_country=south_korea" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/meta?by_country=south_korea" />
 
 ### Show micro breweries meta data
 
-<RunButton endpoint="https://api.openbrewerydb.org/breweries/meta?by_type=micro" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/meta?by_type=micro" />

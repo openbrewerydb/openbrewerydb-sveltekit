@@ -4,7 +4,7 @@
 
   let searchInput = '';
 
-  const handleInput = debounce((event: Event) => {
+  const handleInput = debounce((event: CustomEvent) => {
     searchInput = event.target.value;
   }, 300);
 
@@ -63,7 +63,7 @@
         Combobox option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
         Active: "text-white bg-amber-600", Not Active: "text-gray-900"
       -->
-        {#each breweries as brewery}
+        {#each $breweries as brewery}
           <li
             class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900"
             id="option-0"
@@ -75,9 +75,7 @@
               <span class="truncate">{brewery.name}</span>
               <!-- Active: "text-amber-200", Not Active: "text-gray-500" -->
               <span class="ml-2 truncate text-gray-500"
-                >{brewery.county_province
-                  ? brewery.county_province
-                  : brewery.city}, {brewery.state}, {brewery.country}</span
+                >{brewery.city}, {brewery.state_province}, {brewery.country}</span
               >
             </div>
           </li>

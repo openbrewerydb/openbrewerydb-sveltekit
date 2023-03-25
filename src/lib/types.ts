@@ -16,37 +16,33 @@ export type BreweryKey =
   | 'id'
   | 'name'
   | 'brewery_type'
-  | 'street'
+  | 'address_1'
   | 'address_2'
   | 'address_3'
   | 'city'
-  | 'state'
-  | 'county_province'
+  | 'state_province'
   | 'postal_code'
+  | 'country'
   | 'website_url'
   | 'phone'
-  | 'country'
   | 'longitude'
-  | 'latitude'
-  | 'tags';
+  | 'latitude';
 
 export interface Brewery {
   id: string;
   name: string;
   brewery_type: string;
-  street: string;
+  address_1: string;
   address_2: string;
   address_3: string;
   city: string;
-  state: string;
-  county_province: string;
+  state_province: string;
   postal_code: string;
+  country: string;
   website_url: string;
   phone: string;
-  country: string;
   longitude: Float64Array;
   latitude: Float64Array;
-  tags: string[];
 }
 
 export interface Metadata {

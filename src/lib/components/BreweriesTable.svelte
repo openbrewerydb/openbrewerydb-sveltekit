@@ -53,9 +53,6 @@
   </thead>
   <tbody class="divide-y divide-gray-200 bg-white">
     {#each breweries as brewery}
-      {@const breweryState = brewery.county_province
-        ? brewery.county_province
-        : brewery.state}
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 max-w-xs truncate"
@@ -64,19 +61,19 @@
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          >{brewery.street ?? ''}</td
+          >{brewery.address_1 ?? ''}</td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           ><a
             class="text-amber-600 hover:text-amber-900"
-            href="/breweries/{brewery.country}/{breweryState}/{brewery.city}"
+            href="/breweries/{brewery.country}/{brewery.state_province}/{brewery.city}"
             >{brewery.city}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           ><a
             class="text-amber-600 hover:text-amber-900"
-            href="/breweries/{brewery.country}/{breweryState}">{breweryState}</a
+            href="/breweries/{brewery.country}/{brewery.state_province}">{brewery.state_province}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
