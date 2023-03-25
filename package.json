@@ -10,15 +10,15 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@inqling/svelte-icons": "^3.0.3",
+    "@inqling/svelte-icons": "^3.1",
     "@sveltejs/adapter-cloudflare": "^2.2.0",
-    "@sveltejs/kit": "^1.10.0",
+    "@sveltejs/kit": "^1.14.0",
     "@tailwindcss/forms": "^0.5",
-    "@typescript-eslint/eslint-plugin": "^5.54",
-    "@typescript-eslint/parser": "^5.54",
+    "@typescript-eslint/eslint-plugin": "^5.56",
+    "@typescript-eslint/parser": "^5.56",
     "autoprefixer": "^10.4",
-    "eslint": "^8.35",
-    "eslint-config-prettier": "^8.7",
+    "eslint": "^8.36",
+    "eslint-config-prettier": "^8.8",
     "eslint-plugin-svelte3": "^4.0",
     "just-debounce": "^1.1.0",
     "mdsvex": "^0.10",
@@ -31,13 +31,13 @@
     "rehype-slug": "^5.1.0",
     "rehype-urls": "^1.1.1",
     "remark-abbr": "^1.4.1",
-    "svelte": "^3.55",
-    "svelte-check": "^3.0",
+    "svelte": "^3.57",
+    "svelte-check": "^3.1",
     "svelte-preprocess": "^5.0",
     "tailwindcss": "^3.2",
     "tslib": "^2.5",
     "typescript": "^4.9",
-    "vite": "^4.1"
+    "vite": "^4.2"
   },
   "type": "module"
 }
