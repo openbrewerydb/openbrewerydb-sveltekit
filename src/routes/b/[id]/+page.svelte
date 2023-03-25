@@ -5,13 +5,8 @@
   export let data;
 
   $: brewery = data.brewery;
-  $: breweryState = brewery.county_province
-    ? brewery.county_province
-    : brewery.state;
   $: pageTitle = `${brewery.name} | Open Brewery DB`;
-  $: pageDescription = `${brewery.name}, ${brewery.city}, ${
-    brewery.county_province ? brewery.county_province : brewery.state
-  }`;
+  $: pageDescription = `${brewery.name}, ${brewery.city}, ${brewery.state_province}`;
 </script>
 
 <svelte:head>
@@ -49,7 +44,7 @@
   <dd>{brewery.brewery_type}</dd>
   <dt class="font-semibold">Address:</dt>
   <dd>
-    {brewery.street}{brewery.address_2
+    {brewery.address_1}{brewery.address_2
       ? `, ${brewery.address_2}`
       : ''}{brewery.address_3 ? `, ${brewery.address_3}` : ''}
   </dd>
@@ -57,7 +52,7 @@
   <dd>
     <a
       class="text-amber-600 hover:text-amber-900"
-      href="/breweries/{brewery.country}/{breweryState}/{brewery.city}"
+      href="/breweries/{brewery.country}/{brewery.state_province}/{brewery.city}"
       >{brewery.city}</a
     >
   </dd>
@@ -65,7 +60,8 @@
   <dd>
     <a
       class="text-amber-600 hover:text-amber-900"
-      href="/breweries/{brewery.country}/{breweryState}">{breweryState}</a
+      href="/breweries/{brewery.country}/{brewery.state_province}"
+      >{brewery.state_province}</a
     >
   </dd>
   <dt class="font-semibold">Postal Code:</dt>
