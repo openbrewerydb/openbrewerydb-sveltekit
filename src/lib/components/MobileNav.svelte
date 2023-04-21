@@ -41,8 +41,12 @@
     </div>
     <div class="px-2 pt-2 pb-3">
       <NavMenuItem href="/" {toggleMenu} isMobile={true}>Home</NavMenuItem>
-      <NavMenuItem href="/breweries" {toggleMenu} isMobile={true}>Breweries</NavMenuItem>
-      <NavMenuItem href="/documentation" {toggleMenu} isMobile={true}>Docs</NavMenuItem>
+      <NavMenuItem href="/breweries" {toggleMenu} isMobile={true}
+        >Breweries</NavMenuItem
+      >
+      <NavMenuItem href="/documentation" {toggleMenu} isMobile={true}
+        >Docs</NavMenuItem
+      >
       <NavMenuItem href="/faq" {toggleMenu} isMobile={true}>FAQ</NavMenuItem>
       <NavMenuItem href="/projects" {toggleMenu} isMobile={true}
         >Projects</NavMenuItem
@@ -51,11 +55,11 @@
       >
     </div>
     <NavMenuItem
-      href="/login"
+      href="http://eepurl.com/dBjS0j"
       {toggleMenu}
       class="block w-full px-5 py-3 text-center font-medium text-yellow-600 bg-gray-50 hover:bg-gray-100"
     >
-      Log in
+      Newsletter Signup
     </NavMenuItem>
   </div>
 </div>
