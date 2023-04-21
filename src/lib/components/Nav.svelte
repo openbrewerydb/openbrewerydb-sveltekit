@@ -59,10 +59,10 @@
   >
     <span class="inline-flex rounded-md shadow">
       <a
-        href="/login"
+        href="http://eepurl.com/dBjS0j"
         class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-yellow-600 bg-white hover:bg-gray-50"
       >
-        Log in
+        Newsletter Signup
       </a>
     </span>
   </div>
