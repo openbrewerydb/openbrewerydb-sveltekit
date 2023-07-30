@@ -29,6 +29,10 @@ An Android application developed using most of the bleeding edge technologies pr
 
 ### JavaScript
 
+#### [BrewBuddies](https://github.com/miacias/brew-buddies-v2)[deployed here](https://brew-buddies.herokuapp.com/)
+
+Social media hub for brew buddies to search breweries, leave reviews, and make new buds! Tech stack: React, Apollo GraphQL, MongoDB, JavaScript. Tools: Google Maps, Granim.js, Ant Design UI. Built and maintained by [@miacias](https://github.com/miacias) and [@oconnell-coder](https://github.com/OConnell-Coder)!
+
 #### [Beer Me](https://github.com/blueink38/beer-me)
 
 A group project search-based React app built using the Open Brewery DB API to enable users to search breweries, and then save the ones they would like to visit later. Maintained by [@jnunez1229](https://github.com/jnunez1229), [@blueink38](https://github.com/blueink38), [@dragoonkite](https://github.com/dragoonkite), [@cocobeware83](https://github.com/cocobeware83), [@rocketorangemen](https://github.com/rocketorangemen)
