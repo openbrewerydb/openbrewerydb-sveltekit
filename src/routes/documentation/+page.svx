@@ -65,7 +65,7 @@ Filter breweries by city.
 Sort the results by distance from an origin point, denoted by
 `latitude,longitude`.
 
-<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_dist=32.7174202,-117.162772&per_page=3" />
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_dist=32.88313237,-117.1649842&per_page=3" />
 
 ### `by_ids`
 
