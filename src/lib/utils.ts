@@ -37,6 +37,10 @@ export const mappings = {
       label: 'Scotland',
       id: 'scotland',
     },
+    singapore: {
+      label: 'Singapore',
+      id: 'singapore',
+    },
     south_korea: {
       label: 'South Korea',
       id: 'south-korea',
