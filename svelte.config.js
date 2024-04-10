@@ -38,6 +38,9 @@ const config = {
       split: false,
     }),
     appDir: '_app',
+    alias: {
+      '$site/*': './src/site/*',
+    },
     csp: {
       mode: 'auto',
       directives: {
