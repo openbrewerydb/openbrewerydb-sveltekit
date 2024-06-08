@@ -75,7 +75,7 @@ A Python interface for the API built and maintained by [@jrbourbeau](https://git
 
 #### [BrewFind Django App](https://github.com/Rmariner25/moengage_brewery)
 
-A Django-based web application to search, add review, and view reviews for breweries. Implemented search autocomplete feature among other features such as caching api results, pagination, embeded Google Maps for breweries. [@jrbourbeau](https://github.com/Rmariner25)
+A Django-based web application to search, add review, and view reviews for breweries. Implemented search autocomplete feature among other features such as caching api results, pagination, embeded Google Maps for breweries. [@Rmariner25](https://github.com/Rmariner25)
 
 ### Swift
 
