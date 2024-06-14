@@ -45,6 +45,12 @@ export interface Brewery {
   latitude: Float64Array;
 }
 
+export interface BreweryMarker {
+  name: string;
+  lngLat: [number, number];
+  id: string;
+}
+
 export interface Metadata {
   total: string;
   per_page: string;
