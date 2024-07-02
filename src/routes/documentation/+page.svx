@@ -60,6 +60,15 @@ Filter breweries by city.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_city=san_diego&per_page=3" />
 
+### `by_country`
+
+Filter breweries by country.
+
+**Note:** For the parameters, you can use underscores or
+[url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_country=south%20korea&per_page=3" />
+
 ### `by_dist`
 
 Sort the results by distance from an origin point, denoted by
