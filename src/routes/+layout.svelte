@@ -7,9 +7,10 @@
 
   let showMenu = false;
 
-  function toggleMenu() {
+  // Move function declaration to top level to fix ESLint error
+  const toggleMenu = () => {
     showMenu = !showMenu;
-  }
+  };
 </script>
 
 <svelte:head>

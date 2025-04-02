@@ -37,6 +37,9 @@ const config = {
       // if `edge` is true, this option cannot be used
       split: false,
     }),
+    alias: {
+      $lib: 'src/lib'
+    },
     appDir: '_app',
     csp: {
       mode: 'auto',

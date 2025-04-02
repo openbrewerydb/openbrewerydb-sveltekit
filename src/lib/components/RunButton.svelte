@@ -6,7 +6,8 @@
 
   $: comment = '// GET ' + endpoint + '\n';
 
-  async function handleClick() {
+  // Move function declaration to top level to fix ESLint error
+  const handleClick = async () => {
     const response = await fetch(endpoint, { cache: 'reload' });
     if (response.ok) {
       const result = await response.json();
@@ -15,7 +16,7 @@
     } else {
       console.error(response);
     }
-  }
+  };
 </script>
 
 <button

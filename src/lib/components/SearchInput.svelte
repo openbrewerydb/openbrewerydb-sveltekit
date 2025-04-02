@@ -4,13 +4,19 @@
 
   let searchInput = '';
 
-  const handleInput = debounce((event: CustomEvent) => {
-    searchInput = event.target.value;
-  }, 300);
-
-  async function fetchBreweries(query: string) {
+  const handleInput = debounce(
+    (
+      event: KeyboardEvent & { currentTarget: EventTarget & HTMLInputElement }
+    ) => {
+      searchInput = event.currentTarget.value;
+    },
+    300
+  );
+  
+  // Move function declaration to top level to fix ESLint error
+  const fetchBreweries = async (query: string) => {
     console.log(query);
-  }
+  };
 
   $: {
     if (searchInput) {
@@ -69,6 +75,7 @@
             id="option-0"
             role="option"
             tabindex="-1"
+            aria-selected="false"
           >
             <div class="flex">
               <!-- Selected: "font-semibold" -->

@@ -19,7 +19,7 @@
 <h1 class="text-4xl my-4">List Breweries</h1>
 
 <ul class="list-disc pl-6">
-  {#each Object.entries(mappings.countries) as [id, country]}
+  {#each Object.entries(mappings.countries) as [_, country]}
     <li>
       <a
         class="text-amber-600 hover:text-amber-900"

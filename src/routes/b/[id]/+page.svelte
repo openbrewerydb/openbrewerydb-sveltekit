@@ -1,5 +1,5 @@
-<script>
-  import { Map, Link } from '@inqling/svelte-icons/heroicon-24-outline';
+<script lang="ts">
+  import { MapPinIcon, ExternalLinkIcon } from 'lucide-svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -25,7 +25,7 @@
         href="https://www.google.com/maps/search/?api=1&query={brewery.latitude},{brewery.longitude}"
         target="_blank"
         rel="noreferrer"
-        class="text-amber-600 hover:text-amber-900"><Map /></a
+        class="text-amber-600 hover:text-amber-900"><MapPinIcon size={20} /></a
       >
     {/if}
     {#if brewery.website_url}
@@ -33,7 +33,7 @@
         href={brewery.website_url}
         target="_blank"
         rel="noreferrer"
-        class="text-amber-600 hover:text-amber-900"><Link /></a
+        class="text-amber-600 hover:text-amber-900"><ExternalLinkIcon size={20} /></a
       >
     {/if}
   </div>
