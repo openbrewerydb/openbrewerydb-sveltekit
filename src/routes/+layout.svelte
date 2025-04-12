@@ -2,10 +2,9 @@
   import Footer from '$lib/components/Footer.svelte';
   import MobileNav from '$lib/components/MobileNav.svelte';
   import Nav from '$lib/components/Nav.svelte';
+  import '../styles/tailwind.css';
 
-  import '../css/app.css';
-
-  let showMenu = false;
+  let showMenu: boolean = false;
 
   // Move function declaration to top level to fix ESLint error
   const toggleMenu = () => {

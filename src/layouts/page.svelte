@@ -1,7 +1,9 @@
-<script>
-  export let title;
-  export let description = 'A worldwide open-source brewery dataset and API';
-  export let coverImageUrl = 'https://www.openbrewerydb.org/obdb-og.png';
+<script lang="ts">
+  import MarkdownContent from '$lib/components/MarkdownContent.svelte';
+  
+  export let title: string;
+  export let description: string = 'A worldwide open-source brewery dataset and API';
+  export let coverImageUrl: string = 'https://www.openbrewerydb.org/obdb-og.png';
 </script>
 
 <svelte:head>
@@ -23,9 +25,9 @@
   <meta name="twitter:image" content={coverImageUrl} />
 </svelte:head>
 
-<article class="markdown">
+<MarkdownContent>
   <h1>{title}</h1>
   <div>
     <slot />
   </div>
-</article>
+</MarkdownContent>
