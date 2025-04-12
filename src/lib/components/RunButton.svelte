@@ -1,17 +1,22 @@
 <script lang="ts">
   import Prism from 'prismjs';
 
-  /**
+  
+
+  interface Props {
+    /**
    * Component that displays a button to run an API request and show the result
    */
+    endpoint: string;
+  }
 
-  export let endpoint: string;
-  let html: string | null = null;
-  let isLoading: boolean = false;
-  let hasError: boolean = false;
-  let errorMessage: string = '';
+  let { endpoint }: Props = $props();
+  let html: string | null = $state(null);
+  let isLoading: boolean = $state(false);
+  let hasError: boolean = $state(false);
+  let errorMessage: string = $state('');
 
-  $: comment = '// GET ' + endpoint + '\n';
+  let comment = $derived('// GET ' + endpoint + '\n');
 
   /**
    * Handles the click event to fetch data from the endpoint
@@ -44,7 +49,7 @@
 
 <button
   class="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 my-4 mb-4 md:text-lg md:px-10 transition-colors duration-200 shadow-md hover:shadow-lg transition-shadow duration-200"
-  on:click={handleClick}
+  onclick={handleClick}
   disabled={isLoading}
 >
   {#if isLoading}

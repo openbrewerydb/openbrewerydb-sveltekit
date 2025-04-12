@@ -2,7 +2,11 @@
   import smallLogo from '$lib/assets/obdb-logo-sm.png';
   import NavMenuItem from './NavMenuItem.svelte';
 
-  export let toggleMenu: () => void;
+  interface Props {
+    toggleMenu: () => void;
+  }
+
+  let { toggleMenu }: Props = $props();
 </script>
 
 <nav
@@ -21,7 +25,7 @@
       </a>
       <div class="-mr-2 flex items-center md:hidden">
         <button
-          on:click={toggleMenu}
+          onclick={toggleMenu}
           type="button"
           class="bg-amber-200 rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 shadow-sm hover:shadow"
           aria-expanded="false"

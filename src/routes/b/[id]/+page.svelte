@@ -1,12 +1,15 @@
 <script lang="ts">
   import { MapPinIcon, ExternalLinkIcon } from 'lucide-svelte';
 
-  /** @type {import('./$types').PageData} */
-  export let data;
+  interface Props {
+    data: import('./$types').PageData;
+  }
 
-  $: brewery = data.brewery;
-  $: pageTitle = `${brewery.name} | Open Brewery DB`;
-  $: pageDescription = `${brewery.name}, ${brewery.city}, ${brewery.state_province}`;
+  let { data }: Props = $props();
+
+  let brewery = $derived(data.brewery);
+  let pageTitle = $derived(`${brewery.name} | Open Brewery DB`);
+  let pageDescription = $derived(`${brewery.name}, ${brewery.city}, ${brewery.state_province}`);
 </script>
 
 <svelte:head>

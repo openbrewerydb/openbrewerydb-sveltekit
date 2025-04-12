@@ -1,8 +1,10 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import debounce from 'just-debounce';
   import { breweries } from '$lib/stores';
 
-  let searchInput = '';
+  let searchInput = $state('');
 
   const handleInput = debounce(
     (
@@ -18,11 +20,11 @@
     console.log(query);
   };
 
-  $: {
+  run(() => {
     if (searchInput) {
       fetchBreweries(searchInput);
     }
-  }
+  });
 </script>
 
 <div>
@@ -37,7 +39,7 @@
       role="combobox"
       aria-controls="options"
       aria-expanded="false"
-      on:keyup={handleInput}
+      onkeyup={handleInput}
     />
     <button
       type="button"

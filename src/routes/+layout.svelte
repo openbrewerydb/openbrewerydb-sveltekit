@@ -3,8 +3,13 @@
   import MobileNav from '$lib/components/MobileNav.svelte';
   import Nav from '$lib/components/Nav.svelte';
   import '../styles/tailwind.css';
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
 
-  let showMenu: boolean = false;
+  let { children }: Props = $props();
+
+  let showMenu: boolean = $state(false);
 
   // Move function declaration to top level to fix ESLint error
   const toggleMenu = () => {
@@ -39,7 +44,7 @@
         </div>
       </div>
       <main class="mt-12 mx-auto max-w-7xl px-4">
-        <slot />
+        {@render children?.()}
       </main>
     </div>
   </div>

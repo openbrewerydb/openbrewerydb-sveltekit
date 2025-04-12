@@ -2,7 +2,11 @@
   import { ExternalLinkIcon, MapPinIcon } from 'lucide-svelte';
   import type { Brewery } from '$lib/types';
 
-  export let breweries: Brewery[] = [];
+  interface Props {
+    breweries?: Brewery[];
+  }
+
+  let { breweries = [] }: Props = $props();
 </script>
 
 <table class="min-w-full divide-y divide-gray-300">

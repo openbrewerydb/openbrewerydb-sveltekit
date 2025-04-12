@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
   import { goto } from '$app/navigation';
 
-  export let data;
+  let { data } = $props();
 
-  let selected;
+  let selected = $state();
 </script>
 
 <div>
@@ -14,7 +14,7 @@
       name="tabs"
       class="block w-full focus:ring-amber-500 focus:border-amber-500 border-amber-300 rounded-md shadow-sm"
       bind:value={selected}
-      on:change={() => {
+      onchange={() => {
         goto('#' + selected.id);
       }}
     >
@@ -32,7 +32,7 @@
           item
             ? 'bg-amber-100 text-amber-700'
             : 'text-amber-500 hover:text-amber-700'}"
-          on:click={() => {
+          onclick={() => {
             selected = item;
           }}
         >

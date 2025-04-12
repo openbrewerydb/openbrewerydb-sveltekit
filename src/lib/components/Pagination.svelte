@@ -1,12 +1,21 @@
 <script lang="ts">
   import type { Metadata } from '$lib/types';
 
-  export let meta: Metadata;
-  export let country: string;
-  export let state: string | undefined = undefined;
-  export let city: string | undefined = undefined;
+  interface Props {
+    meta: Metadata;
+    country: string;
+    state?: string | undefined;
+    city?: string | undefined;
+  }
 
-  $: page = +meta.page;
+  let {
+    meta,
+    country,
+    state = undefined,
+    city = undefined
+  }: Props = $props();
+
+  let page = $derived(+meta.page);
 </script>
 
 <ul class="mt-4 text-sm flex gap-4">

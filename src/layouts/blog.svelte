@@ -1,9 +1,19 @@
 <script lang="ts">
   import MarkdownContent from '$lib/components/MarkdownContent.svelte';
   
-  export let title: string = 'Article';
-  export let description: string = 'A worldwide open-source brewery dataset and API';
-  export let coverImageUrl: string = '/obdb-og.png';
+  interface Props {
+    title?: string;
+    description?: string;
+    coverImageUrl?: string;
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    title = 'Article',
+    description = 'A worldwide open-source brewery dataset and API',
+    coverImageUrl = '/obdb-og.png',
+    children
+  }: Props = $props();
 </script>
 
 <svelte:head>
@@ -23,6 +33,6 @@
 
 <MarkdownContent>
   <h1>{title}</h1>
-  <slot />
+  {@render children?.()}
   <a href="/blog" class="inline-block mt-6">Back to articles</a>
 </MarkdownContent>

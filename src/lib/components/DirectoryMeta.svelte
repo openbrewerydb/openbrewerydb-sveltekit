@@ -1,13 +1,13 @@
 <script lang="ts">
-  export let meta;
+  let { meta } = $props();
 
-  $: page = +meta.page;
-  $: perPage = +meta.per_page;
-  $: startOffset = page === 1 ? 1 : perPage * (page - 1) + 1;
-  $: total = +meta.total;
-  $: window = perPage * page;
-  $: endOffset = window > total ? total : window;
-  $: totalPages = Math.ceil(total / perPage);
+  let page = $derived(+meta.page);
+  let perPage = $derived(+meta.per_page);
+  let startOffset = $derived(page === 1 ? 1 : perPage * (page - 1) + 1);
+  let total = $derived(+meta.total);
+  let window = $derived(perPage * page);
+  let endOffset = $derived(window > total ? total : window);
+  let totalPages = $derived(Math.ceil(total / perPage));
 </script>
 
 <p class="mt-2 text-sm text-gray-700">
