@@ -25,9 +25,9 @@
   <meta name="twitter:image" content={coverImageUrl} />
 </svelte:head>
 
-<MarkdownContent>
-  <h1>{title}</h1>
-  <div>
+<div class="container mx-auto px-4 py-6">
+  <MarkdownContent>
+    <h1 class="text-2xl font-bold text-amber-800 mb-6">{title}</h1>
     <slot />
-  </div>
-</MarkdownContent>
+  </MarkdownContent>
+</div>
