@@ -23,7 +23,7 @@
         <button
           on:click={toggleMenu}
           type="button"
-          class="bg-amber-200 rounded-md p-2 inline-flex items-center justify-center text-gray-600 hover:text-gray-800 hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
+          class="bg-amber-200 rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 shadow-sm hover:shadow"
           aria-expanded="false"
         >
           <span class="sr-only">Open main menu</span>
@@ -60,7 +60,7 @@
     <span class="inline-flex rounded-md shadow">
       <a
         href="http://eepurl.com/dBjS0j"
-        class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-yellow-600 bg-white hover:bg-gray-50"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-amber-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 shadow-sm hover:shadow transition-shadow duration-200"
       >
         Newsletter Signup
       </a>

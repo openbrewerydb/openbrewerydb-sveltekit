@@ -81,8 +81,8 @@
         </svg>
       </a>
     </div>
-    <p class="mt-8 text-center text-base">
-      &copy; 2023 Open Brewery DB. All rights reserved.
+    <p class="mt-8 text-center text-base text-gray-700">
+      &copy; 2025 Open Brewery DB. All rights reserved.
     </p>
   </div>
 </footer>
