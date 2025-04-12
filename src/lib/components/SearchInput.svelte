@@ -14,7 +14,7 @@
     },
     300
   );
-  
+
   // Move function declaration to top level to fix ESLint error
   const fetchBreweries = async (query: string) => {
     console.log(query);
@@ -63,7 +63,7 @@
 
     {#if $breweries.length}
       <ul
-        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+        class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
         id="options"
         role="listbox"
       >
