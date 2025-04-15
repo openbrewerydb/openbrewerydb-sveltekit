@@ -1,5 +1,3 @@
-// In newer SvelteKit versions, we need to create a .env file with PUBLIC_API_URL
-// For now, we'll default to the API URL
 export const API_URL = 'https://api.openbrewerydb.org/v1';
 
 export const mappings = {
