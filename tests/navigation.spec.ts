@@ -8,7 +8,7 @@ test.describe('Navigation', () => {
   /**
    * Should navigate to all major routes from nav.
    */
-  test('should navigate to all major routes from nav', async ({ page }: { page: import('@playwright/test').Page }) => {
+  test('should navigate to all major routes from nav', async ({ page }) => {
     await page.goto('/');
     const navLinks = [
       { name: /breweries/i, url: '/breweries' },

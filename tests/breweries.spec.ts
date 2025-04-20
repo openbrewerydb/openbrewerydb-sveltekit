@@ -8,17 +8,17 @@ test.describe('Breweries Listing', () => {
   /**
    * Should display breweries list heading and country links.
    */
-  test('should display breweries list', async ({ page }: { page: import('@playwright/test').Page }) => {
+  test('should display breweries list', async ({ page }) => {
     await page.goto('/breweries');
     await expect(page.getByRole('heading', { name: /list breweries/i, level: 1 })).toBeVisible();
-    const countryLinks = await page.locator('ul > li > a');
+    const countryLinks = page.locator('ul > li > a');
     expect(await countryLinks.count()).toBeGreaterThan(5);
   });
 
   /**
    * Should navigate to a country listing from the breweries list.
    */
-  test('should navigate to brewery details', async ({ page }: { page: import('@playwright/test').Page }) => {
+  test('should navigate to brewery details', async ({ page }) => {
     await page.goto('/breweries');
     const countryLink = page.locator('ul > li > a', { hasText: 'South Korea' });
     await countryLink.first().click();

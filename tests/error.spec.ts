@@ -8,7 +8,7 @@ test.describe('Error Handling', () => {
   /**
    * Should show 404 page for non-existent routes.
    */
-  test('should show 404 page for non-existent routes', async ({ page }: { page: import('@playwright/test').Page }) => {
+  test('should show 404 page for non-existent routes', async ({ page }) => {
     await page.goto('/not-a-real-route-404');
     await expect(page.getByRole('heading', { name: /not found|404/i })).toBeVisible();
   });

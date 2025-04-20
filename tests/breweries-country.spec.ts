@@ -8,7 +8,7 @@ test.describe('Breweries by Country', () => {
   /**
    * Should filter breweries by country and show correct heading and table.
    */
-  test('should filter breweries by country', async ({ page }: { page: import('@playwright/test').Page }) => {
+  test('should filter breweries by country', async ({ page }) => {
     await page.goto('/breweries/United%20States');
     await expect(page.getByRole('heading', { name: /united states/i })).toBeVisible();
     await expect(page.getByRole('table')).toBeVisible();
@@ -19,7 +19,7 @@ test.describe('Breweries by Country', () => {
   /**
    * Should navigate to brewery details from country listing.
    */
-  test('should navigate to brewery details from country listing', async ({ page }: { page: import('@playwright/test').Page }) => {
+  test('should navigate to brewery details from country listing', async ({ page }) => {
     await page.goto('/breweries/United%20States');
     const firstBrewery = page.getByRole('row').nth(1); // skip header row
     const link = await firstBrewery.getByRole('link').first();

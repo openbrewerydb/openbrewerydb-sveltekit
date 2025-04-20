@@ -8,7 +8,7 @@ test.describe('Documentation', () => {
   /**
    * Should load documentation index and display key sections.
    */
-  test('should load documentation index', async ({ page }: { page: import('@playwright/test').Page }) => {
+  test('should load documentation index', async ({ page }) => {
     await page.goto('/documentation');
     await expect(page.getByRole('heading', { name: /documentation/i, level: 1 })).toBeVisible();
     await expect(page.getByRole('link', { name: /single brewery/i })).toBeVisible();
