@@ -1,5 +1,5 @@
 {
   "name": "openbrewerydb-sveltekit",
   "compatibility_flags": ["nodejs_compat"],
-  "compatibility_date": "2025-04-02",
+  "compatibility_date": "2025-04-02"
 }
