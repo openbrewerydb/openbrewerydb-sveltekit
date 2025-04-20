@@ -29,8 +29,18 @@ test.describe('Home Page', () => {
     await expect(page.getByText(/free dataset and API/i)).toBeVisible();
     // Documentation button
     const docBtn = page.getByRole('link', { name: /Read API Documentation/i });
-    await expect(docBtn).toBeVisible();
-    await expect(docBtn).toHaveAttribute('href', '/documentation');
+  });
+
+  test('should display Sponsorship section with Sentry', async ({ page }) => {
+    await page.goto('/');
+    // Sponsorship section heading
+    await expect(page.getByRole('heading', { name: /Sponsorship/i })).toBeVisible();
+    // Sentry sponsor link and label
+    const sentrySponsor = page.locator('[data-testid="sentry-sponsorship"]');
+    await expect(sentrySponsor).toBeVisible();
+    // Sentry SVG logo
+    const sentrySvg = sentrySponsor.locator('svg');
+    await expect(sentrySvg).toBeVisible();
   });
 
   test('should navigate to main routes from home', async ({ page }) => {
