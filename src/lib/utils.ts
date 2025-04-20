@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost/v1';
+export const API_URL = 'https://api.openbrewerydb.org/v1';
 
 export const mappings = {
   countries: {
