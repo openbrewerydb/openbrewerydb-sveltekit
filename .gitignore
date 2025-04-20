@@ -1,10 +1,10 @@
 .DS_Store
-.env*
-.netlify
 /node_modules
 /.svelte-kit
 /package
 /build
+
+# Windsurf
 .windsurfrules
 
 # Playwright
@@ -13,3 +13,6 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Env (including Sentry)
+.env*

@@ -49,6 +49,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@sentry/sveltekit": "^9.13.0",
     "@tailwindcss/vite": "^4.1.3"
   }
 }
