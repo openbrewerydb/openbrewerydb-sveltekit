@@ -10,7 +10,9 @@ test.describe('Breweries Listing', () => {
    */
   test('should display breweries list', async ({ page }) => {
     await page.goto('/breweries');
-    await expect(page.getByRole('heading', { name: /list breweries/i, level: 1 })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /list breweries/i, level: 1 })
+    ).toBeVisible();
     const countryLinks = page.locator('ul > li > a');
     expect(await countryLinks.count()).toBeGreaterThan(5);
   });
@@ -23,6 +25,8 @@ test.describe('Breweries Listing', () => {
     const countryLink = page.locator('ul > li > a', { hasText: 'South Korea' });
     await countryLink.first().click();
     await expect(page).toHaveURL(/\/breweries\/South%20Korea/i);
-    await expect(page.getByRole('heading', { name: /south korea/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /south korea/i })
+    ).toBeVisible();
   });
 });

@@ -19,8 +19,12 @@ test.describe('Home Page', () => {
     const logo = page.locator('img[alt="Open Brewery DB Logo"]');
     await expect(logo).toBeVisible();
     // Tagline
-    await expect(page.getByRole('heading', { name: /Free and open-source/i })).toBeVisible();
-    await expect(page.getByRole('heading', { name: /brewery data/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /Free and open-source/i })
+    ).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /brewery data/i })
+    ).toBeVisible();
     // Description
     await expect(page.getByText(/free dataset and API/i)).toBeVisible();
     // Documentation button
@@ -44,7 +48,7 @@ test.describe('Home Page', () => {
       { label: 'Docs', href: '/documentation' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Projects', href: '/projects' },
-      { label: 'About', href: '/about' }
+      { label: 'About', href: '/about' },
     ];
     const headerNav = page.locator('[data-testid="header-nav"]');
     const footerNav = page.locator('[data-testid="footer-nav"]');

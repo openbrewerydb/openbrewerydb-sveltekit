@@ -10,8 +10,12 @@ test.describe('Documentation', () => {
    */
   test('should load documentation index', async ({ page }) => {
     await page.goto('/documentation');
-    await expect(page.getByRole('heading', { name: /documentation/i, level: 1 })).toBeVisible();
-    await expect(page.getByRole('link', { name: /single brewery/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /documentation/i, level: 1 })
+    ).toBeVisible();
+    await expect(
+      page.getByRole('link', { name: /single brewery/i })
+    ).toBeVisible();
     await expect(page.getByText(/Get a single brewery/i)).toBeVisible();
     await expect(page.getByText(/Returns a list of breweries/i)).toBeVisible();
   });

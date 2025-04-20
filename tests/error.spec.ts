@@ -10,6 +10,8 @@ test.describe('Error Handling', () => {
    */
   test('should show 404 page for non-existent routes', async ({ page }) => {
     await page.goto('/not-a-real-route-404');
-    await expect(page.getByRole('heading', { name: /not found|404/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /not found|404/i })
+    ).toBeVisible();
   });
 });

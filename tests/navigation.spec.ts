@@ -15,7 +15,7 @@ test.describe('Navigation', () => {
       { name: /documentation|docs/i, url: '/documentation' },
       { name: /faq/i, url: '/faq' },
       { name: /projects/i, url: '/projects' },
-      { name: /about/i, url: '/about' }
+      { name: /about/i, url: '/about' },
     ];
     const headerNav = page.locator('[data-testid="header-nav"]');
     for (const { name, url } of navLinks) {

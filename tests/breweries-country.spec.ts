@@ -10,7 +10,9 @@ test.describe('Breweries by Country', () => {
    */
   test('should filter breweries by country', async ({ page }) => {
     await page.goto('/breweries/United%20States');
-    await expect(page.getByRole('heading', { name: /united states/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /united states/i })
+    ).toBeVisible();
     await expect(page.getByRole('table')).toBeVisible();
     const rows = await page.getByRole('row');
     expect((await rows.count()) > 1).toBeTruthy();
@@ -19,7 +21,9 @@ test.describe('Breweries by Country', () => {
   /**
    * Should navigate to brewery details from country listing.
    */
-  test('should navigate to brewery details from country listing', async ({ page }) => {
+  test('should navigate to brewery details from country listing', async ({
+    page,
+  }) => {
     await page.goto('/breweries/United%20States');
     const firstBrewery = page.getByRole('row').nth(1); // skip header row
     const link = await firstBrewery.getByRole('link').first();
