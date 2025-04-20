@@ -16,8 +16,6 @@
   <title>{pageTitle}</title>
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={pageDescription} />
 </svelte:head>
 
 <div class="flex items-center gap-x-3">

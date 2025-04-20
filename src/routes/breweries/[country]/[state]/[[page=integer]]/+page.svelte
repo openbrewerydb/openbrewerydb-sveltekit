@@ -5,7 +5,7 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-  
+
   /**
    * @typedef {Object} Props
    * @property {import('./$types').PageData} data
@@ -32,8 +32,6 @@
   <title>{pageTitle}</title>
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={pageDescription} />
 </svelte:head>
 
 <div class="">

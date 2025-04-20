@@ -23,13 +23,6 @@
     property="og:image"
     content="https://www.openbrewerydb.org/obdb-og.png"
   />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@openbrewerydb" />
-  <meta
-    name="twitter:image"
-    content="https://www.openbrewerydb.org/obdb-og.png"
-  />
 </svelte:head>
 
 <div class="flex flex-col">

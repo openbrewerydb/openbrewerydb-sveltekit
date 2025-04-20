@@ -9,11 +9,6 @@
     property="og:description"
     content="A worldwide open-source brewery dataset and API"
   />
-  <meta name="twitter:title" content="Breweries | Open Brewery DB" />
-  <meta
-    name="twitter:description"
-    content="A worldwide open-source brewery dataset and API"
-  />
 </svelte:head>
 
 <h1 class="text-4xl my-4">List Breweries</h1>
