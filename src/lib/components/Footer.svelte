@@ -4,9 +4,17 @@
 
 <footer class="border-t-4 border-amber-100 pt-6 mt-6 mx-6">
   <div class="max-w-7xl mx-auto overflow-hidden">
-    <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+    <nav
+      class="-mx-5 -my-2 flex flex-wrap justify-center"
+      aria-label="Footer"
+      data-testid="footer-nav"
+    >
       <div class="px-5 py-2">
         <NavMenuItem href="/">Home</NavMenuItem>
+      </div>
+
+      <div class="px-5 py-2">
+        <NavMenuItem href="/breweries">Breweries</NavMenuItem>
       </div>
 
       <div class="px-5 py-2">

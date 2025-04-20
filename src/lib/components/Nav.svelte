@@ -12,6 +12,7 @@
 <nav
   class="relative flex items-center justify-between sm:h-10 md:justify-center"
   aria-label="Global"
+  data-testid="header-nav"
 >
   <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
     <div class="flex items-center justify-between w-full md:w-auto">
@@ -20,7 +21,7 @@
         <img
           class="h-12 w-auto sm:h-16"
           src={smallLogo}
-          alt="Open Brewery DB Logo"
+          alt="Open Brewery DB Logo Link to Home"
         />
       </a>
       <div class="-mr-2 flex items-center md:hidden">
