@@ -1,20 +1,21 @@
-<script>
-  import { Map, Link } from '@inqling/svelte-icons/heroicon-24-outline';
+<script lang="ts">
+  import { MapPinIcon, ExternalLinkIcon } from 'lucide-svelte';
 
-  /** @type {import('./$types').PageData} */
-  export let data;
+  interface Props {
+    data: import('./$types').PageData;
+  }
 
-  $: brewery = data.brewery;
-  $: pageTitle = `${brewery.name} | Open Brewery DB`;
-  $: pageDescription = `${brewery.name}, ${brewery.city}, ${brewery.state_province}`;
+  let { data }: Props = $props();
+
+  let brewery = $derived(data.brewery);
+  let pageTitle = $derived(`${brewery.name} | Open Brewery DB`);
+  let pageDescription = $derived(`${brewery.name}, ${brewery.city}, ${brewery.state_province}`);
 </script>
 
 <svelte:head>
   <title>{pageTitle}</title>
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={pageDescription} />
 </svelte:head>
 
 <div class="flex items-center gap-x-3">
@@ -25,7 +26,7 @@
         href="https://www.google.com/maps/search/?api=1&query={brewery.latitude},{brewery.longitude}"
         target="_blank"
         rel="noreferrer"
-        class="text-amber-600 hover:text-amber-900"><Map /></a
+        class="text-amber-600 hover:text-amber-900"><MapPinIcon size={20} /></a
       >
     {/if}
     {#if brewery.website_url}
@@ -33,7 +34,7 @@
         href={brewery.website_url}
         target="_blank"
         rel="noreferrer"
-        class="text-amber-600 hover:text-amber-900"><Link /></a
+        class="text-amber-600 hover:text-amber-900"><ExternalLinkIcon size={20} /></a
       >
     {/if}
   </div>

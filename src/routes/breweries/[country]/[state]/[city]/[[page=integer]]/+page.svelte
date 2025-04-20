@@ -5,32 +5,39 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-  /** @type {import('./$types').PageData} */
-  export let data;
+  /**
+   * @typedef {Object} Props
+   * @property {import('./$types').PageData} data
+   */
 
-  $: breweries = data.breweries ?? [];
-  $: country = data.country ?? '';
-  $: city = data.city ?? '';
-  $: state = data.state ?? '';
-  $: meta = data.meta;
-  $: pageTitle = `Breweries in ${locationString({
-    country,
-    state,
-    city,
-  })} | Open Brewery DB`;
-  $: pageDescription = `Breweries in ${locationString({
-    country,
-    state,
-    city,
-  })} - Page ${meta.page}`;
+  /** @type {Props} */
+  let { data } = $props();
+
+  let breweries = $derived(data.breweries ?? []);
+  let country = $derived(data.country ?? '');
+  let city = $derived(data.city ?? '');
+  let state = $derived(data.state ?? '');
+  let meta = $derived(data.meta);
+  let pageTitle = $derived(
+    `Breweries in ${locationString({
+      country,
+      state,
+      city,
+    })} | Open Brewery DB`
+  );
+  let pageDescription = $derived(
+    `Breweries in ${locationString({
+      country,
+      state,
+      city,
+    })} - Page ${meta.page}`
+  );
 </script>
 
 <svelte:head>
   <title>{pageTitle}</title>
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={pageDescription} />
 </svelte:head>
 
 <div class="">

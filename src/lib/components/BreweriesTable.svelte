@@ -1,12 +1,16 @@
 <script lang="ts">
-  import { Link, Map } from '@inqling/svelte-icons/heroicon-24-outline';
+  import { ExternalLinkIcon, MapPinIcon } from 'lucide-svelte';
   import type { Brewery } from '$lib/types';
 
-  export let breweries: Brewery[] = [];
+  interface Props {
+    breweries?: Brewery[];
+  }
+
+  let { breweries = [] }: Props = $props();
 </script>
 
 <table class="min-w-full divide-y divide-gray-300">
-  <thead class="bg-gray-50">
+  <thead class="bg-gray-100">
     <tr>
       <th
         scope="col"
@@ -56,7 +60,7 @@
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 max-w-xs truncate"
-          ><a class="text-amber-600 hover:text-amber-900" href="/b/{brewery.id}"
+          ><a class="text-amber-600 hover:text-amber-900 transition-colors duration-200" href="/b/{brewery.id}"
             >{brewery.name}</a
           ></td
         >
@@ -65,15 +69,16 @@
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           ><a
-            class="text-amber-600 hover:text-amber-900"
+            class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
             href="/breweries/{brewery.country}/{brewery.state_province}/{brewery.city}"
             >{brewery.city}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           ><a
-            class="text-amber-600 hover:text-amber-900"
-            href="/breweries/{brewery.country}/{brewery.state_province}">{brewery.state_province}</a
+            class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
+            href="/breweries/{brewery.country}/{brewery.state_province}"
+            >{brewery.state_province}</a
           ></td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
@@ -81,7 +86,7 @@
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
           ><a
-            class="text-amber-600 hover:text-amber-900"
+            class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
             href="/breweries/{brewery.country}">{brewery.country}</a
           ></td
         >
@@ -96,7 +101,8 @@
               href="https://www.google.com/maps/search/?api=1&query={brewery.latitude},{brewery.longitude}"
               target="_blank"
               rel="noreferrer"
-              class="text-amber-600 hover:text-amber-900"><Map /></a
+              class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
+              ><MapPinIcon size={20} /></a
             >
           {/if}
           {#if brewery.website_url}
@@ -104,7 +110,8 @@
               href={brewery.website_url}
               target="_blank"
               rel="noreferrer"
-              class="text-amber-600 hover:text-amber-900"><Link /></a
+              class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
+              ><ExternalLinkIcon size={20} /></a
             >
           {/if}
         </td>

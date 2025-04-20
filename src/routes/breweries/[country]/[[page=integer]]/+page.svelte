@@ -5,26 +5,30 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-  /** @type {import('./$types').PageData} */
-  export let data;
 
-  $: breweries = data.breweries;
-  $: meta = data.meta;
-  $: country = data.country ?? '';
-  $: pageTitle = `Breweries in ${locationString({
+  /**
+   * @typedef {Object} Props
+   * @property {import('./$types').PageData} data
+   */
+
+  /** @type {Props} */
+  let { data } = $props();
+
+  let breweries = $derived(data.breweries);
+  let meta = $derived(data.meta);
+  let country = $derived(data.country ?? '');
+  let pageTitle = $derived(`Breweries in ${locationString({
     country,
-  })} | Open Brewery DB`;
-  $: pageDescription = `Breweries in ${locationString({ country })} - Page ${
+  })} | Open Brewery DB`);
+  let pageDescription = $derived(`Breweries in ${locationString({ country })} - Page ${
     meta.page
-  }`;
+  }`);
 </script>
 
 <svelte:head>
   <title>{pageTitle}</title>
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={pageDescription} />
 </svelte:head>
 
 <div class="">

@@ -3,7 +3,7 @@ import { API_URL } from '$lib/utils';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params }) {
-  const { page, country }: { page: string; country: string } = params;
+  const { page = '1', country } = params;
 
   // TODO: Check for valid country
 

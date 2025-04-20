@@ -1,6 +1,7 @@
 ---
 title: Projects
 layout: page
+description: A collection of projects using the Open Brewery DB API
 ---
 
 ## Projects

@@ -1,10 +1,21 @@
 <script lang="ts">
-  export let href: string;
-  export let isMobile = false;
-  export let toggleMenu = undefined;
 
-  let classes: string = undefined;
-  export { classes as class };
+  interface Props {
+    href: string;
+    isMobile?: boolean;
+    toggleMenu?: any;
+    class?: string;
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    href,
+    isMobile = false,
+    toggleMenu = undefined,
+    class: classes = $bindable(undefined),
+    children
+  }: Props = $props();
+  
 
   classes = classes
     ? classes
@@ -13,4 +24,4 @@
     : 'font-medium text-gray-600 hover:text-gray-900';
 </script>
 
-<a {href} class={classes} on:click={toggleMenu}><slot /></a>
+<a {href} class={classes} onclick={toggleMenu}>{@render children?.()}</a>

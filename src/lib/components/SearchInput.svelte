@@ -1,22 +1,30 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import debounce from 'just-debounce';
   import { breweries } from '$lib/stores';
 
-  let searchInput = '';
+  let searchInput = $state('');
 
-  const handleInput = debounce((event: CustomEvent) => {
-    searchInput = event.target.value;
-  }, 300);
+  const handleInput = debounce(
+    (
+      event: KeyboardEvent & { currentTarget: EventTarget & HTMLInputElement }
+    ) => {
+      searchInput = event.currentTarget.value;
+    },
+    300
+  );
 
-  async function fetchBreweries(query: string) {
+  // Move function declaration to top level to fix ESLint error
+  const fetchBreweries = async (query: string) => {
     console.log(query);
-  }
+  };
 
-  $: {
+  run(() => {
     if (searchInput) {
       fetchBreweries(searchInput);
     }
-  }
+  });
 </script>
 
 <div>
@@ -31,7 +39,7 @@
       role="combobox"
       aria-controls="options"
       aria-expanded="false"
-      on:keyup={handleInput}
+      onkeyup={handleInput}
     />
     <button
       type="button"
@@ -55,26 +63,21 @@
 
     {#if $breweries.length}
       <ul
-        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+        class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
         id="options"
         role="listbox"
       >
-        <!--
-        Combobox option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
-        Active: "text-white bg-amber-600", Not Active: "text-gray-900"
-      -->
-        {#each $breweries as brewery}
+        {#each $breweries as brewery, i}
           <li
-            class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900"
-            id="option-0"
+            class="relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:text-white hover:bg-amber-600 transition-colors duration-150"
+            id="option-{i}"
             role="option"
             tabindex="-1"
+            aria-selected="false"
           >
             <div class="flex">
-              <!-- Selected: "font-semibold" -->
-              <span class="truncate">{brewery.name}</span>
-              <!-- Active: "text-amber-200", Not Active: "text-gray-500" -->
-              <span class="ml-2 truncate text-gray-500"
+              <span class="truncate hover:font-semibold">{brewery.name}</span>
+              <span class="ml-2 truncate text-gray-500 group-hover:text-amber-200"
                 >{brewery.city}, {brewery.state_province}, {brewery.country}</span
               >
             </div>

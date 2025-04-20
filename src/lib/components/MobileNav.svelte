@@ -2,7 +2,11 @@
   import { fade } from 'svelte/transition';
   import NavMenuItem from './NavMenuItem.svelte';
 
-  export let toggleMenu: () => void;
+  interface Props {
+    toggleMenu: () => void;
+  }
+
+  let { toggleMenu }: Props = $props();
 </script>
 
 <div
@@ -15,9 +19,9 @@
     <div class="px-5 pt-4 flex items-center justify-end">
       <div class="-mr-2">
         <button
-          on:click={toggleMenu}
+          onclick={toggleMenu}
           type="button"
-          class="bg-white rounded-md p-2 inline-flex items-center justify-center text-amber-600 hover:text-amber-800 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
+          class="bg-white rounded-md p-2 inline-flex items-center justify-center text-amber-600 hover:text-amber-800 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 shadow-sm hover:shadow transition-shadow duration-200"
         >
           <span class="sr-only">Close menu</span>
           <!-- Heroicon name: outline/x -->
@@ -57,7 +61,7 @@
     <NavMenuItem
       href="http://eepurl.com/dBjS0j"
       {toggleMenu}
-      class="block w-full px-5 py-3 text-center font-medium text-yellow-600 bg-gray-50 hover:bg-gray-100"
+      class="block w-full px-5 py-3 text-center font-medium text-amber-600 bg-gray-50 hover:bg-gray-100 shadow-sm hover:shadow transition-shadow duration-200"
     >
       Newsletter Signup
     </NavMenuItem>

@@ -9,5 +9,8 @@
 <p class="mt-4">Would you like to help with the moderation of OBDB data?</p>
 
 <div class="mt-4">
-  <a class="underline text-amber-600 hover:text-amber-900" href="mailto:info@openbrewerydb.org">Email Me</a>
+  <a
+    class="underline text-amber-600 hover:text-amber-900"
+    href="mailto:info@openbrewerydb.org">Email Me</a
+  >
 </div>

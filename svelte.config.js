@@ -37,6 +37,9 @@ const config = {
       // if `edge` is true, this option cannot be used
       split: false,
     }),
+    alias: {
+      $lib: 'src/lib',
+    },
     appDir: '_app',
     csp: {
       mode: 'auto',
@@ -85,7 +88,21 @@ const config = {
       rehypePlugins: [
         [urls, processUrl], // adds rel and target to <a> elements
         slug, // adds slug to <h1>-<h6> elements
-        [autoLinkHeadings, { behavior: 'wrap' }], // adds a <a> around slugged <h1>-<h6> elements
+        // Use 'append' behavior instead of 'wrap' to avoid nested anchor tags
+        [
+          autoLinkHeadings,
+          {
+            behavior: 'append',
+            properties: {
+              className: ['anchor-link'],
+              'aria-hidden': 'true',
+            },
+            content: {
+              type: 'text',
+              value: '#',
+            },
+          },
+        ],
         [addClasses, { ul: 'list-disc', ol: 'list-decimal' }], // add classes to these elements
       ],
     }),

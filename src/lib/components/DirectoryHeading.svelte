@@ -1,9 +1,13 @@
 <script lang="ts">
   import { titleCase } from '$lib/utils';
 
-  export let city: string | undefined = undefined;
-  export let state: string | undefined = undefined;
-  export let country: string;
+  interface Props {
+    city?: string | undefined;
+    state?: string | undefined;
+    country: string;
+  }
+
+  let { city = undefined, state = undefined, country }: Props = $props();
 </script>
 
 <h1 class="text-4xl">
