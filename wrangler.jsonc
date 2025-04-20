@@ -1,0 +1,6 @@
+{
+  "compatibility_flags": [
+    "nodejs_als",
+    // "nodejs_compat"
+  ]
+}
