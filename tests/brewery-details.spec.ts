@@ -39,7 +39,9 @@ test.describe('Brewery Details', () => {
   /**
    * Should display a not found message when brewery ID does not exist.
    */
-  test('should show not found message for invalid brewery id', async ({ page }) => {
+  test('should show not found message for invalid brewery id', async ({
+    page,
+  }) => {
     const invalidId = 'invalid-id';
     await page.goto(`/b/${invalidId}`);
     await expect(

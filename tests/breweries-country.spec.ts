@@ -8,7 +8,9 @@ test.describe('Breweries by Country', () => {
   /**
    * Should filter breweries by country and show correct heading and table.
    */
-  test('should filter breweries by country - desktop view', async ({ page }) => {
+  test('should filter breweries by country - desktop view', async ({
+    page,
+  }) => {
     // Set viewport to desktop size
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/breweries/United%20States');
@@ -22,7 +24,7 @@ test.describe('Breweries by Country', () => {
     // Card view should be hidden
     expect(await page.locator('.grid-cols-1.gap-4').isHidden()).toBeTruthy();
   });
-  
+
   test('should filter breweries by country - mobile view', async ({ page }) => {
     // Set viewport to mobile size
     await page.setViewportSize({ width: 390, height: 844 });
@@ -55,7 +57,7 @@ test.describe('Breweries by Country', () => {
     await expect(page).toHaveURL(new RegExp(href ?? '', 'i'));
     await expect(page.getByRole('heading')).toBeVisible();
   });
-  
+
   test('should navigate to brewery details from country listing - mobile view', async ({
     page,
   }) => {

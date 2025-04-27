@@ -34,7 +34,9 @@ test.describe('Home Page', () => {
   test('should display Sponsorship section with Sentry', async ({ page }) => {
     await page.goto('/');
     // Sponsorship section heading
-    await expect(page.getByRole('heading', { name: /Sponsorship/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /Sponsorship/i })
+    ).toBeVisible();
     // Sentry sponsor link and label
     const sentrySponsor = page.locator('[data-testid="sentry-sponsorship"]');
     await expect(sentrySponsor).toBeVisible();
