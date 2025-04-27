@@ -1,11 +1,11 @@
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 import * as Sentry from '@sentry/sveltekit';
+import { dev } from '$app/environment';
 
 Sentry.init({
   dsn: 'https://a5831fe9174e1bb01a828906b51574ba@o4509011200704512.ingest.us.sentry.io/4509183525322752',
-
   tracesSampleRate: 1.0,
-
+  enabled: !dev,
   // This sets the sample rate to be 10%. You may want this to be 100% while
   // in development and sample at a lower rate in production
   // replaysSessionSampleRate: 0.1,
