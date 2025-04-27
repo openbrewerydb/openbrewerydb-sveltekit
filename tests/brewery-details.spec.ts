@@ -15,7 +15,9 @@ test.describe('Brewery Details', () => {
 
     // Verify brewery name is visible
     await expect(page.getByTestId('brewery-name')).toBeVisible();
-    await expect(page.getByTestId('brewery-name')).toHaveText('Bière de la Plaine');
+    await expect(page.getByTestId('brewery-name')).toHaveText(
+      'Bière de la Plaine'
+    );
 
     // Verify brewery type is visible
     await expect(page.getByTestId('brewery-type')).toBeVisible();

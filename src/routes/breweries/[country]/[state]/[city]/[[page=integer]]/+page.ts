@@ -9,10 +9,12 @@ export async function load({ fetch, params, url }) {
   // TODO: Check for valid country, state, and city
 
   // Build the API URL with optional brewery type filter
-  let apiUrl = `${API_URL}/breweries/?by_country=${country}&by_state=${state}&by_city=${city}&page=${page ?? 1
-    }`;
-  let metaUrl = `${API_URL}/breweries/meta?by_country=${country}&by_state=${state}&by_city=${city}&page=${page ?? 1
-    }`;
+  let apiUrl = `${API_URL}/breweries/?by_country=${country}&by_state=${state}&by_city=${city}&page=${
+    page ?? 1
+  }`;
+  let metaUrl = `${API_URL}/breweries/meta?by_country=${country}&by_state=${state}&by_city=${city}&page=${
+    page ?? 1
+  }`;
 
   if (breweryType) {
     apiUrl += `&by_type=${breweryType}`;

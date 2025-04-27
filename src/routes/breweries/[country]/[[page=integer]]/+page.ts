@@ -11,7 +11,7 @@ export async function load({ fetch, params, url }) {
   // Build the API URL with optional brewery type filter
   let apiUrl = `${API_URL}/breweries/?by_country=${country}&page=${page ?? 1}`;
   let metaUrl = `${API_URL}/breweries/meta?by_country=${country}&page=${page ?? 1}`;
-  
+
   if (breweryType) {
     apiUrl += `&by_type=${breweryType}`;
     metaUrl += `&by_type=${breweryType}`;

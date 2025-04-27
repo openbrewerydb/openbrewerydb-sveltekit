@@ -46,7 +46,7 @@ test.describe('Brewery Type Filtering', () => {
     // Find a brewery type link and get its text
     const breweryTypeLink = page.getByTestId('brewery-type-link').first();
     await expect(breweryTypeLink).toBeVisible({ timeout: 10000 });
-    const breweryType = await breweryTypeLink.textContent() || '';
+    const breweryType = (await breweryTypeLink.textContent()) || '';
 
     // Click the brewery type link
     await breweryTypeLink.click();
@@ -55,7 +55,12 @@ test.describe('Brewery Type Filtering', () => {
     await page.waitForURL(/by_type/);
 
     // Verify URL contains the brewery type parameter at state level
-    await expect(page).toHaveURL(new RegExp(`/breweries/United%20States/California\\?by_type=${breweryType.trim()}`, 'i'));
+    await expect(page).toHaveURL(
+      new RegExp(
+        `/breweries/United%20States/California\\?by_type=${breweryType.trim()}`,
+        'i'
+      )
+    );
 
     // Verify all displayed breweries are of the selected type
     const breweryTypeLinks = page.locator('[data-testid="brewery-type-link"]');
@@ -64,8 +69,10 @@ test.describe('Brewery Type Filtering', () => {
 
     const count = await breweryTypeLinks.count();
     for (let i = 0; i < count; i++) {
-      const typeText = await breweryTypeLinks.nth(i).textContent() || '';
-      expect(typeText.trim().toLowerCase()).toBe(breweryType.trim().toLowerCase());
+      const typeText = (await breweryTypeLinks.nth(i).textContent()) || '';
+      expect(typeText.trim().toLowerCase()).toBe(
+        breweryType.trim().toLowerCase()
+      );
     }
 
     // Test pagination with brewery type filter if available
@@ -75,7 +82,9 @@ test.describe('Brewery Type Filtering', () => {
       await page.waitForURL(/page=2|\\d\/2/);
 
       // Verify URL maintains brewery type filter
-      await expect(page).toHaveURL(new RegExp(`by_type=${breweryType.trim()}`, 'i'));
+      await expect(page).toHaveURL(
+        new RegExp(`by_type=${breweryType.trim()}`, 'i')
+      );
 
       // Verify filtered breweries are still displayed correctly
       const breweryTypeLinksPage2 = page.getByTestId('brewery-type-link');
@@ -84,8 +93,11 @@ test.describe('Brewery Type Filtering', () => {
 
       const countPage2 = await breweryTypeLinksPage2.count();
       for (let i = 0; i < countPage2; i++) {
-        const typeText = await breweryTypeLinksPage2.nth(i).textContent() || '';
-        expect(typeText.trim().toLowerCase()).toBe(breweryType.trim().toLowerCase());
+        const typeText =
+          (await breweryTypeLinksPage2.nth(i).textContent()) || '';
+        expect(typeText.trim().toLowerCase()).toBe(
+          breweryType.trim().toLowerCase()
+        );
       }
     }
   });
@@ -104,7 +116,7 @@ test.describe('Brewery Type Filtering', () => {
     // Find a brewery type link and get its text
     const breweryTypeLink = page.getByTestId('brewery-type-link').first();
     await expect(breweryTypeLink).toBeVisible({ timeout: 10000 });
-    const breweryType = await breweryTypeLink.textContent() || '';
+    const breweryType = (await breweryTypeLink.textContent()) || '';
 
     // Click the brewery type link
     await breweryTypeLink.click();
@@ -113,7 +125,12 @@ test.describe('Brewery Type Filtering', () => {
     await page.waitForURL(/by_type/);
 
     // Verify URL contains the brewery type parameter at city level
-    await expect(page).toHaveURL(new RegExp(`/breweries/United%20States/California/San%20Diego\\?by_type=${breweryType.trim()}`, 'i'));
+    await expect(page).toHaveURL(
+      new RegExp(
+        `/breweries/United%20States/California/San%20Diego\\?by_type=${breweryType.trim()}`,
+        'i'
+      )
+    );
 
     // Verify all displayed breweries are of the selected type
     const breweryTypeLinks = page.getByTestId('brewery-type-link');
@@ -122,8 +139,10 @@ test.describe('Brewery Type Filtering', () => {
 
     const count = await breweryTypeLinks.count();
     for (let i = 0; i < count; i++) {
-      const typeText = await breweryTypeLinks.nth(i).textContent() || '';
-      expect(typeText.trim().toLowerCase()).toBe(breweryType.trim().toLowerCase());
+      const typeText = (await breweryTypeLinks.nth(i).textContent()) || '';
+      expect(typeText.trim().toLowerCase()).toBe(
+        breweryType.trim().toLowerCase()
+      );
     }
 
     // Test pagination with brewery type filter if available
@@ -133,7 +152,9 @@ test.describe('Brewery Type Filtering', () => {
       await page.waitForURL(/page=2|\\d\/2/);
 
       // Verify URL maintains brewery type filter
-      await expect(page).toHaveURL(new RegExp(`by_type=${breweryType.trim()}`, 'i'));
+      await expect(page).toHaveURL(
+        new RegExp(`by_type=${breweryType.trim()}`, 'i')
+      );
 
       // Verify filtered breweries are still displayed correctly
       const breweryTypeLinksPage2 = page.getByTestId('brewery-type-link');
@@ -142,8 +163,11 @@ test.describe('Brewery Type Filtering', () => {
 
       const countPage2 = await breweryTypeLinksPage2.count();
       for (let i = 0; i < countPage2; i++) {
-        const typeText = await breweryTypeLinksPage2.nth(i).textContent() || '';
-        expect(typeText.trim().toLowerCase()).toBe(breweryType.trim().toLowerCase());
+        const typeText =
+          (await breweryTypeLinksPage2.nth(i).textContent()) || '';
+        expect(typeText.trim().toLowerCase()).toBe(
+          breweryType.trim().toLowerCase()
+        );
       }
     }
   });
