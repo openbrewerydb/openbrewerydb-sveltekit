@@ -5,12 +5,6 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-  /**
-   * @typedef {Object} Props
-   * @property {import('./$types').PageData} data
-   */
-
-  /** @type {Props} */
   let { data } = $props();
 
   let breweries = $derived(data.breweries ?? []);
@@ -18,19 +12,22 @@
   let city = $derived(data.city ?? '');
   let state = $derived(data.state ?? '');
   let meta = $derived(data.meta);
+  let breweryType = $derived(data.breweryType);
+
   let pageTitle = $derived(
     `Breweries in ${locationString({
       country,
       state,
       city,
-    })} | Open Brewery DB`
+    })}${breweryType ? ` - ${breweryType}` : ''} | Open Brewery DB`
   );
+
   let pageDescription = $derived(
     `Breweries in ${locationString({
       country,
       state,
       city,
-    })} - Page ${meta.page}`
+    })}${breweryType ? ` - ${breweryType} breweries` : ''} - Page ${meta.page}`
   );
 </script>
 
@@ -46,7 +43,7 @@
       <DirectoryHeading {country} {state} {city} />
       <DirectoryMeta {meta} />
     </div>
-    <Pagination {country} {state} {city} {meta} />
+    <Pagination {country} {state} {city} {meta} context="city" {breweryType} />
   </div>
   <div class="mt-3 flex flex-col">
     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -54,10 +51,17 @@
         <div
           class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
         >
-          <BreweriesTable {breweries} />
+          <BreweriesTable {breweries} context="city" {country} {state} {city} />
         </div>
         <div class="flex justify-end">
-          <Pagination {country} {state} {city} {meta} />
+          <Pagination
+            {country}
+            {state}
+            {city}
+            {meta}
+            context="city"
+            {breweryType}
+          />
         </div>
       </div>
     </div>

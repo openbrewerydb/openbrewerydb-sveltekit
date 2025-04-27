@@ -1,12 +1,13 @@
 <script lang="ts">
   import { ExternalLinkIcon, MapPinIcon } from 'lucide-svelte';
-  import type { Brewery } from '$lib/types';
 
-  interface Props {
-    breweries?: Brewery[];
-  }
-
-  let { breweries = [] }: Props = $props();
+  let {
+    breweries = [],
+    context = 'country',
+    country = '',
+    state = '',
+    city = '',
+  } = $props();
 </script>
 
 <table class="min-w-full divide-y divide-gray-300">
@@ -19,7 +20,7 @@
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden lg:table-cell"
         >Street</th
       >
       <th
@@ -34,17 +35,17 @@
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden lg:table-cell"
         >Postal Code</th
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden md:table-cell"
         >Country</th
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden md:table-cell"
         >Type</th
       >
       <th
@@ -60,11 +61,13 @@
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 max-w-xs truncate"
-          ><a class="text-amber-600 hover:text-amber-900 transition-colors duration-200" href="/b/{brewery.id}"
-            >{brewery.name}</a
+          ><a
+            class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
+            href="/b/{brewery.id}">{brewery.name}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td
+          class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden lg:table-cell"
           >{brewery.address_1 ?? ''}</td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
@@ -81,17 +84,36 @@
             >{brewery.state_province}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td
+          class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden lg:table-cell"
           >{brewery.postal_code}</td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td
+          class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden md:table-cell"
           ><a
             class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
             href="/breweries/{brewery.country}">{brewery.country}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
-          >{brewery.brewery_type}</td
+        <td class="whitespace-nowrap px-2 py-2 text-sm hidden md:table-cell"
+          ><a
+            href={(() => {
+              // Determine the correct URL based on context
+              switch (context) {
+                case 'city':
+                  return `/breweries/${brewery.country}/${brewery.state_province}/${brewery.city}?by_type=${brewery.brewery_type}`;
+                case 'state':
+                  return `/breweries/${brewery.country}/${brewery.state_province}?by_type=${brewery.brewery_type}`;
+                case 'country':
+                default:
+                  return `/breweries/${brewery.country}?by_type=${brewery.brewery_type}`;
+              }
+            })()}
+            class="text-amber-600 hover:text-amber-900 transition-colors duration-200 capitalize"
+            data-testid="brewery-type-link"
+          >
+            {brewery.brewery_type}
+          </a></td
         >
         <td
           class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"

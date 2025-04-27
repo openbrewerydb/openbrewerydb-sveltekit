@@ -1,28 +1,29 @@
 <script>
   import BreweriesTable from '$lib/components/BreweriesTable.svelte';
+  import BreweryCard from '$lib/components/BreweryCard.svelte';
   import DirectoryHeading from '$lib/components/DirectoryHeading.svelte';
   import DirectoryMeta from '$lib/components/DirectoryMeta.svelte';
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-
-  /**
-   * @typedef {Object} Props
-   * @property {import('./$types').PageData} data
-   */
-
-  /** @type {Props} */
   let { data } = $props();
 
   let breweries = $derived(data.breweries);
   let meta = $derived(data.meta);
   let country = $derived(data.country ?? '');
-  let pageTitle = $derived(`Breweries in ${locationString({
-    country,
-  })} | Open Brewery DB`);
-  let pageDescription = $derived(`Breweries in ${locationString({ country })} - Page ${
-    meta.page
-  }`);
+  let breweryType = $derived(data.breweryType);
+
+  let pageTitle = $derived(
+    `Breweries in ${locationString({
+      country,
+    })}${breweryType ? ` - ${breweryType}` : ''} | Open Brewery DB`
+  );
+
+  let pageDescription = $derived(
+    `Breweries in ${locationString({ country })}${breweryType ? ` - ${breweryType} breweries` : ''} - Page ${
+      meta.page
+    }`
+  );
 </script>
 
 <svelte:head>
@@ -31,26 +32,34 @@
   <meta property="og:description" content={pageDescription} />
 </svelte:head>
 
-<div class="">
-  <div class="sm:flex sm:items-end">
-    <div class="sm:flex-auto">
+<div class="px-4 sm:px-0">
+  <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between">
+    <div class="flex-1">
       <DirectoryHeading {country} />
       <DirectoryMeta {meta} />
     </div>
-    <Pagination {country} {meta} />
-  </div>
-  <div class="mt-4 flex flex-col">
-    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div
-          class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
-        >
-          <BreweriesTable {breweries} />
-        </div>
-        <div class="flex justify-end">
-          <Pagination {country} {meta} />
-        </div>
-      </div>
+    <div class="mt-4 sm:mt-0">
+      <Pagination {country} {meta} context="country" {breweryType} />
     </div>
+  </div>
+
+  <!-- Mobile view: Card layout -->
+  <div class="mt-6 grid grid-cols-1 gap-4 md:hidden">
+    {#each breweries as brewery}
+      <BreweryCard {brewery} />
+    {/each}
+  </div>
+
+  <!-- Desktop view: Table layout -->
+  <div class="mt-6 hidden md:block">
+    <div
+      class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg"
+    >
+      <BreweriesTable {breweries} context="country" {country} />
+    </div>
+  </div>
+
+  <div class="mt-6 flex justify-center sm:justify-end">
+    <Pagination {country} {meta} context="country" {breweryType} />
   </div>
 </div>
