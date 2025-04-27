@@ -43,7 +43,7 @@
       <DirectoryHeading {country} {state} {city} />
       <DirectoryMeta {meta} />
     </div>
-    <Pagination {country} {state} {city} {meta} />
+    <Pagination {country} {state} {city} {meta} context="city" {breweryType} />
   </div>
   <div class="mt-3 flex flex-col">
     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -51,10 +51,17 @@
         <div
           class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
         >
-          <BreweriesTable {breweries} />
+          <BreweriesTable {breweries} context="city" {country} {state} {city} />
         </div>
         <div class="flex justify-end">
-          <Pagination {country} {state} {city} {meta} />
+          <Pagination
+            {country}
+            {state}
+            {city}
+            {meta}
+            context="city"
+            {breweryType}
+          />
         </div>
       </div>
     </div>

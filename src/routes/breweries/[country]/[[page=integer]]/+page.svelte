@@ -39,7 +39,7 @@
       <DirectoryMeta {meta} />
     </div>
     <div class="mt-4 sm:mt-0">
-      <Pagination {country} {meta} />
+      <Pagination {country} {meta} context="country" {breweryType} />
     </div>
   </div>
 
@@ -55,11 +55,11 @@
     <div
       class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg"
     >
-      <BreweriesTable {breweries} />
+      <BreweriesTable {breweries} context="country" {country} />
     </div>
   </div>
 
   <div class="mt-6 flex justify-center sm:justify-end">
-    <Pagination {country} {meta} />
+    <Pagination {country} {meta} context="country" {breweryType} />
   </div>
 </div>

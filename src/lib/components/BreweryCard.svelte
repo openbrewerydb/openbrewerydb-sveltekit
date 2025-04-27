@@ -1,19 +1,19 @@
 <script lang="ts">
   import { ExternalLinkIcon, MapPinIcon } from 'lucide-svelte';
-  import type { Brewery } from '$lib/types';
 
-  interface Props {
-    brewery: Brewery;
-  }
-
-  let { brewery }: Props = $props();
+  let { brewery } = $props();
 </script>
 
-<div class="bg-white shadow rounded-lg overflow-hidden border border-gray-200 hover:shadow-md transition-shadow duration-200">
+<div
+  class="bg-white shadow rounded-lg overflow-hidden border border-gray-200 hover:shadow-md transition-shadow duration-200"
+>
   <div class="p-4">
     <div class="flex justify-between items-start">
       <h3 class="text-lg font-medium text-gray-900 truncate">
-        <a class="text-amber-600 hover:text-amber-900 transition-colors duration-200" href="/b/{brewery.id}">
+        <a
+          class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
+          href="/b/{brewery.id}"
+        >
           {brewery.name}
         </a>
       </h3>
@@ -42,7 +42,7 @@
         {/if}
       </div>
     </div>
-    
+
     <div class="mt-2 text-sm text-gray-600">
       <p class="truncate">{brewery.address_1 ?? ''}</p>
       <div class="flex flex-wrap gap-x-1">

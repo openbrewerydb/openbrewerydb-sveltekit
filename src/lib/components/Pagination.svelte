@@ -1,16 +1,34 @@
 <script lang="ts">
-  import type { Metadata } from '$lib/types';
-
-  interface Props {
-    meta: Metadata;
-    country: string;
-    state?: string | undefined;
-    city?: string | undefined;
-  }
-
-  let { meta, country, state = undefined, city = undefined }: Props = $props();
+  let {
+    meta,
+    country,
+    state = undefined,
+    city = undefined,
+    context = 'country',
+    breweryType = undefined,
+  } = $props();
 
   let page = $derived(+meta.page);
+
+  const getPageUrl = (targetPage: number): string => {
+    let baseUrl = `/breweries/${country}`;
+
+    if (context === 'state' || context === 'city') {
+      baseUrl += `/${state}`;
+    }
+
+    if (context === 'city') {
+      baseUrl += `/${city}`;
+    }
+
+    baseUrl += `/${targetPage}`;
+
+    if (breweryType) {
+      baseUrl += `?by_type=${breweryType}`;
+    }
+
+    return baseUrl;
+  };
 </script>
 
 <div
@@ -19,9 +37,7 @@
   {#if page > 1}
     <a
       class="px-5 py-3 border border-amber-300 rounded-md text-amber-700 hover:bg-amber-50 hover:text-amber-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors duration-200 shadow-sm hover:shadow transition-shadow duration-200 text-sm font-medium min-w-[100px] text-center"
-      href="/breweries/{country}{state ? `/${state}` : ''}{city
-        ? `/${city}`
-        : ''}/{page - 1}">Previous</a
+      href={getPageUrl(page - 1)}>Previous</a
     >
   {/if}
 
@@ -32,9 +48,7 @@
   {#if page < +meta.total / +meta.per_page}
     <a
       class="px-5 py-3 border border-amber-300 rounded-md text-amber-700 hover:bg-amber-50 hover:text-amber-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors duration-200 shadow-sm hover:shadow transition-shadow duration-200 text-sm font-medium min-w-[100px] text-center"
-      href="/breweries/{country}{state ? `/${state}` : ''}{city
-        ? `/${city}`
-        : ''}/{page + 1}">Next</a
+      href={getPageUrl(page + 1)}>Next</a
     >
   {/if}
 </div>

@@ -5,12 +5,6 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-  /**
-   * @typedef {Object} Props
-   * @property {import('./$types').PageData} data
-   */
-
-  /** @type {Props} */
   let { data } = $props();
 
   let breweries = $derived(data.breweries ?? []);
@@ -46,7 +40,7 @@
       <DirectoryHeading {country} {state} />
       <DirectoryMeta {meta} />
     </div>
-    <Pagination {country} {state} {meta} />
+    <Pagination {country} {state} {meta} context="state" {breweryType} />
   </div>
   <div class="mt-3 flex flex-col">
     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -54,10 +48,10 @@
         <div
           class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
         >
-          <BreweriesTable {breweries} />
+          <BreweriesTable {breweries} context="state" {country} {state} />
         </div>
         <div class="flex justify-end">
-          <Pagination {country} {meta} />
+          <Pagination {country} {state} {meta} context="state" {breweryType} />
         </div>
       </div>
     </div>
