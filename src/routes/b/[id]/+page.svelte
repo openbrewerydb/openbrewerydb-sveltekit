@@ -44,10 +44,16 @@
           class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
+            <h1
+              class="text-3xl md:text-4xl font-bold text-gray-900"
+              data-testid="brewery-name"
+            >
               {brewery.name}
             </h1>
-            <p class="mt-1 text-lg text-amber-700 capitalize">
+            <p
+              class="mt-1 text-lg text-amber-700 capitalize"
+              data-testid="brewery-type"
+            >
               {brewery.brewery_type}
             </p>
           </div>
@@ -59,6 +65,7 @@
                 rel="noreferrer"
                 class="inline-flex items-center gap-1 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors duration-200"
                 aria-label="Visit website"
+                data-test-id="website-link"
               >
                 <GlobeIcon size={16} />
                 <span class="hidden sm:inline">Website</span>
@@ -71,6 +78,7 @@
                 rel="noreferrer"
                 class="inline-flex items-center gap-1 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors duration-200"
                 aria-label="View on Google Maps"
+                data-test-id="directions-link"
               >
                 <MapIcon size={16} />
                 <span class="hidden sm:inline">Directions</span>
@@ -84,7 +92,12 @@
         <!-- Left column: Brewery details -->
         <div class="space-y-6">
           <div>
-            <h2 class="text-xl font-semibold text-gray-900 mb-3">Location</h2>
+            <h2
+              class="text-xl font-semibold text-gray-900 mb-3"
+              data-testid="location-heading"
+            >
+              Location
+            </h2>
             <div class="flex flex-col space-y-2 text-gray-700">
               {#if brewery.address_1}
                 <div class="flex items-start gap-2">
@@ -92,7 +105,7 @@
                     size={18}
                     class="text-amber-600 mt-1 flex-shrink-0"
                   />
-                  <span>
+                  <span data-testid="brewery-address">
                     {brewery.address_1}{brewery.address_2
                       ? `, ${brewery.address_2}`
                       : ''}{brewery.address_3 ? `, ${brewery.address_3}` : ''}
@@ -108,12 +121,14 @@
                   <a
                     class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
                     href={`/breweries/${brewery.country}/${brewery.state_province}/${brewery.city}`}
+                    data-testid="city-link"
                   >
                     {brewery.city}
                   </a>,
                   <a
                     class="text-amber-600 hover:text-amber-900 transition-colors duration-200 ml-1"
                     href={`/breweries/${brewery.country}/${brewery.state_province}`}
+                    data-testid="state-link"
                   >
                     {brewery.state_province}
                   </a>
@@ -128,6 +143,7 @@
                 <a
                   class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
                   href={`/breweries/${brewery.country}`}
+                  data-testid="country-link"
                 >
                   {brewery.country}
                 </a>
@@ -138,7 +154,7 @@
                     size={18}
                     class="text-amber-600 mt-1 flex-shrink-0"
                   />
-                  <span>{brewery.phone}</span>
+                  <span data-testid="brewery-phone">{brewery.phone}</span>
                 </div>
               {/if}
             </div>

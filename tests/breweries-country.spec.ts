@@ -55,7 +55,7 @@ test.describe('Breweries by Country', () => {
     expect(href).toBeTruthy();
     await link.click();
     await expect(page).toHaveURL(new RegExp(href ?? '', 'i'));
-    await expect(page.getByRole('heading')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
   test('should navigate to brewery details from country listing - mobile view', async ({
@@ -70,6 +70,6 @@ test.describe('Breweries by Country', () => {
     expect(href).toBeTruthy();
     await cardLink.click();
     await expect(page).toHaveURL(new RegExp(href ?? '', 'i'));
-    await expect(page.getByRole('heading')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 });
