@@ -13,7 +13,7 @@ test.describe('Breweries Listing', () => {
     await expect(
       page.getByRole('heading', { name: /list breweries/i, level: 1 })
     ).toBeVisible();
-    const countryLinks = page.locator('ul > li > a');
+    const countryLinks = page.locator('.grid a');
     expect(await countryLinks.count()).toBeGreaterThan(5);
   });
 
@@ -22,7 +22,7 @@ test.describe('Breweries Listing', () => {
    */
   test('should navigate to brewery details', async ({ page }) => {
     await page.goto('/breweries');
-    const countryLink = page.locator('ul > li > a', { hasText: 'South Korea' });
+    const countryLink = page.locator('.grid a', { hasText: 'South Korea' });
     await countryLink.first().click();
     await expect(page).toHaveURL(/\/breweries\/South%20Korea/i);
     await expect(
