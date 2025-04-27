@@ -19,7 +19,7 @@
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden lg:table-cell"
         >Street</th
       >
       <th
@@ -34,17 +34,17 @@
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden lg:table-cell"
         >Postal Code</th
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden md:table-cell"
         >Country</th
       >
       <th
         scope="col"
-        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+        class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 hidden md:table-cell"
         >Type</th
       >
       <th
@@ -64,7 +64,7 @@
             >{brewery.name}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden lg:table-cell"
           >{brewery.address_1 ?? ''}</td
         >
         <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
@@ -81,16 +81,16 @@
             >{brewery.state_province}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden lg:table-cell"
           >{brewery.postal_code}</td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden md:table-cell"
           ><a
             class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
             href="/breweries/{brewery.country}">{brewery.country}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden md:table-cell"
           >{brewery.brewery_type}</td
         >
         <td
