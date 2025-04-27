@@ -5,12 +5,6 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-  /**
-   * @typedef {Object} Props
-   * @property {import('./$types').PageData} data
-   */
-
-  /** @type {Props} */
   let { data } = $props();
 
   let breweries = $derived(data.breweries ?? []);
@@ -18,19 +12,22 @@
   let city = $derived(data.city ?? '');
   let state = $derived(data.state ?? '');
   let meta = $derived(data.meta);
+  let breweryType = $derived(data.breweryType);
+
   let pageTitle = $derived(
     `Breweries in ${locationString({
       country,
       state,
       city,
-    })} | Open Brewery DB`
+    })}${breweryType ? ` - ${breweryType}` : ''} | Open Brewery DB`
   );
+
   let pageDescription = $derived(
     `Breweries in ${locationString({
       country,
       state,
       city,
-    })} - Page ${meta.page}`
+    })}${breweryType ? ` - ${breweryType} breweries` : ''} - Page ${meta.page}`
   );
 </script>
 

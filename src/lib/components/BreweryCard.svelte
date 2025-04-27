@@ -68,7 +68,13 @@
         >
           {brewery.country}
         </a>
-        <span class="text-gray-500 capitalize">{brewery.brewery_type}</span>
+        <a
+          href={`/breweries/${brewery.country}?by_type=${brewery.brewery_type}`}
+          class="text-amber-600 hover:text-amber-900 transition-colors duration-200 capitalize"
+          data-testid="brewery-type-link"
+        >
+          {brewery.brewery_type}
+        </a>
       </div>
     </div>
   </div>

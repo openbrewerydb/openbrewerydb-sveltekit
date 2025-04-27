@@ -41,15 +41,15 @@ test.describe('Brewery Details', () => {
       .all();
     expect(mapLinks.length).toBeGreaterThanOrEqual(1);
 
-    // TODO: Add brewery type link tests
-    // // Verify brewery type is a clickable link
-    // const breweryTypeLink = page.getByRole('link', { name: /micro/i });
-    // await expect(breweryTypeLink).toBeVisible();
+    // Verify brewery type is a clickable link
+    const breweryTypeLink = page.getByTestId('brewery-type');
+    await expect(breweryTypeLink).toBeVisible();
+    await expect(breweryTypeLink).toHaveText('micro');
 
-    // // Verify the link points to the correct URL
-    // const href = await breweryTypeLink.getAttribute('href');
-    // expect(href).toContain('/breweries/');
-    // expect(href).toContain('by_type=micro');
+    // Verify the link points to the correct URL
+    const href = await breweryTypeLink.getAttribute('href');
+    expect(href).toContain('/breweries/');
+    expect(href).toContain('by_type=micro');
   });
 
   /**

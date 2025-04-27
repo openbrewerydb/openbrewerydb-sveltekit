@@ -90,8 +90,14 @@
             href="/breweries/{brewery.country}">{brewery.country}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden md:table-cell"
-          >{brewery.brewery_type}</td
+        <td class="whitespace-nowrap px-2 py-2 text-sm hidden md:table-cell"
+          ><a 
+            href={`/breweries/${brewery.country}?by_type=${brewery.brewery_type}`}
+            class="text-amber-600 hover:text-amber-900 transition-colors duration-200 capitalize"
+            data-testid="brewery-type-link"
+          >
+            {brewery.brewery_type}
+          </a></td
         >
         <td
           class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"

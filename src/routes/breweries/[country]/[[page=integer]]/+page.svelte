@@ -6,24 +6,24 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-
-  /**
-   * @typedef {Object} Props
-   * @property {import('./$types').PageData} data
-   */
-
-  /** @type {Props} */
   let { data } = $props();
 
   let breweries = $derived(data.breweries);
   let meta = $derived(data.meta);
   let country = $derived(data.country ?? '');
-  let pageTitle = $derived(`Breweries in ${locationString({
-    country,
-  })} | Open Brewery DB`);
-  let pageDescription = $derived(`Breweries in ${locationString({ country })} - Page ${
-    meta.page
-  }`);
+  let breweryType = $derived(data.breweryType);
+
+  let pageTitle = $derived(
+    `Breweries in ${locationString({
+      country,
+    })}${breweryType ? ` - ${breweryType}` : ''} | Open Brewery DB`
+  );
+
+  let pageDescription = $derived(
+    `Breweries in ${locationString({ country })}${breweryType ? ` - ${breweryType} breweries` : ''} - Page ${
+      meta.page
+    }`
+  );
 </script>
 
 <svelte:head>
@@ -42,21 +42,23 @@
       <Pagination {country} {meta} />
     </div>
   </div>
-  
+
   <!-- Mobile view: Card layout -->
   <div class="mt-6 grid grid-cols-1 gap-4 md:hidden">
     {#each breweries as brewery}
       <BreweryCard {brewery} />
     {/each}
   </div>
-  
+
   <!-- Desktop view: Table layout -->
   <div class="mt-6 hidden md:block">
-    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+    <div
+      class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg"
+    >
       <BreweriesTable {breweries} />
     </div>
   </div>
-  
+
   <div class="mt-6 flex justify-center sm:justify-end">
     <Pagination {country} {meta} />
   </div>

@@ -5,7 +5,6 @@
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
 
-
   /**
    * @typedef {Object} Props
    * @property {import('./$types').PageData} data
@@ -18,14 +17,21 @@
   let country = $derived(data.country ?? '');
   let state = $derived(data.state ?? '');
   let meta = $derived(data.meta);
-  let pageTitle = $derived(`Breweries in ${locationString({
-    country,
-    state,
-  })} | Open Brewery DB`);
-  let pageDescription = $derived(`Breweries in ${locationString({
-    country,
-    state,
-  })} - Page ${meta.page}`);
+  let breweryType = $derived(data.breweryType);
+
+  let pageTitle = $derived(
+    `Breweries in ${locationString({
+      country,
+      state,
+    })}${breweryType ? ` - ${breweryType}` : ''} | Open Brewery DB`
+  );
+
+  let pageDescription = $derived(
+    `Breweries in ${locationString({
+      country,
+      state,
+    })}${breweryType ? ` - ${breweryType} breweries` : ''} - Page ${meta.page}`
+  );
 </script>
 
 <svelte:head>

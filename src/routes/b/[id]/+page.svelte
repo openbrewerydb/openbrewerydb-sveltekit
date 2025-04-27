@@ -50,12 +50,13 @@
             >
               {brewery.name}
             </h1>
-            <p
-              class="mt-1 text-lg text-amber-700 capitalize"
+            <a
+              href={`/breweries/${brewery.country}?by_type=${brewery.brewery_type}`}
+              class="mt-1 text-lg text-amber-700 capitalize hover:text-amber-900 transition-colors duration-200"
               data-testid="brewery-type"
             >
               {brewery.brewery_type}
-            </p>
+            </a>
           </div>
           <div class="flex items-center gap-3">
             {#if brewery.website_url}
