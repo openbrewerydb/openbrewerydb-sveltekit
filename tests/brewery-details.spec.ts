@@ -35,4 +35,15 @@ test.describe('Brewery Details', () => {
       page.getByRole('heading', { name: /marseille/i })
     ).toBeVisible();
   });
+
+  /**
+   * Should display a not found message when brewery ID does not exist.
+   */
+  test('should show not found message for invalid brewery id', async ({ page }) => {
+    const invalidId = 'invalid-id';
+    await page.goto(`/b/${invalidId}`);
+    await expect(
+      page.getByText(`Brewery with ID ${invalidId} does not exist.`)
+    ).toBeVisible();
+  });
 });
