@@ -19,4 +19,16 @@ test.describe('Documentation', () => {
     await expect(page.getByText(/Get a single brewery/i)).toBeVisible();
     await expect(page.getByText(/Returns a list of breweries/i)).toBeVisible();
   });
+
+  /**
+   * Should redirect invalid documentation slug to index.
+   */
+  test('should redirect invalid docs slug to index', async ({ page }) => {
+    const invalidSlug = 'does-not-exist';
+    await page.goto(`/documentation/${invalidSlug}`);
+    await expect(page).toHaveURL(/\/documentation\/?$/);
+    await expect(
+      page.getByRole('heading', { name: /documentation/i, level: 1 })
+    ).toBeVisible();
+  });
 });
