@@ -2,6 +2,7 @@
   import BreweriesTable from '$lib/components/BreweriesTable.svelte';
   import BreweryCard from '$lib/components/BreweryCard.svelte';
   import BrewerySearchForm from '$lib/components/BrewerySearchForm.svelte';
+  import SearchPagination from '$lib/components/SearchPagination.svelte';
   import { goto } from '$app/navigation';
   import {
     getBreweries,
@@ -9,10 +10,11 @@
     getError,
     resetSearch,
     initializeStore,
-    getHasBreweries,
     getHasNextPage,
     getHasPreviousPage,
     getCurrentPage,
+    getItemsPerPage,
+    getTotalBreweries,
     getTotalPages,
     getSearchQuery,
   } from '$lib/stores/breweries.svelte';
@@ -76,10 +78,23 @@
     {#if getSearchQuery()}
       <div class="mb-6">
         <p class="text-gray-600">
-          Found {getBreweries().length} breweries matching "{getSearchQuery()}"
+          {(getCurrentPage() - 1) * getItemsPerPage() + 1}
+          - {Math.min(
+            getCurrentPage() * getItemsPerPage(),
+            getTotalBreweries()
+          )}
+          of {getTotalBreweries()} breweries (page {getCurrentPage()} of {getTotalPages()})
         </p>
       </div>
     {/if}
+
+    <SearchPagination
+      currentPage={getCurrentPage()}
+      totalPages={getTotalPages()}
+      hasPrevious={getHasPreviousPage()}
+      hasNext={getHasNextPage()}
+      onPageChange={handlePageChange}
+    />
 
     <!-- Mobile view: Card layout -->
     <div class="grid grid-cols-1 gap-6 mt-6 md:hidden">
@@ -103,41 +118,13 @@
       </div>
     </div>
 
-    <!-- Pagination Controls -->
-    {#if getTotalPages() > 1}
-      <div class="flex justify-center mt-8 space-x-2">
-        <button
-          class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={!getHasPreviousPage()}
-          onclick={() => handlePageChange(getCurrentPage() - 1)}
-        >
-          Previous
-        </button>
-
-        <div class="flex space-x-1">
-          {#each Array(Math.min(getTotalPages(), 10)) as _, i}
-            {@const pageNum = i + 1}
-            <button
-              class="px-4 py-2 border rounded-md shadow-sm text-sm font-medium {pageNum ===
-              getCurrentPage()
-                ? 'bg-amber-600 text-white border-amber-600'
-                : 'border-gray-300 text-gray-700 bg-white hover:bg-gray-50'}"
-              onclick={() => handlePageChange(pageNum)}
-            >
-              {pageNum}
-            </button>
-          {/each}
-        </div>
-
-        <button
-          class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={!getHasNextPage()}
-          onclick={() => handlePageChange(getCurrentPage() + 1)}
-        >
-          Next
-        </button>
-      </div>
-    {/if}
+    <SearchPagination
+      currentPage={getCurrentPage()}
+      totalPages={getTotalPages()}
+      hasPrevious={getHasPreviousPage()}
+      hasNext={getHasNextPage()}
+      onPageChange={handlePageChange}
+    />
   {:else if getSearchQuery()}
     <div class="text-center py-12">
       <p class="text-gray-500">
