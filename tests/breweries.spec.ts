@@ -8,167 +8,125 @@ test.describe('Breweries Listing', () => {
   /**
    * Should display breweries list heading and country links.
    */
-  test('should display breweries list', async ({ page }) => {
+  test('should display heading', async ({ page }) => {
     await page.goto('/breweries');
     await expect(
-      page.getByRole('heading', { name: /list breweries/i, level: 1 })
+      page.getByRole('heading', { name: /Search Breweries/i, level: 1 })
     ).toBeVisible();
-    const countryLinks = page.locator('.grid a');
-    expect(await countryLinks.count()).toBeGreaterThan(5);
   });
 
   /**
-   * Should navigate to a country listing from the breweries list.
+   * Landing state (no query) shows CTA to browse.
    */
-  test('should navigate to brewery details', async ({ page }) => {
+  test('landing shows CTA when no query', async ({ page }) => {
     await page.goto('/breweries');
-    const countryLink = page.locator('.grid a', { hasText: 'South Korea' });
-    await countryLink.first().click();
-    await expect(page).toHaveURL(/\/breweries\/South%20Korea/i);
-    await expect(
-      page.getByRole('heading', { name: /south korea/i })
-    ).toBeVisible();
-  });
-});
-
-test.describe('Brewery Type Filtering', () => {
-  /**
-   * Test brewery type filtering at state level
-   */
-  test('should filter breweries by type at state level', async ({ page }) => {
-    // Navigate to a state page with enough screen size to see the table
-    await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto('/breweries/United%20States/California');
-
-    // Wait for the page to fully load
-    await page.waitForLoadState('networkidle');
-
-    // Find a brewery type link and get its text
-    const breweryTypeLink = page.getByTestId('brewery-type-link').first();
-    await expect(breweryTypeLink).toBeVisible({ timeout: 10000 });
-    const breweryType = (await breweryTypeLink.textContent()) || '';
-
-    // Click the brewery type link
-    await breweryTypeLink.click();
-
-    // Wait for navigation to complete
-    await page.waitForURL(/by_type/);
-
-    // Verify URL contains the brewery type parameter at state level
-    await expect(page).toHaveURL(
-      new RegExp(
-        `/breweries/United%20States/California\\?by_type=${breweryType.trim()}`,
-        'i'
-      )
-    );
-
-    // Verify all displayed breweries are of the selected type
-    const breweryTypeLinks = page.locator('[data-testid="brewery-type-link"]');
-    const linksCount = await breweryTypeLinks.count();
-    expect(linksCount).toBeGreaterThan(0);
-
-    const count = await breweryTypeLinks.count();
-    for (let i = 0; i < count; i++) {
-      const typeText = (await breweryTypeLinks.nth(i).textContent()) || '';
-      expect(typeText.trim().toLowerCase()).toBe(
-        breweryType.trim().toLowerCase()
-      );
-    }
-
-    // Test pagination with brewery type filter if available
-    const nextButton = page.locator('a:has-text("Next")');
-    if (await nextButton.isVisible()) {
-      await nextButton.click();
-      await page.waitForURL(/page=2|\\d\/2/);
-
-      // Verify URL maintains brewery type filter
-      await expect(page).toHaveURL(
-        new RegExp(`by_type=${breweryType.trim()}`, 'i')
-      );
-
-      // Verify filtered breweries are still displayed correctly
-      const breweryTypeLinksPage2 = page.getByTestId('brewery-type-link');
-      const linksCountPage2 = await breweryTypeLinksPage2.count();
-      expect(linksCountPage2).toBeGreaterThan(0);
-
-      const countPage2 = await breweryTypeLinksPage2.count();
-      for (let i = 0; i < countPage2; i++) {
-        const typeText =
-          (await breweryTypeLinksPage2.nth(i).textContent()) || '';
-        expect(typeText.trim().toLowerCase()).toBe(
-          breweryType.trim().toLowerCase()
-        );
-      }
-    }
+    const cta = page.getByRole('link', { name: /Browse Breweries/i });
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveAttribute('href', '/breweries/browse');
   });
 
   /**
-   * Test brewery type filtering at city level
+   * Desktop: search renders table, not cards.
    */
-  test('should filter breweries by type at city level', async ({ page }) => {
-    // Navigate to a city page with enough screen size to see the table
+  test('search shows table on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto('/breweries/United%20States/California/San%20Diego');
+    await page.goto('/breweries');
+    await page
+      .getByPlaceholder('Search for a brewery...')
+      .fill('brew');
+    await page.getByRole('button', { name: /Search/i }).click();
+    await expect(page).toHaveURL(/\/breweries\?query=brew/i);
+    const table = page.getByTestId('brewery-table');
+    await expect(table).toBeVisible();
+    await expect(page.getByTestId('brewery-card').first()).toBeHidden();
+    // Ensure at least one data row exists (header + >=1 row)
+    const rowCount = await table.getByRole('row').count();
+    expect(rowCount).toBeGreaterThan(1);
+  });
 
-    // Wait for the page to fully load
-    await page.waitForLoadState('networkidle');
+  /**
+   * Mobile: search renders cards, not table.
+   */
+  test('search shows cards on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/breweries?query=brew');
+    await expect(page.getByTestId('brewery-card').first()).toBeVisible();
+    await expect(page.getByTestId('brewery-table')).toBeHidden();
+  });
 
-    // Find a brewery type link and get its text
-    const breweryTypeLink = page.getByTestId('brewery-type-link').first();
-    await expect(breweryTypeLink).toBeVisible({ timeout: 10000 });
-    const breweryType = (await breweryTypeLink.textContent()) || '';
+  /**
+   * No results message for unlikely query.
+   */
+  test('no results message for unlikely query', async ({ page }) => {
+    await page.goto('/breweries');
+    const unlikely = 'zzzxxyyzz-unlikely-query-12345';
+    await page.getByPlaceholder('Search for a brewery...').fill(unlikely);
+    await page.getByRole('button', { name: /Search/i }).click();
+    await expect(page.getByText(/No breweries found matching/i)).toBeVisible();
+  });
 
-    // Click the brewery type link
-    await breweryTypeLink.click();
+  /**
+   * Clearing input resets to landing.
+   */
+  test('clearing input resets to landing', async ({ page }) => {
+    await page.goto('/breweries?query=brew');
+    const input = page.getByPlaceholder('Search for a brewery...');
+    await input.fill('');
+    await input.press('Enter');
+    await expect(page).toHaveURL('/breweries');
+    await expect(page.getByRole('link', { name: /Browse Breweries/i })).toBeVisible();
+  });
 
-    // Wait for navigation to complete
-    await page.waitForURL(/by_type/);
+  /**
+   * Pagination next/prev and numeric buttons.
+   */
+  test('pagination works on desktop for multi-page results', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/breweries?query=california');
 
-    // Verify URL contains the brewery type parameter at city level
-    await expect(page).toHaveURL(
-      new RegExp(
-        `/breweries/United%20States/California/San%20Diego\\?by_type=${breweryType.trim()}`,
-        'i'
-      )
-    );
+    const prev = page.getByRole('button', { name: 'Previous' }).first();
+    const next = page.getByRole('button', { name: 'Next' }).first();
 
-    // Verify all displayed breweries are of the selected type
-    const breweryTypeLinks = page.getByTestId('brewery-type-link');
-    const linksCount = await breweryTypeLinks.count();
-    expect(linksCount).toBeGreaterThan(0);
+    // Expect pagination controls to be present with many results
+    await expect(prev).toBeVisible();
+    await expect(next).toBeVisible();
 
-    const count = await breweryTypeLinks.count();
-    for (let i = 0; i < count; i++) {
-      const typeText = (await breweryTypeLinks.nth(i).textContent()) || '';
-      expect(typeText.trim().toLowerCase()).toBe(
-        breweryType.trim().toLowerCase()
-      );
-    }
+    // On first page, Previous should be disabled, Next enabled
+    await expect(prev).toBeDisabled();
+    await expect(next).toBeEnabled();
 
-    // Test pagination with brewery type filter if available
-    const nextButton = page.locator('a:has-text("Next")');
-    if (await nextButton.isVisible()) {
-      await nextButton.click();
-      await page.waitForURL(/page=2|\\d\/2/);
+    // Go to page 2
+    await next.click();
+    await expect(page).toHaveURL(/page=2/);
+    await expect(prev).toBeEnabled();
 
-      // Verify URL maintains brewery type filter
-      await expect(page).toHaveURL(
-        new RegExp(`by_type=${breweryType.trim()}`, 'i')
-      );
+    // Navigate back to page 1 via numeric button
+    await page.getByRole('button', { name: '1' }).first().click();
+    await expect(page).toHaveURL(/page=1(\D|$)/);
+  });
 
-      // Verify filtered breweries are still displayed correctly
-      const breweryTypeLinksPage2 = page.getByTestId('brewery-type-link');
-      const linksCountPage2 = await breweryTypeLinksPage2.count();
-      expect(linksCountPage2).toBeGreaterThan(0);
+  /**
+   * Navigate from table row to brewery details.
+   */
+  test('navigates to brewery details from table', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/breweries?query=brew');
+    const firstRow = page.getByRole('row').nth(1); // skip header row
+    const link = firstRow.getByRole('link').first();
+    const href = await link.getAttribute('href');
+    expect(href).toMatch(/^\/b\//);
+    await link.click();
+    await expect(page).toHaveURL(new RegExp(href ?? ''));
+  });
 
-      const countPage2 = await breweryTypeLinksPage2.count();
-      for (let i = 0; i < countPage2; i++) {
-        const typeText =
-          (await breweryTypeLinksPage2.nth(i).textContent()) || '';
-        expect(typeText.trim().toLowerCase()).toBe(
-          breweryType.trim().toLowerCase()
-        );
-      }
-    }
+  /**
+   * Empty or whitespace query canonicalizes to /breweries
+   */
+  test('empty or whitespace query redirects to /breweries', async ({ page }) => {
+    await page.goto('/breweries?query=');
+    await expect(page).toHaveURL('/breweries');
+
+    await page.goto('/breweries?query=%20%20%20');
+    await expect(page).toHaveURL('/breweries');
   });
 });

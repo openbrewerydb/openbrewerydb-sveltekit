@@ -13,7 +13,7 @@ test.describe('Responsive Design', () => {
   }) => {
     // Test on mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/breweries');
+    await page.goto('/breweries/England');
 
     // Check grid layout on mobile (1 column)
     const gridMobile = page.locator('.grid');
@@ -23,19 +23,13 @@ test.describe('Responsive Design', () => {
     const gridClasses = await gridMobile.getAttribute('class');
     expect(gridClasses).toContain('grid-cols-1');
 
-    // Test on tablet viewport
-    await page.setViewportSize({ width: 768, height: 1024 });
-
-    // Verify grid adapts to tablet size (should have more columns)
-    const gridClassesTablet = await gridMobile.getAttribute('class');
-    expect(gridClassesTablet).toContain('sm:grid-cols-2');
+    // NOTE: No specific tablet view at the moment
 
     // Test on desktop viewport
     await page.setViewportSize({ width: 1280, height: 800 });
 
-    // Verify grid adapts to desktop size
-    const gridClassesDesktop = await gridMobile.getAttribute('class');
-    expect(gridClassesDesktop).toContain('md:grid-cols-3');
+    // Verify table adapts in desktop size
+    await expect(page.getByRole('table')).toBeVisible();
   });
 
   /**

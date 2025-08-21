@@ -49,4 +49,5 @@ export interface Metadata {
   total: string;
   per_page: string;
   page: string;
+  query: string;
 }

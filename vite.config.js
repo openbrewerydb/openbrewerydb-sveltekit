@@ -10,6 +10,7 @@ export default defineConfig({
         org: 'open-brewery-db',
         project: 'obdb-sveltekit',
       },
+      environment: process.env.NODE_ENV,
     }),
     sveltekit(),
     tailwindcss(),
