@@ -6,7 +6,6 @@
     getBreweries,
     getLoading,
     getError,
-    search,
     resetSearch,
     initializeStore,
     getHasBreweries,
@@ -14,59 +13,32 @@
     getHasPreviousPage,
     getCurrentPage,
     getTotalPages,
-    getItemsPerPage,
-    goToPage,
     getSearchQuery,
   } from '$lib/stores/breweries.svelte';
 
   let { data } = $props();
 
-  // Initialize the store with data from the server
-  console.log(
-    '🏁 Page initializing with data:',
-    data.breweries.length,
-    'breweries'
-  );
   initializeStore(data.breweries, data.meta);
-  console.log(
-    '🏁 After initialization, breweries state:',
-    getBreweries().length,
-    'items'
-  );
-
-  // Debug effect to monitor breweries changes
-  $effect(() => {
-    console.log('🔄 Breweries state changed:', getBreweries().length, 'items');
-    console.log('🔄 hasBreweries derived value:', getHasBreweries());
-  });
 
   async function handleSearch(query: string) {
-    console.log('🔍 handleSearch called with query:', query);
     if (query) {
-      // Navigate to the same page with query parameter
       window.location.href = `/breweries?query=${encodeURIComponent(query)}`;
     } else {
-      // Reset to empty state when search is cleared
-      console.log('🧹 Resetting search');
       resetSearch();
-      // Remove query parameter from URL
       window.location.href = '/breweries';
     }
   }
 
   function handlePageChange(newPage: number) {
     if (newPage !== getCurrentPage()) {
-      // Update the URL with the page parameter
       const url = new URL(window.location.href);
       url.searchParams.set('page', newPage.toString());
 
-      // If we have a query, keep it
       const currentQuery = getSearchQuery();
       if (currentQuery) {
         url.searchParams.set('query', currentQuery);
       }
 
-      // Navigate to the new URL
       window.location.href = url.toString();
     }
   }
@@ -115,7 +87,7 @@
     </div>
 
     <!-- Desktop view: Table layout -->
-    <div class="mt-6">
+    <div class="mt-6 hidden md:block">
       <div
         class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg"
       >

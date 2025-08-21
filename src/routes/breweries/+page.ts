@@ -18,18 +18,11 @@ export async function load({ url }) {
     };
   }
 
-  console.log(
-    `🔍 Loading data for query: "${query}", page: ${page}, per_page: ${per_page}`
-  );
-
   try {
     const searchUrl = `${API_URL}/breweries/search?query=${encodeURIComponent(query)}&page=${page}&per_page=${per_page}`;
-    console.log('🌐 Fetching from URL:', searchUrl);
-
     const response = await fetch(searchUrl);
 
     if (!response.ok) {
-      console.error(`❌ API request failed with status ${response.status}`);
       return {
         breweries: [],
         meta: {
@@ -43,14 +36,11 @@ export async function load({ url }) {
     }
 
     const breweries: Brewery[] = await response.json();
-    console.log(`📊 Received ${breweries.length} breweries from API`);
 
-    // Since the API doesn't return proper pagination metadata,
-    // we'll estimate the total based on the current results
     const total =
       breweries.length >= per_page
-        ? page * per_page + per_page // If we have a full page, assume there's at least one more
-        : (page - 1) * per_page + breweries.length; // Otherwise, calculate based on current results
+        ? page * per_page + per_page
+        : (page - 1) * per_page + breweries.length;
 
     const meta: Metadata = {
       total: total.toString(),
