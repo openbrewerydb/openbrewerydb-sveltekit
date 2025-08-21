@@ -10,6 +10,13 @@
     resetSearch,
     initializeStore,
     getHasBreweries,
+    getHasNextPage,
+    getHasPreviousPage,
+    getCurrentPage,
+    getTotalPages,
+    getItemsPerPage,
+    goToPage,
+    getSearchQuery,
   } from '$lib/stores/breweries.svelte';
 
   let { data } = $props();
@@ -36,22 +43,31 @@
   async function handleSearch(query: string) {
     console.log('🔍 handleSearch called with query:', query);
     if (query) {
-      console.log('🔍 Calling search with query:', query);
-      await search(query);
-      console.log(
-        '🔍 Search complete, breweries state:',
-        getBreweries().length,
-        'items'
-      );
+      // Navigate to the same page with query parameter
+      window.location.href = `/breweries?query=${encodeURIComponent(query)}`;
     } else {
       // Reset to empty state when search is cleared
       console.log('🧹 Resetting search');
       resetSearch();
-      console.log(
-        '🧹 Reset completed, breweries state:',
-        getBreweries().length,
-        'items'
-      );
+      // Remove query parameter from URL
+      window.location.href = '/breweries';
+    }
+  }
+
+  function handlePageChange(newPage: number) {
+    if (newPage !== getCurrentPage()) {
+      // Update the URL with the page parameter
+      const url = new URL(window.location.href);
+      url.searchParams.set('page', newPage.toString());
+
+      // If we have a query, keep it
+      const currentQuery = getSearchQuery();
+      if (currentQuery) {
+        url.searchParams.set('query', currentQuery);
+      }
+
+      // Navigate to the new URL
+      window.location.href = url.toString();
     }
   }
 </script>
@@ -83,6 +99,14 @@
       <p>Error: {getError()}</p>
     </div>
   {:else if getBreweries().length > 0}
+    {#if getSearchQuery()}
+      <div class="mb-6">
+        <p class="text-gray-600">
+          Found {getBreweries().length} breweries matching "{getSearchQuery()}"
+        </p>
+      </div>
+    {/if}
+
     <!-- Mobile view: Card layout -->
     <div class="grid grid-cols-1 gap-6 mt-6 md:hidden">
       {#each getBreweries() as brewery}
@@ -95,10 +119,6 @@
       <div
         class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg"
       >
-        {#if getBreweries().length > 0}
-          <pre class="bg-gray-100 p-2 text-xs">Debug: Passing {getBreweries()
-              .length} breweries to table</pre>
-        {/if}
         <BreweriesTable
           breweries={getBreweries()}
           context="search"
@@ -106,6 +126,60 @@
           state=""
           city=""
         />
+      </div>
+    </div>
+
+    <!-- Pagination Controls -->
+    {#if getTotalPages() > 1}
+      <div class="flex justify-center mt-8 space-x-2">
+        <button
+          class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={!getHasPreviousPage()}
+          onclick={() => handlePageChange(getCurrentPage() - 1)}
+        >
+          Previous
+        </button>
+
+        <div class="flex space-x-1">
+          {#each Array(Math.min(getTotalPages(), 10)) as _, i}
+            {@const pageNum = i + 1}
+            <button
+              class="px-4 py-2 border rounded-md shadow-sm text-sm font-medium {pageNum ===
+              getCurrentPage()
+                ? 'bg-amber-600 text-white border-amber-600'
+                : 'border-gray-300 text-gray-700 bg-white hover:bg-gray-50'}"
+              onclick={() => handlePageChange(pageNum)}
+            >
+              {pageNum}
+            </button>
+          {/each}
+        </div>
+
+        <button
+          class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={!getHasNextPage()}
+          onclick={() => handlePageChange(getCurrentPage() + 1)}
+        >
+          Next
+        </button>
+      </div>
+    {/if}
+  {:else if getSearchQuery()}
+    <div class="text-center py-12">
+      <p class="text-gray-500">
+        No breweries found matching "{getSearchQuery()}". Try a different search
+        term.
+      </p>
+    </div>
+  {:else}
+    <div class="flex items-center justify-center text-center py-12">
+      <div class="rounded-md shadow">
+        <a
+          href="/breweries/browse"
+          class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 md:py-4 md:text-lg md:px-10"
+        >
+          Browse Breweries
+        </a>
       </div>
     </div>
   {/if}

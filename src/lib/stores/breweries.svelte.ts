@@ -35,12 +35,13 @@ export function getHasNextPage() { return hasNextPage; }
 export function getHasPreviousPage() { return hasPreviousPage; }
 
 // Initialize the store with initial data
-export function initializeStore(initialBreweries: Brewery[] = [], initialMeta: Metadata = { total: '0', page: '1', per_page: '20' }) {
+export function initializeStore(initialBreweries: Brewery[] = [], initialMeta: Metadata = { total: '0', page: '1', per_page: '20', query: '' }, initialQuery: string = '') {
   console.log('🏁 Initializing store with', initialBreweries.length, 'breweries');
   store.breweries = initialBreweries;
   store.meta.total = initialMeta.total;
   store.meta.page = initialMeta.page;
   store.meta.per_page = initialMeta.per_page;
+  store.meta.query = initialQuery;
   console.log('🏁 After initialization:', store.breweries.length, 'breweries in store');
 }
 
