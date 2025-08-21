@@ -1,7 +1,6 @@
 import type { Brewery, Metadata } from '$lib/types';
 import { API_URL } from '$lib/utils';
 
-// Create a store using Svelte 5 runes pattern with a writable object
 const store = $state({
   breweries: [] as Brewery[],
   meta: { total: '0', page: '1', per_page: '20' } as Metadata,
@@ -10,14 +9,12 @@ const store = $state({
   searchQuery: ''
 });
 
-// Export getters for the state
 export function getBreweries() { return store.breweries; }
 export function getMeta() { return store.meta; }
 export function getLoading() { return store.loading; }
 export function getError() { return store.error; }
 export function getSearchQuery() { return store.searchQuery; }
 
-// Derived values
 const hasBreweries = $derived(store.breweries.length > 0);
 const totalBreweries = $derived(parseInt(store.meta.total) || 0);
 const currentPage = $derived(parseInt(store.meta.page) || 1);
@@ -34,18 +31,17 @@ export function getTotalPages() { return totalPages; }
 export function getHasNextPage() { return hasNextPage; }
 export function getHasPreviousPage() { return hasPreviousPage; }
 
-// Initialize the store with initial data
-export function initializeStore(initialBreweries: Brewery[] = [], initialMeta: Metadata = { total: '0', page: '1', per_page: '20', query: '' }, initialQuery: string = '') {
+export function initializeStore(
+  initialBreweries: Brewery[] = [],
+  initialMeta: Metadata = { total: '0', page: '1', per_page: '20', query: '' }
+) {
   console.log('🏁 Initializing store with', initialBreweries.length, 'breweries');
   store.breweries = initialBreweries;
-  store.meta.total = initialMeta.total;
-  store.meta.page = initialMeta.page;
-  store.meta.per_page = initialMeta.per_page;
-  store.meta.query = initialQuery;
+  store.meta = initialMeta;
+  store.searchQuery = initialMeta.query || '';
   console.log('🏁 After initialization:', store.breweries.length, 'breweries in store');
 }
 
-// Search function to fetch breweries by query
 export async function search(query: string) {
   console.log('🔍 Search called with query:', query);
   store.loading = true;
@@ -75,8 +71,6 @@ export async function search(query: string) {
     }
 
     console.log('📊 Received data:', data.length, 'breweries', data[0]);
-
-    // Update state with new data
     console.log('🔄 Before update, breweries state:', store.breweries.length, 'items');
     store.breweries = data;
     console.log('🔄 After update, breweries state:', store.breweries.length, 'items');
@@ -91,14 +85,12 @@ export async function search(query: string) {
     } else {
       store.error = 'An unknown error occurred';
     }
-    // Clear breweries on error
     store.breweries = [];
   } finally {
     store.loading = false;
   }
 }
 
-// Reset search and clear results
 export function resetSearch() {
   console.log('🧹 Resetting search');
   store.searchQuery = '';
@@ -110,7 +102,6 @@ export function resetSearch() {
   console.log('🧹 Reset complete, breweries:', store.breweries.length);
 }
 
-// Pagination support (for future implementation)
 export async function goToPage(page: number) {
   if (page < 1 || page > totalPages || page === currentPage || !store.searchQuery) return;
 
@@ -130,7 +121,6 @@ export async function goToPage(page: number) {
     const data: Brewery[] = await response.json();
     console.log('📊 Received page data:', data.length, 'breweries');
 
-    // Update state with new data
     store.breweries = data;
     store.meta.page = page.toString();
     console.log('🔄 Updated to page', page, 'with', store.breweries.length, 'breweries');
