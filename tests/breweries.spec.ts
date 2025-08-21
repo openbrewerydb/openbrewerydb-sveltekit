@@ -101,7 +101,7 @@ test.describe('Breweries Listing', () => {
     await expect(prev).toBeEnabled();
 
     // Navigate back to page 1 via numeric button
-    await page.getByRole('button', { name: '1' }).click();
+    await page.getByRole('button', { name: '1' }).first().click();
     await expect(page).toHaveURL(/page=1(\D|$)/);
   });
 
