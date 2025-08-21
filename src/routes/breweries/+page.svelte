@@ -2,6 +2,7 @@
   import BreweriesTable from '$lib/components/BreweriesTable.svelte';
   import BreweryCard from '$lib/components/BreweryCard.svelte';
   import BrewerySearchForm from '$lib/components/BrewerySearchForm.svelte';
+  import { goto } from '$app/navigation';
   import {
     getBreweries,
     getLoading,
@@ -18,28 +19,29 @@
 
   let { data } = $props();
 
-  initializeStore(data.breweries, data.meta);
+  $effect(() => {
+    initializeStore(data.breweries, data.meta);
+  });
 
   async function handleSearch(query: string) {
-    if (query) {
-      window.location.href = `/breweries?query=${encodeURIComponent(query)}`;
+    const q = query.trim();
+    if (q) {
+      await goto(`/breweries?query=${encodeURIComponent(q)}`, {
+        replaceState: true,
+      });
     } else {
       resetSearch();
-      window.location.href = '/breweries';
+      await goto('/breweries', { replaceState: true });
     }
   }
 
-  function handlePageChange(newPage: number) {
+  async function handlePageChange(newPage: number) {
     if (newPage !== getCurrentPage()) {
-      const url = new URL(window.location.href);
-      url.searchParams.set('page', newPage.toString());
-
+      const params = new URLSearchParams();
+      params.set('page', newPage.toString());
       const currentQuery = getSearchQuery();
-      if (currentQuery) {
-        url.searchParams.set('query', currentQuery);
-      }
-
-      window.location.href = url.toString();
+      if (currentQuery) params.set('query', currentQuery);
+      await goto(`/breweries?${params.toString()}`, { replaceState: true });
     }
   }
 </script>
@@ -56,7 +58,7 @@
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-3xl font-bold mb-6">Search Breweries</h1>
 
-  <BrewerySearchForm onSearch={handleSearch} />
+  <BrewerySearchForm onSearch={handleSearch} initialQuery={getSearchQuery()} />
 
   {#if getLoading()}
     <div class="flex justify-center items-center py-12">

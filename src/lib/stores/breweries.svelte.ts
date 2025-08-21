@@ -55,6 +55,17 @@ export function getHasPreviousPage() {
   return hasPreviousPage;
 }
 
+// Optimistic setters for UI responsiveness during navigation
+export function setPage(page: number) {
+  store.meta.page = Math.max(1, Math.floor(page)).toString();
+}
+export function setSearchQuery(query: string) {
+  store.searchQuery = query;
+}
+export function setLoading(loading: boolean) {
+  store.loading = loading;
+}
+
 export function initializeStore(
   initialBreweries: Brewery[] = [],
   initialMeta: Metadata = { total: '0', page: '1', per_page: '20', query: '' }

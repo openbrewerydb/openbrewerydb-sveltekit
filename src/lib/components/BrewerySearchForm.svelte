@@ -1,13 +1,15 @@
 <script lang="ts">
   import { Search } from 'lucide-svelte';
 
-  let { onSearch } = $props<{
+  let { onSearch, initialQuery = '' } = $props<{
     onSearch: (query: string) => Promise<void>;
+    initialQuery?: string;
   }>();
 
-  let query = $state('');
+  let query = $state(initialQuery);
 
-  function handleSearch() {
+  function handleSearch(event: SubmitEvent) {
+    event.preventDefault();
     onSearch(query);
   }
 

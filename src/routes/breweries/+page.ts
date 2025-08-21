@@ -1,8 +1,15 @@
 import { API_URL } from '$lib/utils';
+import { redirect } from '@sveltejs/kit';
 import type { Brewery, Metadata } from '$lib/types';
 
 export async function load({ url }) {
-  const query = url.searchParams.get('query') || '';
+  const rawQuery = url.searchParams.get('query');
+  const query = (rawQuery ?? '').trim();
+
+  if (rawQuery !== null && query === '') {
+    throw redirect(302, '/breweries');
+  }
+
   const page = parseInt(url.searchParams.get('page') || '1');
   const per_page = parseInt(url.searchParams.get('per_page') || '20');
 
