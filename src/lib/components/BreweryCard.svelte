@@ -6,6 +6,7 @@
 
 <div
   class="bg-white shadow rounded-lg overflow-hidden border border-gray-200 hover:shadow-md transition-shadow duration-200"
+  data-testid="brewery-card"
 >
   <div class="p-4">
     <div class="flex justify-between items-start">
@@ -71,7 +72,6 @@
         <a
           href={`/breweries/${brewery.country}?by_type=${brewery.brewery_type}`}
           class="text-amber-600 hover:text-amber-900 transition-colors duration-200 capitalize"
-          data-testid="brewery-type-link"
         >
           {brewery.brewery_type}
         </a>

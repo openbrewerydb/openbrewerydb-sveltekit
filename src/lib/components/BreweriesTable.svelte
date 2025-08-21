@@ -10,7 +10,7 @@
   } = $props();
 </script>
 
-<table class="min-w-full divide-y divide-gray-300">
+<table class="min-w-full divide-y divide-gray-300" data-testid="brewery-table">
   <thead class="bg-gray-100">
     <tr>
       <th
@@ -110,7 +110,6 @@
               }
             })()}
             class="text-amber-600 hover:text-amber-900 transition-colors duration-200 capitalize"
-            data-testid="brewery-type-link"
           >
             {brewery.brewery_type}
           </a></td
