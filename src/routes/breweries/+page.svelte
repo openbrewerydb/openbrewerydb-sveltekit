@@ -57,10 +57,12 @@
   />
 </svelte:head>
 
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-bold mb-6">Search Breweries</h1>
+<div class="px-4 py-8">
+  <h1 class="text-3xl text-center font-bold mb-6">Search Breweries</h1>
 
-  <BrewerySearchForm onSearch={handleSearch} initialQuery={getSearchQuery()} />
+  <div class="max-w-2xl mx-auto">
+    <BrewerySearchForm onSearch={handleSearch} initialQuery={getSearchQuery()} />
+  </div>
 
   {#if getLoading()}
     <div class="flex justify-center items-center py-12">
@@ -75,26 +77,28 @@
       <p>Error: {getError()}</p>
     </div>
   {:else if getBreweries().length > 0}
-    {#if getSearchQuery()}
-      <div class="mb-6">
-        <p class="text-gray-600">
-          {(getCurrentPage() - 1) * getItemsPerPage() + 1}
-          - {Math.min(
-            getCurrentPage() * getItemsPerPage(),
-            getTotalBreweries()
-          )}
-          of {getTotalBreweries()} breweries (page {getCurrentPage()} of {getTotalPages()})
-        </p>
-      </div>
-    {/if}
+    <div class="flex justify-between items-center flex-col md:flex-row">
+      {#if getSearchQuery()}
+        <div class="mb-6 md:mb-0">
+          <p class="text-gray-600">
+            {(getCurrentPage() - 1) * getItemsPerPage() + 1}
+            - {Math.min(
+              getCurrentPage() * getItemsPerPage(),
+              getTotalBreweries()
+            )}
+            of {getTotalBreweries()} breweries (page {getCurrentPage()} of {getTotalPages()})
+          </p>
+        </div>
+      {/if}
 
-    <SearchPagination
-      currentPage={getCurrentPage()}
-      totalPages={getTotalPages()}
-      hasPrevious={getHasPreviousPage()}
-      hasNext={getHasNextPage()}
-      onPageChange={handlePageChange}
-    />
+      <SearchPagination
+        currentPage={getCurrentPage()}
+        totalPages={getTotalPages()}
+        hasPrevious={getHasPreviousPage()}
+        hasNext={getHasNextPage()}
+        onPageChange={handlePageChange}
+      />
+    </div>
 
     <!-- Mobile view: Card layout -->
     <div class="grid grid-cols-1 gap-6 mt-6 md:hidden">
@@ -118,13 +122,15 @@
       </div>
     </div>
 
-    <SearchPagination
-      currentPage={getCurrentPage()}
-      totalPages={getTotalPages()}
-      hasPrevious={getHasPreviousPage()}
-      hasNext={getHasNextPage()}
-      onPageChange={handlePageChange}
-    />
+    <div class="mt-6">
+      <SearchPagination
+        currentPage={getCurrentPage()}
+        totalPages={getTotalPages()}
+        hasPrevious={getHasPreviousPage()}
+        hasNext={getHasNextPage()}
+        onPageChange={handlePageChange}
+      />
+    </div>
   {:else if getSearchQuery()}
     <div class="text-center py-12">
       <p class="text-gray-500">
