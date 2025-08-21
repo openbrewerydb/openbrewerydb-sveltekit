@@ -6,14 +6,24 @@ const store = $state({
   meta: { total: '0', page: '1', per_page: '20' } as Metadata,
   loading: false,
   error: null as string | null,
-  searchQuery: ''
+  searchQuery: '',
 });
 
-export function getBreweries() { return store.breweries; }
-export function getMeta() { return store.meta; }
-export function getLoading() { return store.loading; }
-export function getError() { return store.error; }
-export function getSearchQuery() { return store.searchQuery; }
+export function getBreweries() {
+  return store.breweries;
+}
+export function getMeta() {
+  return store.meta;
+}
+export function getLoading() {
+  return store.loading;
+}
+export function getError() {
+  return store.error;
+}
+export function getSearchQuery() {
+  return store.searchQuery;
+}
 
 const hasBreweries = $derived(store.breweries.length > 0);
 const totalBreweries = $derived(parseInt(store.meta.total) || 0);
@@ -23,23 +33,45 @@ const totalPages = $derived(Math.ceil(totalBreweries / itemsPerPage) || 1);
 const hasNextPage = $derived(currentPage < totalPages);
 const hasPreviousPage = $derived(currentPage > 1);
 
-export function getHasBreweries() { return hasBreweries; }
-export function getTotalBreweries() { return totalBreweries; }
-export function getCurrentPage() { return currentPage; }
-export function getItemsPerPage() { return itemsPerPage; }
-export function getTotalPages() { return totalPages; }
-export function getHasNextPage() { return hasNextPage; }
-export function getHasPreviousPage() { return hasPreviousPage; }
+export function getHasBreweries() {
+  return hasBreweries;
+}
+export function getTotalBreweries() {
+  return totalBreweries;
+}
+export function getCurrentPage() {
+  return currentPage;
+}
+export function getItemsPerPage() {
+  return itemsPerPage;
+}
+export function getTotalPages() {
+  return totalPages;
+}
+export function getHasNextPage() {
+  return hasNextPage;
+}
+export function getHasPreviousPage() {
+  return hasPreviousPage;
+}
 
 export function initializeStore(
   initialBreweries: Brewery[] = [],
   initialMeta: Metadata = { total: '0', page: '1', per_page: '20', query: '' }
 ) {
-  console.log('🏁 Initializing store with', initialBreweries.length, 'breweries');
+  console.log(
+    '🏁 Initializing store with',
+    initialBreweries.length,
+    'breweries'
+  );
   store.breweries = initialBreweries;
   store.meta = initialMeta;
   store.searchQuery = initialMeta.query || '';
-  console.log('🏁 After initialization:', store.breweries.length, 'breweries in store');
+  console.log(
+    '🏁 After initialization:',
+    store.breweries.length,
+    'breweries in store'
+  );
 }
 
 export async function search(query: string) {
@@ -71,9 +103,17 @@ export async function search(query: string) {
     }
 
     console.log('📊 Received data:', data.length, 'breweries', data[0]);
-    console.log('🔄 Before update, breweries state:', store.breweries.length, 'items');
+    console.log(
+      '🔄 Before update, breweries state:',
+      store.breweries.length,
+      'items'
+    );
     store.breweries = data;
-    console.log('🔄 After update, breweries state:', store.breweries.length, 'items');
+    console.log(
+      '🔄 After update, breweries state:',
+      store.breweries.length,
+      'items'
+    );
 
     store.meta.total = data.length.toString();
     store.meta.page = '1';
@@ -103,7 +143,13 @@ export function resetSearch() {
 }
 
 export async function goToPage(page: number) {
-  if (page < 1 || page > totalPages || page === currentPage || !store.searchQuery) return;
+  if (
+    page < 1 ||
+    page > totalPages ||
+    page === currentPage ||
+    !store.searchQuery
+  )
+    return;
 
   console.log('📄 Going to page:', page);
   store.loading = true;
@@ -123,7 +169,13 @@ export async function goToPage(page: number) {
 
     store.breweries = data;
     store.meta.page = page.toString();
-    console.log('🔄 Updated to page', page, 'with', store.breweries.length, 'breweries');
+    console.log(
+      '🔄 Updated to page',
+      page,
+      'with',
+      store.breweries.length,
+      'breweries'
+    );
   } catch (e) {
     if (e instanceof Error) {
       store.error = e.message;

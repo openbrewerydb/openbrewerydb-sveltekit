@@ -9,11 +9,18 @@ export async function load({ url }) {
   if (!query) {
     return {
       breweries: [],
-      meta: { total: '0', page: page.toString(), per_page: per_page.toString(), query: '' }
+      meta: {
+        total: '0',
+        page: page.toString(),
+        per_page: per_page.toString(),
+        query: '',
+      },
     };
   }
 
-  console.log(`🔍 Loading data for query: "${query}", page: ${page}, per_page: ${per_page}`);
+  console.log(
+    `🔍 Loading data for query: "${query}", page: ${page}, per_page: ${per_page}`
+  );
 
   try {
     const searchUrl = `${API_URL}/breweries/search?query=${encodeURIComponent(query)}&page=${page}&per_page=${per_page}`;
@@ -25,8 +32,13 @@ export async function load({ url }) {
       console.error(`❌ API request failed with status ${response.status}`);
       return {
         breweries: [],
-        meta: { total: '0', page: page.toString(), per_page: per_page.toString(), query },
-        error: `Search failed with status ${response.status}`
+        meta: {
+          total: '0',
+          page: page.toString(),
+          per_page: per_page.toString(),
+          query,
+        },
+        error: `Search failed with status ${response.status}`,
       };
     }
 
@@ -35,15 +47,16 @@ export async function load({ url }) {
 
     // Since the API doesn't return proper pagination metadata,
     // we'll estimate the total based on the current results
-    const total = breweries.length >= per_page
-      ? (page * per_page) + per_page // If we have a full page, assume there's at least one more
-      : (page - 1) * per_page + breweries.length; // Otherwise, calculate based on current results
+    const total =
+      breweries.length >= per_page
+        ? page * per_page + per_page // If we have a full page, assume there's at least one more
+        : (page - 1) * per_page + breweries.length; // Otherwise, calculate based on current results
 
     const meta: Metadata = {
       total: total.toString(),
       page: page.toString(),
       per_page: per_page.toString(),
-      query: query
+      query: query,
     };
 
     return {
@@ -54,8 +67,13 @@ export async function load({ url }) {
     console.error('❌ Error fetching brewery data:', error);
     return {
       breweries: [],
-      meta: { total: '0', page: page.toString(), per_page: per_page.toString(), query },
-      error: 'Failed to fetch brewery data'
+      meta: {
+        total: '0',
+        page: page.toString(),
+        per_page: per_page.toString(),
+        query,
+      },
+      error: 'Failed to fetch brewery data',
     };
   }
 }

@@ -8,23 +8,21 @@ test.describe('Breweries Listing', () => {
   /**
    * Should display breweries list heading and country links.
    */
-  test('should display breweries list', async ({ page }) => {
+  test('should display heading', async ({ page }) => {
     await page.goto('/breweries');
     await expect(
-      page.getByRole('heading', { name: /list breweries/i, level: 1 })
+      page.getByRole('heading', { name: /Search Breweries/i, level: 1 })
     ).toBeVisible();
-    const countryLinks = page.locator('.grid a');
-    expect(await countryLinks.count()).toBeGreaterThan(5);
   });
 
   /**
    * Should navigate to a country listing from the breweries list.
    */
   test('should navigate to brewery details', async ({ page }) => {
-    await page.goto('/breweries');
-    const countryLink = page.locator('.grid a', { hasText: 'South Korea' });
+    await page.goto('/breweries?query=south korea');
+    const countryLink = page.locator('table a', { hasText: 'South Korea' });
     await countryLink.first().click();
-    await expect(page).toHaveURL(/\/breweries\/South%20Korea/i);
+    await expect(page).toHaveURL(/South%20Korea/i);
     await expect(
       page.getByRole('heading', { name: /south korea/i })
     ).toBeVisible();

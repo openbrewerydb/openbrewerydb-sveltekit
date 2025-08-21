@@ -13,9 +13,12 @@ export function handle({ event, resolve }) {
       tracesSampleRate: 1.0,
     }),
     sentryHandle()
-  )
+  );
 
-  if (dev && event.url.pathname === '/.well-known/appspecific/com.chrome.devtools.json') {
+  if (
+    dev &&
+    event.url.pathname === '/.well-known/appspecific/com.chrome.devtools.json'
+  ) {
     return new Response(undefined, { status: 404 });
   }
 
