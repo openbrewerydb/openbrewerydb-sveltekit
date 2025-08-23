@@ -20,7 +20,7 @@ function processUrl(url, node) {
 
 const config = {
   compilerOptions: {},
-  extensions: ['.svelte', '.svx'],
+  extensions: ['.svelte', '.svx', '.md'],
 
   kit: {
     adapter: adapter({
@@ -34,6 +34,7 @@ const config = {
 
   preprocess: [
     mdsvex({
+      extensions: ['.svx', '.md'],
       layout: {
         page: './src/layouts/page.svelte',
         blog: './src/layouts/blog.svelte',

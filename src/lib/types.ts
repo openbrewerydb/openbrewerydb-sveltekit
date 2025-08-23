@@ -51,3 +51,14 @@ export interface Metadata {
   page: string;
   query: string;
 }
+
+export type BlogMetadata = {
+  layout?: string;
+  title?: string;
+  description?: string;
+  date?: string;
+  slug?: string;
+  coverImageUrl?: string;
+  author?: string;
+  authors?: string[]
+};
