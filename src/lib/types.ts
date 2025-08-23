@@ -52,7 +52,7 @@ export interface Metadata {
   query: string;
 }
 
-export type BlogMetadata = {
+export type BlogFrontmatter = {
   layout?: string;
   title?: string;
   description?: string;

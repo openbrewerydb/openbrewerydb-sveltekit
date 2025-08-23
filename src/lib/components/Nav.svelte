@@ -10,7 +10,7 @@
 </script>
 
 <nav
-  class="relative flex items-center justify-between sm:h-10 md:justify-center"
+  class="relative w-full flex justify-end sm:h-10"
   aria-label="Global"
   data-testid="header-nav"
 >
@@ -56,19 +56,8 @@
     <NavMenuItem href="/breweries">Breweries</NavMenuItem>
     <NavMenuItem href="/documentation">Docs</NavMenuItem>
     <NavMenuItem href="/faq">FAQ</NavMenuItem>
+    <NavMenuItem href="/blog">Blog</NavMenuItem>
     <NavMenuItem href="/projects">Projects</NavMenuItem>
     <NavMenuItem href="/about">About</NavMenuItem>
-  </div>
-  <div
-    class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0"
-  >
-    <span class="inline-flex rounded-md shadow">
-      <a
-        href="http://eepurl.com/dBjS0j"
-        class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-amber-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 shadow-sm hover:shadow transition-shadow duration-200"
-      >
-        Newsletter Signup
-      </a>
-    </span>
   </div>
 </nav>

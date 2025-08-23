@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
-const blogDir = path.join(projectRoot, 'src', 'routes', 'blog');
+const blogDir = path.join(projectRoot, 'src', 'lib', 'data', 'posts');
 const outFile = path.join(
   projectRoot,
   'src',
@@ -27,6 +27,7 @@ function parseUsernamesFromFrontmatter(fm) {
   if (!fm) return usernames;
 
   const lines = fm.split(/\r?\n/);
+  let m;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line || line.startsWith('#')) continue;
@@ -71,17 +72,22 @@ function parseUsernamesFromFrontmatter(fm) {
 }
 
 async function walk(dir) {
-  const entries = await fs.readdir(dir, { withFileTypes: true });
-  const files = [];
-  for (const e of entries) {
-    const full = path.join(dir, e.name);
-    if (e.isDirectory()) {
-      files.push(...(await walk(full)));
-    } else if (/\+page\.(svx|md)$/.test(e.name)) {
-      files.push(full);
+  try {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    const files = [];
+    for (const e of entries) {
+      const full = path.join(dir, e.name);
+      if (e.isDirectory()) {
+        files.push(...(await walk(full)));
+      } else if (/\.(svx|md)$/.test(e.name)) {
+        files.push(full);
+      }
     }
+    return files;
+  } catch (err) {
+    if (err && err.code === 'ENOENT') return [];
+    throw err;
   }
-  return files;
 }
 
 async function fetchGithubUser(username, token) {

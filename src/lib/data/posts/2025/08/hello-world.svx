@@ -1,0 +1,27 @@
+---
+layout: blog
+title: Hello World
+description: Kicking off the OpenBreweryDB blog with mdsvex and Svelte 5 runes.
+date: 2025-08-23T23:09:24.000Z
+authors: ['chrisjm']
+coverImageUrl: /obdb-og.png
+---
+
+<script>import RunButton from '$lib/components/RunButton.svelte';</script>
+
+Welcome to the new OpenBreweryDB blog! 🍻
+
+This post is written in **mdsvex**, which means we can mix Markdown and Svelte.
+
+- Content lives at `src/lib/data/posts/YYYY/MM/slug.(md|svx)`
+- URLs look like `/blog/YYYY/MM/slug`
+- Authors are fetched from GitHub and cached in `src/lib/data/github-authors.json`
+
+```ts
+// Frontmatter fields supported
+// title, description, date (ISO), author or authors[], coverImageUrl
+```
+
+<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random" />
+
+That’s it for now — cheers!
