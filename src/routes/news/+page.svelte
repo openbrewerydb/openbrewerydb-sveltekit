@@ -1,17 +1,35 @@
 <script lang="ts">
   import { formatLocalDateTime } from '$lib/utils';
+  import { page } from '$app/state';
 
-  export let data: {
-    posts: Array<{
-      href: string;
-      meta: {
-        title?: string;
-        description?: string;
-        date?: string;
-      };
-    }>;
-  };
+  const { data } = $props<{
+    data: {
+      posts: Array<{
+        href: string;
+        meta: { title?: string; description?: string; date?: string };
+      }>;
+    };
+  }>();
+
+  const siteName = 'OpenBreweryDB';
+  const title = 'News • OpenBreweryDB';
+  const description =
+    'Updates, changelogs, and community stories from OpenBreweryDB.';
+  const ogImage = '/obdb-og.png';
 </script>
+
+<svelte:head>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href="{page.url.origin}{page.url.pathname}" />
+
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={page.url.href} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:image" content={ogImage} />
+</svelte:head>
 
 <section class="mx-auto max-w-3xl px-4 py-8">
   <h1 class="text-3xl font-semibold">OpenBreweryDB News</h1>
