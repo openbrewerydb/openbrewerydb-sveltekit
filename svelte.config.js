@@ -37,7 +37,7 @@ const config = {
       extensions: ['.svx', '.md'],
       layout: {
         page: './src/layouts/page.svelte',
-        blog: './src/layouts/blog.svelte',
+        news: './src/layouts/news.svelte',
       },
       remarkPlugins: [abbr],
       rehypePlugins: [

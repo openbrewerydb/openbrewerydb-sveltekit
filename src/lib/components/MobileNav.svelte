@@ -52,7 +52,7 @@
         >Docs</NavMenuItem
       >
       <NavMenuItem href="/faq" {toggleMenu} isMobile={true}>FAQ</NavMenuItem>
-      <NavMenuItem href="/blog" {toggleMenu} isMobile={true}>Blog</NavMenuItem>
+      <NavMenuItem href="/news" {toggleMenu} isMobile={true}>News</NavMenuItem>
       <NavMenuItem href="/projects" {toggleMenu} isMobile={true}
         >Projects</NavMenuItem
       >

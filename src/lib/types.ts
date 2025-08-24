@@ -52,7 +52,7 @@ export interface Metadata {
   query: string;
 }
 
-export type BlogFrontmatter = {
+export type NewsFrontmatter = {
   layout?: string;
   title?: string;
   description?: string;
@@ -60,5 +60,5 @@ export type BlogFrontmatter = {
   slug?: string;
   coverImageUrl?: string;
   author?: string;
-  authors?: string[]
+  authors?: string[];
 };

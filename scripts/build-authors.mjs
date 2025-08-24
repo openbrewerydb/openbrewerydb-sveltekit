@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
-const blogDir = path.join(projectRoot, 'src', 'lib', 'data', 'posts');
+const postsDir = path.join(projectRoot, 'src', 'lib', 'data', 'posts');
 const outFile = path.join(
   projectRoot,
   'src',
@@ -114,7 +114,7 @@ async function fetchGithubUser(username, token) {
 
 async function main() {
   const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
-  const files = await walk(blogDir);
+  const files = await walk(postsDir);
   const all = new Set();
 
   for (const file of files) {

@@ -26,7 +26,7 @@
       </div>
 
       <div class="px-5 py-2">
-        <NavMenuItem href="/blog">Blog</NavMenuItem>
+        <NavMenuItem href="/news">News</NavMenuItem>
       </div>
 
       <div class="px-5 py-2">

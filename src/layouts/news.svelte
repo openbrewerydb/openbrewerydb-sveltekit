@@ -48,5 +48,5 @@
   <div class="my-6">
     {@render children?.()}
   </div>
-  <a href="/blog" class="inline-block mt-6">Back to blog</a>
+  <a href="/news" class="inline-block mt-6">Back to news</a>
 </MarkdownContent>

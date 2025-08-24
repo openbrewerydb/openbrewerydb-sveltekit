@@ -31,9 +31,7 @@ test.describe('Breweries Listing', () => {
   test('search shows table on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/breweries');
-    await page
-      .getByPlaceholder('Search for a brewery...')
-      .fill('brew');
+    await page.getByPlaceholder('Search for a brewery...').fill('brew');
     await page.getByRole('button', { name: /Search/i }).click();
     await expect(page).toHaveURL(/\/breweries\?query=brew/i);
     const table = page.getByTestId('brewery-table');
@@ -74,13 +72,17 @@ test.describe('Breweries Listing', () => {
     await input.fill('');
     await input.press('Enter');
     await expect(page).toHaveURL('/breweries');
-    await expect(page.getByRole('link', { name: /Browse Breweries/i })).toBeVisible();
+    await expect(
+      page.getByRole('link', { name: /Browse Breweries/i })
+    ).toBeVisible();
   });
 
   /**
    * Pagination next/prev and numeric buttons.
    */
-  test('pagination works on desktop for multi-page results', async ({ page }) => {
+  test('pagination works on desktop for multi-page results', async ({
+    page,
+  }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/breweries?query=california');
 
@@ -122,7 +124,9 @@ test.describe('Breweries Listing', () => {
   /**
    * Empty or whitespace query canonicalizes to /breweries
    */
-  test('empty or whitespace query redirects to /breweries', async ({ page }) => {
+  test('empty or whitespace query redirects to /breweries', async ({
+    page,
+  }) => {
     await page.goto('/breweries?query=');
     await expect(page).toHaveURL('/breweries');
 

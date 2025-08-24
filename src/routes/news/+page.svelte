@@ -12,7 +12,7 @@
 </script>
 
 <section class="mx-auto max-w-3xl px-4 py-8">
-  <h1 class="text-3xl font-semibold">OpenBreweryDB Blog</h1>
+  <h1 class="text-3xl font-semibold">OpenBreweryDB News</h1>
   <p class="mt-2 text-gray-600">Updates, changelogs, and community stories.</p>
 
   <ul class="mt-6 space-y-6">

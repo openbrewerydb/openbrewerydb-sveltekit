@@ -56,7 +56,7 @@
     <NavMenuItem href="/breweries">Breweries</NavMenuItem>
     <NavMenuItem href="/documentation">Docs</NavMenuItem>
     <NavMenuItem href="/faq">FAQ</NavMenuItem>
-    <NavMenuItem href="/blog">Blog</NavMenuItem>
+    <NavMenuItem href="/news">News</NavMenuItem>
     <NavMenuItem href="/projects">Projects</NavMenuItem>
     <NavMenuItem href="/about">About</NavMenuItem>
   </div>

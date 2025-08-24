@@ -34,7 +34,7 @@
   });
 </script>
 
-<!-- The mdsvex post already declares `layout: blog`, so we just render the component once loaded -->
+<!-- The mdsvex post already declares `layout: news`, so we just render the component once loaded -->
 {#if Comp}
   <Comp />
 {/if}
