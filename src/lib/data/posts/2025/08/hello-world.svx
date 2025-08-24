@@ -2,7 +2,7 @@
 layout: news
 title: Hello World
 description: Kicking off the OpenBreweryDB news with mdsvex and Svelte 5 runes.
-date: 2025-08-23T23:09:24.000Z
+date: 2025-08-23T19:09:24-07:00
 authors: ['chrisjm']
 coverImageUrl: /obdb-og.png
 ---

@@ -13,11 +13,12 @@
 
   const authorsMap = authorsMapRaw as Record<string, AuthorProfile>;
 
-  function formatUtc(iso?: string) {
-    if (!iso) return '';
-    const d = new Date(iso);
-    if (isNaN(d.getTime())) return '';
-    return d.toISOString().replace('T', ' ').replace('Z', ' UTC');
+  function formatLocalDateTime(datetime: string) {
+    const d = new Date(datetime);
+    return d.toLocaleString(undefined, {
+      dateStyle: 'medium',
+      timeStyle: 'short',
+    });
   }
 </script>
 
@@ -49,7 +50,7 @@
   {/if}
   {#if date}
     <div class="flex items-center">
-      <span>{formatUtc(date)}</span>
+      <span>{formatLocalDateTime(date)}</span>
     </div>
   {/if}
 </div>
