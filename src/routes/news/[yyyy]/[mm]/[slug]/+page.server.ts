@@ -9,8 +9,9 @@ export const load: PageServerLoad = async ({ params }) => {
     slug: string;
   };
   const post = getPostBySegments([yyyy, mm, slug]);
+
   if (!post) throw error(404, 'Post not found');
-  // Only return serializable data
+
   return {
     post: {
       segments: post.segments,

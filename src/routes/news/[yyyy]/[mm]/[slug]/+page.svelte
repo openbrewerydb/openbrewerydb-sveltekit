@@ -34,7 +34,6 @@
   });
 </script>
 
-<!-- The mdsvex post already declares `layout: news`, so we just render the component once loaded -->
 {#if Comp}
   <Comp />
 {/if}

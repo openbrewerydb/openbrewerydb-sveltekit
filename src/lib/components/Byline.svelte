@@ -1,5 +1,6 @@
 <script lang="ts">
   import authorsMapRaw from '$lib/data/github-authors.json';
+  import { formatLocalDateTime } from '$lib/utils';
 
   let { authors, date }: { authors?: string[]; date?: string } = $props();
 
@@ -12,14 +13,6 @@
   };
 
   const authorsMap = authorsMapRaw as Record<string, AuthorProfile>;
-
-  function formatLocalDateTime(datetime: string) {
-    const d = new Date(datetime);
-    return d.toLocaleString(undefined, {
-      dateStyle: 'medium',
-      timeStyle: 'short',
-    });
-  }
 </script>
 
 <div

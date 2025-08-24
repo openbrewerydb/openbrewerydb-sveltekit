@@ -69,3 +69,11 @@ export function locationString({
   const countryPart = titleCase(country) ?? '';
   return cityPart + statePart + countryPart;
 }
+
+export function formatLocalDateTime(datetime: string) {
+  const d = new Date(datetime);
+  return d.toLocaleString(undefined, {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  });
+}

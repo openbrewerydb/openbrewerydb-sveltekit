@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { formatLocalDateTime } from '$lib/utils';
+
   export let data: {
     posts: Array<{
       href: string;
@@ -19,12 +21,16 @@
     {#each data.posts as p}
       <li class="border-b border-gray-200 pb-6">
         <a href={p.href} class="block">
-          <h2 class="text-xl font-medium hover:underline">{p.meta.title ?? 'Untitled'}</h2>
+          <h2 class="text-xl font-medium hover:underline">
+            {p.meta.title ?? 'Untitled'}
+          </h2>
           {#if p.meta.description}
             <p class="mt-1 text-gray-600">{p.meta.description}</p>
           {/if}
           {#if p.meta.date}
-            <p class="mt-1 text-sm text-gray-500">{new Date(p.meta.date).toISOString().replace('T', ' ').replace('Z', ' UTC')}</p>
+            <p class="mt-1 text-sm text-gray-500">
+              {formatLocalDateTime(p.meta.date)}
+            </p>
           {/if}
         </a>
       </li>
