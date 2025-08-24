@@ -12,11 +12,16 @@ test.describe('Changelogs Page', () => {
     await page.goto('/changelogs');
 
     await expect(page).toHaveTitle(/Changelogs/i);
-    await expect(page.getByRole('heading', { name: /Changelogs/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /Changelogs/i })
+    ).toBeVisible();
 
     // Repos should be present as links or text
     await expect(
-      page.getByRole('link', { name: 'openbrewerydb/openbrewerydb', exact: true })
+      page.getByRole('link', {
+        name: 'openbrewerydb/openbrewerydb',
+        exact: true,
+      })
     ).toBeVisible();
     await expect(
       page.getByRole('link', {
@@ -30,6 +35,8 @@ test.describe('Changelogs Page', () => {
       page.getByRole('heading', { name: /Recent Closed Pull Requests/i })
     ).toBeVisible();
 
-    await expect(page.getByRole('heading', { name: /Releases/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /Releases/i })
+    ).toBeVisible();
   });
 });

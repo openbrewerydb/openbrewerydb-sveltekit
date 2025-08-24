@@ -9,8 +9,12 @@ test.describe('News (Blog) Page', () => {
   test('should load and list posts', async ({ page }) => {
     await page.goto('/news');
 
-    await expect(page.getByRole('heading', { name: /OpenBreweryDB News/i })).toBeVisible();
-    await expect(page.getByText(/Updates, changelogs, and community stories/i)).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /OpenBreweryDB News/i })
+    ).toBeVisible();
+    await expect(
+      page.getByText(/Updates, changelogs, and community stories/i)
+    ).toBeVisible();
 
     // Expect at least one post link rendered
     const list = page.locator('ul >> li');

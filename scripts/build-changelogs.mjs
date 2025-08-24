@@ -9,32 +9,34 @@ const outFile = path.join(projectRoot, 'src', 'lib', 'data', 'changelogs.json');
 
 const REPOS = [
   { owner: 'openbrewerydb', repo: 'openbrewerydb', type: 'dataset' },
-  { owner: 'openbrewerydb', repo: 'openbrewerydb-laravel-api', type: 'api' }
+  { owner: 'openbrewerydb', repo: 'openbrewerydb-laravel-api', type: 'api' },
 ];
 
 function stripMarkdown(md = '') {
   // Very lightweight markdown to plain text: remove code blocks, images/links, headings, emphasis
-  return String(md)
-    // code fences
-    .replace(/```[\s\S]*?```/g, '')
-    // inline code
-    .replace(/`([^`]+)`/g, '$1')
-    // images ![alt](url)
-    .replace(/!\[[^\]]*\]\([^\)]*\)/g, '')
-    // links [text](url)
-    .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
-    // headings
-    .replace(/^#{1,6}\s*/gm, '')
-    // emphasis
-    .replace(/([*_]{1,3})(\S.*?\S)\1/g, '$2')
-    // blockquotes
-    .replace(/^>\s?/gm, '')
-    // horizontal rules
-    .replace(/^(-{3,}|\*{3,}|_{3,})$/gm, '')
-    // extra spaces
-    .replace(/[\t ]+/g, ' ')
-    .replace(/\s+$/gm, '')
-    .trim();
+  return (
+    String(md)
+      // code fences
+      .replace(/```[\s\S]*?```/g, '')
+      // inline code
+      .replace(/`([^`]+)`/g, '$1')
+      // images ![alt](url)
+      .replace(/!\[[^\]]*\]\([^\)]*\)/g, '')
+      // links [text](url)
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+      // headings
+      .replace(/^#{1,6}\s*/gm, '')
+      // emphasis
+      .replace(/([*_]{1,3})(\S.*?\S)\1/g, '$2')
+      // blockquotes
+      .replace(/^>\s?/gm, '')
+      // horizontal rules
+      .replace(/^(-{3,}|\*{3,}|_{3,})$/gm, '')
+      // extra spaces
+      .replace(/[\t ]+/g, ' ')
+      .replace(/\s+$/gm, '')
+      .trim()
+  );
 }
 
 async function ghGet(url, token) {
@@ -57,14 +59,15 @@ async function fetchReleases(owner, repo, token) {
     .map((r) => {
       const body = stripMarkdown(r.body || '');
       const previewMax = 600;
-      const preview = body.length > previewMax ? body.slice(0, previewMax) : body;
+      const preview =
+        body.length > previewMax ? body.slice(0, previewMax) : body;
       return {
         tag: r.tag_name || null,
         title: r.name || r.tag_name || '(untitled release)',
         date: r.published_at || r.created_at || null,
         url: r.html_url,
         notes: preview || null,
-        notes_truncated: body.length > previewMax
+        notes_truncated: body.length > previewMax,
       };
     });
 }
@@ -80,7 +83,13 @@ async function fetchClosedPRs(owner, repo, token) {
     state: pr.state, // closed
     merged_at: pr.merged_at,
     closed_at: pr.closed_at,
-    user: pr.user ? { login: pr.user.login, html_url: pr.user.html_url, avatar_url: pr.user.avatar_url } : null
+    user: pr.user
+      ? {
+          login: pr.user.login,
+          html_url: pr.user.html_url,
+          avatar_url: pr.user.avatar_url,
+        }
+      : null,
   }));
 }
 
@@ -88,7 +97,7 @@ async function main() {
   const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
   const out = {
     generated_at: new Date().toISOString(),
-    repos: {}
+    repos: {},
   };
 
   for (const { owner, repo, type } of REPOS) {
@@ -100,7 +109,9 @@ async function main() {
 
     let fallback = null;
     if (!releases.length) {
-      console.log(`[changelogs] No releases for ${key}. Fetching recent closed PRs as fallback ...`);
+      console.log(
+        `[changelogs] No releases for ${key}. Fetching recent closed PRs as fallback ...`
+      );
       const prs = await fetchClosedPRs(owner, repo, token);
       fallback = { kind: 'pull_requests', items: prs };
     }
@@ -110,7 +121,9 @@ async function main() {
 
   await fs.mkdir(path.dirname(outFile), { recursive: true });
   await fs.writeFile(outFile, JSON.stringify(out, null, 2) + '\n');
-  console.log(`[changelogs] Wrote changelogs to ${path.relative(projectRoot, outFile)}`);
+  console.log(
+    `[changelogs] Wrote changelogs to ${path.relative(projectRoot, outFile)}`
+  );
 }
 
 main().catch((err) => {
