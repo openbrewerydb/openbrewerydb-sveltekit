@@ -11,7 +11,7 @@
 
 <div
   transition:fade
-  class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-right md:hidden"
+  class="absolute z-10 top-0 inset-x-0 p-2 origin-top-right md:hidden"
 >
   <div
     class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden"
@@ -53,6 +53,9 @@
       >
       <NavMenuItem href="/faq" {toggleMenu} isMobile={true}>FAQ</NavMenuItem>
       <NavMenuItem href="/news" {toggleMenu} isMobile={true}>News</NavMenuItem>
+      <NavMenuItem href="/changelogs" {toggleMenu} isMobile={true}
+        >Changelogs</NavMenuItem
+      >
       <NavMenuItem href="/projects" {toggleMenu} isMobile={true}
         >Projects</NavMenuItem
       >

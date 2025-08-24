@@ -1,0 +1,370 @@
+{
+  "generated_at": "2025-08-24T02:43:37.594Z",
+  "repos": {
+    "openbrewerydb/openbrewerydb": {
+      "type": "dataset",
+      "source_url": "https://github.com/openbrewerydb/openbrewerydb",
+      "releases": [],
+      "fallback": {
+        "kind": "pull_requests",
+        "items": [
+          {
+            "number": 214,
+            "title": "Additional update to USA NH breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/214",
+            "state": "closed",
+            "merged_at": "2025-07-17T15:36:44Z",
+            "closed_at": "2025-07-17T15:36:44Z",
+            "user": {
+              "login": "zshapleigh",
+              "html_url": "https://github.com/zshapleigh",
+              "avatar_url": "https://avatars.githubusercontent.com/u/816109?v=4"
+            }
+          },
+          {
+            "number": 213,
+            "title": "Update to USA NH Brewery list",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/213",
+            "state": "closed",
+            "merged_at": "2025-07-15T15:41:07Z",
+            "closed_at": "2025-07-15T15:41:07Z",
+            "user": {
+              "login": "zshapleigh",
+              "html_url": "https://github.com/zshapleigh",
+              "avatar_url": "https://avatars.githubusercontent.com/u/816109?v=4"
+            }
+          },
+          {
+            "number": 212,
+            "title": "Add Bolzano breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/212",
+            "state": "closed",
+            "merged_at": "2025-06-16T23:23:14Z",
+            "closed_at": "2025-06-16T23:23:14Z",
+            "user": {
+              "login": "fabiovitalba",
+              "html_url": "https://github.com/fabiovitalba",
+              "avatar_url": "https://avatars.githubusercontent.com/u/3830362?v=4"
+            }
+          },
+          {
+            "number": 210,
+            "title": "fixed Utah brewery lat value",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/210",
+            "state": "closed",
+            "merged_at": "2025-06-12T15:58:29Z",
+            "closed_at": "2025-06-12T15:58:29Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 211,
+            "title": "Add Stiegl (Austria)",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/211",
+            "state": "closed",
+            "merged_at": "2025-06-12T15:57:39Z",
+            "closed_at": "2025-06-12T15:57:39Z",
+            "user": {
+              "login": "zingi",
+              "html_url": "https://github.com/zingi",
+              "avatar_url": "https://avatars.githubusercontent.com/u/9286499?v=4"
+            }
+          },
+          {
+            "number": 209,
+            "title": "Updated README.md API link",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/209",
+            "state": "closed",
+            "merged_at": "2025-05-14T15:18:54Z",
+            "closed_at": "2025-05-14T15:18:54Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 207,
+            "title": "Add Sugar Monkey Brewing & Social Club to california.csv",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/207",
+            "state": "closed",
+            "merged_at": "2025-04-24T23:16:57Z",
+            "closed_at": "2025-04-24T23:16:57Z",
+            "user": {
+              "login": "epikkoder",
+              "html_url": "https://github.com/epikkoder",
+              "avatar_url": "https://avatars.githubusercontent.com/u/20148265?v=4"
+            }
+          },
+          {
+            "number": 206,
+            "title": "Removed a few closed Richmond Breweries. - Castleburg - Isley - Canon & Draw  - Dogtown",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/206",
+            "state": "closed",
+            "merged_at": null,
+            "closed_at": "2025-04-08T00:28:02Z",
+            "user": {
+              "login": "SeanRVACode",
+              "html_url": "https://github.com/SeanRVACode",
+              "avatar_url": "https://avatars.githubusercontent.com/u/133682090?v=4"
+            }
+          },
+          {
+            "number": 205,
+            "title": "Update Triple Crossing Brewing Company URLs to HTTPS and add Midlothian location",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/205",
+            "state": "closed",
+            "merged_at": "2025-03-29T02:54:55Z",
+            "closed_at": "2025-03-29T02:54:55Z",
+            "user": {
+              "login": "SeanRVACode",
+              "html_url": "https://github.com/SeanRVACode",
+              "avatar_url": "https://avatars.githubusercontent.com/u/133682090?v=4"
+            }
+          },
+          {
+            "number": 203,
+            "title": "Master",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/203",
+            "state": "closed",
+            "merged_at": null,
+            "closed_at": "2025-03-18T13:06:52Z",
+            "user": {
+              "login": "SeanRVACode",
+              "html_url": "https://github.com/SeanRVACode",
+              "avatar_url": "https://avatars.githubusercontent.com/u/133682090?v=4"
+            }
+          },
+          {
+            "number": 204,
+            "title": "Add Osaka breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/204",
+            "state": "closed",
+            "merged_at": "2025-03-18T00:53:02Z",
+            "closed_at": "2025-03-18T00:53:02Z",
+            "user": {
+              "login": "sarakaneki",
+              "html_url": "https://github.com/sarakaneki",
+              "avatar_url": "https://avatars.githubusercontent.com/u/115870918?v=4"
+            }
+          },
+          {
+            "number": 201,
+            "title": "Removed leading space in Busan brewery",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/201",
+            "state": "closed",
+            "merged_at": "2025-03-10T00:44:16Z",
+            "closed_at": "2025-03-10T00:44:17Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 202,
+            "title": "Update Massachusetts breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/202",
+            "state": "closed",
+            "merged_at": "2025-03-10T00:46:41Z",
+            "closed_at": "2025-03-10T00:46:41Z",
+            "user": {
+              "login": "jpbulman",
+              "html_url": "https://github.com/jpbulman",
+              "avatar_url": "https://avatars.githubusercontent.com/u/12652192?v=4"
+            }
+          },
+          {
+            "number": 198,
+            "title": "Update brewery status and addresses in Connecticut data",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/198",
+            "state": "closed",
+            "merged_at": "2025-03-10T00:42:49Z",
+            "closed_at": "2025-03-10T00:42:49Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 200,
+            "title": "Add Electric Brewing (from email request)",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/200",
+            "state": "closed",
+            "merged_at": "2025-02-27T04:33:28Z",
+            "closed_at": "2025-02-27T04:33:28Z",
+            "user": {
+              "login": "chrisjm",
+              "html_url": "https://github.com/chrisjm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4"
+            }
+          },
+          {
+            "number": 199,
+            "title": "Update Lousiana breweries via @WI5ARD",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/199",
+            "state": "closed",
+            "merged_at": "2025-02-15T02:03:37Z",
+            "closed_at": "2025-02-15T02:03:37Z",
+            "user": {
+              "login": "chrisjm",
+              "html_url": "https://github.com/chrisjm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4"
+            }
+          },
+          {
+            "number": 197,
+            "title": "Update Louisiana",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/197",
+            "state": "closed",
+            "merged_at": "2025-02-08T02:36:59Z",
+            "closed_at": "2025-02-08T02:36:59Z",
+            "user": {
+              "login": "chrisjm",
+              "html_url": "https://github.com/chrisjm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4"
+            }
+          },
+          {
+            "number": 195,
+            "title": "Updating Apex Brewery information ",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/195",
+            "state": "closed",
+            "merged_at": "2025-02-06T02:07:19Z",
+            "closed_at": "2025-02-06T02:07:19Z",
+            "user": {
+              "login": "davidaholm",
+              "html_url": "https://github.com/davidaholm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/4689571?v=4"
+            }
+          },
+          {
+            "number": 194,
+            "title": "Update california.csv",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/194",
+            "state": "closed",
+            "merged_at": "2025-02-06T02:05:34Z",
+            "closed_at": "2025-02-06T02:05:34Z",
+            "user": {
+              "login": "chriscondreay",
+              "html_url": "https://github.com/chriscondreay",
+              "avatar_url": "https://avatars.githubusercontent.com/u/76202959?v=4"
+            }
+          },
+          {
+            "number": 193,
+            "title": "Fixed state type in Utah dataset",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/193",
+            "state": "closed",
+            "merged_at": "2025-02-06T02:04:32Z",
+            "closed_at": "2025-02-06T02:04:32Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          }
+        ]
+      }
+    },
+    "openbrewerydb/openbrewerydb-laravel-api": {
+      "type": "api",
+      "source_url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api",
+      "releases": [
+        {
+          "tag": "v1.0.9",
+          "title": "v1.0.9",
+          "date": "2025-08-08T00:15:25Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.9",
+          "notes": "What's Changed\n* Upgraded Sentry for logging by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/102\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.8...v1.0.9",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.8",
+          "title": "v1.0.8",
+          "date": "2025-08-07T04:53:05Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.8",
+          "notes": "What's Changed\n* Refactor GetBrewery to remove caching logic by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/101\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.7...v1.0.8",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.7",
+          "title": "v1.0.7",
+          "date": "2025-08-03T19:47:05Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.7",
+          "notes": "What's Changed\n* Add rate limiting configuration for API routes by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/99\n* Add Meilisearch to test suite and remove etag test from brewery endpoint cache control header by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/100\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.6...v1.0.7",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.6",
+          "title": "v1.0.6",
+          "date": "2025-05-19T18:11:32Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.6",
+          "notes": "What's Changed\n* Testing more aggressive caching for api responses by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/98\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.5...v1.0.6",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.5",
+          "title": "v1.0.5",
+          "date": "2025-05-09T12:23:34Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.5",
+          "notes": "What's Changed\n* Bump league/commonmark from 2.6.1 to 2.7.0 by @dependabot in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/96\n* 2025-05-08 dependency updates by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/97\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.4...v1.0.5",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.4",
+          "title": "v1.0.4",
+          "date": "2025-04-19T04:23:49Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.4",
+          "notes": "What's Changed\n* [Fix] Update Cache-Control header separator from semicolons to commas by @chrisjm in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/95\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.3...v1.0.4",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.3",
+          "title": "v1.0.3",
+          "date": "2025-04-19T03:40:10Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.3",
+          "notes": "What's Changed\n* Update cache control by @chrisjm in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/94\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.2...v1.0.3",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.2",
+          "title": "v1.0.2",
+          "date": "2025-04-19T01:47:44Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.2",
+          "notes": "What's Changed\n* [Fix] Typo by @chrisjm in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/91\n* [Feature] Add filtering to /meta endpoint by @chrisjm in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/87\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.1...v1.0.2",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.1",
+          "title": "v1.0.1",
+          "date": "2025-03-31T13:36:43Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.1",
+          "notes": "What's Changed\n* [Feature] Add autocomplete endpoint for breweries and redirect to search by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/88\n* [Chore] Update CODEOWNERS to include @chrisjm for reviews by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/89\n* [Fix] Update CORS allowed origins to wildcard by @chrisjm in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/85\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.0...v1.0.1",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.0",
+          "title": "v1.0.0 🎉",
+          "date": "2025-03-31T00:43:50Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.0",
+          "notes": "Full Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.0-beta.1...v1.0.0",
+          "notes_truncated": false
+        },
+        {
+          "tag": "v1.0.0-beta.1",
+          "title": "v1.0.0-beta.1",
+          "date": "2025-03-28T01:54:24Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.0-beta.1",
+          "notes": "Full Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/commits/v1.0.0-beta.1",
+          "notes_truncated": false
+        }
+      ],
+      "fallback": null
+    }
+  }
+}

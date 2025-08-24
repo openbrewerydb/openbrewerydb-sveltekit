@@ -57,6 +57,7 @@
     <NavMenuItem href="/documentation">Docs</NavMenuItem>
     <NavMenuItem href="/faq">FAQ</NavMenuItem>
     <NavMenuItem href="/news">News</NavMenuItem>
+    <NavMenuItem href="/changelogs">Changelogs</NavMenuItem>
     <NavMenuItem href="/projects">Projects</NavMenuItem>
     <NavMenuItem href="/about">About</NavMenuItem>
   </div>
