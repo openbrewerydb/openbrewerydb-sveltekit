@@ -51,7 +51,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@sentry/sveltekit": "^9.13.0",
-    "@tailwindcss/vite": "^4.1.4"
+    "@sentry/sveltekit": "^10.5.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "layerchart": "^1.0.11"
   }
 }
