@@ -27,6 +27,6 @@ This post is written in **mdsvex**, which means we can mix Markdown and Svelte.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random" />
 
-<StatsChart debug />
+<StatsChart />
 
 That’s it for now — cheers!
