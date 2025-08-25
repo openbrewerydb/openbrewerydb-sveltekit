@@ -6,30 +6,23 @@
   import { Chart, GeoPath, Legend, Svg, Tooltip } from 'layerchart';
   import { format } from '@layerstack/utils';
   import states10m from 'us-atlas/states-10m.json';
+  import type { Feature, Geometry } from 'geojson';
 
-  // Svelte 5 runes
   let loading = $state(true);
   let error = $state<string | null>(null);
   let mounted = $state(false);
 
-  // Layout / sizing
   let container: HTMLDivElement | null = $state(null);
   let height = $state(420);
 
-  // Data
-  type StateFeature = GeoJSON.Feature<
-    GeoJSON.Geometry,
-    { name?: string; id?: string }
-  >;
+  type StateFeature = Feature<Geometry, { name?: string; id?: string }>;
   let states: StateFeature[] = $state([]);
-  let values = $state<Record<string, number>>({}); // key by state name
+  let values = $state<Record<string, number>>({});
 
-  // LayerChart expects a projection factory
   const projection = () => geoAlbersUsa() as unknown as GeoProjection;
 
   const fmt = (n: number) => new Intl.NumberFormat().format(n);
 
-  // Fetch data on client
   $effect(() => {
     if (typeof window === 'undefined') return;
     mounted = true;
@@ -53,11 +46,9 @@
         );
         if (!metaRes.ok)
           throw new Error(`Failed to load brewery meta (${metaRes.status})`);
-        const meta = await metaRes.json();
-        const by_state: Record<string, number> = meta?.by_state ?? {};
-
-        console.log('by_state', by_state);
-
+        type BreweryMeta = { by_state?: Record<string, number> };
+        const meta = (await metaRes.json()) as BreweryMeta;
+        const by_state: Record<string, number> = meta.by_state ?? {};
         values = by_state;
       } catch (e) {
         console.error('USChoropleth fetch error:', e);
@@ -81,7 +72,6 @@
     return `${entry.name}: ${fmt(entry.v)} breweries`;
   }
 
-  // Color scale for LayerChart (fewer bins for clearer legend)
   const colorScale = $derived(
     scaleQuantile<string, string>()
       .domain(entries.map((d) => d.v))
@@ -138,7 +128,8 @@
           scale={colorScale}
           title="Breweries"
           placement="top-left"
-          tickFormat={(d) => format(d, 'metric', { maximumSignificantDigits: 2 })}
+          tickFormat={(d) =>
+            format(d, 'metric', { maximumSignificantDigits: 2 })}
           class="absolute bg-white/80 px-2 py-1 rounded m-1 text-xs"
         />
 
