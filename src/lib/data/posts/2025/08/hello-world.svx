@@ -9,7 +9,8 @@ coverImageUrl: /favicon.png
 
 <script>
   import RunButton from '$lib/components/RunButton.svelte'; import StatsChart
-  from '$lib/components/StatsChart.svelte';
+  from '$lib/components/StatsChart.svelte'; import USChoropleth from
+  '$lib/components/USChoropleth.svelte';
 </script>
 
 Welcome to the new OpenBreweryDB news! 🍻
@@ -28,5 +29,7 @@ This post is written in **mdsvex**, which means we can mix Markdown and Svelte.
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random" />
 
 <StatsChart />
+
+<USChoropleth />
 
 That’s it for now — cheers!

@@ -90,7 +90,7 @@
     <div class="py-10 text-center text-sm text-neutral-500">No data</div>
   {:else}
     <div class="h-[360px] w-full relative" bind:this={container}>
-      {#if mounted && container && container.clientWidth > 0}
+      {#if mounted && container && container.clientWidth > 0 && container.clientHeight > 0}
         {#key `${chartData.length}-${total}`}
           <Chart
             data={withIndex}
