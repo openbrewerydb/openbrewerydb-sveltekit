@@ -4,6 +4,7 @@
   import { schemeBlues } from 'd3-scale-chromatic';
   import { scaleQuantile } from 'd3-scale';
   import { Chart, GeoPath, Legend, Svg, Tooltip } from 'layerchart';
+  import { format } from '@layerstack/utils';
   import states10m from 'us-atlas/states-10m.json';
 
   // Svelte 5 runes
@@ -80,11 +81,11 @@
     return `${entry.name}: ${fmt(entry.v)} breweries`;
   }
 
-  // Color scale for LayerChart (must be an actual D3 scale, not a function)
+  // Color scale for LayerChart (fewer bins for clearer legend)
   const colorScale = $derived(
     scaleQuantile<string, string>()
       .domain(entries.map((d) => d.v))
-      .range(schemeBlues[9])
+      .range(schemeBlues[7])
   );
 
   const maxVal: number = $derived(
@@ -136,6 +137,8 @@
         <Legend
           scale={colorScale}
           title="Breweries"
+          placement="top-left"
+          tickFormat={(d) => format(d, 'metric', { maximumSignificantDigits: 2 })}
           class="absolute bg-white/80 px-2 py-1 rounded m-1 text-xs"
         />
 
