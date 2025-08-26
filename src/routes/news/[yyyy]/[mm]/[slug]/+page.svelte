@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Component } from 'svelte';
-  import { page } from '$app/state';
+  import SEO from '$lib/components/SEO.svelte';
 
   interface Props {
     data: {
@@ -22,12 +22,10 @@
   const modules = import.meta.glob('/src/lib/data/posts/**/*.{md,svx}');
   let Comp: Component | null = $state(null);
 
-  const siteName = 'OpenBreweryDB';
-  const title = $derived(data.post.meta.title ?? 'News • OpenBreweryDB');
+  const title = $derived(data.post.meta.title ?? 'News');
   const description = $derived(
     data.post.meta.description ?? 'Updates and stories from OpenBreweryDB.'
   );
-  const ogImage = '/obdb-og.png';
 
   $effect(() => {
     (async () => {
@@ -42,18 +40,7 @@
   });
 </script>
 
-<svelte:head>
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href="{page.url.origin}{page.url.pathname}" />
-
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content={page.url.href} />
-  <meta property="og:site_name" content={siteName} />
-  <meta property="og:image" content={ogImage} />
-</svelte:head>
+<SEO {title} {description} type="article" image="/obdb-og.png" />
 
 {#if Comp}
   <Comp />

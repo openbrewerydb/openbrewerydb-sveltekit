@@ -47,8 +47,12 @@
   }
 </script>
 
-<article class="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5">
-  <header class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+<article
+  class="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5"
+>
+  <header
+    class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center"
+  >
     <div>
       <h2 class="text-xl font-semibold text-amber-800">
         <a
@@ -82,7 +86,9 @@
       >
         {#each repo.releases as r}
           <li class="p-4 sm:p-5">
-            <div class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start">
+            <div
+              class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start"
+            >
               <div>
                 <a
                   class="font-medium text-amber-800 hover:underline underline-offset-4 decoration-amber-300 hover:decoration-amber-500"
@@ -125,7 +131,9 @@
       >
         {#each repo.fallback.items as pr}
           <li class="p-4 sm:p-5">
-            <div class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start">
+            <div
+              class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start"
+            >
               <div>
                 <a
                   class="font-medium text-amber-800 hover:underline underline-offset-4 decoration-amber-300 hover:decoration-amber-500"

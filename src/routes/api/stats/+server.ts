@@ -18,7 +18,10 @@ export const GET: RequestHandler = async ({ fetch }) => {
 
     if (!res.ok) {
       return new Response(
-        JSON.stringify({ error: 'Failed to fetch brewery meta', status: res.status }),
+        JSON.stringify({
+          error: 'Failed to fetch brewery meta',
+          status: res.status,
+        }),
         { status: 502, headers: { 'content-type': 'application/json' } }
       );
     }
@@ -29,15 +32,19 @@ export const GET: RequestHandler = async ({ fetch }) => {
     const byTypeEntries = Object.entries(meta.by_type ?? {});
     const data = byTypeEntries
       .map(([type, count]) => ({ type, count }))
-      .sort((a, b) => (b.count - a.count) || a.type.localeCompare(b.type));
+      .sort((a, b) => b.count - a.count || a.type.localeCompare(b.type));
 
     return new Response(
-      JSON.stringify({ data, total: meta.total, by_state: meta.by_state ?? {} }),
+      JSON.stringify({
+        data,
+        total: meta.total,
+        by_state: meta.by_state ?? {},
+      }),
       {
         headers: {
           'content-type': 'application/json',
-          'cache-control': 'no-store'
-        }
+          'cache-control': 'no-store',
+        },
       }
     );
   } catch (err) {

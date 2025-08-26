@@ -7,6 +7,7 @@
     BuildingIcon,
     HomeIcon,
   } from 'lucide-svelte';
+  import SEO from '$lib/components/SEO.svelte';
 
   interface Props {
     data: import('./$types').PageData;
@@ -23,11 +24,7 @@
   );
 </script>
 
-<svelte:head>
-  <title>{pageTitle}</title>
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={pageDescription} />
-</svelte:head>
+<SEO title={pageTitle} description={pageDescription} />
 
 {#if !brewery}
   <div class="max-w-4xl mx-auto px-4 py-8 text-center">

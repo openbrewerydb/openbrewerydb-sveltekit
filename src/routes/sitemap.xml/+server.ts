@@ -6,7 +6,7 @@ const staticPaths = [
   '/breweries/browse',
   '/about',
   '/news',
-  '/changelogs'
+  '/changelogs',
 ];
 
 function xmlEscape(s: string) {
@@ -24,7 +24,8 @@ export const GET: RequestHandler = async ({ url }) => {
 
   const now = new Date().toISOString();
 
-  const body = `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  const body =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` +
     urls
       .map(
@@ -37,7 +38,7 @@ export const GET: RequestHandler = async ({ url }) => {
   return new Response(body, {
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600'
-    }
+      'Cache-Control': 'public, max-age=3600',
+    },
   });
 };

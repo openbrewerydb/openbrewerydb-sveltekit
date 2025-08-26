@@ -1,4 +1,13 @@
-import type { NewsFrontmatter } from '$lib/types';
+export type NewsFrontmatter = {
+  layout?: string;
+  title?: string;
+  description?: string;
+  date?: string;
+  slug?: string;
+  coverImageUrl?: string;
+  author?: string;
+  authors?: string[];
+};
 
 export type PostSegments = [string, string, string]; // [yyyy, mm, slug]
 
@@ -46,7 +55,6 @@ const allPosts: PostItem[] = Object.entries(modules)
     const href = `/news/${yyyy}/${mm}/${slug}`;
     const meta: NewsFrontmatter = {
       ...(mod.metadata ?? {}),
-      // ensure normalized fields we rely on
       authors: normalizeAuthors(mod.metadata),
     };
     return {

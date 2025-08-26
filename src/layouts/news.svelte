@@ -1,6 +1,7 @@
 <script lang="ts">
   import MarkdownContent from '$lib/components/MarkdownContent.svelte';
   import Byline from '$lib/components/Byline.svelte';
+  import SEO from '$lib/components/SEO.svelte';
 
   interface Props {
     title?: string;
@@ -29,14 +30,7 @@
   );
 </script>
 
-<svelte:head>
-  <title>{title}</title>
-
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={coverImageUrl} />
-</svelte:head>
+<SEO title={title} description={description} image={coverImageUrl} type="article" />
 
 <MarkdownContent>
   <h1 class="my-2">{title}</h1>

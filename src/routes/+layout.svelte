@@ -3,7 +3,6 @@
   import MobileNav from '$lib/components/MobileNav.svelte';
   import Nav from '$lib/components/Nav.svelte';
   import SEOProvider from '$lib/components/SEOProvider.svelte';
-  import SEO from '$lib/components/SEO.svelte';
   import '../styles/tailwind.css';
   interface Props {
     children?: import('svelte').Snippet;
@@ -18,19 +17,16 @@
   };
 </script>
 
-
 <SEOProvider
   value={{
     titleTemplate: '%s | OpenBreweryDB',
     openGraph: {
       type: 'website',
       siteName: 'OpenBreweryDB',
-      image: '/obdb-og.png'
-    }
+      image: '/obdb-og.png',
+    },
   }}
 >
-  <SEO />
-
   <div class="flex flex-col">
     <div class="relative overflow-hidden">
       <div class="relative pt-6">

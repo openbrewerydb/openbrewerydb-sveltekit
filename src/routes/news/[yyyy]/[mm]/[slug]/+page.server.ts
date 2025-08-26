@@ -19,6 +19,6 @@ export const load: PageServerLoad = async ({ params }) => {
       href: post.href,
       path: post.path,
       meta: post.meta,
-    }
+    },
   };
 };

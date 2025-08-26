@@ -21,7 +21,10 @@ export type SEOConfig = {
 
 export const SEO_CTX: unique symbol = Symbol('seo');
 
-export function applyTitleTemplate(title: string | undefined, template?: string): string | undefined {
+export function applyTitleTemplate(
+  title: string | undefined,
+  template?: string
+): string | undefined {
   if (!title) return title;
   if (!template) return title;
   return template.replace(/%s/g, title);
@@ -31,14 +34,29 @@ export function canonicalFrom(input: URL): string {
   return `${input.origin}${input.pathname}`;
 }
 
-export function mergeSEO(parent: SEOConfig | undefined, child: SEOConfig | undefined): SEOConfig {
+export function absoluteFrom(input: string | undefined, base?: URL): string | undefined {
+  if (!input) return undefined;
+  try {
+    return new URL(input, base)?.toString();
+  } catch {
+    return input;
+  }
+}
+
+export function mergeSEO(
+  parent: SEOConfig | undefined,
+  child: SEOConfig | undefined
+): SEOConfig {
   if (!parent) return { ...(child || {}) };
   if (!child) return { ...parent };
 
   const merged: SEOConfig = { ...parent, ...child };
 
   if (parent.openGraph || child.openGraph) {
-    merged.openGraph = { ...(parent.openGraph || {}), ...(child.openGraph || {}) };
+    merged.openGraph = {
+      ...(parent.openGraph || {}),
+      ...(child.openGraph || {}),
+    };
   }
   if (parent.robots || child.robots) {
     merged.robots = { ...(parent.robots || {}), ...(child.robots || {}) };

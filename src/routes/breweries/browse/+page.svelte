@@ -1,4 +1,6 @@
 <script lang="ts">
+  import SEO from '$lib/components/SEO.svelte';
+
   let { data } = $props();
 
   let byState = $derived(data.byState || []);
@@ -6,17 +8,7 @@
   let error = $derived(data.error);
 </script>
 
-<svelte:head>
-  <title>Browse Breweries by State and Type | Open Brewery DB</title>
-  <meta
-    property="og:title"
-    content="Browse Breweries by State and Type | Open Brewery DB"
-  />
-  <meta
-    property="og:description"
-    content="Browse breweries from the Open Brewery DB dataset by state/province and type."
-  />
-</svelte:head>
+<SEO title="Browse Breweries by State and Type" description="Browse breweries from the Open Brewery DB dataset by state/province and type." />
 
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-3xl font-bold mb-8">Browse Breweries</h1>
