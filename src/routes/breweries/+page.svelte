@@ -4,6 +4,7 @@
   import BrewerySearchForm from '$lib/components/BrewerySearchForm.svelte';
   import SearchPagination from '$lib/components/SearchPagination.svelte';
   import { goto } from '$app/navigation';
+  import SEO from '$lib/components/SEO.svelte';
   import {
     getBreweries,
     getLoading,
@@ -48,14 +49,7 @@
   }
 </script>
 
-<svelte:head>
-  <title>Search Breweries | Open Brewery DB</title>
-  <meta property="og:title" content="Search Breweries | Open Brewery DB" />
-  <meta
-    property="og:description"
-    content="Search and browse breweries from the Open Brewery DB dataset."
-  />
-</svelte:head>
+<SEO title="Search Breweries" description="Search and browse breweries from the Open Brewery DB dataset." />
 
 <div class="px-4 py-8">
   <h1 class="text-3xl text-center font-bold mb-6">Search Breweries</h1>

@@ -5,6 +5,7 @@
   import DirectoryMeta from '$lib/components/DirectoryMeta.svelte';
   import Pagination from '$lib/components/Pagination.svelte';
   import { locationString } from '$lib/utils';
+  import SEO from '$lib/components/SEO.svelte';
 
   let { data } = $props();
 
@@ -29,11 +30,7 @@
   );
 </script>
 
-<svelte:head>
-  <title>{pageTitle}</title>
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={pageDescription} />
-</svelte:head>
+<SEO title={pageTitle} description={pageDescription} />
 
 <div class="px-4 sm:px-0">
   <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between">

@@ -1,0 +1,46 @@
+<script lang="ts">
+  import MarkdownContent from '$lib/components/MarkdownContent.svelte';
+  import Byline from '$lib/components/Byline.svelte';
+  import SEO from '$lib/components/SEO.svelte';
+
+  interface Props {
+    title?: string;
+    description?: string;
+    coverImageUrl?: string;
+    date?: string;
+    author?: string;
+    authors?: string[];
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    title = 'Article',
+    description = 'A worldwide open-source brewery dataset and API',
+    coverImageUrl = '/obdb-og.png',
+    date,
+    author,
+    authors,
+    children,
+  }: Props = $props();
+
+  const normalizedAuthors = $derived(
+    (
+      (authors && authors.length ? authors : author ? [author] : []) as string[]
+    ).map((a) => a.toLowerCase())
+  );
+</script>
+
+<SEO title={title} description={description} image={coverImageUrl} type="article" />
+
+<MarkdownContent>
+  <h1 class="my-2">{title}</h1>
+  {#if normalizedAuthors.length || date}
+    <div class="my-2">
+      <Byline authors={normalizedAuthors} {date} />
+    </div>
+  {/if}
+  <div class="my-6">
+    {@render children?.()}
+  </div>
+  <a href="/news" class="inline-block mt-6">Back to news</a>
+</MarkdownContent>

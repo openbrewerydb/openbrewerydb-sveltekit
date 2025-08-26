@@ -11,7 +11,7 @@
 
 <div
   transition:fade
-  class="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+  class="absolute z-10 top-0 inset-x-0 p-2 origin-top-right md:hidden"
 >
   <div
     class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden"
@@ -21,7 +21,7 @@
         <button
           onclick={toggleMenu}
           type="button"
-          class="bg-white rounded-md p-2 inline-flex items-center justify-center text-amber-600 hover:text-amber-800 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 shadow-sm hover:shadow transition-shadow duration-200"
+          class="bg-white rounded-md p-2 inline-flex items-center justify-center text-amber-600 hover:text-amber-800 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 shadow-sm hover:shadow transition-shadow duration-100 mr-3"
         >
           <span class="sr-only">Close menu</span>
           <!-- Heroicon name: outline/x -->
@@ -52,18 +52,15 @@
         >Docs</NavMenuItem
       >
       <NavMenuItem href="/faq" {toggleMenu} isMobile={true}>FAQ</NavMenuItem>
+      <NavMenuItem href="/news" {toggleMenu} isMobile={true}>News</NavMenuItem>
+      <NavMenuItem href="/changelogs" {toggleMenu} isMobile={true}
+        >Changelogs</NavMenuItem
+      >
       <NavMenuItem href="/projects" {toggleMenu} isMobile={true}
         >Projects</NavMenuItem
       >
       <NavMenuItem href="/about" {toggleMenu} isMobile={true}>About</NavMenuItem
       >
     </div>
-    <NavMenuItem
-      href="http://eepurl.com/dBjS0j"
-      {toggleMenu}
-      class="block w-full px-5 py-3 text-center font-medium text-amber-600 bg-gray-50 hover:bg-gray-100 shadow-sm hover:shadow transition-shadow duration-200"
-    >
-      Newsletter Signup
-    </NavMenuItem>
   </div>
 </div>

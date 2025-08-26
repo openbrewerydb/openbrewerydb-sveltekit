@@ -69,3 +69,36 @@ export function locationString({
   const countryPart = titleCase(country) ?? '';
   return cityPart + statePart + countryPart;
 }
+
+export function formatLocalDateTime(datetime: string) {
+  const d = new Date(datetime);
+  return d.toLocaleString(undefined, {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  });
+}
+
+export function linkify(input?: string) {
+  const value = input ?? '';
+  const urlRe = /(https?:\/\/[^\s)]+)(?![^<]*>)/gi;
+  const parts: Array<{
+    type: 'text' | 'link';
+    value: string;
+    href?: string;
+  }> = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = urlRe.exec(value)) !== null) {
+    const start = match.index;
+    const url = match[0];
+    if (start > lastIndex) {
+      parts.push({ type: 'text', value: value.slice(lastIndex, start) });
+    }
+    parts.push({ type: 'link', value: url, href: url });
+    lastIndex = start + url.length;
+  }
+  if (lastIndex < value.length) {
+    parts.push({ type: 'text', value: value.slice(lastIndex) });
+  }
+  return parts;
+}

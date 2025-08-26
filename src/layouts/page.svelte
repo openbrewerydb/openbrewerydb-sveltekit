@@ -1,5 +1,6 @@
 <script lang="ts">
   import MarkdownContent from '$lib/components/MarkdownContent.svelte';
+  import SEO from '$lib/components/SEO.svelte';
 
   interface Props {
     title: string;
@@ -11,23 +12,12 @@
   let {
     title,
     description = 'A worldwide open-source brewery dataset and API',
-    coverImageUrl = 'https://www.openbrewerydb.org/obdb-og.png',
+    coverImageUrl = '/obdb-og.png',
     children,
   }: Props = $props();
 </script>
 
-<svelte:head>
-  <title>Open Brewery DB | {title}</title>
-  <meta
-    property="og:title"
-    content="Open Brewery DB{title ? ` | ${title}` : ''}"
-  />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={coverImageUrl} />
-</svelte:head>
+<SEO title={title} description={description} image={coverImageUrl} type="article" />
 
 <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
   <MarkdownContent>

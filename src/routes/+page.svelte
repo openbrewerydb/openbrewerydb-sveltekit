@@ -1,16 +1,9 @@
 <script lang="ts">
   import logo from '$lib/assets/obdb-logo.png';
+  import SEO from '$lib/components/SEO.svelte';
 </script>
 
-<svelte:head>
-  <title>Open Brewery DB</title>
-
-  <meta property="og:title" content="Open Brewery DB" />
-  <meta
-    property="og:description"
-    content="A worldwide open-source brewery dataset and API"
-  />
-</svelte:head>
+<SEO title="Open Brewery DB" description="A worldwide open-source brewery dataset and API" />
 
 <div class="text-center">
   <div class="w-full sm:w-96 mx-auto my-6">

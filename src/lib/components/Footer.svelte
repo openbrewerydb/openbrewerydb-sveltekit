@@ -26,6 +26,14 @@
       </div>
 
       <div class="px-5 py-2">
+        <NavMenuItem href="/news">News</NavMenuItem>
+      </div>
+
+      <div class="px-5 py-2">
+        <NavMenuItem href="/changelogs">Changelogs</NavMenuItem>
+      </div>
+
+      <div class="px-5 py-2">
         <NavMenuItem href="/projects">Projects</NavMenuItem>
       </div>
 

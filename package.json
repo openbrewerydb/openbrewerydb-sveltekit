@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "authors:build": "node scripts/build-authors.mjs",
+    "changelogs:build": "node scripts/build-changelogs.mjs",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
@@ -22,6 +24,7 @@
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/geojson": "^7946.0.16",
     "@types/node": "^22.14.1",
     "@typescript-eslint/eslint-plugin": "^8.30.1",
     "@typescript-eslint/parser": "^8.30.1",
@@ -49,7 +52,13 @@
   },
   "type": "module",
   "dependencies": {
-    "@sentry/sveltekit": "^9.13.0",
-    "@tailwindcss/vite": "^4.1.4"
+    "@sentry/sveltekit": "^10.5.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "d3-geo": "^3.1.1",
+    "d3-scale-chromatic": "^3.1.0",
+    "layerchart": "^1.0.11",
+    "picomatch": "^4.0.3",
+    "topojson-client": "^3.1.0",
+    "us-atlas": "^3.0.1"
   }
 }
