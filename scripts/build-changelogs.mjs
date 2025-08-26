@@ -12,6 +12,7 @@ const REPOS = [
   { owner: 'openbrewerydb', repo: 'openbrewerydb-laravel-api', type: 'api' },
 ];
 
+// TODO:
 function stripMarkdown(md = '') {
   // Very lightweight markdown to plain text: remove code blocks, images/links, headings, emphasis
   return (
@@ -80,7 +81,7 @@ async function fetchClosedPRs(owner, repo, token) {
     number: pr.number,
     title: pr.title,
     url: pr.html_url,
-    state: pr.state, // closed
+    state: pr.state, 
     merged_at: pr.merged_at,
     closed_at: pr.closed_at,
     user: pr.user
