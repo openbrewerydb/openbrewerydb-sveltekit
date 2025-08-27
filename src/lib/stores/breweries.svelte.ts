@@ -54,8 +54,6 @@ export function getHasNextPage() {
 export function getHasPreviousPage() {
   return hasPreviousPage;
 }
-
-// Optimistic setters for UI responsiveness during navigation
 export function setPage(page: number) {
   store.meta.page = Math.max(1, Math.floor(page)).toString();
 }
@@ -64,6 +62,9 @@ export function setSearchQuery(query: string) {
 }
 export function setLoading(loading: boolean) {
   store.loading = loading;
+}
+export function setTotalBreweries(total: number) {
+  store.meta.total = Math.max(0, Math.floor(total)).toString();
 }
 
 export function initializeStore(

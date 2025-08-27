@@ -34,6 +34,22 @@ export const mappings = {
       label: 'Scotland',
       id: 'scotland',
     },
+    germany: {
+      label: 'Germany',
+      id: 'germany',
+    },
+    italy: {
+      label: 'Italy',
+      id: 'italy',
+    },
+    japan: {
+      label: 'Japan',
+      id: 'japan',
+    },
+    sweden: {
+      label: 'Sweden',
+      id: 'sweden',
+    },
     singapore: {
       label: 'Singapore',
       id: 'singapore',
