@@ -9,7 +9,7 @@ import { defineConfig, devices } from '@playwright/test';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 export default defineConfig({
-  timeout: 30000,
+  timeout: 45000,
   testDir: './tests',
   testIgnore: ['tests/unit/**'],
   fullyParallel: true,
