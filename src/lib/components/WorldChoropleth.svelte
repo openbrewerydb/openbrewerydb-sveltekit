@@ -23,6 +23,9 @@
     italy: 380,
     japan: 392,
     sweden: 752,
+    // UK constituent countries map to the United Kingdom feature (826)
+    england: 826,
+    scotland: 826,
   };
 
   const projection = geoNaturalEarth1().scale(165).translate([480, 250]);
