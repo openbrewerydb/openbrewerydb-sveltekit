@@ -48,6 +48,9 @@
       <NavMenuItem href="/breweries" {toggleMenu} isMobile={true}
         >Breweries</NavMenuItem
       >
+      <NavMenuItem href="/dashboard" {toggleMenu} isMobile={true}
+        >Dashboard</NavMenuItem
+      >
       <NavMenuItem href="/documentation" {toggleMenu} isMobile={true}
         >Docs</NavMenuItem
       >

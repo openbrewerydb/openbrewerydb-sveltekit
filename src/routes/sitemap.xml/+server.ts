@@ -4,6 +4,7 @@ const staticPaths = [
   '/',
   '/breweries',
   '/breweries/browse',
+  '/dashboard',
   '/about',
   '/news',
   '/changelogs',

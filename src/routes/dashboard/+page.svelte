@@ -96,15 +96,17 @@
                 <tr class="text-left text-neutral-500">
                   <th class="py-2 pr-3">Country</th>
                   <th class="py-2 pr-3">Breweries</th>
+                  <th class="py-2 pr-3">Percent</th>
                 </tr>
               </thead>
               <tbody>
                 {#each topCountries as c}
                   <tr class="border-t">
                     <td class="py-2 pr-3">{c.label}</td>
-                    <td class="py-2 pr-3 tabular-nums"
-                      >{c.count.toLocaleString()}</td
-                    >
+                    <td class="py-2 pr-3 tabular-nums">{c.count.toLocaleString()}</td>
+                    <td class="py-2 pr-3 tabular-nums text-amber-700">
+                      {data.total > 0 ? ((c.count / data.total) * 100).toFixed(1) : '0.0'}%
+                    </td>
                   </tr>
                 {/each}
               </tbody>
@@ -120,7 +122,10 @@
                 Total missing: <span class="font-semibold tabular-nums">{data.unknownTotal?.toLocaleString?.() ?? data.unknownTotal}</span>
               </span>
             </div>
-            <p class="mt-1 text-sm text-amber-700">These locations did not map to a country. Help by suggesting the correct country mapping.</p>
+            <p class="mt-1 text-sm text-amber-700">
+              These appear to be <span class="font-medium">state/province formatting issues</span> that didn’t map to a country.
+              Try searching the raw subdivision to confirm and help us fix the mapping.
+            </p>
             <div class="mt-3 overflow-x-auto">
               <table class="min-w-full text-sm">
                 <thead>
@@ -132,7 +137,11 @@
                 <tbody>
                   {#each unknownSorted as u}
                     <tr class="border-t border-amber-200">
-                      <td class="py-2 pr-3">{u.name}</td>
+                      <td class="py-2 pr-3">
+                        <a class="text-amber-700 hover:text-amber-900 underline decoration-amber-300 hover:decoration-amber-400" href={`/breweries?query=${encodeURIComponent(u.name)}`}>
+                          {u.name}
+                        </a>
+                      </td>
                       <td class="py-2 pr-3 tabular-nums">{u.count.toLocaleString()}</td>
                     </tr>
                   {/each}

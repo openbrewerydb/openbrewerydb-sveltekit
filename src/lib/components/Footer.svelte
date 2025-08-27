@@ -18,6 +18,10 @@
       </div>
 
       <div class="px-5 py-2">
+        <NavMenuItem href="/dashboard">Dashboard</NavMenuItem>
+      </div>
+
+      <div class="px-5 py-2">
         <NavMenuItem href="/documentation">Docs</NavMenuItem>
       </div>
 
