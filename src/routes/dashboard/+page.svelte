@@ -47,10 +47,6 @@
           {data.total.toLocaleString()}
         </p>
       </div>
-      <div class="rounded-lg border bg-white p-5 shadow-sm">
-        <p class="text-sm text-neutral-500">Brewery Types</p>
-        <p class="mt-1 text-3xl font-semibold">{data.byType.length}</p>
-      </div>
     </section>
 
     <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -103,9 +99,13 @@
                 {#each topCountries as c}
                   <tr class="border-t">
                     <td class="py-2 pr-3">{c.label}</td>
-                    <td class="py-2 pr-3 tabular-nums">{c.count.toLocaleString()}</td>
+                    <td class="py-2 pr-3 tabular-nums"
+                      >{c.count.toLocaleString()}</td
+                    >
                     <td class="py-2 pr-3 tabular-nums text-amber-700">
-                      {data.total > 0 ? ((c.count / data.total) * 100).toFixed(1) : '0.0'}%
+                      {data.total > 0
+                        ? ((c.count / data.total) * 100).toFixed(1)
+                        : '0.0'}%
                     </td>
                   </tr>
                 {/each}
@@ -117,14 +117,21 @@
         {#if (data.unknownSubs?.length ?? 0) > 0}
           <div class="mt-6 rounded-lg border border-amber-300 bg-amber-50 p-4">
             <div class="flex items-baseline justify-between">
-              <h3 class="text-base font-semibold text-amber-800">Unknown subdivisions</h3>
+              <h3 class="text-base font-semibold text-amber-800">
+                Unknown subdivisions
+              </h3>
               <span class="text-sm text-amber-700">
-                Total missing: <span class="font-semibold tabular-nums">{data.unknownTotal?.toLocaleString?.() ?? data.unknownTotal}</span>
+                Total missing: <span class="font-semibold tabular-nums"
+                  >{data.unknownTotal?.toLocaleString?.() ??
+                    data.unknownTotal}</span
+                >
               </span>
             </div>
             <p class="mt-1 text-sm text-amber-700">
-              These appear to be <span class="font-medium">state/province formatting issues</span> that didn’t map to a country.
-              Try searching the raw subdivision to confirm and help us fix the mapping.
+              These appear to be <span class="font-medium"
+                >state/province formatting issues</span
+              > that didn’t map to a country. Try searching the raw subdivision to
+              confirm and help us fix the mapping.
             </p>
             <div class="mt-3 overflow-x-auto">
               <table class="min-w-full text-sm">
@@ -138,11 +145,16 @@
                   {#each unknownSorted as u}
                     <tr class="border-t border-amber-200">
                       <td class="py-2 pr-3">
-                        <a class="text-amber-700 hover:text-amber-900 underline decoration-amber-300 hover:decoration-amber-400" href={`/breweries?query=${encodeURIComponent(u.name)}`}>
+                        <a
+                          class="text-amber-700 hover:text-amber-900 underline decoration-amber-300 hover:decoration-amber-400"
+                          href={`/breweries?query=${encodeURIComponent(u.name)}`}
+                        >
                           {u.name}
                         </a>
                       </td>
-                      <td class="py-2 pr-3 tabular-nums">{u.count.toLocaleString()}</td>
+                      <td class="py-2 pr-3 tabular-nums"
+                        >{u.count.toLocaleString()}</td
+                      >
                     </tr>
                   {/each}
                 </tbody>

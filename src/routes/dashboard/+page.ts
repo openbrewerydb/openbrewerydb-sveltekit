@@ -1,5 +1,5 @@
 import { API_URL } from '$lib/utils';
-import { mapSubdivisionToCountryId, countryIdToLabel } from '$lib/data/subdivisions-to-country';
+import { mapSubdivisionToCountryId, countryIdToLabel } from '$lib/subdivisions-to-country';
 
 interface BreweryMetaResponse {
   total: string | number;

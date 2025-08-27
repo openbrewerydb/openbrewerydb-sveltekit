@@ -1,4 +1,4 @@
-import { mappings, titleCase } from '$lib/utils';
+import { mappings, titleCase } from './utils';
 
 function normalize(str: string) {
   return str
