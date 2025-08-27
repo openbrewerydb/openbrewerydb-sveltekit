@@ -8,6 +8,8 @@
       total: number;
       byType: { name: string; count: number; pct: number }[];
       byCountry: { countryId: string; label: string; count: number }[];
+      unknownSubs?: { name: string; count: number }[];
+      unknownTotal?: number;
       error?: string;
     };
   }>();
@@ -21,6 +23,9 @@
   );
   const topCountries = $derived(
     [...data.byCountry].sort((a, b) => b.count - a.count).slice(0, 12)
+  );
+  const unknownSorted = $derived(
+    [...(data.unknownSubs ?? [])].sort((a, b) => b.count - a.count)
   );
 </script>
 
@@ -58,7 +63,7 @@
               <div class="flex-1">
                 <div class="h-2 rounded bg-neutral-100">
                   <div
-                    class="h-2 rounded bg-blue-500"
+                    class="h-2 rounded bg-amber-500"
                     style={`width: ${Math.min(100, Math.max(0, t.pct)).toFixed(2)}%`}
                     aria-label={`{t.name} ${t.pct.toFixed(1)}%`}
                   ></div>
@@ -106,6 +111,36 @@
             </table>
           </div>
         </div>
+
+        {#if (data.unknownSubs?.length ?? 0) > 0}
+          <div class="mt-6 rounded-lg border border-amber-300 bg-amber-50 p-4">
+            <div class="flex items-baseline justify-between">
+              <h3 class="text-base font-semibold text-amber-800">Unknown subdivisions</h3>
+              <span class="text-sm text-amber-700">
+                Total missing: <span class="font-semibold tabular-nums">{data.unknownTotal?.toLocaleString?.() ?? data.unknownTotal}</span>
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-amber-700">These locations did not map to a country. Help by suggesting the correct country mapping.</p>
+            <div class="mt-3 overflow-x-auto">
+              <table class="min-w-full text-sm">
+                <thead>
+                  <tr class="text-left text-amber-800">
+                    <th class="py-2 pr-3">Subdivision</th>
+                    <th class="py-2 pr-3">Breweries</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {#each unknownSorted as u}
+                    <tr class="border-t border-amber-200">
+                      <td class="py-2 pr-3">{u.name}</td>
+                      <td class="py-2 pr-3 tabular-nums">{u.count.toLocaleString()}</td>
+                    </tr>
+                  {/each}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {/if}
       </div>
     </section>
   {/if}

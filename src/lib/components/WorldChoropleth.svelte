@@ -62,19 +62,6 @@
     return '#fcd34d';
   }
 
-  // Debugging: verify data flow and joins
-  $effect(() => {
-    console.debug('[WorldChoropleth] counts:', data?.counts?.length ?? 0);
-  });
-  $effect(() => {
-    const keys = Array.from(countById().keys());
-    console.debug('[WorldChoropleth] countById keys:', keys.slice(0, 10), '... total:', keys.length);
-    console.debug('[WorldChoropleth] maxCount:', maxCount);
-  });
-  $effect(() => {
-    console.debug('[WorldChoropleth] features:', countries?.length ?? 0);
-  });
-
   // Extra diagnostics: surface unknown mappings and mapped samples
   $effect(() => {
     if (!data?.counts?.length) return;
