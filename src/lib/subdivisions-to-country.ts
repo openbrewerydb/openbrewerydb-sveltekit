@@ -11,7 +11,6 @@ function normalize(str: string) {
 
 function fixKnownVariants(str: string) {
   const map: Record<string, string> = {
-    missouri: 'missouri',
     niederosterreich: 'niederoesterreich',
     oberosterreich: 'oberoesterreich',
     karnten: 'kaernten',
@@ -26,18 +25,85 @@ const usSubdivisions = [
   'alabama', 'alaska', 'arizona', 'arkansas', 'california', 'colorado', 'connecticut', 'delaware', 'district of columbia', 'florida', 'georgia', 'hawaii', 'idaho', 'illinois', 'indiana', 'iowa', 'kansas', 'kentucky', 'louisiana', 'maine', 'maryland', 'massachusetts', 'michigan', 'minnesota', 'mississippi', 'missouri', 'montana', 'nebraska', 'nevada', 'new hampshire', 'new jersey', 'new mexico', 'new york', 'north carolina', 'north dakota', 'ohio', 'oklahoma', 'oregon', 'pennsylvania', 'rhode island', 'south carolina', 'south dakota', 'tennessee', 'texas', 'utah', 'vermont', 'virginia', 'washington', 'west virginia', 'wisconsin', 'wyoming',
 ];
 
-const irelandSubs = ['dublin', 'cork', 'kerry', 'galway', 'clare', 'kildare', 'kilkenny', 'laois', 'limerick', 'longford', 'louth', 'mayo', 'meath', 'monaghan', 'offaly', 'roscommon', 'sligo', 'tipperary', 'waterford', 'westmeath', 'wexford', 'wicklow', 'donegal'];
+const irelandSubs = [
+  'carlow',
+  'clare',
+  'cork',
+  'donegal',
+  'dublin',
+  'galway',
+  'kerry',
+  'kildare',
+  'kilkenny',
+  'laois',
+  'limerick',
+  'longford',
+  'louth',
+  'mayo',
+  'meath',
+  'monaghan',
+  'offaly',
+  'roscommon',
+  'sligo',
+  'tipperary',
+  'waterford',
+  'westmeath',
+  'wexford',
+  'wicklow',
+];
 
-const portugalSubs = ['aveiro', 'beja', 'coimbra', 'faro', 'leiria', 'lisboa', 'portalegre', 'porto'];
+const portugalSubs = [
+  'aveiro',
+  'beja',
+  'coimbra',
+  'faro',
+  'leiria',
+  'lisboa',
+  'portalegre',
+  'porto',
+];
 
-const austriaSubs = ['salzburg', 'steiermark', 'kaernten', 'niederoesterreich', 'oberoesterreich'];
+const austriaSubs = [
+  'kaernten',
+  'niederoesterreich',
+  'oberoesterreich',
+  'salzburg',
+  'steiermark',
+];
 
-const swedenSubs = ['halland', 'blekinge'];
+const swedenSubs = [
+  'halland',
+  'blekinge',
+];
 
-const englandSubs = ['east sussex', 'west sussex'];
-const scotlandSubs = ['argyll', 'bute', 'east dunbartonshire', 'west dunbartonshire'];
+const englandSubs = [
+  'east sussex',
+  'west sussex',
+];
+const scotlandSubs = [
+  'argyll',
+  'bute',
+  'east dunbartonshire',
+  'west dunbartonshire',
+];
 
-const koreaSubs = ['seoul', 'incheon', 'daejeon', 'daegu', 'busan', 'gwangju', 'jeollabukdo', 'jeollanamdo', 'jeju', 'jejudo', 'gyeonggido', 'chungcheongbukdo', 'chungcheongnamdo', 'gyeongsangbukdo', 'gyeongsangnamdo', 'gangwondo'];
+const southKoreaSubs = [
+  'busan',
+  'chungcheongbukdo',
+  'chungcheongnamdo',
+  'daejeon',
+  'deagu',
+  'gangwondo',
+  'gwangju',
+  'gyeonggido',
+  'gyeongsangbukdo',
+  'gyeongsangnamdo',
+  'incheon',
+  'jejudo',
+  'jeollabukdo',
+  'jeollanamdo',
+  'seoul',
+];
 
 const germanySubs = ['berlin'];
 const italySubs = ['bolzano'];
@@ -54,7 +120,7 @@ for (const name of austriaSubs) lookup.set(name, countryId('austria'));
 for (const name of swedenSubs) lookup.set(name, countryId('sweden'));
 for (const name of englandSubs) lookup.set(name, countryId('england'));
 for (const name of scotlandSubs) lookup.set(name, countryId('scotland'));
-for (const name of koreaSubs) lookup.set(name, countryId('south_korea'));
+for (const name of southKoreaSubs) lookup.set(name, countryId('south_korea'));
 for (const name of germanySubs) lookup.set(name, countryId('germany'));
 for (const name of italySubs) lookup.set(name, countryId('italy'));
 for (const name of japanSubs) lookup.set(name, countryId('japan'));
