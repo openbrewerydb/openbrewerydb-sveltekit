@@ -54,6 +54,7 @@
   </div>
   <div class="hidden md:flex md:space-x-10">
     <NavMenuItem href="/breweries">Breweries</NavMenuItem>
+    <NavMenuItem href="/dashboard">Dashboard</NavMenuItem>
     <NavMenuItem href="/documentation">Docs</NavMenuItem>
     <NavMenuItem href="/faq">FAQ</NavMenuItem>
     <NavMenuItem href="/news">News</NavMenuItem>
