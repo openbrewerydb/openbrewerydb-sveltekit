@@ -18,7 +18,7 @@
     "test:report": "playwright show-report"
   },
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.56.1",
     "@sveltejs/adapter-cloudflare": "^7.0.1",
     "@sveltejs/kit": "^2.20.7",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
