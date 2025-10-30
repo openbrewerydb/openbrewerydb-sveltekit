@@ -1,38 +1,134 @@
-# create-svelte
+# Open Brewery DB
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+A free, open-source dataset and API for brewery, cidery, brewpub, and bottleshop information worldwide. Built with Svelte 5, SvelteKit 2, TypeScript, and TailwindCSS 4.
 
-## Creating a project
+## 🍺 What is Open Brewery DB?
 
-If you're seeing this, you've probably already done this step. Congrats!
+Open Brewery DB is a community-driven project that maintains a comprehensive dataset of breweries and related establishments. Our mission is to provide free, public access to brewery information for developers, data analysts, and beer enthusiasts worldwide.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+### Features
 
-# create a new project in my-app
-npm init svelte@next my-app
+- **Free API**: Access brewery data through our RESTful API
+- **Search & Filter**: Find breweries by location, type, and various criteria
+- **Interactive Maps**: Visualize brewery locations with geographic data
+- **Community Driven**: Contribute and help maintain accurate brewery information
+- **Open Source**: All data and code is freely available
+
+## 🚀 Tech Stack
+
+- **Framework**: Svelte 5
+- **Backend**: SvelteKit 2
+- **Language**: TypeScript
+- **Styling**: TailwindCSS 4
+- **Deployment**: Cloudflare Pages/Workers
+- **Testing**: Playwright for E2E testing
+- **Monitoring**: Sentry for error tracking
+- **Data Visualization**: D3.js and Layerchart for maps
+
+## 🛠️ Development
+
+### Prerequisites
+
+- Node.js (LTS version)
+- npm or pnpm package manager
+
+### Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/openbrewery/openbrewerydb-sveltekit.git
+   cd openbrewerydb-sveltekit
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+   The application will be available at `http://localhost:5173`
+
+4. **Optional: Open in browser**
+   ```bash
+   npm run dev -- --open
+   ```
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run check` - Run TypeScript checks
+- `npm run lint` - Run linting and formatting checks
+- `npm run format` - Format code with Prettier
+- `npm run test:e2e` - Run Playwright E2E tests
+- `npm run authors:build` - Build GitHub authors data
+- `npm run changelogs:build` - Build changelog data
+
+## 📁 Project Structure
+
+```
+src/
+├── lib/                 # Shared utilities and components
+│   ├── components/      # Reusable Svelte components
+│   ├── data/           # Static data and generated content
+│   └── types.ts        # TypeScript type definitions
+├── routes/             # SvelteKit pages and API routes
+├── layouts/            # Page layouts
+└── styles/             # Global styles and TailwindCSS
 ```
 
-> Note: the `@next` is temporary
+## 🌐 Deployment
 
-## Developing
+This project is configured to deploy on Cloudflare using the `@sveltejs/adapter-cloudflare`. The build process automatically optimizes for Cloudflare's edge network.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Environment Variables
 
-```bash
-npm run dev
+Create a `.env` file for local development:
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```env
+# Sentry (optional)
+SENTRY_AUTH_TOKEN=your_sentry_token
+
+# GitHub (for build scripts)
+GITHUB_TOKEN=your_github_token
 ```
 
-## Building
+## 📊 API Documentation
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
+Complete API documentation is available at `/documentation` in the application or online at [openbrewerydb.org/documentation](https://openbrewerydb.org/documentation).
 
-```bash
-npm run build
-```
+### API Endpoints
 
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+- `GET /breweries` - List all breweries with pagination
+- `GET /breweries/{id}` - Get specific brewery details
+- `GET /breweries/search` - Search breweries by query
+- `GET /breweries/autocomplete` - Autocomplete brewery names
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+
+- How to contribute data
+- Code contributions
+- Bug reports and feature requests
+- Development setup
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Sponsors
+
+Open Brewery DB is grateful for the support of our sponsors, particularly [Sentry](https://sentry.io/) for providing application monitoring services.
+
+## 🔗 Links
+
+- [Live Site](https://openbrewerydb.org/)
+- [API Documentation](https://openbrewerydb.org/documentation)
+- [GitHub Repository](https://github.com/openbrewery/openbrewerydb-sveltekit)
+- [Issues & Feature Requests](https://github.com/openbrewery/openbrewerydb-sveltekit/issues)
