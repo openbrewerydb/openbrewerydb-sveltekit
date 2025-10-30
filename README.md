@@ -107,7 +107,6 @@ Complete API documentation is available at `/documentation` in the application o
 - `GET /breweries` - List all breweries with pagination
 - `GET /breweries/{id}` - Get specific brewery details
 - `GET /breweries/search` - Search breweries by query
-- `GET /breweries/autocomplete` - Autocomplete brewery names
 
 ## 🤝 Contributing
 
