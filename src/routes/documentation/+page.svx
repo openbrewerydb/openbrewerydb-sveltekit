@@ -184,19 +184,6 @@ Search for breweries based on a search term.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/search?query=san%20diego&per_page=3" />
 
-### Autocomplete
-
-Return a list of names and ids of breweries based on a search term. This endpoint is typically used for a drop-down selection.
-
-**Notes:**
-
-- For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
-- The maximum number of breweries returned is **15**.
-
-`https://api.openbrewerydb.org/v1/breweries/autocomplete?query={search}`
-
-<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/autocomplete?query=san%20diego" />
-
 ---
 
 ## Metadata
