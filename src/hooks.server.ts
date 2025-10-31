@@ -22,7 +22,11 @@ export function handle({ event, resolve }) {
     return new Response(undefined, { status: 404 });
   }
 
-  return resolve(event);
+  return resolve(event, {
+    filterSerializedResponseHeaders(name) {
+      return name === 'content-type';
+    },
+  });
 }
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`
