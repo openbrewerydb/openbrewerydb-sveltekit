@@ -188,6 +188,8 @@ Search for breweries based on a search term.
 
 Return a list of names and ids of breweries based on a search term. This endpoint is typically used for a drop-down selection.
 
+**⚠️ Deprecated:** This endpoint is deprecated and will be removed from v1 by the end of the year. Please use the [Search](#search) endpoint instead.
+
 **Notes:**
 
 - For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
