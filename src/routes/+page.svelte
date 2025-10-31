@@ -1,6 +1,7 @@
 <script lang="ts">
   import logo from '$lib/assets/obdb-logo.png';
   import SEO from '$lib/components/SEO.svelte';
+  import Contributors from '$lib/components/Contributors.svelte';
 </script>
 
 <SEO title="Open Brewery DB" description="A worldwide open-source brewery dataset and API" />
@@ -96,4 +97,5 @@
       </span>
     </a>
   </section>
+  <Contributors />
 </div>
