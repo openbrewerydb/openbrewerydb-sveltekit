@@ -187,7 +187,7 @@ Search for breweries based on a search term. The search performs partial, case-i
 | Parameter | Type    | Required | Description |
 |-----------|---------|----------|-------------|
 | `query`   | string  | yes      | Search term to match against brewery names. Supports partial matches. |
-| `per_page`| integer | no       | Number of results per page. Default: 20. Maximum: 200. |
+| `per_page`| integer | no       | Number of results per page. Default: 50. Maximum: 200. |
 | `page`    | integer | no       | Page number for pagination. Default: 1. |
 
 **Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
