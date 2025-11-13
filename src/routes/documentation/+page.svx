@@ -176,13 +176,44 @@ Number of breweries to return each call.
 
 ### Search
 
-Search for breweries based on a search term.
-
-**Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+Search for breweries based on a search term. The search performs partial, case-insensitive matching against brewery names.
 
 `https://api.openbrewerydb.org/v1/breweries/search?query={search}`
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/search?query=san%20diego&per_page=3" />
+
+#### Query Parameters
+
+| Parameter | Type    | Required | Description |
+|-----------|---------|----------|-------------|
+| `query`   | string  | yes      | Search term to match against brewery names. Supports partial matches. |
+| `per_page`| integer | no       | Number of results per page. Default: 20. Maximum: 200. |
+| `page`    | integer | no       | Page number for pagination. Default: 1. |
+
+**Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+
+#### Response Fields
+
+| Field          | Type            | Description |
+|----------------|-----------------|-------------|
+| `id`           | string          | Unique identifier for the brewery |
+| `name`         | string          | Brewery name |
+| `brewery_type` | string          | Type of brewery (see [by_type](#by_type) for possible values) |
+| `address_1`    | string or null  | Primary street address |
+| `address_2`    | string or null  | Secondary address line |
+| `address_3`    | string or null  | Third address line |
+| `city`         | string          | City name |
+| `state_province`| string         | State or province |
+| `postal_code`  | string          | Postal or ZIP code |
+| `country`      | string          | Country name |
+| `longitude`    | number or null  | Longitude coordinate |
+| `latitude`     | number or null  | Latitude coordinate |
+| `phone`        | string or null  | Contact phone number |
+| `website_url`  | string or null  | Brewery website URL |
+| `state`        | string          | State abbreviation or name |
+| `street`       | string or null  | Street address |
+
+**Note:** Returns an empty array `[]` when no breweries match the search query.
 
 ### Autocomplete
 
