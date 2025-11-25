@@ -41,6 +41,33 @@ Get a single brewery.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0" />
 
+#### Query Parameters
+
+| Parameter | Type   | Required | Description                       |
+| --------- | ------ | -------- | --------------------------------- |
+| `obdb-id` | string | yes      | Unique identifier for the brewery |
+
+#### Response Fields
+
+| Field            | Type           | Description                                                   |
+| ---------------- | -------------- | ------------------------------------------------------------- |
+| `id`             | string         | Unique identifier for the brewery                             |
+| `name`           | string         | Brewery name                                                  |
+| `brewery_type`   | string         | Type of brewery (see [by_type](#by_type) for possible values) |
+| `address_1`      | string or null | Primary street address                                        |
+| `address_2`      | string or null | Secondary address line                                        |
+| `address_3`      | string or null | Third address line                                            |
+| `city`           | string         | City name                                                     |
+| `state_province` | string         | State or province                                             |
+| `postal_code`    | string         | Postal or ZIP code                                            |
+| `country`        | string         | Country name                                                  |
+| `longitude`      | number or null | Longitude coordinate                                          |
+| `latitude`       | number or null | Latitude coordinate                                           |
+| `phone`          | string or null | Contact phone number                                          |
+| `website_url`    | string or null | Brewery website URL                                           |
+| `state`          | string         | State abbreviation or name (deprecated)                       |
+| `street`         | string or null | Street address (deprecated)                                   |
+
 ---
 
 ## List Breweries
@@ -51,12 +78,27 @@ Returns a list of breweries.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?per_page=3" />
 
+#### Query Parameters
+
+| Parameter    | Type    | Required | Description                                                                    |
+| ------------ | ------- | -------- | ------------------------------------------------------------------------------ |
+| `by_city`    | string  | no       | Filter breweries by city.                                                      |
+| `by_country` | string  | no       | Filter breweries by country.                                                   |
+| `by_dist`    | string  | no       | Sort results by distance from an origin point (`latitude,longitude`).          |
+| `by_ids`     | string  | no       | Comma-separated list of brewery IDs.                                           |
+| `by_name`    | string  | no       | Filter breweries by name.                                                      |
+| `by_state`   | string  | no       | Filter breweries by full state name (no abbreviations).                        |
+| `by_postal`  | string  | no       | Filter breweries by postal or ZIP code. Supports 5-digit and postal+4 formats. |
+| `by_type`    | string  | no       | Filter by brewery type (see `by_type` section for valid values).               |
+| `page`       | integer | no       | Page number for pagination. Default: 1.                                        |
+| `per_page`   | integer | no       | Number of breweries per page. Default: 50. Maximum: 200.                       |
+| `sort`       | string  | no       | Sort results by one or more fields using `asc` or `desc`.                      |
+
 ### `by_city`
 
 Filter breweries by city.
 
-**Note:** For the parameters, you can use underscores or
-[url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+**Note:** For the parameters, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_city=san_diego&per_page=3" />
 
@@ -64,15 +106,13 @@ Filter breweries by city.
 
 Filter breweries by country.
 
-**Note:** For the parameters, you can use underscores or
-[url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+**Note:** For the parameters, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_country=south%20korea&per_page=3" />
 
 ### `by_dist`
 
-Sort the results by distance from an origin point, denoted by
-`latitude,longitude`.
+Sort the results by distance from an origin point, denoted by `latitude,longitude`.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_dist=32.88313237,-117.1649842&per_page=3" />
 
@@ -118,9 +158,9 @@ Must be one of:
 - `nano` - An extremely small brewery which typically only distributes locally.
 - `regional` - A regional location of an expanded brewery. Ex. Sierra Nevada's Asheville, NC location.
 - `brewpub` - A beer-focused restaurant or restaurant/bar with a brewery on-premise.
-- `large` - A very large brewery. Likely not for visitors. Ex. Miller-Coors. (deprecated)
+- `large` - A very large brewery. Likely not for visitors. Ex. Miller-Coors. (deprecatedated)
 - `planning` - A brewery in planning or not yet opened to the public.
-- `bar` - A bar. No brewery equipment on premise. (deprecated)
+- `bar` - A bar. No brewery equipment on premise. (deprecatedated)
 - `contract` - A brewery that uses another brewery's equipment.
 - `proprietor` - Similar to contract brewing but refers more to a brewery incubator.
 - `closed` - A location which has been closed.
@@ -152,6 +192,27 @@ Sort the results by one or more fields.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries?by_state=california&sort=type,name:asc&per_page=3" />
 
+#### Response Fields
+
+| Field            | Type           | Description                                                   |
+| ---------------- | -------------- | ------------------------------------------------------------- |
+| `id`             | string         | Unique identifier for the brewery                             |
+| `name`           | string         | Brewery name                                                  |
+| `brewery_type`   | string         | Type of brewery (see [by_type](#by_type) for possible values) |
+| `address_1`      | string or null | Primary street address                                        |
+| `address_2`      | string or null | Secondary address line                                        |
+| `address_3`      | string or null | Third address line                                            |
+| `city`           | string         | City name                                                     |
+| `state_province` | string         | State or province                                             |
+| `postal_code`    | string         | Postal or ZIP code                                            |
+| `country`        | string         | Country name                                                  |
+| `longitude`      | number or null | Longitude coordinate                                          |
+| `latitude`       | number or null | Latitude coordinate                                           |
+| `phone`          | string or null | Contact phone number                                          |
+| `website_url`    | string or null | Brewery website URL                                           |
+| `state`          | string         | State abbreviation or name (deprecated)                       |
+| `street`         | string or null | Street address (deprecated)                                   |
+
 ---
 
 ## Random Brewery
@@ -162,13 +223,34 @@ Get a random brewery.
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random" />
 
-### `size`
+#### Query Parameters
 
-Number of breweries to return each call.
+| Parameter | Type    | Required | Description                                             |
+| --------- | ------- | -------- | ------------------------------------------------------- |
+| `size`    | integer | no       | Number of breweries to return. Default: 1. Maximum: 50. |
 
-**Note:** Default is 1. Max per page is 50.
+#### Response Fields
 
-<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random?size=3" />
+| Field            | Type           | Description                                                   |
+| ---------------- | -------------- | ------------------------------------------------------------- |
+| `id`             | string         | Unique identifier for the brewery                             |
+| `name`           | string         | Brewery name                                                  |
+| `brewery_type`   | string         | Type of brewery (see [by_type](#by_type) for possible values) |
+| `address_1`      | string or null | Primary street address                                        |
+| `address_2`      | string or null | Secondary address line                                        |
+| `address_3`      | string or null | Third address line                                            |
+| `city`           | string         | City name                                                     |
+| `state_province` | string         | State or province                                             |
+| `postal_code`    | string         | Postal or ZIP code                                            |
+| `country`        | string         | Country name                                                  |
+| `longitude`      | number or null | Longitude coordinate                                          |
+| `latitude`       | number or null | Latitude coordinate                                           |
+| `phone`          | string or null | Contact phone number                                          |
+| `website_url`    | string or null | Brewery website URL                                           |
+| `state`          | string         | State abbreviation or name (deprecated)                       |
+| `street`         | string or null | Street address (deprecated)                                   |
+
+**Note:** Returns a single brewery object by default, or an array of brewery objects when `size` is greater than 1.
 
 ---
 
@@ -184,51 +266,34 @@ Search for breweries based on a search term. The search performs partial, case-i
 
 #### Query Parameters
 
-| Parameter | Type    | Required | Description |
-|-----------|---------|----------|-------------|
-| `query`   | string  | yes      | Search term to match against brewery names. Supports partial matches. |
-| `per_page`| integer | no       | Number of results per page. Default: 50. Maximum: 200. |
-| `page`    | integer | no       | Page number for pagination. Default: 1. |
-
-**Note:** For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
+| Parameter  | Type    | Required | Description                                                           |
+| ---------- | ------- | -------- | --------------------------------------------------------------------- |
+| `query`    | string  | yes      | Search term to match against brewery names. Supports partial matches. |
+| `per_page` | integer | no       | Number of results per page. Default: 50. Maximum: 200.                |
+| `page`     | integer | no       | Page number for pagination. Default: 1.                               |
 
 #### Response Fields
 
-| Field          | Type            | Description |
-|----------------|-----------------|-------------|
-| `id`           | string          | Unique identifier for the brewery |
-| `name`         | string          | Brewery name |
-| `brewery_type` | string          | Type of brewery (see [by_type](#by_type) for possible values) |
-| `address_1`    | string or null  | Primary street address |
-| `address_2`    | string or null  | Secondary address line |
-| `address_3`    | string or null  | Third address line |
-| `city`         | string          | City name |
-| `state_province`| string         | State or province |
-| `postal_code`  | string          | Postal or ZIP code |
-| `country`      | string          | Country name |
-| `longitude`    | number or null  | Longitude coordinate |
-| `latitude`     | number or null  | Latitude coordinate |
-| `phone`        | string or null  | Contact phone number |
-| `website_url`  | string or null  | Brewery website URL |
-| `state`        | string          | State abbreviation or name |
-| `street`       | string or null  | Street address |
+| Field            | Type           | Description                                                   |
+| ---------------- | -------------- | ------------------------------------------------------------- |
+| `id`             | string         | Unique identifier for the brewery                             |
+| `name`           | string         | Brewery name                                                  |
+| `brewery_type`   | string         | Type of brewery (see [by_type](#by_type) for possible values) |
+| `address_1`      | string or null | Primary street address                                        |
+| `address_2`      | string or null | Secondary address line                                        |
+| `address_3`      | string or null | Third address line                                            |
+| `city`           | string         | City name                                                     |
+| `state_province` | string         | State or province                                             |
+| `postal_code`    | string         | Postal or ZIP code                                            |
+| `country`        | string         | Country name                                                  |
+| `longitude`      | number or null | Longitude coordinate                                          |
+| `latitude`       | number or null | Latitude coordinate                                           |
+| `phone`          | string or null | Contact phone number                                          |
+| `website_url`    | string or null | Brewery website URL                                           |
+| `state`          | string         | State abbreviation or name (deprecated)                       |
+| `street`         | string or null | Street address (deprecated)                                   |
 
 **Note:** Returns an empty array `[]` when no breweries match the search query.
-
-### Autocomplete
-
-Return a list of names and ids of breweries based on a search term. This endpoint is typically used for a drop-down selection.
-
-**⚠️ Deprecated:** This endpoint is deprecated and will be removed from v1 by the end of the year. Please use the [Search](#search) endpoint instead.
-
-**Notes:**
-
-- For the `query` parameter, you can use underscores or [url encoding](https://en.wikipedia.org/wiki/Percent-encoding) for spaces.
-- The maximum number of breweries returned is **15**.
-
-`https://api.openbrewerydb.org/v1/breweries/autocomplete?query={search}`
-
-<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/autocomplete?query=san%20diego" />
 
 ---
 
@@ -237,6 +302,21 @@ Return a list of names and ids of breweries based on a search term. This endpoin
 Metadata takes the same filters as [List Breweries](#list-breweries).
 
 `https://api.openbrewerydb.org/v1/breweries/meta`
+
+#### Query Parameters
+
+| Parameter    | Type    | Required | Description                                                                    |
+| ------------ | ------- | -------- | ------------------------------------------------------------------------------ |
+| `by_city`    | string  | no       | Filter breweries by city.                                                      |
+| `by_country` | string  | no       | Filter breweries by country.                                                   |
+| `by_dist`    | string  | no       | Sort results by distance from an origin point (`latitude,longitude`).          |
+| `by_ids`     | string  | no       | Comma-separated list of brewery IDs.                                           |
+| `by_name`    | string  | no       | Filter breweries by name.                                                      |
+| `by_state`   | string  | no       | Filter breweries by full state name (no abbreviations).                        |
+| `by_postal`  | string  | no       | Filter breweries by postal or ZIP code. Supports 5-digit and postal+4 formats. |
+| `by_type`    | string  | no       | Filter by brewery type (see `by_type` section for valid values).               |
+| `page`       | integer | no       | Page number for pagination. Default: 1.                                        |
+| `per_page`   | integer | no       | Number of breweries per page. Default: 50. Maximum: 200.                       |
 
 ### Show all breweries meta data
 
