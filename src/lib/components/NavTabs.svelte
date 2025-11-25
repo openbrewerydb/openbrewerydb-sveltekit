@@ -44,10 +44,10 @@
       {#each data as item}
         <a
           href="#{item.id}"
-          class="px-3 py-2 font-medium text-sm rounded-md shadow-sm hover:shadow transition-colors transition-shadow duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 {selected ===
+          class="inline-flex items-center px-4 py-2 font-semibold text-sm rounded-full border shadow-sm hover:shadow-md transition-colors transition-shadow duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 {selected ===
           item
-            ? 'bg-amber-100 text-amber-800'
-            : 'text-amber-600 hover:text-amber-800'}"
+            ? 'bg-amber-600 border-amber-600 text-white'
+            : 'bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100 hover:border-amber-300'}"
           onclick={() => {
             selected = item;
           }}
