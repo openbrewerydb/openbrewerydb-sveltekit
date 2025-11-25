@@ -1,7 +1,8 @@
 <script lang="ts">
   import Prism from 'prismjs';
+  import { Loader2, Play } from 'lucide-svelte';
 
-  
+
 
   interface Props {
     /**
@@ -25,7 +26,7 @@
     isLoading = true;
     hasError = false;
     errorMessage = '';
-    
+
     try {
       const response = await fetch(endpoint, { cache: 'reload' });
       if (response.ok) {
@@ -48,18 +49,19 @@
 </script>
 
 <button
-  class="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 my-4 mb-4 md:text-lg md:px-10 transition-colors duration-200 shadow-md hover:shadow-lg transition-shadow duration-200"
+  type="button"
+  class="inline-flex items-center justify-center gap-2 px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 my-4 md:text-lg md:px-10 transition-colors transition-shadow duration-200 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
   onclick={handleClick}
   disabled={isLoading}
+  aria-busy={isLoading}
+  aria-live="polite"
 >
   {#if isLoading}
-    <span class="mr-2">Loading...</span>
-    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-    </svg>
+    <Loader2 class="h-5 w-5 animate-spin" aria-hidden="true" />
+    <span>Running...</span>
   {:else}
-    <span>Run</span> <span class="ml-2 text-xl">▶</span>
+    <Play class="h-5 w-5" aria-hidden="true" />
+    <span>Run request</span>
   {/if}
 </button>
 

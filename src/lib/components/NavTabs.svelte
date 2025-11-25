@@ -22,7 +22,7 @@
       <select
         id="tabs"
         name="tabs"
-        class="block w-full text-lg font-medium bg-white text-amber-800 focus:ring-amber-500 focus:border-amber-500 border-2 border-amber-400 rounded-lg py-2.5 px-3 appearance-none shadow-md"
+        class="block w-full text-base md:text-lg font-medium bg-white text-amber-800 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 border-2 border-amber-400 rounded-lg py-2.5 pl-3 pr-10 appearance-none shadow-md hover:shadow-lg cursor-pointer transition-colors transition-shadow duration-150"
         bind:value={selected}
         onchange={() => {
           goto('#' + selected.id);
@@ -40,17 +40,18 @@
     </div>
   </div>
   <div class="hidden sm:block">
-    <nav class="flex space-x-4" aria-label="Tabs">
+    <nav class="flex flex-wrap gap-2" aria-label="Tabs">
       {#each data as item}
         <a
           href="#{item.id}"
-          class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md shadow-sm hover:shadow transition-shadow duration-200 {selected ===
+          class="px-3 py-2 font-medium text-sm rounded-md shadow-sm hover:shadow transition-colors transition-shadow duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 {selected ===
           item
-            ? 'bg-amber-100 text-amber-700'
-            : 'text-amber-500 hover:text-amber-700'}"
+            ? 'bg-amber-100 text-amber-800'
+            : 'text-amber-600 hover:text-amber-800'}"
           onclick={() => {
             selected = item;
           }}
+          aria-current={selected === item ? 'page' : undefined}
         >
           {item.label}
         </a>
