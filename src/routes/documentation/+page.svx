@@ -6,6 +6,7 @@ layout: page
 <script>
   import RunButton from '$lib/components/RunButton.svelte';
   import NavTabs from '$lib/components/NavTabs.svelte';
+  import BackToTop from '$lib/components/BackToTop.svelte';
 
   const data = [
     {
@@ -329,3 +330,5 @@ Metadata takes the same filters as [List Breweries](#list-breweries).
 ### Show micro breweries meta data
 
 <RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/meta?by_type=micro" />
+
+<BackToTop />
