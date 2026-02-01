@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-30T02:03:08.879Z",
+  "generated_at": "2026-02-01T04:28:54.570Z",
   "repos": {
     "openbrewerydb/openbrewerydb": {
       "type": "dataset",
@@ -8,6 +8,110 @@
       "fallback": {
         "kind": "pull_requests",
         "items": [
+          {
+            "number": 238,
+            "title": "Bump lodash from 4.17.21 to 4.17.23",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/238",
+            "state": "closed",
+            "merged_at": "2026-02-01T03:03:59Z",
+            "closed_at": "2026-02-01T03:03:59Z",
+            "user": {
+              "login": "dependabot[bot]",
+              "html_url": "https://github.com/apps/dependabot",
+              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
+            }
+          },
+          {
+            "number": 236,
+            "title": "Updated Flying Dreams Brewing to closed",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/236",
+            "state": "closed",
+            "merged_at": "2025-12-23T21:00:20Z",
+            "closed_at": "2025-12-23T21:00:20Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 234,
+            "title": "Bump glob from 11.0.1 to 11.1.0",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/234",
+            "state": "closed",
+            "merged_at": "2025-11-18T00:51:58Z",
+            "closed_at": "2025-11-18T00:51:59Z",
+            "user": {
+              "login": "dependabot[bot]",
+              "html_url": "https://github.com/apps/dependabot",
+              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
+            }
+          },
+          {
+            "number": 233,
+            "title": "Bump js-yaml from 4.1.0 to 4.1.1",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/233",
+            "state": "closed",
+            "merged_at": "2025-11-18T00:44:23Z",
+            "closed_at": "2025-11-18T00:44:23Z",
+            "user": {
+              "login": "dependabot[bot]",
+              "html_url": "https://github.com/apps/dependabot",
+              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
+            }
+          },
+          {
+            "number": 232,
+            "title": "Fruita, CO updates",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/232",
+            "state": "closed",
+            "merged_at": "2025-11-11T23:55:29Z",
+            "closed_at": "2025-11-11T23:55:29Z",
+            "user": {
+              "login": "dustinb",
+              "html_url": "https://github.com/dustinb",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1167912?v=4"
+            }
+          },
+          {
+            "number": 231,
+            "title": "Add country distribution statistics",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/231",
+            "state": "closed",
+            "merged_at": "2025-10-31T07:36:51Z",
+            "closed_at": "2025-10-31T07:36:51Z",
+            "user": {
+              "login": "chrisjm",
+              "html_url": "https://github.com/chrisjm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4"
+            }
+          },
+          {
+            "number": 230,
+            "title": "Fix remove extra whitespace",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/230",
+            "state": "closed",
+            "merged_at": "2025-10-31T07:33:05Z",
+            "closed_at": "2025-10-31T07:33:05Z",
+            "user": {
+              "login": "chrisjm",
+              "html_url": "https://github.com/chrisjm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4"
+            }
+          },
+          {
+            "number": 229,
+            "title": "Feature: Add update brewery statistics script",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/229",
+            "state": "closed",
+            "merged_at": "2025-10-31T06:55:08Z",
+            "closed_at": "2025-10-31T06:55:08Z",
+            "user": {
+              "login": "chrisjm",
+              "html_url": "https://github.com/chrisjm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4"
+            }
+          },
           {
             "number": 228,
             "title": "Updates DC breweries",
@@ -136,136 +240,6 @@
               "login": "simonmackinnon",
               "html_url": "https://github.com/simonmackinnon",
               "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4"
-            }
-          },
-          {
-            "number": 216,
-            "title": "Updated CT list with recent closures",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/216",
-            "state": "closed",
-            "merged_at": "2025-10-04T06:15:03Z",
-            "closed_at": "2025-10-04T06:15:03Z",
-            "user": {
-              "login": "alexjustesen",
-              "html_url": "https://github.com/alexjustesen",
-              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
-            }
-          },
-          {
-            "number": 215,
-            "title": "Add ISM Brewing & Kitchen in Long Beach, CA",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/215",
-            "state": "closed",
-            "merged_at": "2025-10-04T06:13:57Z",
-            "closed_at": "2025-10-04T06:13:57Z",
-            "user": {
-              "login": "epikkoder",
-              "html_url": "https://github.com/epikkoder",
-              "avatar_url": "https://avatars.githubusercontent.com/u/20148265?v=4"
-            }
-          },
-          {
-            "number": 214,
-            "title": "Additional update to USA NH breweries",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/214",
-            "state": "closed",
-            "merged_at": "2025-07-17T15:36:44Z",
-            "closed_at": "2025-07-17T15:36:44Z",
-            "user": {
-              "login": "zshapleigh",
-              "html_url": "https://github.com/zshapleigh",
-              "avatar_url": "https://avatars.githubusercontent.com/u/816109?v=4"
-            }
-          },
-          {
-            "number": 213,
-            "title": "Update to USA NH Brewery list",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/213",
-            "state": "closed",
-            "merged_at": "2025-07-15T15:41:07Z",
-            "closed_at": "2025-07-15T15:41:07Z",
-            "user": {
-              "login": "zshapleigh",
-              "html_url": "https://github.com/zshapleigh",
-              "avatar_url": "https://avatars.githubusercontent.com/u/816109?v=4"
-            }
-          },
-          {
-            "number": 212,
-            "title": "Add Bolzano breweries",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/212",
-            "state": "closed",
-            "merged_at": "2025-06-16T23:23:14Z",
-            "closed_at": "2025-06-16T23:23:14Z",
-            "user": {
-              "login": "fabiovitalba",
-              "html_url": "https://github.com/fabiovitalba",
-              "avatar_url": "https://avatars.githubusercontent.com/u/3830362?v=4"
-            }
-          },
-          {
-            "number": 210,
-            "title": "fixed Utah brewery lat value",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/210",
-            "state": "closed",
-            "merged_at": "2025-06-12T15:58:29Z",
-            "closed_at": "2025-06-12T15:58:29Z",
-            "user": {
-              "login": "alexjustesen",
-              "html_url": "https://github.com/alexjustesen",
-              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
-            }
-          },
-          {
-            "number": 211,
-            "title": "Add Stiegl (Austria)",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/211",
-            "state": "closed",
-            "merged_at": "2025-06-12T15:57:39Z",
-            "closed_at": "2025-06-12T15:57:39Z",
-            "user": {
-              "login": "zingi",
-              "html_url": "https://github.com/zingi",
-              "avatar_url": "https://avatars.githubusercontent.com/u/9286499?v=4"
-            }
-          },
-          {
-            "number": 209,
-            "title": "Updated README.md API link",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/209",
-            "state": "closed",
-            "merged_at": "2025-05-14T15:18:54Z",
-            "closed_at": "2025-05-14T15:18:54Z",
-            "user": {
-              "login": "alexjustesen",
-              "html_url": "https://github.com/alexjustesen",
-              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
-            }
-          },
-          {
-            "number": 207,
-            "title": "Add Sugar Monkey Brewing & Social Club to california.csv",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/207",
-            "state": "closed",
-            "merged_at": "2025-04-24T23:16:57Z",
-            "closed_at": "2025-04-24T23:16:57Z",
-            "user": {
-              "login": "epikkoder",
-              "html_url": "https://github.com/epikkoder",
-              "avatar_url": "https://avatars.githubusercontent.com/u/20148265?v=4"
-            }
-          },
-          {
-            "number": 206,
-            "title": "Removed a few closed Richmond Breweries. - Castleburg - Isley - Canon & Draw  - Dogtown",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/206",
-            "state": "closed",
-            "merged_at": null,
-            "closed_at": "2025-04-08T00:28:02Z",
-            "user": {
-              "login": "SeanRVACode",
-              "html_url": "https://github.com/SeanRVACode",
-              "avatar_url": "https://avatars.githubusercontent.com/u/133682090?v=4"
             }
           }
         ]

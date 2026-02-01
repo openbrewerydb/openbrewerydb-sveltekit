@@ -1,22 +1,22 @@
 {
-  "generated_at": "2025-10-31T05:41:37.223Z",
+  "generated_at": "2026-02-01T04:25:30.974Z",
   "repositories": [
     "openbrewerydb/openbrewerydb",
     "openbrewerydb/openbrewerydb-laravel-api",
     "openbrewerydb/openbrewerydb-sveltekit"
   ],
-  "count": 62,
+  "count": 64,
   "contributors": [
     {
       "login": "chrisjm",
       "id": 96110,
       "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4",
       "html_url": "https://github.com/chrisjm",
-      "contributions": 454,
+      "contributions": 466,
       "repos": [
         {
           "type": "dataset",
-          "contributions": 331,
+          "contributions": 339,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
         },
         {
@@ -26,7 +26,7 @@
         },
         {
           "type": "website",
-          "contributions": 110,
+          "contributions": 114,
           "url": "https://github.com/openbrewerydb/openbrewerydb-sveltekit"
         }
       ]
@@ -36,11 +36,11 @@
       "id": 1144087,
       "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4",
       "html_url": "https://github.com/alexjustesen",
-      "contributions": 88,
+      "contributions": 89,
       "repos": [
         {
           "type": "dataset",
-          "contributions": 7,
+          "contributions": 8,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
         },
         {
@@ -747,6 +747,20 @@
       ]
     },
     {
+      "login": "dustinb",
+      "id": 1167912,
+      "avatar_url": "https://avatars.githubusercontent.com/u/1167912?v=4",
+      "html_url": "https://github.com/dustinb",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
       "login": "davidaholm",
       "id": 4689571,
       "avatar_url": "https://avatars.githubusercontent.com/u/4689571?v=4",
@@ -855,6 +869,20 @@
           "type": "dataset",
           "contributions": 1,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
+      "login": "derrickscottux-collab",
+      "id": 243489198,
+      "avatar_url": "https://avatars.githubusercontent.com/u/243489198?v=4",
+      "html_url": "https://github.com/derrickscottux-collab",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "website",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb-sveltekit"
         }
       ]
     },
