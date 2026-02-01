@@ -77,21 +77,23 @@ async function fetchClosedPRs(owner, repo, token) {
   const url = `https://api.github.com/repos/${owner}/${repo}/pulls?state=closed&per_page=20&sort=updated&direction=desc`;
   const data = await ghGet(url, token);
   if (!Array.isArray(data)) return [];
-  return data.map((pr) => ({
-    number: pr.number,
-    title: pr.title,
-    url: pr.html_url,
-    state: pr.state, 
-    merged_at: pr.merged_at,
-    closed_at: pr.closed_at,
-    user: pr.user
-      ? {
-          login: pr.user.login,
-          html_url: pr.user.html_url,
-          avatar_url: pr.user.avatar_url,
-        }
-      : null,
-  }));
+  return data
+    .filter((pr) => pr.merged_at)
+    .map((pr) => ({
+      number: pr.number,
+      title: pr.title,
+      url: pr.html_url,
+      state: pr.state,
+      merged_at: pr.merged_at,
+      closed_at: pr.closed_at,
+      user: pr.user
+        ? {
+            login: pr.user.login,
+            html_url: pr.user.html_url,
+            avatar_url: pr.user.avatar_url,
+          }
+        : null,
+    }));
 }
 
 async function main() {
