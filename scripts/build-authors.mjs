@@ -35,7 +35,7 @@ function parseUsernamesFromFrontmatter(fm) {
     // author: foo
     m = line.match(/^author:\s*(.+)$/i);
     if (m) {
-      usernames.add(m[1].replace(/^['\"]|['\"]$/g, ''));
+      usernames.add(m[1].replace(/^["']|["']$/g, ''));
       continue;
     }
 
@@ -44,7 +44,7 @@ function parseUsernamesFromFrontmatter(fm) {
     if (m) {
       m[1]
         .split(',')
-        .map((s) => s.trim().replace(/^['\"]|['\"]$/g, ''))
+        .map((s) => s.trim().replace(/^["']|["']$/g, ''))
         .filter(Boolean)
         .forEach((u) => usernames.add(u));
       continue;
@@ -62,7 +62,7 @@ function parseUsernamesFromFrontmatter(fm) {
         const val = li
           .replace(/^\s*-\s+/, '')
           .trim()
-          .replace(/^['\"]|['\"]$/g, '');
+          .replace(/^["']|["']$/g, '');
         if (val) usernames.add(val);
         i++;
       }

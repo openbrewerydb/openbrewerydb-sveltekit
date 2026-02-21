@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: CI Tests
 on:
   push:
     branches: [main, master]
@@ -15,6 +15,10 @@ jobs:
           node-version: '22.x'
       - name: Install dependencies
         run: npm ci
+      - name: Run checks
+        run: npm run check
+      - name: Run lint
+        run: npm run lint
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests

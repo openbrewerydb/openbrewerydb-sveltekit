@@ -35,17 +35,20 @@ Open Brewery DB is a community-driven project that maintains a comprehensive dat
 ### Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/openbrewery/openbrewerydb-sveltekit.git
    cd openbrewerydb-sveltekit
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```

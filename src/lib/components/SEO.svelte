@@ -37,17 +37,22 @@
     SEO_CTX
   );
 
-  const shorthand: SEOConfig = {};
-  if (title !== undefined) shorthand.title = title;
-  if (description !== undefined) shorthand.description = description;
-  if (canonical !== undefined) shorthand.canonical = canonical;
-  if (robots !== undefined) shorthand.robots = robots;
+  const shorthand = $derived.by((): SEOConfig => {
+    const next: SEOConfig = {};
+    if (title !== undefined) next.title = title;
+    if (description !== undefined) next.description = description;
+    if (canonical !== undefined) next.canonical = canonical;
+    if (robots !== undefined) next.robots = robots;
 
-  const ogInput: Record<string, any> = {};
-  if (type !== undefined) ogInput.type = type;
-  if (image !== undefined) ogInput.image = image;
-  if (siteName !== undefined) ogInput.siteName = siteName;
-  if (Object.keys(ogInput).length > 0) shorthand.openGraph = ogInput as any;
+    const ogInput: Record<string, string> = {};
+    if (type !== undefined) ogInput.type = type;
+    if (image !== undefined) ogInput.image = image;
+    if (siteName !== undefined) ogInput.siteName = siteName;
+    if (Object.keys(ogInput).length > 0)
+      next.openGraph = ogInput as SEOConfig['openGraph'];
+
+    return next;
+  });
 
   const merged = $derived(mergeSEO(parent, value ?? shorthand));
 

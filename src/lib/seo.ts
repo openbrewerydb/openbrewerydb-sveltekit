@@ -34,7 +34,10 @@ export function canonicalFrom(input: URL): string {
   return `${input.origin}${input.pathname}`;
 }
 
-export function absoluteFrom(input: string | undefined, base?: URL): string | undefined {
+export function absoluteFrom(
+  input: string | undefined,
+  base?: URL
+): string | undefined {
   if (!input) return undefined;
   try {
     return new URL(input, base)?.toString();

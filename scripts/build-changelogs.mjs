@@ -22,9 +22,9 @@ function stripMarkdown(md = '') {
       // inline code
       .replace(/`([^`]+)`/g, '$1')
       // images ![alt](url)
-      .replace(/!\[[^\]]*\]\([^\)]*\)/g, '')
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
       // links [text](url)
-      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
       // headings
       .replace(/^#{1,6}\s*/gm, '')
       // emphasis

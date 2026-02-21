@@ -84,7 +84,7 @@
       <ul
         class="divide-y divide-neutral-200 rounded-md border border-amber-100"
       >
-        {#each repo.releases as r}
+        {#each repo.releases as r (r.url)}
           <li class="p-4 sm:p-5">
             <div
               class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start"
@@ -129,7 +129,7 @@
       <ul
         class="divide-y divide-neutral-200 rounded-md border border-amber-100"
       >
-        {#each repo.fallback.items as pr}
+        {#each repo.fallback.items as pr (pr.url)}
           <li class="p-4 sm:p-5">
             <div
               class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start"

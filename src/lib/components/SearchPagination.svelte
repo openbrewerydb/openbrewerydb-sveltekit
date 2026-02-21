@@ -37,7 +37,7 @@
     </button>
 
     <div class="flex space-x-1">
-      {#each Array(Math.min(totalPages, maxPagesToShow)) as _, i}
+      {#each Array(Math.min(totalPages, maxPagesToShow)) as _item, i (i)}
         {@const pageNum = i + 1}
         <button
           class="px-4 py-2 border rounded-md shadow-sm text-sm font-medium {pageNum ===

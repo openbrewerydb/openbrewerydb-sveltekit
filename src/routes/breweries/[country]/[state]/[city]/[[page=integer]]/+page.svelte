@@ -55,7 +55,7 @@
 
   <!-- Mobile view: Card layout -->
   <div class="mt-6 grid grid-cols-1 gap-4 md:hidden">
-    {#each breweries as brewery}
+    {#each breweries as brewery (brewery.id)}
       <BreweryCard {brewery} />
     {/each}
   </div>

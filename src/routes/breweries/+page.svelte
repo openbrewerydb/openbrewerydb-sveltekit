@@ -19,6 +19,7 @@
     getTotalPages,
     getSearchQuery,
   } from '$lib/stores/breweries.svelte';
+  import { SvelteURLSearchParams } from 'svelte/reactivity';
 
   let { data } = $props();
 
@@ -40,7 +41,7 @@
 
   async function handlePageChange(newPage: number) {
     if (newPage !== getCurrentPage()) {
-      const params = new URLSearchParams();
+      const params = new SvelteURLSearchParams();
       params.set('page', newPage.toString());
       const currentQuery = getSearchQuery();
       if (currentQuery) params.set('query', currentQuery);
@@ -49,13 +50,19 @@
   }
 </script>
 
-<SEO title="Search Breweries" description="Search and browse breweries from the Open Brewery DB dataset." />
+<SEO
+  title="Search Breweries"
+  description="Search and browse breweries from the Open Brewery DB dataset."
+/>
 
 <div class="px-4 py-8">
   <h1 class="text-3xl text-center font-bold mb-6">Search Breweries</h1>
 
   <div class="max-w-2xl mx-auto">
-    <BrewerySearchForm onSearch={handleSearch} initialQuery={getSearchQuery()} />
+    <BrewerySearchForm
+      onSearch={handleSearch}
+      initialQuery={getSearchQuery()}
+    />
   </div>
 
   {#if getLoading()}
@@ -96,7 +103,7 @@
 
     <!-- Mobile view: Card layout -->
     <div class="grid grid-cols-1 gap-6 mt-6 md:hidden">
-      {#each getBreweries() as brewery}
+      {#each getBreweries() as brewery (brewery.id)}
         <BreweryCard {brewery} />
       {/each}
     </div>
