@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-01T04:28:54.570Z",
+  "generated_at": "2026-02-21T04:02:34.846Z",
   "repos": {
     "openbrewerydb/openbrewerydb": {
       "type": "dataset",
@@ -8,6 +8,32 @@
       "fallback": {
         "kind": "pull_requests",
         "items": [
+          {
+            "number": 241,
+            "title": "Create british_columbia.csv",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/241",
+            "state": "closed",
+            "merged_at": "2026-02-21T03:41:25Z",
+            "closed_at": "2026-02-21T03:41:25Z",
+            "user": {
+              "login": "BruddahChrispy",
+              "html_url": "https://github.com/BruddahChrispy",
+              "avatar_url": "https://avatars.githubusercontent.com/u/3619514?v=4"
+            }
+          },
+          {
+            "number": 240,
+            "title": "Updated Maryland breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/240",
+            "state": "closed",
+            "merged_at": "2026-02-21T03:27:52Z",
+            "closed_at": "2026-02-21T03:27:52Z",
+            "user": {
+              "login": "jctopping",
+              "html_url": "https://github.com/jctopping",
+              "avatar_url": "https://avatars.githubusercontent.com/u/163754356?v=4"
+            }
+          },
           {
             "number": 238,
             "title": "Bump lodash from 4.17.21 to 4.17.23",
@@ -215,32 +241,6 @@
               "html_url": "https://github.com/willkrakow",
               "avatar_url": "https://avatars.githubusercontent.com/u/17362961?v=4"
             }
-          },
-          {
-            "number": 218,
-            "title": "Australia data",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/218",
-            "state": "closed",
-            "merged_at": "2025-10-08T15:52:39Z",
-            "closed_at": "2025-10-08T15:52:39Z",
-            "user": {
-              "login": "simonmackinnon",
-              "html_url": "https://github.com/simonmackinnon",
-              "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4"
-            }
-          },
-          {
-            "number": 217,
-            "title": "add initial australia data",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/217",
-            "state": "closed",
-            "merged_at": "2025-10-04T06:42:48Z",
-            "closed_at": "2025-10-04T06:42:48Z",
-            "user": {
-              "login": "simonmackinnon",
-              "html_url": "https://github.com/simonmackinnon",
-              "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4"
-            }
           }
         ]
       }
@@ -249,6 +249,14 @@
       "type": "api",
       "source_url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api",
       "releases": [
+        {
+          "tag": "v1.0.13",
+          "title": "v1.0.13",
+          "date": "2026-02-09T01:41:23Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.0.13",
+          "notes": "What's Changed\n* Bump symfony/http-foundation from 7.3.4 to 7.3.7 by @dependabot[bot] in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/112\n* gh actions: bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/113\n* 2026-02-08 dependency updates by @alexjustesen in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/116\nFull Changelog: https://github.com/openbrewerydb/openbrewerydb-laravel-api/compare/v1.0.12...v1.0.13",
+          "notes_truncated": false
+        },
         {
           "tag": "v1.0.12",
           "title": "v1.0.12",
