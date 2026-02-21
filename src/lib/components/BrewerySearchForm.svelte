@@ -6,7 +6,11 @@
     initialQuery?: string;
   }>();
 
-  let query = $state(initialQuery);
+  let query = $state('');
+
+  $effect(() => {
+    query = initialQuery;
+  });
 
   function handleSearch(event: SubmitEvent) {
     event.preventDefault();

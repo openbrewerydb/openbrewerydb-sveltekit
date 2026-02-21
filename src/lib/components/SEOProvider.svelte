@@ -13,8 +13,10 @@
   const parent: SEOConfig | undefined = getContext<SEOConfig | undefined>(
     SEO_CTX
   );
-  const merged: SEOConfig = mergeSEO(parent, value);
-  setContext(SEO_CTX, merged);
+  const merged = $derived(mergeSEO(parent, value));
+  $effect(() => {
+    setContext(SEO_CTX, merged);
+  });
 </script>
 
 {@render children?.()}

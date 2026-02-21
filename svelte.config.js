@@ -6,6 +6,7 @@ import urls from 'rehype-urls';
 import slug from 'rehype-slug';
 import autoLinkHeadings from 'rehype-autolink-headings';
 import addClasses from 'rehype-add-classes';
+import path from 'node:path';
 
 function processUrl(url, node) {
   if (node.tagName === 'a') {
@@ -36,8 +37,8 @@ const config = {
     mdsvex({
       extensions: ['.svx', '.md'],
       layout: {
-        page: './src/layouts/page.svelte',
-        news: './src/layouts/news.svelte',
+        page: path.resolve(process.cwd(), 'src/layouts/page.svelte'),
+        news: path.resolve(process.cwd(), 'src/layouts/news.svelte'),
       },
       remarkPlugins: [abbr],
       rehypePlugins: [
