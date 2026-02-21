@@ -125,7 +125,6 @@ npm run test:e2e
    ```
 
 2. **Create a pull request**
-
    - Use a descriptive title
    - Describe what you changed and why
    - Link to any related issues
