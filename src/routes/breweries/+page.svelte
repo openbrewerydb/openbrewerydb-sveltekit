@@ -19,6 +19,7 @@
     getTotalPages,
     getSearchQuery,
   } from '$lib/stores/breweries.svelte';
+  import { SvelteURLSearchParams } from 'svelte/reactivity';
 
   let { data } = $props();
 
@@ -40,7 +41,7 @@
 
   async function handlePageChange(newPage: number) {
     if (newPage !== getCurrentPage()) {
-      const params = new URLSearchParams();
+      const params = new SvelteURLSearchParams();
       params.set('page', newPage.toString());
       const currentQuery = getSearchQuery();
       if (currentQuery) params.set('query', currentQuery);
