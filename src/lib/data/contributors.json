@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-02-01T04:25:30.974Z",
+  "generated_at": "2026-02-21T04:02:21.152Z",
   "repositories": [
     "openbrewerydb/openbrewerydb",
     "openbrewerydb/openbrewerydb-laravel-api",
     "openbrewerydb/openbrewerydb-sveltekit"
   ],
-  "count": 64,
+  "count": 66,
   "contributors": [
     {
       "login": "chrisjm",
       "id": 96110,
       "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4",
       "html_url": "https://github.com/chrisjm",
-      "contributions": 466,
+      "contributions": 469,
       "repos": [
         {
           "type": "dataset",
-          "contributions": 339,
+          "contributions": 340,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
         },
         {
@@ -26,7 +26,7 @@
         },
         {
           "type": "website",
-          "contributions": 114,
+          "contributions": 116,
           "url": "https://github.com/openbrewerydb/openbrewerydb-sveltekit"
         }
       ]
@@ -36,7 +36,7 @@
       "id": 1144087,
       "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4",
       "html_url": "https://github.com/alexjustesen",
-      "contributions": 89,
+      "contributions": 90,
       "repos": [
         {
           "type": "dataset",
@@ -45,7 +45,7 @@
         },
         {
           "type": "api",
-          "contributions": 81,
+          "contributions": 82,
           "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api"
         }
       ]
@@ -649,6 +649,20 @@
       ]
     },
     {
+      "login": "jctopping",
+      "id": 163754356,
+      "avatar_url": "https://avatars.githubusercontent.com/u/163754356?v=4",
+      "html_url": "https://github.com/jctopping",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
       "login": "willkrakow",
       "id": 17362961,
       "avatar_url": "https://avatars.githubusercontent.com/u/17362961?v=4",
@@ -821,6 +835,20 @@
       "id": 13846799,
       "avatar_url": "https://avatars.githubusercontent.com/u/13846799?v=4",
       "html_url": "https://github.com/CharlRitter",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
+      "login": "BruddahChrispy",
+      "id": 3619514,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3619514?v=4",
+      "html_url": "https://github.com/BruddahChrispy",
       "contributions": 1,
       "repos": [
         {
