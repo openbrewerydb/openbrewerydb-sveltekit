@@ -20,7 +20,7 @@
 >
   {#if authors.length}
     <div class="flex items-center gap-2">
-      {#each authors as u}
+      {#each authors as u (u)}
         {#if authorsMap[u]}
           <a
             href={authorsMap[u].html_url}

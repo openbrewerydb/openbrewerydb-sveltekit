@@ -32,7 +32,7 @@
       const loader = modules[data.post.path];
       if (loader) {
         const m = await loader();
-        Comp = (m as any).default as Component;
+        Comp = (m as { default: Component }).default;
       } else {
         Comp = null;
       }

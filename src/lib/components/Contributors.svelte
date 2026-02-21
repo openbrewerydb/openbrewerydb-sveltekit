@@ -27,7 +27,7 @@
   <div
     class="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-4 mb-6"
   >
-    {#each contributors as contributor}
+    {#each contributors as contributor (contributor.id)}
       <a
         href={contributor.html_url}
         target="_blank"

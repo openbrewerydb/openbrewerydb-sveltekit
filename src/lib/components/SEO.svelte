@@ -44,11 +44,12 @@
     if (canonical !== undefined) next.canonical = canonical;
     if (robots !== undefined) next.robots = robots;
 
-    const ogInput: Record<string, any> = {};
+    const ogInput: Record<string, string> = {};
     if (type !== undefined) ogInput.type = type;
     if (image !== undefined) ogInput.image = image;
     if (siteName !== undefined) ogInput.siteName = siteName;
-    if (Object.keys(ogInput).length > 0) next.openGraph = ogInput as any;
+    if (Object.keys(ogInput).length > 0)
+      next.openGraph = ogInput as SEOConfig['openGraph'];
 
     return next;
   });

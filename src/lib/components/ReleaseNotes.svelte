@@ -9,7 +9,7 @@
 
 {#if text}
   <p class="mt-3 whitespace-pre-line text-sm leading-relaxed text-neutral-800">
-    {#each linkify(text) as part}
+    {#each linkify(text) as part, i (i)}
       {#if part.type === 'link'}
         <a
           class="text-amber-800 underline decoration-amber-300 underline-offset-4 hover:decoration-amber-500"

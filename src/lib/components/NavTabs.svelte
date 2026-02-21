@@ -28,7 +28,7 @@
           goto('#' + selected.id);
         }}
       >
-        {#each data as item}
+        {#each data as item (item.id)}
           <option value={item} class="py-1">{item.label}</option>
         {/each}
       </select>
@@ -41,7 +41,7 @@
   </div>
   <div class="hidden sm:block">
     <nav class="flex flex-wrap gap-2" aria-label="Tabs">
-      {#each data as item}
+      {#each data as item (item.id)}
         <a
           href="#{item.id}"
           class="inline-flex items-center px-4 py-2 font-semibold text-sm rounded-full border shadow-sm hover:shadow-md transition-colors transition-shadow duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 {selected ===

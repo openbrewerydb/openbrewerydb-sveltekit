@@ -22,7 +22,7 @@
   <div
     class="mt-6 border-t border-amber-100 pt-6 sm:mt-8 sm:pt-8 space-y-8 sm:space-y-10"
   >
-    {#each entries as [key, repo]}
+    {#each entries as [key, repo] (key)}
       <RepoChangelog repoKey={key} {repo} />
     {/each}
   </div>

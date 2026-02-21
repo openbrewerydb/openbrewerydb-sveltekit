@@ -4,9 +4,9 @@
   let {
     breweries = [],
     context = 'country',
-    country = '',
-    state = '',
-    city = '',
+    country: _country = '',
+    state: _state = '',
+    city: _city = '',
   } = $props();
 </script>
 
@@ -57,7 +57,7 @@
     </tr>
   </thead>
   <tbody class="divide-y divide-gray-200 bg-white">
-    {#each breweries as brewery}
+    {#each breweries as brewery (brewery.id)}
       <tr>
         <td
           class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 max-w-xs truncate"

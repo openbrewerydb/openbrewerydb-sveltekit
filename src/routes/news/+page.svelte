@@ -12,7 +12,8 @@
   }>();
 
   const title = 'News';
-  const description = 'Updates, changelogs, and community stories from OpenBreweryDB.';
+  const description =
+    'Updates, changelogs, and community stories from OpenBreweryDB.';
 </script>
 
 <SEO {title} {description} />
@@ -22,7 +23,7 @@
   <p class="mt-2 text-gray-600">Updates, changelogs, and community stories.</p>
 
   <ul class="mt-6 space-y-6">
-    {#each data.posts as p}
+    {#each data.posts as p (p.href)}
       <li class="border-b border-gray-200 pb-6">
         <a href={p.href} class="block">
           <h2 class="text-xl font-medium hover:underline">
