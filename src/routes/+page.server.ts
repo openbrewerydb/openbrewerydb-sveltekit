@@ -3,35 +3,31 @@ import type { MetricsData } from '$lib/types/metrics';
 
 export const load: PageServerLoad = async ({ platform }) => {
   const kv = platform?.env?.OBDB_METRICS;
-
+  
   if (!kv) {
     return {
-      metrics: null,
-      error: 'Metrics service unavailable'
+      metrics: null
     };
   }
 
   try {
     const value = await kv.get('transparency_dashboard', 'text');
-
+    
     if (!value) {
       return {
-        metrics: null,
-        error: 'Metrics data not found'
+        metrics: null
       };
     }
 
     const metrics: MetricsData = JSON.parse(value);
-
+    
     return {
-      metrics,
-      error: null
+      metrics
     };
   } catch (error) {
     console.error('Error loading metrics from KV:', error);
     return {
-      metrics: null,
-      error: 'Failed to load metrics'
+      metrics: null
     };
   }
 };
