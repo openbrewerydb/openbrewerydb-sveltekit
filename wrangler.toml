@@ -1,0 +1,6 @@
+name = "openbrewerydb-sveltekit"
+compatibility_date = "2026-03-05"
+
+[[kv_namespaces]]
+binding = "OBDB_METRICS"
+id = "040de2d8fce94bdb94002f2a8663a4f8"
