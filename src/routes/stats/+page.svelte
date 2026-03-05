@@ -16,9 +16,6 @@
     Globe,
   } from 'lucide-svelte';
   import SEO from '$lib/components/SEO.svelte';
-  import { Chart, Svg, Tooltip } from 'layerchart';
-  import { scaleOrdinal } from 'd3-scale';
-  import { schemeTableau10 } from 'd3-scale-chromatic';
 
   interface Props {
     data: PageData;
@@ -26,27 +23,50 @@
 
   let { data }: Props = $props();
 
-  const colorScale = scaleOrdinal(schemeTableau10);
-
-  const getChartData = (breakdown: {
+  const getStackedChartData = (breakdown: {
     api: number;
     www: number;
     other: number;
   }) => {
-    return [
-      { label: 'API', value: breakdown.api, color: '#d97706' },
-      { label: 'Website', value: breakdown.www, color: '#f59e0b' },
-      { label: 'Other', value: breakdown.other, color: '#fbbf24' },
-    ].filter((item) => item.value > 0);
+    const total = breakdown.api + breakdown.www + breakdown.other;
+    return {
+      total,
+      segments: [
+        {
+          label: 'API',
+          value: breakdown.api,
+          percentage: (breakdown.api / total) * 100,
+          color: '#d97706',
+        },
+        {
+          label: 'Website',
+          value: breakdown.www,
+          percentage: (breakdown.www / total) * 100,
+          color: '#f59e0b',
+        },
+        ...(breakdown.other > 0
+          ? [
+              {
+                label: 'Other',
+                value: breakdown.other,
+                percentage: (breakdown.other / total) * 100,
+                color: '#fbbf24',
+              },
+            ]
+          : []),
+      ],
+    };
   };
 
   const requestsChart24h = $derived(
     data.metrics
-      ? getChartData(data.metrics.periods.last_24_hours.requests)
-      : []
+      ? getStackedChartData(data.metrics.periods.last_24_hours.requests)
+      : { total: 0, segments: [] }
   );
   const requestsChart7d = $derived(
-    data.metrics ? getChartData(data.metrics.periods.last_7_days.requests) : []
+    data.metrics
+      ? getStackedChartData(data.metrics.periods.last_7_days.requests)
+      : { total: 0, segments: [] }
   );
 </script>
 
@@ -192,27 +212,42 @@
         <h3 class="text-lg font-semibold text-gray-900 mb-4">
           Request Distribution (24h)
         </h3>
+
+        <div class="mb-6">
+          <div class="flex h-12 rounded-lg overflow-hidden shadow-sm">
+            {#each requestsChart24h.segments as segment}
+              <div
+                class="flex items-center justify-center text-white font-medium text-sm transition-all hover:opacity-90"
+                style="background-color: {segment.color}; width: {segment.percentage}%"
+                title="{segment.label}: {formatNumber(
+                  segment.value
+                )} ({segment.percentage.toFixed(1)}%)"
+              >
+                {#if segment.percentage > 8}
+                  <span class="px-2">{segment.percentage.toFixed(1)}%</span>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {#each requestsChart24h as item}
+          {#each requestsChart24h.segments as segment}
             <div class="flex items-center">
               <div
                 class="w-4 h-4 rounded mr-3"
-                style="background-color: {item.color}"
+                style="background-color: {segment.color}"
               ></div>
               <div class="flex-1">
                 <div class="text-sm font-medium text-gray-700">
-                  {item.label}
+                  {segment.label}
                 </div>
                 <div class="text-xs text-gray-500">
-                  {formatNumber(item.value)} requests
+                  {formatNumber(segment.value)} requests
                 </div>
               </div>
               <div class="text-sm font-semibold text-gray-900">
-                {(
-                  (item.value /
-                    data.metrics.periods.last_24_hours.requests.total) *
-                  100
-                ).toFixed(1)}%
+                {segment.percentage.toFixed(1)}%
               </div>
             </div>
           {/each}
@@ -309,27 +344,42 @@
         <h3 class="text-lg font-semibold text-gray-900 mb-4">
           Request Distribution (7d)
         </h3>
+
+        <div class="mb-6">
+          <div class="flex h-12 rounded-lg overflow-hidden shadow-sm">
+            {#each requestsChart7d.segments as segment}
+              <div
+                class="flex items-center justify-center text-white font-medium text-sm transition-all hover:opacity-90"
+                style="background-color: {segment.color}; width: {segment.percentage}%"
+                title="{segment.label}: {formatNumber(
+                  segment.value
+                )} ({segment.percentage.toFixed(1)}%)"
+              >
+                {#if segment.percentage > 8}
+                  <span class="px-2">{segment.percentage.toFixed(1)}%</span>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {#each requestsChart7d as item}
+          {#each requestsChart7d.segments as segment}
             <div class="flex items-center">
               <div
                 class="w-4 h-4 rounded mr-3"
-                style="background-color: {item.color}"
+                style="background-color: {segment.color}"
               ></div>
               <div class="flex-1">
                 <div class="text-sm font-medium text-gray-700">
-                  {item.label}
+                  {segment.label}
                 </div>
                 <div class="text-xs text-gray-500">
-                  {formatNumber(item.value)} requests
+                  {formatNumber(segment.value)} requests
                 </div>
               </div>
               <div class="text-sm font-semibold text-gray-900">
-                {(
-                  (item.value /
-                    data.metrics.periods.last_7_days.requests.total) *
-                  100
-                ).toFixed(1)}%
+                {segment.percentage.toFixed(1)}%
               </div>
             </div>
           {/each}
