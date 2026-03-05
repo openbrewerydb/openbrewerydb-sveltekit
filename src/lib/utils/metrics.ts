@@ -2,7 +2,7 @@ import { format } from 'd3-format';
 
 const numberFormatter = format(',');
 const decimalFormatter = format(',.2f');
-const compactFormatter = format('~s');
+const compactFormatter = format('.2~s');
 
 export function formatNumber(num: number): string {
   return numberFormatter(num);

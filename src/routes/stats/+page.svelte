@@ -78,14 +78,10 @@
 />
 
 <div class="max-w-7xl mx-auto">
-  <div class="text-center mb-12">
+  <div class="text-center mb-4">
     <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
       Statistics Dashboard
     </h1>
-    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-      Here are the daily-updated statistics showing how developers and breweries
-      around the world use OpenBreweryDB.
-    </p>
   </div>
 
   {#if data.error}
@@ -376,9 +372,7 @@
         </p>
         <p>
           <strong class="text-gray-900">Why transparency matters:</strong> As an open-source
-          project, we believe in sharing our metrics with the community. This helps
-          potential sponsors understand our reach and allows developers to see the
-          scale of OpenBreweryDB's impact.
+          project, we believe in sharing our metrics with the community.
         </p>
         <p class="text-sm text-gray-600">
           Data is collected via Cloudflare Analytics and updated daily. All
