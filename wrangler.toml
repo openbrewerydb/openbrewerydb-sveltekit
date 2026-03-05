@@ -1,5 +1,6 @@
 name = "openbrewerydb-sveltekit"
 compatibility_date = "2026-03-05"
+compatibility_flags = ["nodejs_compat"]
 
 [[kv_namespaces]]
 binding = "OBDB_METRICS"
