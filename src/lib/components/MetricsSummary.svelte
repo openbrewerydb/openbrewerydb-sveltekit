@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import type { MetricsData } from '$lib/types/metrics';
   import {
     formatNumber,
@@ -9,28 +8,15 @@
   } from '$lib/utils/metrics';
   import { BarChart3, Activity, Users, HardDrive } from 'lucide-svelte';
 
-  let metricsData: MetricsData | null = $state(null);
-  let loading: boolean = $state(true);
-  let error: string | null = $state(null);
+  interface Props {
+    metrics: MetricsData | null;
+  }
 
-  onMount(async () => {
-    try {
-      const response = await fetch('/api/metrics');
-      if (!response.ok) {
-        throw new Error('Failed to fetch metrics');
-      }
-      metricsData = await response.json();
-      loading = false;
-    } catch (err) {
-      console.error('Error loading metrics:', err);
-      error = 'Unable to load metrics at this time';
-      loading = false;
-    }
-  });
+  let { metrics }: Props = $props();
 
   const stats = $derived(() => {
-    if (!metricsData) return null;
-    const period = metricsData.periods.last_7_days;
+    if (!metrics) return null;
+    const period = metrics.periods.last_7_days;
     return [
       {
         label: 'Total Requests',
@@ -76,15 +62,11 @@
     serve every week.
   </p>
 
-  {#if loading}
+  {#if !metrics}
     <div class="text-center py-12">
-      <p class="text-gray-500">Loading metrics...</p>
+      <p class="text-gray-500">Metrics unavailable</p>
     </div>
-  {:else if error}
-    <div class="text-center py-12">
-      <p class="text-gray-500">{error}</p>
-    </div>
-  {:else if metricsData && stats()}
+  {:else if metrics && stats()}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
       {#each stats() as stat}
         {@const Icon = stat.icon}
@@ -108,13 +90,13 @@
     </div>
 
     <div class="text-center text-sm text-gray-500">
-      {#if isDataStale(metricsData.last_updated)}
+      {#if isDataStale(metrics.last_updated)}
         <p class="text-amber-600 font-medium mb-2">
           ⚠️ Metrics data may be outdated
         </p>
       {/if}
       <p>
-        Last updated: {formatRelativeTime(metricsData.last_updated)}
+        Last updated: {formatRelativeTime(metrics.last_updated)}
         <span class="mx-2">•</span>
         <a
           href="/stats"

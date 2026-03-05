@@ -1,8 +1,15 @@
 <script lang="ts">
+  import type { PageData } from './$types';
   import logo from '$lib/assets/obdb-logo.png';
   import SEO from '$lib/components/SEO.svelte';
   import Contributors from '$lib/components/Contributors.svelte';
   import MetricsSummary from '$lib/components/MetricsSummary.svelte';
+
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <SEO
@@ -62,7 +69,7 @@
       data analysts.
     </p>
   </div>
-  <MetricsSummary />
+  <MetricsSummary metrics={data.metrics} />
   <section
     class="w-full m-auto max-w-xl flex flex-col items-center mt-2"
     aria-labelledby="sponsorship-title"
