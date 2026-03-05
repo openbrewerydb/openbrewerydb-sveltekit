@@ -163,17 +163,22 @@
 
         <MetricCard
           icon={Users}
-          value={data.metrics.periods.last_24_hours.visits.total}
+          value={data.metrics.periods.last_24_hours.visits.www +
+            data.metrics.periods.last_24_hours.visits.other}
           label="Total Visits"
           breakdown={[
-            {
-              label: 'API',
-              value: data.metrics.periods.last_24_hours.visits.api,
-            },
             {
               label: 'Website',
               value: data.metrics.periods.last_24_hours.visits.www,
             },
+            ...(data.metrics.periods.last_24_hours.visits.other > 0
+              ? [
+                  {
+                    label: 'Other',
+                    value: data.metrics.periods.last_24_hours.visits.other,
+                  },
+                ]
+              : []),
           ]}
         />
 
@@ -280,17 +285,22 @@
 
         <MetricCard
           icon={Users}
-          value={data.metrics.periods.last_7_days.visits.total}
+          value={data.metrics.periods.last_7_days.visits.www +
+            data.metrics.periods.last_7_days.visits.other}
           label="Total Visits"
           breakdown={[
-            {
-              label: 'API',
-              value: data.metrics.periods.last_7_days.visits.api,
-            },
             {
               label: 'Website',
               value: data.metrics.periods.last_7_days.visits.www,
             },
+            ...(data.metrics.periods.last_7_days.visits.other > 0
+              ? [
+                  {
+                    label: 'Other',
+                    value: data.metrics.periods.last_7_days.visits.other,
+                  },
+                ]
+              : []),
           ]}
         />
 
