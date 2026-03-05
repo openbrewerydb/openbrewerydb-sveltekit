@@ -2,9 +2,13 @@
   import logo from '$lib/assets/obdb-logo.png';
   import SEO from '$lib/components/SEO.svelte';
   import Contributors from '$lib/components/Contributors.svelte';
+  import MetricsSummary from '$lib/components/MetricsSummary.svelte';
 </script>
 
-<SEO title="Open Brewery DB" description="A worldwide open-source brewery dataset and API" />
+<SEO
+  title="Open Brewery DB"
+  description="A worldwide open-source brewery dataset and API"
+/>
 
 <div class="text-center">
   <div class="w-full sm:w-96 mx-auto my-6">
@@ -58,6 +62,7 @@
       data analysts.
     </p>
   </div>
+  <MetricsSummary />
   <section
     class="w-full m-auto max-w-xl flex flex-col items-center mt-2"
     aria-labelledby="sponsorship-title"
