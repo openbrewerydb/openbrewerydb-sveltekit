@@ -61,7 +61,10 @@ export function formatAbsoluteTime(isoString: string): string {
   });
 }
 
-export function isDataStale(isoString: string, hoursThreshold: number = 48): boolean {
+export function isDataStale(
+  isoString: string,
+  hoursThreshold: number = 48
+): boolean {
   const date = new Date(isoString);
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();

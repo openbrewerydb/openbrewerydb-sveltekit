@@ -28,7 +28,7 @@
   {/if}
   {#if breakdown && breakdown.length > 0}
     <div class="text-xs text-gray-500 space-y-1">
-      {#each breakdown as item}
+      {#each breakdown as item (item.label)}
         <div>
           {item.label}: {formatNumber(item.value)}
         </div>

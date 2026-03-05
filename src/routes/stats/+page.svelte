@@ -2,7 +2,6 @@
   import type { PageData } from './$types';
   import {
     formatNumber,
-    formatCompactNumber,
     formatBandwidth,
     formatRelativeTime,
     formatAbsoluteTime,
@@ -88,7 +87,8 @@
     <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
       <p class="text-red-800 font-medium">{data.error}</p>
       <p class="text-red-600 text-sm mt-2">
-        Please try again later or contact support if the issue persists.
+        We may not be aware, so if you feel inclined, please let us know via
+        Discord, Github, or BlueSky.
       </p>
     </div>
   {:else if data.metrics}
@@ -196,7 +196,7 @@
 
         <div class="mb-6">
           <div class="flex h-12 rounded-lg overflow-hidden shadow-sm">
-            {#each requestsChart24h.segments as segment}
+            {#each requestsChart24h.segments as segment (segment.label)}
               <div
                 class="flex items-center justify-center text-white font-medium text-sm transition-all hover:opacity-90"
                 style="background-color: {segment.color}; width: {segment.percentage}%"
@@ -213,7 +213,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {#each requestsChart24h.segments as segment}
+          {#each requestsChart24h.segments as segment (segment.label)}
             <div class="flex items-center">
               <div
                 class="w-4 h-4 rounded mr-3"
@@ -313,7 +313,7 @@
 
         <div class="mb-6">
           <div class="flex h-12 rounded-lg overflow-hidden shadow-sm">
-            {#each requestsChart7d.segments as segment}
+            {#each requestsChart7d.segments as segment (segment.label)}
               <div
                 class="flex items-center justify-center text-white font-medium text-sm transition-all hover:opacity-90"
                 style="background-color: {segment.color}; width: {segment.percentage}%"
@@ -330,7 +330,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {#each requestsChart7d.segments as segment}
+          {#each requestsChart7d.segments as segment (segment.label)}
             <div class="flex items-center">
               <div
                 class="w-4 h-4 rounded mr-3"

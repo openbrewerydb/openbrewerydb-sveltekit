@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ platform }) => {
   if (!kv) {
     return {
       metrics: null,
-      error: 'Metrics service unavailable'
+      error: 'Metrics service unavailable',
     };
   }
 
@@ -17,7 +17,7 @@ export const load: PageServerLoad = async ({ platform }) => {
     if (!value) {
       return {
         metrics: null,
-        error: 'Metrics data not found'
+        error: 'Metrics data not found',
       };
     }
 
@@ -25,13 +25,13 @@ export const load: PageServerLoad = async ({ platform }) => {
 
     return {
       metrics,
-      error: null
+      error: null,
     };
   } catch (error) {
     console.error('Error loading metrics from KV:', error);
     return {
       metrics: null,
-      error: 'Failed to load metrics'
+      error: 'Failed to load metrics',
     };
   }
 };

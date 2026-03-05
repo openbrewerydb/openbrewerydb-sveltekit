@@ -5,7 +5,7 @@ declare global {
         OBDB_METRICS: KVNamespace;
       };
       context: {
-        waitUntil(promise: Promise<any>): void;
+        waitUntil(promise: Promise<unknown>): void;
       };
       caches: CacheStorage & { default: Cache };
     }
