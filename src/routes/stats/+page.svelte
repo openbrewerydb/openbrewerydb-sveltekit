@@ -2,6 +2,7 @@
   import type { PageData } from './$types';
   import {
     formatNumber,
+    formatCompactNumber,
     formatBandwidth,
     formatRelativeTime,
     formatAbsoluteTime,
@@ -16,6 +17,7 @@
     Globe,
   } from 'lucide-svelte';
   import SEO from '$lib/components/SEO.svelte';
+  import MetricCard from '$lib/components/MetricCard.svelte';
 
   interface Props {
     data: PageData;
@@ -128,73 +130,56 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-          <div class="flex items-center justify-between mb-3">
-            <BarChart3 class="w-8 h-8 text-amber-600" />
-          </div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">
-            {formatNumber(data.metrics.periods.last_24_hours.requests.total)}
-          </div>
-          <div class="text-sm font-medium text-gray-700 mb-2">
-            Total Requests
-          </div>
-          <div class="text-xs text-gray-500 space-y-1">
-            <div>
-              API: {formatNumber(
-                data.metrics.periods.last_24_hours.requests.api
-              )}
-            </div>
-            <div>
-              Website: {formatNumber(
-                data.metrics.periods.last_24_hours.requests.www
-              )}
-            </div>
-            {#if data.metrics.periods.last_24_hours.requests.other > 0}
-              <div>
-                Other: {formatNumber(
-                  data.metrics.periods.last_24_hours.requests.other
-                )}
-              </div>
-            {/if}
-          </div>
-        </div>
+        <MetricCard
+          icon={BarChart3}
+          value={data.metrics.periods.last_24_hours.requests.total}
+          label="Total Requests"
+          breakdown={[
+            {
+              label: 'API',
+              value: data.metrics.periods.last_24_hours.requests.api,
+            },
+            {
+              label: 'Website',
+              value: data.metrics.periods.last_24_hours.requests.www,
+            },
+            ...(data.metrics.periods.last_24_hours.requests.other > 0
+              ? [
+                  {
+                    label: 'Other',
+                    value: data.metrics.periods.last_24_hours.requests.other,
+                  },
+                ]
+              : []),
+          ]}
+        />
 
-        <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-          <div class="flex items-center justify-between mb-3">
-            <Activity class="w-8 h-8 text-amber-600" />
-          </div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">
-            {formatNumber(data.metrics.periods.last_24_hours.requests.api)}
-          </div>
-          <div class="text-sm font-medium text-gray-700 mb-2">API Requests</div>
-          <div class="text-xs text-gray-500">
-            {(
-              (data.metrics.periods.last_24_hours.requests.api /
-                data.metrics.periods.last_24_hours.requests.total) *
-              100
-            ).toFixed(1)}% of total traffic
-          </div>
-        </div>
+        <MetricCard
+          icon={Activity}
+          value={data.metrics.periods.last_24_hours.requests.api}
+          label="API Requests"
+          subtitle="{(
+            (data.metrics.periods.last_24_hours.requests.api /
+              data.metrics.periods.last_24_hours.requests.total) *
+            100
+          ).toFixed(1)}% of total traffic"
+        />
 
-        <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-          <div class="flex items-center justify-between mb-3">
-            <Users class="w-8 h-8 text-amber-600" />
-          </div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">
-            {formatNumber(data.metrics.periods.last_24_hours.visits.total)}
-          </div>
-          <div class="text-sm font-medium text-gray-700 mb-2">Total Visits</div>
-          <div class="text-xs text-gray-500 space-y-1">
-            <div>
-              API: {formatNumber(data.metrics.periods.last_24_hours.visits.api)}
-            </div>
-            <div>
-              Website: {formatNumber(
-                data.metrics.periods.last_24_hours.visits.www
-              )}
-            </div>
-          </div>
-        </div>
+        <MetricCard
+          icon={Users}
+          value={data.metrics.periods.last_24_hours.visits.total}
+          label="Total Visits"
+          breakdown={[
+            {
+              label: 'API',
+              value: data.metrics.periods.last_24_hours.visits.api,
+            },
+            {
+              label: 'Website',
+              value: data.metrics.periods.last_24_hours.visits.www,
+            },
+          ]}
+        />
 
         <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
           <div class="flex items-center justify-between mb-3">
@@ -262,71 +247,56 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-          <div class="flex items-center justify-between mb-3">
-            <BarChart3 class="w-8 h-8 text-amber-600" />
-          </div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">
-            {formatNumber(data.metrics.periods.last_7_days.requests.total)}
-          </div>
-          <div class="text-sm font-medium text-gray-700 mb-2">
-            Total Requests
-          </div>
-          <div class="text-xs text-gray-500 space-y-1">
-            <div>
-              API: {formatNumber(data.metrics.periods.last_7_days.requests.api)}
-            </div>
-            <div>
-              Website: {formatNumber(
-                data.metrics.periods.last_7_days.requests.www
-              )}
-            </div>
-            {#if data.metrics.periods.last_7_days.requests.other > 0}
-              <div>
-                Other: {formatNumber(
-                  data.metrics.periods.last_7_days.requests.other
-                )}
-              </div>
-            {/if}
-          </div>
-        </div>
+        <MetricCard
+          icon={BarChart3}
+          value={data.metrics.periods.last_7_days.requests.total}
+          label="Total Requests"
+          breakdown={[
+            {
+              label: 'API',
+              value: data.metrics.periods.last_7_days.requests.api,
+            },
+            {
+              label: 'Website',
+              value: data.metrics.periods.last_7_days.requests.www,
+            },
+            ...(data.metrics.periods.last_7_days.requests.other > 0
+              ? [
+                  {
+                    label: 'Other',
+                    value: data.metrics.periods.last_7_days.requests.other,
+                  },
+                ]
+              : []),
+          ]}
+        />
 
-        <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-          <div class="flex items-center justify-between mb-3">
-            <Activity class="w-8 h-8 text-amber-600" />
-          </div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">
-            {formatNumber(data.metrics.periods.last_7_days.requests.api)}
-          </div>
-          <div class="text-sm font-medium text-gray-700 mb-2">API Requests</div>
-          <div class="text-xs text-gray-500">
-            {(
-              (data.metrics.periods.last_7_days.requests.api /
-                data.metrics.periods.last_7_days.requests.total) *
-              100
-            ).toFixed(1)}% of total traffic
-          </div>
-        </div>
+        <MetricCard
+          icon={Activity}
+          value={data.metrics.periods.last_7_days.requests.api}
+          label="API Requests"
+          subtitle="{(
+            (data.metrics.periods.last_7_days.requests.api /
+              data.metrics.periods.last_7_days.requests.total) *
+            100
+          ).toFixed(1)}% of total traffic"
+        />
 
-        <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-          <div class="flex items-center justify-between mb-3">
-            <Users class="w-8 h-8 text-amber-600" />
-          </div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">
-            {formatNumber(data.metrics.periods.last_7_days.visits.total)}
-          </div>
-          <div class="text-sm font-medium text-gray-700 mb-2">Total Visits</div>
-          <div class="text-xs text-gray-500 space-y-1">
-            <div>
-              API: {formatNumber(data.metrics.periods.last_7_days.visits.api)}
-            </div>
-            <div>
-              Website: {formatNumber(
-                data.metrics.periods.last_7_days.visits.www
-              )}
-            </div>
-          </div>
-        </div>
+        <MetricCard
+          icon={Users}
+          value={data.metrics.periods.last_7_days.visits.total}
+          label="Total Visits"
+          breakdown={[
+            {
+              label: 'API',
+              value: data.metrics.periods.last_7_days.visits.api,
+            },
+            {
+              label: 'Website',
+              value: data.metrics.periods.last_7_days.visits.www,
+            },
+          ]}
+        />
 
         <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
           <div class="flex items-center justify-between mb-3">

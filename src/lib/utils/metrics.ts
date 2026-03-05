@@ -7,6 +7,17 @@ export function formatNumber(num: number): string {
   return numberFormatter(num);
 }
 
+export function formatCompactNumber(num: number): string {
+  if (num >= 1_000_000_000) {
+    return `${(num / 1_000_000_000).toFixed(1)}B`;
+  } else if (num >= 1_000_000) {
+    return `${(num / 1_000_000).toFixed(1)}M`;
+  } else if (num >= 1_000) {
+    return `${(num / 1_000).toFixed(1)}k`;
+  }
+  return num.toString();
+}
+
 export function formatBandwidth(tb: number): string {
   if (tb >= 1) {
     return `${decimalFormatter(tb)} TB`;
