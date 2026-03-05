@@ -3,6 +3,7 @@
 /.svelte-kit
 /package
 /build
+/.wrangler
 
 # Windsurf
 .windsurfrules
