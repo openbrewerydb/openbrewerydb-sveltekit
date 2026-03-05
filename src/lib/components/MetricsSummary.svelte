@@ -27,8 +27,7 @@
   <p
     class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-3 md:text-xl md:max-w-3xl"
   >
-    Open data deserves open metrics. Here's how many developers and breweries we
-    serve every week.
+    Here's how many developers and breweries we serve every week.
   </p>
 
   {#if !metrics}
