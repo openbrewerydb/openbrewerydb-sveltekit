@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-21T04:02:34.846Z",
+  "generated_at": "2026-03-15T17:52:23.869Z",
   "repos": {
     "openbrewerydb/openbrewerydb": {
       "type": "dataset",
@@ -8,6 +8,32 @@
       "fallback": {
         "kind": "pull_requests",
         "items": [
+          {
+            "number": 243,
+            "title": "add coordinates range validation",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/243",
+            "state": "closed",
+            "merged_at": "2026-03-15T17:45:23Z",
+            "closed_at": "2026-03-15T17:45:23Z",
+            "user": {
+              "login": "pirxpilot",
+              "html_url": "https://github.com/pirxpilot",
+              "avatar_url": "https://avatars.githubusercontent.com/u/3240?v=4"
+            }
+          },
+          {
+            "number": 242,
+            "title": "Bump minimatch",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/242",
+            "state": "closed",
+            "merged_at": "2026-03-03T05:08:43Z",
+            "closed_at": "2026-03-03T05:08:43Z",
+            "user": {
+              "login": "dependabot[bot]",
+              "html_url": "https://github.com/apps/dependabot",
+              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
+            }
+          },
           {
             "number": 241,
             "title": "Create british_columbia.csv",
@@ -214,32 +240,6 @@
               "login": "jallend1",
               "html_url": "https://github.com/jallend1",
               "avatar_url": "https://avatars.githubusercontent.com/u/39307371?v=4"
-            }
-          },
-          {
-            "number": 220,
-            "title": "Add South African Breweries",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/220",
-            "state": "closed",
-            "merged_at": "2025-10-26T22:54:21Z",
-            "closed_at": "2025-10-26T22:54:21Z",
-            "user": {
-              "login": "CharlRitter",
-              "html_url": "https://github.com/CharlRitter",
-              "avatar_url": "https://avatars.githubusercontent.com/u/13846799?v=4"
-            }
-          },
-          {
-            "number": 222,
-            "title": "Add and update breweries in NC",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/222",
-            "state": "closed",
-            "merged_at": "2025-10-26T22:50:50Z",
-            "closed_at": "2025-10-26T22:50:51Z",
-            "user": {
-              "login": "willkrakow",
-              "html_url": "https://github.com/willkrakow",
-              "avatar_url": "https://avatars.githubusercontent.com/u/17362961?v=4"
             }
           }
         ]
