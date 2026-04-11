@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "data:build": "npm run authors:build && npm run changelogs:build && npm run contributors:build",
     "authors:build": "node scripts/build-authors.mjs",
     "changelogs:build": "node scripts/build-changelogs.mjs",
     "contributors:build": "node scripts/build-contributors.mjs",

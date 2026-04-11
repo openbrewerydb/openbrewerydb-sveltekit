@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-03-15T17:52:34.105Z",
+  "generated_at": "2026-04-11T03:01:47.434Z",
   "repositories": [
     "openbrewerydb/openbrewerydb",
     "openbrewerydb/openbrewerydb-laravel-api",
     "openbrewerydb/openbrewerydb-sveltekit"
   ],
-  "count": 67,
+  "count": 72,
   "contributors": [
     {
       "login": "chrisjm",
       "id": 96110,
       "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4",
       "html_url": "https://github.com/chrisjm",
-      "contributions": 483,
+      "contributions": 495,
       "repos": [
         {
           "type": "dataset",
-          "contributions": 348,
+          "contributions": 359,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
         },
         {
@@ -26,7 +26,7 @@
         },
         {
           "type": "website",
-          "contributions": 122,
+          "contributions": 123,
           "url": "https://github.com/openbrewerydb/openbrewerydb-sveltekit"
         }
       ]
@@ -364,6 +364,20 @@
       ]
     },
     {
+      "login": "natebru",
+      "id": 1214808,
+      "avatar_url": "https://avatars.githubusercontent.com/u/1214808?v=4",
+      "html_url": "https://github.com/natebru",
+      "contributions": 2,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 2,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
       "login": "milsman2",
       "id": 72627575,
       "avatar_url": "https://avatars.githubusercontent.com/u/72627575?v=4",
@@ -495,10 +509,24 @@
       ]
     },
     {
-      "login": "JohnHenry-Ward",
-      "id": 43694168,
-      "avatar_url": "https://avatars.githubusercontent.com/u/43694168?v=4",
-      "html_url": "https://github.com/JohnHenry-Ward",
+      "login": "kpomer",
+      "id": 25374403,
+      "avatar_url": "https://avatars.githubusercontent.com/u/25374403?v=4",
+      "html_url": "https://github.com/kpomer",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
+      "login": "lglasbergen",
+      "id": 3315075,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3315075?v=4",
+      "html_url": "https://github.com/lglasbergen",
       "contributions": 1,
       "repos": [
         {
@@ -677,6 +705,20 @@
       ]
     },
     {
+      "login": "mathewhaug",
+      "id": 155565721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/155565721?v=4",
+      "html_url": "https://github.com/mathewhaug",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
       "login": "willkrakow",
       "id": 17362961,
       "avatar_url": "https://avatars.githubusercontent.com/u/17362961?v=4",
@@ -709,6 +751,20 @@
       "id": 68479370,
       "avatar_url": "https://avatars.githubusercontent.com/u/68479370?v=4",
       "html_url": "https://github.com/Jose-Alfredo-Garcia",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
+      "login": "CrepuscularCremini",
+      "id": 101598531,
+      "avatar_url": "https://avatars.githubusercontent.com/u/101598531?v=4",
+      "html_url": "https://github.com/CrepuscularCremini",
       "contributions": 1,
       "repos": [
         {
@@ -905,6 +961,20 @@
       "id": 41769529,
       "avatar_url": "https://avatars.githubusercontent.com/u/41769529?v=4",
       "html_url": "https://github.com/jameshschuler",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
+      "login": "JohnHenry-Ward",
+      "id": 43694168,
+      "avatar_url": "https://avatars.githubusercontent.com/u/43694168?v=4",
+      "html_url": "https://github.com/JohnHenry-Ward",
       "contributions": 1,
       "repos": [
         {
