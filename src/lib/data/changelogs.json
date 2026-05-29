@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-11T03:01:45.068Z",
+  "generated_at": "2026-05-29T21:13:34.647Z",
   "repos": {
     "openbrewerydb/openbrewerydb": {
       "type": "dataset",
@@ -8,6 +8,162 @@
       "fallback": {
         "kind": "pull_requests",
         "items": [
+          {
+            "number": 268,
+            "title": "add German breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/268",
+            "state": "closed",
+            "merged_at": "2026-05-29T21:02:29Z",
+            "closed_at": "2026-05-29T21:02:29Z",
+            "user": {
+              "login": "simonmackinnon",
+              "html_url": "https://github.com/simonmackinnon",
+              "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4"
+            }
+          },
+          {
+            "number": 266,
+            "title": "chore(deps-dev): bump tmp from 0.2.5 to 0.2.6",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/266",
+            "state": "closed",
+            "merged_at": "2026-05-28T17:32:31Z",
+            "closed_at": "2026-05-28T17:32:31Z",
+            "user": {
+              "login": "dependabot[bot]",
+              "html_url": "https://github.com/apps/dependabot",
+              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
+            }
+          },
+          {
+            "number": 267,
+            "title": "Added Washington new breweries, marked breweries for closure",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/267",
+            "state": "closed",
+            "merged_at": "2026-05-28T17:27:58Z",
+            "closed_at": "2026-05-28T17:27:58Z",
+            "user": {
+              "login": "natebru",
+              "html_url": "https://github.com/natebru",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1214808?v=4"
+            }
+          },
+          {
+            "number": 264,
+            "title": "updated Kismet Brewing Company as open",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/264",
+            "state": "closed",
+            "merged_at": "2026-05-26T01:31:47Z",
+            "closed_at": "2026-05-26T01:31:47Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 263,
+            "title": "proclamation in RI has closed",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/263",
+            "state": "closed",
+            "merged_at": "2026-05-26T01:30:59Z",
+            "closed_at": "2026-05-26T01:30:59Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 262,
+            "title": "2026-05 Connecticut audit",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/262",
+            "state": "closed",
+            "merged_at": "2026-05-19T02:44:24Z",
+            "closed_at": "2026-05-19T02:44:24Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 261,
+            "title": "add One Way Brewing to MA",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/261",
+            "state": "closed",
+            "merged_at": "2026-05-19T02:44:12Z",
+            "closed_at": "2026-05-19T02:44:12Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 257,
+            "title": "updated Lefty's Brewery to Lefty's Craft",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/257",
+            "state": "closed",
+            "merged_at": "2026-05-18T21:40:08Z",
+            "closed_at": "2026-05-18T21:40:08Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 258,
+            "title": "updated Connecticut closures and existing missing data",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/258",
+            "state": "closed",
+            "merged_at": "2026-05-14T22:40:52Z",
+            "closed_at": "2026-05-14T22:40:52Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 259,
+            "title": "fix Bog's Edge lat and long",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/259",
+            "state": "closed",
+            "merged_at": "2026-05-14T22:39:22Z",
+            "closed_at": "2026-05-14T22:39:22Z",
+            "user": {
+              "login": "alexjustesen",
+              "html_url": "https://github.com/alexjustesen",
+              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
+            }
+          },
+          {
+            "number": 256,
+            "title": "Bump uuid from 13.0.0 to 14.0.0",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/256",
+            "state": "closed",
+            "merged_at": "2026-05-06T01:54:37Z",
+            "closed_at": "2026-05-06T01:54:37Z",
+            "user": {
+              "login": "dependabot[bot]",
+              "html_url": "https://github.com/apps/dependabot",
+              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
+            }
+          },
+          {
+            "number": 254,
+            "title": "Update Elk Horn Brewery URL",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/254",
+            "state": "closed",
+            "merged_at": "2026-04-15T16:25:39Z",
+            "closed_at": "2026-04-15T16:25:39Z",
+            "user": {
+              "login": "chrisjm",
+              "html_url": "https://github.com/chrisjm",
+              "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4"
+            }
+          },
           {
             "number": 249,
             "title": "add and update toronto, ontario breweries",
@@ -59,136 +215,6 @@
               "html_url": "https://github.com/kpomer",
               "avatar_url": "https://avatars.githubusercontent.com/u/25374403?v=4"
             }
-          },
-          {
-            "number": 248,
-            "title": "Create netherlands.csv",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/248",
-            "state": "closed",
-            "merged_at": "2026-03-26T20:27:25Z",
-            "closed_at": "2026-03-26T20:27:25Z",
-            "user": {
-              "login": "lglasbergen",
-              "html_url": "https://github.com/lglasbergen",
-              "avatar_url": "https://avatars.githubusercontent.com/u/3315075?v=4"
-            }
-          },
-          {
-            "number": 246,
-            "title": "Mathewhaug patch 1",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/246",
-            "state": "closed",
-            "merged_at": "2026-03-23T01:58:41Z",
-            "closed_at": "2026-03-23T01:58:41Z",
-            "user": {
-              "login": "mathewhaug",
-              "html_url": "https://github.com/mathewhaug",
-              "avatar_url": "https://avatars.githubusercontent.com/u/155565721?v=4"
-            }
-          },
-          {
-            "number": 244,
-            "title": "Bump flatted from 3.3.3 to 3.4.2",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/244",
-            "state": "closed",
-            "merged_at": "2026-03-23T01:50:51Z",
-            "closed_at": "2026-03-23T01:50:51Z",
-            "user": {
-              "login": "dependabot[bot]",
-              "html_url": "https://github.com/apps/dependabot",
-              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
-            }
-          },
-          {
-            "number": 243,
-            "title": "add coordinates range validation",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/243",
-            "state": "closed",
-            "merged_at": "2026-03-15T17:45:23Z",
-            "closed_at": "2026-03-15T17:45:23Z",
-            "user": {
-              "login": "pirxpilot",
-              "html_url": "https://github.com/pirxpilot",
-              "avatar_url": "https://avatars.githubusercontent.com/u/3240?v=4"
-            }
-          },
-          {
-            "number": 242,
-            "title": "Bump minimatch",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/242",
-            "state": "closed",
-            "merged_at": "2026-03-03T05:08:43Z",
-            "closed_at": "2026-03-03T05:08:43Z",
-            "user": {
-              "login": "dependabot[bot]",
-              "html_url": "https://github.com/apps/dependabot",
-              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
-            }
-          },
-          {
-            "number": 241,
-            "title": "Create british_columbia.csv",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/241",
-            "state": "closed",
-            "merged_at": "2026-02-21T03:41:25Z",
-            "closed_at": "2026-02-21T03:41:25Z",
-            "user": {
-              "login": "BruddahChrispy",
-              "html_url": "https://github.com/BruddahChrispy",
-              "avatar_url": "https://avatars.githubusercontent.com/u/3619514?v=4"
-            }
-          },
-          {
-            "number": 240,
-            "title": "Updated Maryland breweries",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/240",
-            "state": "closed",
-            "merged_at": "2026-02-21T03:27:52Z",
-            "closed_at": "2026-02-21T03:27:52Z",
-            "user": {
-              "login": "jctopping",
-              "html_url": "https://github.com/jctopping",
-              "avatar_url": "https://avatars.githubusercontent.com/u/163754356?v=4"
-            }
-          },
-          {
-            "number": 238,
-            "title": "Bump lodash from 4.17.21 to 4.17.23",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/238",
-            "state": "closed",
-            "merged_at": "2026-02-01T03:03:59Z",
-            "closed_at": "2026-02-01T03:03:59Z",
-            "user": {
-              "login": "dependabot[bot]",
-              "html_url": "https://github.com/apps/dependabot",
-              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
-            }
-          },
-          {
-            "number": 236,
-            "title": "Updated Flying Dreams Brewing to closed",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/236",
-            "state": "closed",
-            "merged_at": "2025-12-23T21:00:20Z",
-            "closed_at": "2025-12-23T21:00:20Z",
-            "user": {
-              "login": "alexjustesen",
-              "html_url": "https://github.com/alexjustesen",
-              "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4"
-            }
-          },
-          {
-            "number": 234,
-            "title": "Bump glob from 11.0.1 to 11.1.0",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/234",
-            "state": "closed",
-            "merged_at": "2025-11-18T00:51:58Z",
-            "closed_at": "2025-11-18T00:51:59Z",
-            "user": {
-              "login": "dependabot[bot]",
-              "html_url": "https://github.com/apps/dependabot",
-              "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4"
-            }
           }
         ]
       }
@@ -197,6 +223,14 @@
       "type": "api",
       "source_url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api",
       "releases": [
+        {
+          "tag": "v1.1.0",
+          "title": "v1.1.0 (Now with docs!)",
+          "date": "2026-05-20T22:12:03Z",
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api/releases/tag/v1.1.0",
+          "notes": "What's Changed\n* gh actions: bump docker/build-push-action from 6 to 7 by @dependabot[bot] in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/117\n* gh actions: bump docker/metadata-action from 5 to 6 by @dependabot[bot] in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/118\n* gh actions: bump docker/setup-buildx-action from 3 to 4 by @dependabot[bot] in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/119\n* gh actions: bump docker/login-action from 3 to 4 by @dependabot[bot] in https://github.com/openbrewerydb/openbrewerydb-laravel-api/pull/120\n* ",
+          "notes_truncated": true
+        },
         {
           "tag": "v1.0.13",
           "title": "v1.0.13",
