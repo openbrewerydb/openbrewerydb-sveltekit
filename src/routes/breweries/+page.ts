@@ -28,15 +28,56 @@ export async function load({ url }) {
   }
 
   try {
-    let apiUrl: string;
-    let metaUrl: string;
+    let breweries: Brewery[] = [];
+    let meta: Metadata;
 
     if (query) {
-      apiUrl = `${API_URL}/breweries/search?query=${encodeURIComponent(query)}&page=${page}&per_page=${per_page}`;
-      metaUrl = apiUrl;
+      // Calculate start index and map it to API batch page number of size 200
+      const svelteStart = (page - 1) * per_page;
+      const apiPage = Math.floor(svelteStart / 200) + 1;
+      const localOffset = svelteStart % 200;
+
+      const apiUrl = `${API_URL}/breweries/search?query=${encodeURIComponent(query)}&page=${apiPage}&per_page=200`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        return {
+          breweries: [],
+          meta: {
+            total: '0',
+            page: page.toString(),
+            per_page: per_page.toString(),
+            query: query,
+          },
+          error: `Request failed with status ${response.status}`,
+        };
+      }
+
+      const apiBreweries: Brewery[] = await response.json();
+      breweries = apiBreweries.slice(localOffset, localOffset + per_page);
+
+      let total: number;
+      if (apiBreweries.length < 200) {
+        // We reached the actual end of results
+        total = (apiPage - 1) * 200 + apiBreweries.length;
+      } else {
+        // We got exactly 200 results, so there might be more beyond this batch.
+        // We do progressive discovery beyond the currently fetched batch size.
+        total = (apiPage - 1) * 200 + apiBreweries.length;
+        if (localOffset + per_page >= apiBreweries.length) {
+          total += per_page;
+        }
+      }
+
+      meta = {
+        total: total.toString(),
+        page: page.toString(),
+        per_page: per_page.toString(),
+        query: query,
+      };
     } else {
-      apiUrl = `${API_URL}/breweries/?page=${page}&per_page=${per_page}`;
-      metaUrl = `${API_URL}/breweries/meta?page=${page}&per_page=${per_page}`;
+      let apiUrl = `${API_URL}/breweries/?page=${page}&per_page=${per_page}`;
+      let metaUrl = `${API_URL}/breweries/meta?page=${page}&per_page=${per_page}`;
 
       if (byState) {
         apiUrl += `&by_state=${encodeURIComponent(byState)}`;
@@ -47,46 +88,31 @@ export async function load({ url }) {
         apiUrl += `&by_type=${encodeURIComponent(byType)}`;
         metaUrl += `&by_type=${encodeURIComponent(byType)}`;
       }
-    }
 
-    const response = await fetch(apiUrl);
-    const metaResponse = await fetch(metaUrl);
+      const response = await fetch(apiUrl);
+      const metaResponse = await fetch(metaUrl);
 
-    if (!response.ok) {
-      return {
-        breweries: [],
-        meta: {
-          total: '0',
-          page: page.toString(),
-          per_page: per_page.toString(),
-          query: query || '',
-        },
-        error: `Request failed with status ${response.status}`,
-      };
-    }
+      if (!response.ok) {
+        return {
+          breweries: [],
+          meta: {
+            total: '0',
+            page: page.toString(),
+            per_page: per_page.toString(),
+            query: '',
+          },
+          error: `Request failed with status ${response.status}`,
+        };
+      }
 
-    const breweries: Brewery[] = await response.json();
-
-    let meta: Metadata;
-    if (query) {
-      const total =
-        breweries.length >= per_page
-          ? page * per_page + per_page
-          : (page - 1) * per_page + breweries.length;
-
-      meta = {
-        total: total.toString(),
-        page: page.toString(),
-        per_page: per_page.toString(),
-        query: query,
-      };
-    } else {
+      breweries = await response.json();
       const metaResult = await metaResponse.json();
+
       meta = {
         total: metaResult.total,
         page: page.toString(),
         per_page: per_page.toString(),
-        query: query || '',
+        query: '',
       };
     }
 
