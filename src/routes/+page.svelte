@@ -128,7 +128,7 @@
 
       <!-- Countries Card -->
       <a
-        href="/breweries/browse"
+        href="/breweries/browse#countries"
         class="group relative flex flex-col justify-between bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-200 hover:border-amber-500 p-6 transition-all duration-300 transform hover:-translate-y-1"
       >
         <div>
@@ -157,7 +157,7 @@
 
       <!-- States Card -->
       <a
-        href="/breweries/browse"
+        href="/breweries/browse#states"
         class="group relative flex flex-col justify-between bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-200 hover:border-amber-500 p-6 transition-all duration-300 transform hover:-translate-y-1"
       >
         <div>
@@ -189,7 +189,7 @@
 
       <!-- Types Card -->
       <a
-        href="/breweries/browse"
+        href="/breweries/browse#types"
         class="group relative flex flex-col justify-between bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-200 hover:border-amber-500 p-6 transition-all duration-300 transform hover:-translate-y-1"
       >
         <div>

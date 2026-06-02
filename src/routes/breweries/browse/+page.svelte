@@ -40,7 +40,7 @@
       </div>
     {:else}
       <!-- Browse by Country -->
-      <section class="mb-16">
+      <section id="countries" class="mb-16">
         <div class="flex items-center gap-3 mb-8">
           <Globe class="w-8 h-8 text-amber-600" />
           <h2 class="text-3xl font-serif font-semibold text-amber-900">
@@ -84,7 +84,7 @@
       </section>
 
       <!-- Browse by State/Province -->
-      <section class="mb-16">
+      <section id="states" class="mb-16">
         <div class="flex items-center gap-3 mb-8">
           <MapPin class="w-8 h-8 text-amber-600" />
           <h2 class="text-3xl font-serif font-semibold text-amber-900">
@@ -123,7 +123,7 @@
       </section>
 
       <!-- Browse by Type -->
-      <section>
+      <section id="types">
         <div class="flex items-center gap-3 mb-8">
           <Building2 class="w-8 h-8 text-amber-600" />
           <h2 class="text-3xl font-serif font-semibold text-amber-900">
