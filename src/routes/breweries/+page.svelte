@@ -2,7 +2,7 @@
   import BreweriesTable from '$lib/components/BreweriesTable.svelte';
   import BreweryCard from '$lib/components/BreweryCard.svelte';
   import BrewerySearchForm from '$lib/components/BrewerySearchForm.svelte';
-  import SearchPagination from '$lib/components/SearchPagination.svelte';
+  import Pagination from '$lib/components/Pagination.svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
   import SEO from '$lib/components/SEO.svelte';
@@ -12,8 +12,6 @@
     getError,
     resetSearch,
     initializeStore,
-    getHasNextPage,
-    getHasPreviousPage,
     getCurrentPage,
     getItemsPerPage,
     getTotalBreweries,
@@ -151,11 +149,14 @@
         </div>
       {/if}
 
-      <SearchPagination
-        currentPage={getCurrentPage()}
-        totalPages={getTotalPages()}
-        hasPrevious={getHasPreviousPage()}
-        hasNext={getHasNextPage()}
+      <Pagination
+        meta={{
+          page: getCurrentPage().toString(),
+          total: getTotalBreweries().toString(),
+          per_page: getItemsPerPage().toString(),
+        }}
+        country=""
+        context="search"
         onPageChange={handlePageChange}
       />
     </div>
@@ -183,11 +184,14 @@
     </div>
 
     <div class="mt-6 flex justify-center sm:justify-end">
-      <SearchPagination
-        currentPage={getCurrentPage()}
-        totalPages={getTotalPages()}
-        hasPrevious={getHasPreviousPage()}
-        hasNext={getHasNextPage()}
+      <Pagination
+        meta={{
+          page: getCurrentPage().toString(),
+          total: getTotalBreweries().toString(),
+          per_page: getItemsPerPage().toString(),
+        }}
+        country=""
+        context="search"
         onPageChange={handlePageChange}
       />
     </div>
