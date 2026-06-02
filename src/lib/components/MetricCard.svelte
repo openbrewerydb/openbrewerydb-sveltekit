@@ -24,10 +24,10 @@
     {label}
   </div>
   {#if subtitle}
-    <div class="text-xs text-gray-500">{subtitle}</div>
+    <div class="text-xs text-gray-600">{subtitle}</div>
   {/if}
   {#if breakdown && breakdown.length > 0}
-    <div class="text-xs text-gray-500 space-y-1">
+    <div class="text-xs text-gray-600 space-y-1">
       {#each breakdown as item (item.label)}
         <div>
           {item.label}: {formatNumber(item.value)}

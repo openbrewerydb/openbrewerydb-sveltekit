@@ -25,14 +25,14 @@
     Statistics
   </h2>
   <p
-    class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-3 md:text-xl md:max-w-3xl"
+    class="mt-3 max-w-md mx-auto text-base text-gray-700 sm:text-lg md:mt-3 md:text-xl md:max-w-3xl"
   >
     Here's how many developers and breweries we serve every week.
   </p>
 
   {#if !metrics}
     <div class="text-center py-6">
-      <p class="text-gray-500">Metrics unavailable</p>
+      <p class="text-gray-600">Metrics unavailable</p>
     </div>
   {:else if metrics && period}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
@@ -65,11 +65,11 @@
           {formatBandwidth(period.bandwidth_tb)}
         </div>
         <div class="text-sm font-medium text-gray-700 mb-2">Bandwidth</div>
-        <div class="text-xs text-gray-500">7 days</div>
+        <div class="text-xs text-gray-600">7 days</div>
       </div>
     </div>
 
-    <div class="text-center mt-3 text-sm text-gray-500">
+    <div class="text-center mt-3 text-sm text-gray-600">
       {#if isDataStale(metrics.last_updated)}
         <p class="text-amber-600 font-medium mb-2">
           ⚠️ Metrics data may be outdated

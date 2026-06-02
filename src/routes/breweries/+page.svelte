@@ -197,7 +197,7 @@
     </div>
   {:else if getSearchQuery()}
     <div class="text-center py-12">
-      <p class="text-gray-500">
+      <p class="text-gray-700">
         No breweries found matching "{getSearchQuery()}". Try a different search
         term.
       </p>

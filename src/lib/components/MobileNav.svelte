@@ -24,13 +24,13 @@
 >
   <!-- Header with close button -->
   <div
-    class="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-amber-50"
+    class="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-amber-100/60"
   >
-    <span class="text-lg font-semibold text-gray-900">Menu</span>
+    <span class="text-lg font-bold text-amber-950">Menu</span>
     <button
       onclick={toggleMenu}
       type="button"
-      class="rounded-md p-2 inline-flex items-center justify-center text-amber-600 hover:text-amber-800 hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 transition-colors duration-200"
+      class="rounded-md p-2 inline-flex items-center justify-center text-amber-800 hover:text-amber-950 hover:bg-amber-200/80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-600 transition-colors duration-200"
     >
       <span class="sr-only">Close menu</span>
       <svg

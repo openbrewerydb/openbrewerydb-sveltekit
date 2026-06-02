@@ -67,17 +67,17 @@
           ></td
         >
         <td
-          class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden lg:table-cell"
+          class="whitespace-nowrap px-2 py-2 text-sm text-gray-700 hidden lg:table-cell"
           >{brewery.address_1 ?? ''}</td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-700"
           ><a
             class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
             href="/breweries/{brewery.country}/{brewery.state_province}/{brewery.city}"
             >{brewery.city}</a
           ></td
         >
-        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-700"
           ><a
             class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
             href="/breweries/{brewery.country}/{brewery.state_province}"
@@ -85,11 +85,11 @@
           ></td
         >
         <td
-          class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden lg:table-cell"
+          class="whitespace-nowrap px-2 py-2 text-sm text-gray-700 hidden lg:table-cell"
           >{brewery.postal_code}</td
         >
         <td
-          class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 hidden md:table-cell"
+          class="whitespace-nowrap px-2 py-2 text-sm text-gray-700 hidden md:table-cell"
           ><a
             class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
             href="/breweries/{brewery.country}">{brewery.country}</a
