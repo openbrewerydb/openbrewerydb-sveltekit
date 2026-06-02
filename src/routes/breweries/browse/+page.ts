@@ -32,7 +32,9 @@ export async function load() {
       .map(([name, count]) => ({
         name,
         count,
-        country: stateCountryMapping[name as keyof typeof stateCountryMapping] || 'United States'
+        country:
+          stateCountryMapping[name as keyof typeof stateCountryMapping] ||
+          'United States',
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
 
