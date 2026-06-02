@@ -54,7 +54,7 @@
         <input
           type="search"
           name="query"
-          placeholder="Search 8,000+ breweries, cities, types..."
+          placeholder="Search breweries..."
           class="w-full py-4 pl-3 pr-4 bg-transparent text-gray-900 placeholder-gray-500 focus:outline-none text-base border-none ring-0 focus:ring-0"
           required
         />
