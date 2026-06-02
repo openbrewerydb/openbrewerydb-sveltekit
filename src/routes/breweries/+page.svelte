@@ -77,7 +77,11 @@
       <p>Error: {getError()}</p>
     </div>
   {:else if getBreweries().length > 0}
-    <div class="flex justify-between items-center flex-col md:flex-row">
+    <div
+      class="flex justify-between items-center flex-col md:flex-row gap-4 {!getSearchQuery()
+        ? 'md:justify-end'
+        : ''}"
+    >
       {#if getSearchQuery()}
         <div class="mb-6 md:mb-0">
           <p class="text-gray-600">
@@ -122,7 +126,7 @@
       </div>
     </div>
 
-    <div class="mt-6">
+    <div class="mt-6 flex justify-center sm:justify-end">
       <SearchPagination
         currentPage={getCurrentPage()}
         totalPages={getTotalPages()}
