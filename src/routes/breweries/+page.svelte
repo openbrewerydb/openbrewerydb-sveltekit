@@ -4,6 +4,7 @@
   import BrewerySearchForm from '$lib/components/BrewerySearchForm.svelte';
   import SearchPagination from '$lib/components/SearchPagination.svelte';
   import { goto } from '$app/navigation';
+  import { page } from '$app/state';
   import SEO from '$lib/components/SEO.svelte';
   import {
     getBreweries,
@@ -41,10 +42,8 @@
 
   async function handlePageChange(newPage: number) {
     if (newPage !== getCurrentPage()) {
-      const params = new SvelteURLSearchParams();
+      const params = new SvelteURLSearchParams(page.url.searchParams);
       params.set('page', newPage.toString());
-      const currentQuery = getSearchQuery();
-      if (currentQuery) params.set('query', currentQuery);
       await goto(`/breweries?${params.toString()}`, { replaceState: true });
     }
   }

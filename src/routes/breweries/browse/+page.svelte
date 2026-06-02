@@ -97,7 +97,7 @@
           >
             {#each byState as item (item.name)}
               <a
-                href={`/breweries?query=${encodeURIComponent(item.name)}`}
+                href={`/breweries/${encodeURIComponent(item.country)}/${encodeURIComponent(item.name)}`}
                 class="group relative overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-amber-100"
               >
                 <div class="relative p-4">
@@ -106,9 +106,13 @@
                   >
                     {item.name}
                   </h3>
-                  <p class="text-xs text-amber-600/60 mt-1">
-                    {item.count.toLocaleString()}
-                  </p>
+                  <div class="flex items-center gap-1.5 mt-1">
+                    <MapPin class="w-3 h-3 text-amber-500" />
+                    <p class="text-xs text-amber-600/60">
+                      {item.count.toLocaleString()}
+                      {item.count === 1 ? ' brewery' : ' breweries'}
+                    </p>
+                  </div>
                 </div>
               </a>
             {/each}
@@ -132,7 +136,7 @@
           >
             {#each byType as item (item.name)}
               <a
-                href={`/breweries/?query=${encodeURIComponent(item.name)}`}
+                href={`/breweries?by_type=${encodeURIComponent(item.name)}`}
                 class="group relative overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-amber-100"
               >
                 <div class="relative p-4">
@@ -141,9 +145,13 @@
                   >
                     {item.name}
                   </h3>
-                  <p class="text-xs text-amber-600/60 mt-1">
-                    {item.count.toLocaleString()}
-                  </p>
+                  <div class="flex items-center gap-1.5 mt-1">
+                    <Building2 class="w-3 h-3 text-amber-500" />
+                    <p class="text-xs text-amber-600/60">
+                      {item.count.toLocaleString()}
+                      {item.count === 1 ? ' brewery' : ' breweries'}
+                    </p>
+                  </div>
                 </div>
               </a>
             {/each}

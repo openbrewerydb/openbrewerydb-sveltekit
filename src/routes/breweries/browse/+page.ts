@@ -1,4 +1,5 @@
 import { API_URL } from '$lib/utils';
+import stateCountryMapping from '$lib/data/state-country-mapping.json';
 
 interface BreweryMetaResponse {
   total: string;
@@ -28,7 +29,11 @@ export async function load() {
       .sort((a, b) => a.name.localeCompare(b.name));
 
     const byState = Object.entries(data.by_state)
-      .map(([name, count]) => ({ name, count }))
+      .map(([name, count]) => ({
+        name,
+        count,
+        country: stateCountryMapping[name as keyof typeof stateCountryMapping] || 'United States'
+      }))
       .sort((a, b) => a.name.localeCompare(b.name));
 
     const byType = Object.entries(data.by_type)
