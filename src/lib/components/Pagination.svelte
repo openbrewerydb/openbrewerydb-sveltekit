@@ -98,8 +98,56 @@
 </script>
 
 {#if totalPages > 1}
+  <!-- Mobile-only simple layout (hidden on sm and up) -->
+  <div class="flex sm:hidden items-center justify-between mt-4 w-full px-2">
+    {#if context === 'search' && onPageChange}
+      <button
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer min-w-[70px] text-center"
+        disabled={page <= 1}
+        onclick={() => handlePageChange(page - 1)}
+      >
+        Previous
+      </button>
+    {:else}
+      <a
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white min-w-[70px] text-center {page <=
+        1
+          ? 'opacity-50 pointer-events-none cursor-not-allowed'
+          : 'cursor-pointer'}"
+        href={page <= 1 ? '#' : getPageUrl(page - 1)}
+      >
+        Previous
+      </a>
+    {/if}
+
+    <span class="text-xs text-amber-900 font-medium select-none">
+      Page {page} of {totalPages}
+    </span>
+
+    {#if context === 'search' && onPageChange}
+      <button
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer min-w-[70px] text-center"
+        disabled={page >= totalPages}
+        onclick={() => handlePageChange(page + 1)}
+      >
+        Next
+      </button>
+    {:else}
+      <a
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white min-w-[70px] text-center {page >=
+        totalPages
+          ? 'opacity-50 pointer-events-none cursor-not-allowed'
+          : 'cursor-pointer'}"
+        href={page >= totalPages ? '#' : getPageUrl(page + 1)}
+      >
+        Next
+      </a>
+    {/if}
+  </div>
+
+  <!-- Desktop/Tablet layout (hidden on mobile, flex on sm and up) -->
   <div
-    class="mt-4 flex flex-wrap items-center justify-center sm:justify-end gap-2"
+    class="hidden sm:flex flex-wrap items-center justify-center sm:justify-end gap-2 mt-4"
   >
     <!-- Previous Button -->
     {#if context === 'search' && onPageChange}
