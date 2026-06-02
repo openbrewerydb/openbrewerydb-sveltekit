@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import type { MetricsData } from '$lib/types/metrics';
 import { API_URL } from '$lib/utils';
+import searchSuggestions from '$lib/data/search-suggestions.json';
 
 export const load: PageServerLoad = async ({ platform, fetch }) => {
   // Fetch live dataset metadata from the API
@@ -35,9 +36,16 @@ export const load: PageServerLoad = async ({ platform, fetch }) => {
     }
   }
 
+  // Select 3 random search suggestions
+  let selectedSuggestions: string[] = ['California', 'Dogfish', 'Portland'];
+  if (Array.isArray(searchSuggestions) && searchSuggestions.length > 0) {
+    const shuffled = [...searchSuggestions].sort(() => 0.5 - Math.random());
+    selectedSuggestions = shuffled.slice(0, 3);
+  }
+
   return {
     metrics,
     dbMetrics,
+    searchSuggestions: selectedSuggestions,
   };
 };
-

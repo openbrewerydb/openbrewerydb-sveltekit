@@ -66,19 +66,16 @@
         </button>
       </form>
       <p class="text-xs text-gray-600 mt-2.5 text-center">
-        Try searching for
-        <a
-          href="/breweries?query=california"
-          class="text-amber-600 hover:underline">"California"</a
-        >,
-        <a
-          href="/breweries?query=dogfish"
-          class="text-amber-600 hover:underline">"Dogfish"</a
-        >, or
-        <a
-          href="/breweries?query=portland"
-          class="text-amber-600 hover:underline">"Portland"</a
-        >
+        Try searching for&nbsp;
+        {#each data.searchSuggestions || [] as suggestion, i (suggestion)}
+          <a
+            href="/breweries?query={encodeURIComponent(
+              suggestion.toLowerCase()
+            )}"
+            class="text-amber-600 underline hover:text-amber-800 transition-colors"
+            >{suggestion}</a
+          >{#if i < (data.searchSuggestions || []).length - 2},&nbsp;{/if}{#if i === (data.searchSuggestions || []).length - 2},&nbsp;or&nbsp;{/if}
+        {/each}
       </p>
     </div>
   </div>
