@@ -99,10 +99,7 @@
             <div class="flex flex-col space-y-2 text-gray-700">
               {#if brewery.address_1}
                 <div class="flex items-start gap-2">
-                  <HomeIcon
-                    size={18}
-                    class="text-amber-600 mt-1 flex-shrink-0"
-                  />
+                  <HomeIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                   <span data-testid="brewery-address">
                     {brewery.address_1}{brewery.address_2
                       ? `, ${brewery.address_2}`
@@ -111,10 +108,7 @@
                 </div>
               {/if}
               <div class="flex items-start gap-2">
-                <BuildingIcon
-                  size={18}
-                  class="text-amber-600 mt-1 flex-shrink-0"
-                />
+                <BuildingIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                 <div>
                   <a
                     class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
@@ -134,10 +128,7 @@
                 </div>
               </div>
               <div class="flex items-start gap-2">
-                <MapPinIcon
-                  size={18}
-                  class="text-amber-600 mt-1 flex-shrink-0"
-                />
+                <MapPinIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                 <a
                   class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
                   href={`/breweries/${brewery.country}`}
@@ -148,10 +139,7 @@
               </div>
               {#if brewery.phone}
                 <div class="flex items-start gap-2">
-                  <PhoneIcon
-                    size={18}
-                    class="text-amber-600 mt-1 flex-shrink-0"
-                  />
+                  <PhoneIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                   <span data-testid="brewery-phone">{brewery.phone}</span>
                 </div>
               {/if}
