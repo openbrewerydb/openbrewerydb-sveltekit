@@ -97,7 +97,9 @@
           >
             {#each byState as item (item.name)}
               <a
-                href={`/breweries/${encodeURIComponent(item.country)}/${encodeURIComponent(item.name)}`}
+                href={item.country
+                  ? `/breweries/${encodeURIComponent(item.country)}/${encodeURIComponent(item.name)}`
+                  : `/breweries?by_state=${encodeURIComponent(item.name)}`}
                 class="group relative overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-amber-100"
               >
                 <div class="relative p-4">

@@ -33,8 +33,7 @@ export async function load() {
         name,
         count,
         country:
-          stateCountryMapping[name as keyof typeof stateCountryMapping] ||
-          'United States',
+          stateCountryMapping[name as keyof typeof stateCountryMapping] ?? null,
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
 
