@@ -62,7 +62,10 @@ export async function load({ url }) {
         total = (apiPage - 1) * 200 + apiBreweries.length;
       } else {
         // We got exactly 200 results, so there might be more beyond this batch.
-        // We do progressive discovery beyond the currently fetched batch size.
+        // We estimate the total by adding a speculative page buffer.
+        // This is a heuristic: users may occasionally land on an empty last page
+        // if the actual results end between estimates. A follow-up fetch on
+        // that page would correct the total.
         total = (apiPage - 1) * 200 + apiBreweries.length;
         if (localOffset + per_page >= apiBreweries.length) {
           total += per_page;

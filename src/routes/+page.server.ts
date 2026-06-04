@@ -12,9 +12,9 @@ export const load: PageServerLoad = async ({ platform, fetch }) => {
       const data = await response.json();
       dbMetrics = {
         total: parseInt(data.total) || 0,
-        countriesCount: Object.keys(data.by_country || {}).length,
-        statesCount: Object.keys(data.by_state || {}).length,
-        typesCount: Object.keys(data.by_type || {}).length,
+        countriesCount: Object.keys(data.by_country ?? {}).length,
+        statesCount: Object.keys(data.by_state ?? {}).length,
+        typesCount: Object.keys(data.by_type ?? {}).length,
       };
     }
   } catch (error) {
