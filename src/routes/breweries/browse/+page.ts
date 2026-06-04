@@ -1,7 +1,9 @@
 import { API_URL } from '$lib/utils';
+import stateCountryMapping from '$lib/data/state-country-mapping.json';
 
 interface BreweryMetaResponse {
   total: string;
+  by_country: Record<string, number>;
   by_state: Record<string, number>;
   by_type: Record<string, number>;
 }
@@ -13,6 +15,7 @@ export async function load() {
     if (!response.ok) {
       console.error(`❌ API request failed with status ${response.status}`);
       return {
+        byCountry: [],
         byState: [],
         byType: [],
         error: `Failed to fetch metadata with status ${response.status}`,
@@ -21,8 +24,18 @@ export async function load() {
 
     const data: BreweryMetaResponse = await response.json();
 
-    const byState = Object.entries(data.by_state)
+    const byCountry = Object.entries(data.by_country)
       .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    const byState = Object.entries(data.by_state)
+      .map(([name, count]) => ({
+        name,
+        count,
+        country:
+          stateCountryMapping[name as keyof typeof stateCountryMapping] ||
+          'United States',
+      }))
       .sort((a, b) => a.name.localeCompare(b.name));
 
     const byType = Object.entries(data.by_type)
@@ -30,12 +43,14 @@ export async function load() {
       .sort((a, b) => a.name.localeCompare(b.name));
 
     return {
+      byCountry,
       byState,
       byType,
     };
   } catch (error) {
     console.error('❌ Error fetching brewery metadata:', error);
     return {
+      byCountry: [],
       byState: [],
       byType: [],
       error: 'Failed to fetch brewery metadata',

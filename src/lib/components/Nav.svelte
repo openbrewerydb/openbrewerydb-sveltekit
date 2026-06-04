@@ -24,7 +24,7 @@
           alt="Open Brewery DB Logo Link to Home"
         />
       </a>
-      <div class="-mr-2 flex items-center md:hidden">
+      <div class="-mr-2 -mt-4 flex items-center md:hidden">
         <button
           onclick={toggleMenu}
           type="button"

@@ -2,8 +2,9 @@
   import BreweriesTable from '$lib/components/BreweriesTable.svelte';
   import BreweryCard from '$lib/components/BreweryCard.svelte';
   import BrewerySearchForm from '$lib/components/BrewerySearchForm.svelte';
-  import SearchPagination from '$lib/components/SearchPagination.svelte';
+  import Pagination from '$lib/components/Pagination.svelte';
   import { goto } from '$app/navigation';
+  import { page } from '$app/state';
   import SEO from '$lib/components/SEO.svelte';
   import {
     getBreweries,
@@ -11,8 +12,6 @@
     getError,
     resetSearch,
     initializeStore,
-    getHasNextPage,
-    getHasPreviousPage,
     getCurrentPage,
     getItemsPerPage,
     getTotalBreweries,
@@ -41,12 +40,17 @@
 
   async function handlePageChange(newPage: number) {
     if (newPage !== getCurrentPage()) {
-      const params = new SvelteURLSearchParams();
+      const params = new SvelteURLSearchParams(page.url.searchParams);
       params.set('page', newPage.toString());
-      const currentQuery = getSearchQuery();
-      if (currentQuery) params.set('query', currentQuery);
       await goto(`/breweries?${params.toString()}`, { replaceState: true });
     }
+  }
+
+  function removeParam(param: string): string {
+    const params = new SvelteURLSearchParams(page.url.searchParams);
+    params.delete(param);
+    params.delete('page');
+    return params.toString();
   }
 </script>
 
@@ -58,12 +62,62 @@
 <div class="px-4 py-8">
   <h1 class="text-3xl text-center font-bold mb-6">Search Breweries</h1>
 
-  <div class="max-w-2xl mx-auto">
+  <div class="max-w-2xl mx-auto mb-8">
     <BrewerySearchForm
       onSearch={handleSearch}
       initialQuery={getSearchQuery()}
     />
   </div>
+
+  {#if !getLoading() && !getError() && (page.url.searchParams.get('query') || page.url.searchParams.get('by_state') || page.url.searchParams.get('by_type'))}
+    <div class="mb-6 flex flex-wrap gap-2.5 items-center">
+      <span
+        class="text-xs font-semibold uppercase tracking-wider text-amber-800/60 mr-1"
+        >Active Filters:</span
+      >
+      {#if page.url.searchParams.get('query')}
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200"
+        >
+          Query: "{page.url.searchParams.get('query')}"
+          <a
+            href="/breweries?{removeParam('query')}"
+            class="text-amber-500 hover:text-amber-800 font-bold ml-1 text-sm leading-none"
+            >×</a
+          >
+        </span>
+      {/if}
+      {#if page.url.searchParams.get('by_state')}
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200"
+        >
+          State: {page.url.searchParams.get('by_state')}
+          <a
+            href="/breweries?{removeParam('by_state')}"
+            class="text-orange-500 hover:text-orange-800 font-bold ml-1 text-sm leading-none"
+            >×</a
+          >
+        </span>
+      {/if}
+      {#if page.url.searchParams.get('by_type')}
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200"
+        >
+          Type: {page.url.searchParams.get('by_type')}
+          <a
+            href="/breweries?{removeParam('by_type')}"
+            class="text-yellow-500 hover:text-yellow-800 font-bold ml-1 text-sm leading-none"
+            >×</a
+          >
+        </span>
+      {/if}
+      <a
+        href="/breweries"
+        class="text-xs text-amber-700 hover:text-amber-900 font-semibold underline decoration-dotted ml-2"
+        >Clear All</a
+      >
+    </div>
+  {/if}
 
   {#if getLoading()}
     <div class="flex justify-center items-center py-12">
@@ -78,25 +132,31 @@
       <p>Error: {getError()}</p>
     </div>
   {:else if getBreweries().length > 0}
-    <div class="flex justify-between items-center flex-col md:flex-row">
-      {#if getSearchQuery()}
-        <div class="mb-6 md:mb-0">
-          <p class="text-gray-600">
-            {(getCurrentPage() - 1) * getItemsPerPage() + 1}
+    <div
+      class="flex justify-between items-center flex-col md:flex-row gap-4 mb-6"
+    >
+      {#if getTotalBreweries() > 0}
+        <div class="md:mb-0">
+          <p class="text-gray-600 text-sm font-medium">
+            Showing {(getCurrentPage() - 1) * getItemsPerPage() + 1}
             - {Math.min(
               getCurrentPage() * getItemsPerPage(),
               getTotalBreweries()
             )}
-            of {getTotalBreweries()} breweries (page {getCurrentPage()} of {getTotalPages()})
+            of {getTotalBreweries().toLocaleString()} breweries (page {getCurrentPage()}
+            of {getTotalPages()})
           </p>
         </div>
       {/if}
 
-      <SearchPagination
-        currentPage={getCurrentPage()}
-        totalPages={getTotalPages()}
-        hasPrevious={getHasPreviousPage()}
-        hasNext={getHasNextPage()}
+      <Pagination
+        meta={{
+          page: getCurrentPage().toString(),
+          total: getTotalBreweries().toString(),
+          per_page: getItemsPerPage().toString(),
+        }}
+        country=""
+        context="search"
         onPageChange={handlePageChange}
       />
     </div>
@@ -123,18 +183,21 @@
       </div>
     </div>
 
-    <div class="mt-6">
-      <SearchPagination
-        currentPage={getCurrentPage()}
-        totalPages={getTotalPages()}
-        hasPrevious={getHasPreviousPage()}
-        hasNext={getHasNextPage()}
+    <div class="mt-6 flex justify-center sm:justify-end">
+      <Pagination
+        meta={{
+          page: getCurrentPage().toString(),
+          total: getTotalBreweries().toString(),
+          per_page: getItemsPerPage().toString(),
+        }}
+        country=""
+        context="search"
         onPageChange={handlePageChange}
       />
     </div>
   {:else if getSearchQuery()}
     <div class="text-center py-12">
-      <p class="text-gray-500">
+      <p class="text-gray-700">
         No breweries found matching "{getSearchQuery()}". Try a different search
         term.
       </p>

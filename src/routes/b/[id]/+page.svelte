@@ -99,10 +99,7 @@
             <div class="flex flex-col space-y-2 text-gray-700">
               {#if brewery.address_1}
                 <div class="flex items-start gap-2">
-                  <HomeIcon
-                    size={18}
-                    class="text-amber-600 mt-1 flex-shrink-0"
-                  />
+                  <HomeIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                   <span data-testid="brewery-address">
                     {brewery.address_1}{brewery.address_2
                       ? `, ${brewery.address_2}`
@@ -111,10 +108,7 @@
                 </div>
               {/if}
               <div class="flex items-start gap-2">
-                <BuildingIcon
-                  size={18}
-                  class="text-amber-600 mt-1 flex-shrink-0"
-                />
+                <BuildingIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                 <div>
                   <a
                     class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
@@ -134,10 +128,7 @@
                 </div>
               </div>
               <div class="flex items-start gap-2">
-                <MapPinIcon
-                  size={18}
-                  class="text-amber-600 mt-1 flex-shrink-0"
-                />
+                <MapPinIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                 <a
                   class="text-amber-600 hover:text-amber-900 transition-colors duration-200"
                   href={`/breweries/${brewery.country}`}
@@ -148,10 +139,7 @@
               </div>
               {#if brewery.phone}
                 <div class="flex items-start gap-2">
-                  <PhoneIcon
-                    size={18}
-                    class="text-amber-600 mt-1 flex-shrink-0"
-                  />
+                  <PhoneIcon size={18} class="text-amber-600 mt-1 shrink-0" />
                   <span data-testid="brewery-phone">{brewery.phone}</span>
                 </div>
               {/if}
@@ -168,7 +156,14 @@
               <div class="relative w-full h-0 pb-[75%] sm:pb-[65%]">
                 <iframe
                   class="absolute inset-0 w-full h-full border-0"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox={brewery.longitude}%2C{brewery.latitude}%2C{brewery.longitude}%2C{brewery.latitude}&layer=mapnik&marker={brewery.latitude}%2C{brewery.longitude}"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox={Number(
+                    brewery.longitude
+                  ) - 0.005}%2C{Number(brewery.latitude) - 0.005}%2C{Number(
+                    brewery.longitude
+                  ) + 0.005}%2C{Number(brewery.latitude) +
+                    0.005}&layer=mapnik&marker={Number(
+                    brewery.latitude
+                  )}%2C{Number(brewery.longitude)}"
                   title="Map showing location of {brewery.name}"
                   loading="lazy"
                   allow="fullscreen"
@@ -178,7 +173,11 @@
                 class="p-3 bg-gray-50 text-sm flex justify-between items-center border-t border-gray-200"
               >
                 <a
-                  href="https://www.openstreetmap.org/?mlat={brewery.latitude}&mlon={brewery.longitude}#map=18/{brewery.latitude}/{brewery.longitude}"
+                  href="https://www.openstreetmap.org/?mlat={Number(
+                    brewery.latitude
+                  )}&mlon={Number(brewery.longitude)}#map=17/{Number(
+                    brewery.latitude
+                  )}/{Number(brewery.longitude)}"
                   target="_blank"
                   rel="noreferrer"
                   class="text-amber-600 hover:text-amber-900 transition-colors duration-200 flex items-center gap-1"
