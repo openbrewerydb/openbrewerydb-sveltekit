@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-05-29T21:13:37.039Z",
+  "generated_at": "2026-06-04T21:24:51.748Z",
   "repositories": [
     "openbrewerydb/openbrewerydb",
     "openbrewerydb/openbrewerydb-laravel-api",
     "openbrewerydb/openbrewerydb-sveltekit"
   ],
-  "count": 72,
+  "count": 73,
   "contributors": [
     {
       "login": "chrisjm",
       "id": 96110,
       "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4",
       "html_url": "https://github.com/chrisjm",
-      "contributions": 506,
+      "contributions": 512,
       "repos": [
         {
           "type": "dataset",
-          "contributions": 367,
+          "contributions": 371,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
         },
         {
@@ -26,7 +26,7 @@
         },
         {
           "type": "website",
-          "contributions": 124,
+          "contributions": 126,
           "url": "https://github.com/openbrewerydb/openbrewerydb-sveltekit"
         }
       ]
@@ -135,10 +135,29 @@
       ]
     },
     {
-      "login": "Johnnyk737",
-      "id": 20580717,
-      "avatar_url": "https://avatars.githubusercontent.com/u/20580717?v=4",
-      "html_url": "https://github.com/Johnnyk737",
+      "login": "simonmackinnon",
+      "id": 4686123,
+      "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4",
+      "html_url": "https://github.com/simonmackinnon",
+      "contributions": 5,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 4,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        },
+        {
+          "type": "api",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api"
+        }
+      ]
+    },
+    {
+      "login": "epikkoder",
+      "id": 20148265,
+      "avatar_url": "https://avatars.githubusercontent.com/u/20148265?v=4",
+      "html_url": "https://github.com/epikkoder",
       "contributions": 4,
       "repos": [
         {
@@ -163,35 +182,16 @@
       ]
     },
     {
-      "login": "epikkoder",
-      "id": 20148265,
-      "avatar_url": "https://avatars.githubusercontent.com/u/20148265?v=4",
-      "html_url": "https://github.com/epikkoder",
+      "login": "Johnnyk737",
+      "id": 20580717,
+      "avatar_url": "https://avatars.githubusercontent.com/u/20580717?v=4",
+      "html_url": "https://github.com/Johnnyk737",
       "contributions": 4,
       "repos": [
         {
           "type": "dataset",
           "contributions": 4,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
-        }
-      ]
-    },
-    {
-      "login": "simonmackinnon",
-      "id": 4686123,
-      "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4",
-      "html_url": "https://github.com/simonmackinnon",
-      "contributions": 4,
-      "repos": [
-        {
-          "type": "dataset",
-          "contributions": 3,
-          "url": "https://github.com/openbrewerydb/openbrewerydb"
-        },
-        {
-          "type": "api",
-          "contributions": 1,
-          "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api"
         }
       ]
     },
@@ -514,20 +514,6 @@
       ]
     },
     {
-      "login": "zingi",
-      "id": 9286499,
-      "avatar_url": "https://avatars.githubusercontent.com/u/9286499?v=4",
-      "html_url": "https://github.com/zingi",
-      "contributions": 1,
-      "repos": [
-        {
-          "type": "dataset",
-          "contributions": 1,
-          "url": "https://github.com/openbrewerydb/openbrewerydb"
-        }
-      ]
-    },
-    {
       "login": "kpomer",
       "id": 25374403,
       "avatar_url": "https://avatars.githubusercontent.com/u/25374403?v=4",
@@ -616,6 +602,20 @@
       "id": 20256930,
       "avatar_url": "https://avatars.githubusercontent.com/u/20256930?v=4",
       "html_url": "https://github.com/Qerewe",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
+      "login": "Reider1313",
+      "id": 288641639,
+      "avatar_url": "https://avatars.githubusercontent.com/u/288641639?v=4",
+      "html_url": "https://github.com/Reider1313",
       "contributions": 1,
       "repos": [
         {
@@ -742,6 +742,20 @@
       "id": 17362961,
       "avatar_url": "https://avatars.githubusercontent.com/u/17362961?v=4",
       "html_url": "https://github.com/willkrakow",
+      "contributions": 1,
+      "repos": [
+        {
+          "type": "dataset",
+          "contributions": 1,
+          "url": "https://github.com/openbrewerydb/openbrewerydb"
+        }
+      ]
+    },
+    {
+      "login": "zingi",
+      "id": 9286499,
+      "avatar_url": "https://avatars.githubusercontent.com/u/9286499?v=4",
+      "html_url": "https://github.com/zingi",
       "contributions": 1,
       "repos": [
         {

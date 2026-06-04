@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T21:13:34.647Z",
+  "generated_at": "2026-06-04T21:24:49.492Z",
   "repos": {
     "openbrewerydb/openbrewerydb": {
       "type": "dataset",
@@ -8,6 +8,45 @@
       "fallback": {
         "kind": "pull_requests",
         "items": [
+          {
+            "number": 271,
+            "title": "Updated Vermont Breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/271",
+            "state": "closed",
+            "merged_at": "2026-06-03T16:32:32Z",
+            "closed_at": "2026-06-03T16:32:32Z",
+            "user": {
+              "login": "Reider1313",
+              "html_url": "https://github.com/Reider1313",
+              "avatar_url": "https://avatars.githubusercontent.com/u/288641639?v=4"
+            }
+          },
+          {
+            "number": 270,
+            "title": "add belgium and new zealand breweries",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/270",
+            "state": "closed",
+            "merged_at": "2026-06-03T16:21:49Z",
+            "closed_at": "2026-06-03T16:21:49Z",
+            "user": {
+              "login": "simonmackinnon",
+              "html_url": "https://github.com/simonmackinnon",
+              "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4"
+            }
+          },
+          {
+            "number": 218,
+            "title": "Australia data",
+            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/218",
+            "state": "closed",
+            "merged_at": "2025-10-08T15:52:39Z",
+            "closed_at": "2025-10-08T15:52:39Z",
+            "user": {
+              "login": "simonmackinnon",
+              "html_url": "https://github.com/simonmackinnon",
+              "avatar_url": "https://avatars.githubusercontent.com/u/4686123?v=4"
+            }
+          },
           {
             "number": 268,
             "title": "add German breweries",
@@ -175,45 +214,6 @@
               "login": "CrepuscularCremini",
               "html_url": "https://github.com/CrepuscularCremini",
               "avatar_url": "https://avatars.githubusercontent.com/u/101598531?v=4"
-            }
-          },
-          {
-            "number": 253,
-            "title": "Updating NPM packages for Repo",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/253",
-            "state": "closed",
-            "merged_at": "2026-04-11T02:27:21Z",
-            "closed_at": "2026-04-11T02:27:21Z",
-            "user": {
-              "login": "natebru",
-              "html_url": "https://github.com/natebru",
-              "avatar_url": "https://avatars.githubusercontent.com/u/1214808?v=4"
-            }
-          },
-          {
-            "number": 251,
-            "title": "fix: update Mac and Jacks Brewery status to closed",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/251",
-            "state": "closed",
-            "merged_at": "2026-04-08T00:41:42Z",
-            "closed_at": "2026-04-08T00:41:42Z",
-            "user": {
-              "login": "natebru",
-              "html_url": "https://github.com/natebru",
-              "avatar_url": "https://avatars.githubusercontent.com/u/1214808?v=4"
-            }
-          },
-          {
-            "number": 250,
-            "title": "Added 68 breweries from Finland",
-            "url": "https://github.com/openbrewerydb/openbrewerydb/pull/250",
-            "state": "closed",
-            "merged_at": "2026-03-31T17:59:09Z",
-            "closed_at": "2026-03-31T17:59:09Z",
-            "user": {
-              "login": "kpomer",
-              "html_url": "https://github.com/kpomer",
-              "avatar_url": "https://avatars.githubusercontent.com/u/25374403?v=4"
             }
           }
         ]

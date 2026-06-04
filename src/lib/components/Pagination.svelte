@@ -60,7 +60,7 @@
     const pages: (number | 'ellipsis')[] = [];
     const maxVisible = 5; // Number of pages to show in the sliding window
 
-    if (totalPages <= maxVisible + 4) {
+    if (totalPages <= maxVisible + 2) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
@@ -68,13 +68,13 @@
       // Always include page 1
       pages.push(1);
 
-      let start = Math.max(2, page - 2);
-      let end = Math.min(totalPages - 1, page + 2);
+      // Sliding window of maxVisible pages centered on current page
+      let start = Math.max(2, page - Math.floor(maxVisible / 2));
+      let end = Math.min(totalPages - 1, start + maxVisible - 1);
 
-      if (page <= 3) {
-        end = 1 + maxVisible;
-      } else if (page >= totalPages - 2) {
-        start = totalPages - maxVisible;
+      // Adjust window when near the start or end
+      if (end - start + 1 < maxVisible) {
+        start = Math.max(2, end - maxVisible + 1);
       }
 
       if (start > 2) {

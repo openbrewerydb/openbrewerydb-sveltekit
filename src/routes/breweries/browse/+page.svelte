@@ -40,7 +40,7 @@
       </div>
     {:else}
       <!-- Browse by Country -->
-      <section class="mb-16">
+      <section id="countries" class="mb-16">
         <div class="flex items-center gap-3 mb-8">
           <Globe class="w-8 h-8 text-amber-600" />
           <h2 class="text-3xl font-serif font-semibold text-amber-900">
@@ -84,7 +84,7 @@
       </section>
 
       <!-- Browse by State/Province -->
-      <section class="mb-16">
+      <section id="states" class="mb-16">
         <div class="flex items-center gap-3 mb-8">
           <MapPin class="w-8 h-8 text-amber-600" />
           <h2 class="text-3xl font-serif font-semibold text-amber-900">
@@ -97,7 +97,9 @@
           >
             {#each byState as item (item.name)}
               <a
-                href={`/breweries/${encodeURIComponent(item.country)}/${encodeURIComponent(item.name)}`}
+                href={item.country
+                  ? `/breweries/${encodeURIComponent(item.country)}/${encodeURIComponent(item.name)}`
+                  : `/breweries?by_state=${encodeURIComponent(item.name)}`}
                 class="group relative overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-amber-100"
               >
                 <div class="relative p-4">
@@ -123,7 +125,7 @@
       </section>
 
       <!-- Browse by Type -->
-      <section>
+      <section id="types">
         <div class="flex items-center gap-3 mb-8">
           <Building2 class="w-8 h-8 text-amber-600" />
           <h2 class="text-3xl font-serif font-semibold text-amber-900">
