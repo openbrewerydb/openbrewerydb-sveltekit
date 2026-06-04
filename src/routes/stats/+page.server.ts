@@ -1,14 +1,13 @@
 import type { PageServerLoad } from './$types';
 import type { MetricsData } from '$lib/types/metrics';
-import fallbackMetrics from '$lib/data/fallback-metrics.json';
 
 export const load: PageServerLoad = async ({ platform }) => {
   const kv = platform?.env?.OBDB_METRICS;
 
   if (!kv) {
     return {
-      metrics: fallbackMetrics as MetricsData,
-      error: 'Metrics service is offline. Showing offline fallback statistics.',
+      metrics: null,
+      error: 'Metrics service unavailable',
     };
   }
 
@@ -17,9 +16,8 @@ export const load: PageServerLoad = async ({ platform }) => {
 
     if (!value) {
       return {
-        metrics: fallbackMetrics as MetricsData,
-        error:
-          'Live metrics data not found. Showing offline fallback statistics.',
+        metrics: null,
+        error: 'Metrics data not found',
       };
     }
 
@@ -32,9 +30,8 @@ export const load: PageServerLoad = async ({ platform }) => {
   } catch (error) {
     console.error('Error loading metrics from KV:', error);
     return {
-      metrics: fallbackMetrics as MetricsData,
-      error:
-        'Failed to load live metrics. Showing offline fallback statistics.',
+      metrics: null,
+      error: 'Failed to load metrics',
     };
   }
 };

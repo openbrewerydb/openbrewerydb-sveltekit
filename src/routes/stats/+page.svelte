@@ -84,18 +84,14 @@
   </div>
 
   {#if data.error}
-    <div
-      class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-8 text-center shadow-xs"
-    >
-      <p class="text-amber-800 font-semibold">{data.error}</p>
-      <p class="text-amber-700 text-sm mt-1.5">
-        Live data may be temporarily unavailable. If this persists, please let
-        us know on Discord or GitHub!
+    <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+      <p class="text-red-800 font-medium">{data.error}</p>
+      <p class="text-red-600 text-sm mt-2">
+        We may not be aware, so if you feel inclined, please let us know via
+        Discord, Github, or BlueSky.
       </p>
     </div>
-  {/if}
-
-  {#if data.metrics}
+  {:else if data.metrics}
     <div class="mb-8 text-center">
       {#if isDataStale(data.metrics.last_updated)}
         <div
