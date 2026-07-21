@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T21:24:51.748Z",
+  "generated_at": "2026-07-21T04:41:17.283Z",
   "repositories": [
     "openbrewerydb/openbrewerydb",
     "openbrewerydb/openbrewerydb-laravel-api",
@@ -12,11 +12,11 @@
       "id": 96110,
       "avatar_url": "https://avatars.githubusercontent.com/u/96110?v=4",
       "html_url": "https://github.com/chrisjm",
-      "contributions": 512,
+      "contributions": 521,
       "repos": [
         {
           "type": "dataset",
-          "contributions": 371,
+          "contributions": 373,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
         },
         {
@@ -26,7 +26,7 @@
         },
         {
           "type": "website",
-          "contributions": 126,
+          "contributions": 133,
           "url": "https://github.com/openbrewerydb/openbrewerydb-sveltekit"
         }
       ]
@@ -36,16 +36,16 @@
       "id": 1144087,
       "avatar_url": "https://avatars.githubusercontent.com/u/1144087?v=4",
       "html_url": "https://github.com/alexjustesen",
-      "contributions": 100,
+      "contributions": 107,
       "repos": [
         {
           "type": "dataset",
-          "contributions": 15,
+          "contributions": 21,
           "url": "https://github.com/openbrewerydb/openbrewerydb"
         },
         {
           "type": "api",
-          "contributions": 85,
+          "contributions": 86,
           "url": "https://github.com/openbrewerydb/openbrewerydb-laravel-api"
         }
       ]
@@ -1004,10 +1004,10 @@
       ]
     },
     {
-      "login": "derrickscottux-collab",
+      "login": "derrick-scott",
       "id": 243489198,
       "avatar_url": "https://avatars.githubusercontent.com/u/243489198?v=4",
-      "html_url": "https://github.com/derrickscottux-collab",
+      "html_url": "https://github.com/derrick-scott",
       "contributions": 1,
       "repos": [
         {
