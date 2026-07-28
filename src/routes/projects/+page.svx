@@ -42,7 +42,7 @@ A group project search-based React app built using the Open Brewery DB API to en
 
 A React.js application built using the OpenBreweryDB API along with React Leaflet, to query a maintained database of breweries around the world and display their location on a map. [Built and maintained](https://github.com/jordbort/project-2-brewery-app) by [@jordbort](https://github.com/jordbort) and [@coreyloftus](https://github.com/coreyloftus)
 
-#### [Breweries Near Me](https://github.com/simonmackinnon/breweriesnearme)
+#### [Breweries Near Me](https://github.com/simonmackinnon/breweriesnearme) — [live site](https://breweriesnearme.theclouddevopslearningblog.com/)
 
 A global location-based brewery finder built with an MVU (Elm-inspired) architecture using virtual-dom, hyperscript-helpers, and Ramda — no React. Backed by AWS API Gateway, Lambda, DynamoDB, and Cognito auth. Built and maintained by [@simonmackinnon](https://github.com/simonmackinnon).
 
