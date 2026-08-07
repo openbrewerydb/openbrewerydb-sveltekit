@@ -64,18 +64,29 @@ test.describe('Responsive Design', () => {
     // Test on mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
 
-    const pagination = page.locator('div:has(> a:text("Next"))').first();
-    await expect(pagination).toBeVisible();
+    // Pagination renders separate mobile/desktop layout elements that are
+    // toggled with CSS visibility, so re-query for the currently visible one
+    // on each viewport rather than reusing a single locator.
+    const paginationMobile = page
+      .locator('div:has(> a:text("Next")):visible')
+      .first();
+    await expect(paginationMobile).toBeVisible();
 
-    // Check for centered pagination on mobile
-    const paginationClasses = await pagination.getAttribute('class');
-    expect(paginationClasses).toContain('justify-center');
+    // Check for edge-to-edge Previous/Next layout on mobile
+    const paginationClasses = await paginationMobile.getAttribute('class');
+    expect(paginationClasses).toContain('justify-between');
 
     // Test on desktop viewport
     await page.setViewportSize({ width: 1280, height: 800 });
 
+    const paginationDesktop = page
+      .locator('div:has(> a:text("Next")):visible')
+      .first();
+    await expect(paginationDesktop).toBeVisible();
+
     // Check for right-aligned pagination on desktop
-    const paginationClassesDesktop = await pagination.getAttribute('class');
+    const paginationClassesDesktop =
+      await paginationDesktop.getAttribute('class');
     expect(paginationClassesDesktop).toContain('sm:justify-end');
   });
 });
