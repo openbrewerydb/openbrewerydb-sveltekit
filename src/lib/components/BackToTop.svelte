@@ -44,7 +44,7 @@
   <button
     type="button"
     onclick={scrollToTop}
-    class="cursor-pointer bottom-4 right-4 md:bottom-8 md:right-8 inline-flex items-center justify-center rounded-full bg-amber-600 text-white shadow-md hover:bg-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 p-3 md:p-4 transition duration-200"
+    class="fixed cursor-pointer bottom-4 right-4 md:bottom-8 md:right-8 inline-flex items-center justify-center rounded-full bg-amber-600 text-white shadow-md hover:bg-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 p-3 md:p-4 transition duration-200"
     aria-label={ariaLabel}
   >
     <ArrowUp class="h-5 w-5" aria-hidden="true" />
