@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { ChevronDown } from 'lucide-svelte';
+  import { ChevronDown } from '@lucide/svelte';
 
   export type NavTab = {
     id: string;
@@ -8,7 +8,7 @@
   };
 
   let { data }: { data: NavTab[] } = $props();
-  let selected: NavTab = $state();
+  let selected: NavTab | undefined = $state();
 </script>
 
 <div>
@@ -25,7 +25,7 @@
         class="block w-full text-base md:text-lg font-medium bg-white text-amber-800 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 border-2 border-amber-400 rounded-lg py-2.5 pl-3 pr-10 appearance-none shadow-md hover:shadow-lg cursor-pointer transition-colors transition-shadow duration-150"
         bind:value={selected}
         onchange={() => {
-          goto('#' + selected.id);
+          if (selected) goto('#' + selected.id);
         }}
       >
         {#each data as item (item.id)}

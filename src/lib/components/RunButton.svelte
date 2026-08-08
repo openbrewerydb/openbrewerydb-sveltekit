@@ -1,6 +1,6 @@
 <script lang="ts">
   import Prism from 'prismjs';
-  import { Loader2, Play } from 'lucide-svelte';
+  import { Loader2, Play } from '@lucide/svelte';
 
 
 

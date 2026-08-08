@@ -6,7 +6,7 @@
     MapIcon,
     BuildingIcon,
     HomeIcon,
-  } from 'lucide-svelte';
+  } from '@lucide/svelte';
   import SEO from '$lib/components/SEO.svelte';
 
   interface Props {
