@@ -5,7 +5,9 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('BackToTop', () => {
-  test('should appear after scrolling and scroll to top when clicked', async ({ page }) => {
+  test('should appear after scrolling and scroll to top when clicked', async ({
+    page,
+  }) => {
     await page.goto('/documentation');
 
     // Button should not be visible at the top
