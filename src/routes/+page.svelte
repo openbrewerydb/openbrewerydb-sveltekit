@@ -7,10 +7,10 @@
     MapPin,
     Tag,
     Cpu,
-    Github,
     Download,
     Heart,
-  } from 'lucide-svelte';
+  } from '@lucide/svelte';
+  import GithubIcon from '$lib/components/GithubIcon.svelte';
   import { formatNumber } from '$lib/utils/metrics';
   import SEO from '$lib/components/SEO.svelte';
   import Hero from '$lib/components/Hero.svelte';
@@ -265,7 +265,7 @@
         <div
           class="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-amber-50 text-amber-600"
         >
-          <Github size={24} />
+          <GithubIcon size={24} />
         </div>
         <div>
           <h3 class="text-lg font-bold text-gray-900 mb-1">

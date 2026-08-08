@@ -1,12 +1,9 @@
 <script lang="ts">
-  import { ExternalLinkIcon, MapPinIcon } from 'lucide-svelte';
+  import { ExternalLinkIcon, MapPinIcon } from '@lucide/svelte';
 
   let {
     breweries = [],
     context = 'country',
-    country: _country = '',
-    state: _state = '',
-    city: _city = '',
   } = $props();
 </script>
 

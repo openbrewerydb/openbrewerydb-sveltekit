@@ -14,7 +14,7 @@
     HardDrive,
     TrendingUp,
     Globe,
-  } from 'lucide-svelte';
+  } from '@lucide/svelte';
   import SEO from '$lib/components/SEO.svelte';
   import MetricCard from '$lib/components/MetricCard.svelte';
 

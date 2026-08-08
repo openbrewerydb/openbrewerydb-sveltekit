@@ -40,7 +40,7 @@ export function absoluteFrom(
 ): string | undefined {
   if (!input) return undefined;
   try {
-    return new URL(input, base)?.toString();
+    return new URL(input, base).toString();
   } catch {
     return input;
   }

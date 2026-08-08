@@ -5,7 +5,7 @@
     formatRelativeTime,
     isDataStale,
   } from '$lib/utils/metrics';
-  import { BarChart3, Activity, Users, HardDrive } from 'lucide-svelte';
+  import { BarChart3, Activity, Users, HardDrive } from '@lucide/svelte';
   import MetricCard from './MetricCard.svelte';
 
   interface Props {

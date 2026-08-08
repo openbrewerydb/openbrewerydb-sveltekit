@@ -1,6 +1,6 @@
 <script lang="ts">
   import SEO from '$lib/components/SEO.svelte';
-  import { Globe, MapPin, Building2 } from 'lucide-svelte';
+  import { Globe, MapPin, Building2 } from '@lucide/svelte';
 
   let { data } = $props();
 

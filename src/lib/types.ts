@@ -1,33 +1,3 @@
-export enum BreweryType {
-  'micro',
-  'nano',
-  'regional',
-  'brewpub',
-  'large',
-  'planning',
-  'bar',
-  'contract',
-  'proprietor',
-  'taproom',
-  'closed',
-}
-
-export type BreweryKey =
-  | 'id'
-  | 'name'
-  | 'brewery_type'
-  | 'address_1'
-  | 'address_2'
-  | 'address_3'
-  | 'city'
-  | 'state_province'
-  | 'postal_code'
-  | 'country'
-  | 'website_url'
-  | 'phone'
-  | 'longitude'
-  | 'latitude';
-
 export interface Brewery {
   id: string;
   name: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ExternalLinkIcon, MapPinIcon } from 'lucide-svelte';
+  import { ExternalLinkIcon, MapPinIcon } from '@lucide/svelte';
 
   let { brewery } = $props();
 </script>

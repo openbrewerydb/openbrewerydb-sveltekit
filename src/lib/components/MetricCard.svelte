@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { ComponentType } from 'svelte';
+  import type { LucideIcon } from '@lucide/svelte';
   import { formatCompactNumber, formatNumber } from '$lib/utils/metrics';
 
   interface Props {
-    icon: ComponentType;
+    icon: LucideIcon;
     value: number;
     label: string;
     subtitle?: string;

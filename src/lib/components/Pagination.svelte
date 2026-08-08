@@ -102,7 +102,7 @@
   <div class="flex sm:hidden items-center justify-between mt-4 w-full px-2">
     {#if context === 'search' && onPageChange}
       <button
-        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer min-w-[70px] text-center"
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer min-w-17.5 text-center"
         disabled={page <= 1}
         onclick={() => handlePageChange(page - 1)}
       >
@@ -110,7 +110,7 @@
       </button>
     {:else}
       <a
-        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white min-w-[70px] text-center {page <=
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white min-w-17.5 text-center {page <=
         1
           ? 'opacity-50 pointer-events-none cursor-not-allowed'
           : 'cursor-pointer'}"
@@ -126,7 +126,7 @@
 
     {#if context === 'search' && onPageChange}
       <button
-        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer min-w-[70px] text-center"
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer min-w-17.5 text-center"
         disabled={page >= totalPages}
         onclick={() => handlePageChange(page + 1)}
       >
@@ -134,7 +134,7 @@
       </button>
     {:else}
       <a
-        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white min-w-[70px] text-center {page >=
+        class="px-3 py-1.5 border border-amber-300 rounded-md shadow-sm text-xs font-medium text-amber-700 bg-white min-w-17.5 text-center {page >=
         totalPages
           ? 'opacity-50 pointer-events-none cursor-not-allowed'
           : 'cursor-pointer'}"
@@ -152,7 +152,7 @@
     <!-- Previous Button -->
     {#if context === 'search' && onPageChange}
       <button
-        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white cursor-pointer hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed min-w-[80px] text-center"
+        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white cursor-pointer hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed min-w-20 text-center"
         disabled={page <= 1}
         onclick={() => handlePageChange(page - 1)}
       >
@@ -160,7 +160,7 @@
       </button>
     {:else}
       <a
-        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white hover:bg-amber-50 min-w-[80px] text-center {page <=
+        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white hover:bg-amber-50 min-w-20 text-center {page <=
         1
           ? 'opacity-50 pointer-events-none cursor-not-allowed'
           : 'cursor-pointer'}"
@@ -205,7 +205,7 @@
     <!-- Next Button -->
     {#if context === 'search' && onPageChange}
       <button
-        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white cursor-pointer hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed min-w-[80px] text-center"
+        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white cursor-pointer hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed min-w-20 text-center"
         disabled={page >= totalPages}
         onclick={() => handlePageChange(page + 1)}
       >
@@ -213,7 +213,7 @@
       </button>
     {:else}
       <a
-        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white hover:bg-amber-50 min-w-[80px] text-center {page >=
+        class="px-4 py-2 border border-amber-300 rounded-md shadow-sm text-sm font-medium text-amber-700 bg-white hover:bg-amber-50 min-w-20 text-center {page >=
         totalPages
           ? 'opacity-50 pointer-events-none cursor-not-allowed'
           : 'cursor-pointer'}"

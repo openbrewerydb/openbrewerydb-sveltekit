@@ -18,7 +18,7 @@
 <div
   class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500"
 >
-  {#if authors.length}
+  {#if authors?.length}
     <div class="flex items-center gap-2">
       {#each authors as u (u)}
         {#if authorsMap[u]}

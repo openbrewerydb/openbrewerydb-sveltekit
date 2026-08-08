@@ -1,27 +1,31 @@
-import { format } from 'd3-format';
-
-const numberFormatter = format(',');
-const decimalFormatter = format(',.2f');
-const compactFormatter = format('.2~s');
+const numberFormatter = new Intl.NumberFormat('en-US');
+const decimalFormatter = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+const compactFormatter = new Intl.NumberFormat('en-US', {
+  notation: 'compact',
+  maximumFractionDigits: 2,
+});
 
 export function formatNumber(num: number): string {
-  return numberFormatter(num);
+  return numberFormatter.format(num);
 }
 
 export function formatCompactNumber(num: number): string {
-  return compactFormatter(num);
+  return compactFormatter.format(num);
 }
 
 export function formatBandwidth(tb: number): string {
   if (tb >= 1) {
-    return `${decimalFormatter(tb)} TB`;
+    return `${decimalFormatter.format(tb)} TB`;
   }
   const gb = tb * 1024;
   if (gb >= 1) {
-    return `${decimalFormatter(gb)} GB`;
+    return `${decimalFormatter.format(gb)} GB`;
   }
   const mb = gb * 1024;
-  return `${decimalFormatter(mb)} MB`;
+  return `${decimalFormatter.format(mb)} MB`;
 }
 
 export function formatRelativeTime(isoString: string): string {

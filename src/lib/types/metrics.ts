@@ -5,19 +5,11 @@ export interface MetricsBreakdown {
   total: number;
 }
 
-export interface BandwidthBreakdown {
-  api: number;
-  www: number;
-  other: number;
-  total: number;
-}
-
 export interface MetricsPeriod {
   window_days: number;
   requests: MetricsBreakdown;
   visits: MetricsBreakdown;
   bandwidth_tb: number;
-  _bandwidth_breakdown_tb?: BandwidthBreakdown;
 }
 
 export interface MetricsData {
