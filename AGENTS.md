@@ -7,6 +7,7 @@
 - **No custom CSS**: Use TailwindCSS utility classes exclusively
 - **TypeScript strict**: All code must be typed, no `any` without justification
 - **Package manager**: Use `npm`, not pnpm
+- **Node version**: Run `source ~/.nvm/nvm.sh && nvm use` at the start of every terminal session to load the version pinned in `.nvmrc` (currently 22.14)
 
 ## Non-Obvious Architecture
 
