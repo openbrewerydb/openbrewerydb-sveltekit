@@ -33,7 +33,7 @@ export default defineConfig({
    * Shared settings for all tests. Sets baseURL for page.goto and API requests.
    */
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5174',
     trace: 'on-first-retry',
   },
 
@@ -81,8 +81,8 @@ export default defineConfig({
    * Uses Vite default port 5173.
    */
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:5173',
+    command: 'npm run dev -- --port 5174 --strictPort',
+    url: 'http://localhost:5174',
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
   },

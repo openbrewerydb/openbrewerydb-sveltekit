@@ -1,20 +1,19 @@
-import { sequence } from '@sveltejs/kit/hooks';
 import { dev } from '$app/environment';
 import {
   handleErrorWithSentry,
-  sentryHandle,
   initCloudflareSentryHandle,
 } from '@sentry/sveltekit';
 
-export function handle({ event, resolve }) {
-  sequence(
-    initCloudflareSentryHandle({
-      dsn: 'https://a5831fe9174e1bb01a828906b51574ba@o4509011200704512.ingest.us.sentry.io/4509183525322752',
-      tracesSampleRate: 1.0,
-    }),
-    sentryHandle()
-  );
+// Cloudflare Sentry needs the workerd Sentry binding, which only exists in
+// deployed Workers. Initializing it in dev crashes workerd's SQLite.
+if (!dev) {
+  initCloudflareSentryHandle({
+    dsn: 'https://a5831fe9174e1bb01a828906b51574ba@o4509011200704512.ingest.us.sentry.io/4509183525322752',
+    tracesSampleRate: 1.0,
+  });
+}
 
+export function handle({ event, resolve }) {
   if (
     dev &&
     event.url.pathname === '/.well-known/appspecific/com.chrome.devtools.json'
