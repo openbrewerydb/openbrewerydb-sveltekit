@@ -52,7 +52,7 @@
     <div
       class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg"
     >
-      <BreweriesTable {breweries} context="country" {country} />
+      <BreweriesTable {breweries} context="country" />
     </div>
   </div>
 

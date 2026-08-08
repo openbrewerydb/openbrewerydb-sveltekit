@@ -4,9 +4,6 @@
   let {
     breweries = [],
     context = 'country',
-    country: _country = '',
-    state: _state = '',
-    city: _city = '',
   } = $props();
 </script>
 

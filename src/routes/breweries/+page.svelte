@@ -176,9 +176,6 @@
         <BreweriesTable
           breweries={getBreweries()}
           context="search"
-          country=""
-          state=""
-          city=""
         />
       </div>
     </div>
