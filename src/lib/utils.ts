@@ -1,54 +1,5 @@
 export const API_URL = 'https://api.openbrewerydb.org/v1';
 
-export const mappings = {
-  countries: {
-    austria: {
-      label: 'Austria',
-      id: 'austria',
-    },
-    england: {
-      label: 'England',
-      id: 'england',
-    },
-    france: {
-      label: 'France',
-      id: 'france',
-    },
-    isle_of_man: {
-      label: 'Isle of Man',
-      id: 'isle-of-man',
-    },
-    ireland: {
-      label: 'Ireland',
-      id: 'ireland',
-    },
-    poland: {
-      label: 'Poland',
-      id: 'poland',
-    },
-    portugal: {
-      label: 'Portugal',
-      id: 'portugal',
-    },
-    scotland: {
-      label: 'Scotland',
-      id: 'scotland',
-    },
-    singapore: {
-      label: 'Singapore',
-      id: 'singapore',
-    },
-    south_korea: {
-      label: 'South Korea',
-      id: 'south-korea',
-    },
-    united_states: {
-      label: 'United States',
-      id: 'united-states',
-    },
-  },
-};
-
 export function titleCase(str: string) {
   return str.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
