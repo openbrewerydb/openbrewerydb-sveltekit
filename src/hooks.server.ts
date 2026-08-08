@@ -31,7 +31,11 @@ const customHandle: Handle = ({ event, resolve }) => {
   });
 };
 
-export const handle = sequence(cloudflareSentryHandle, sentryHandle(), customHandle);
+export const handle = sequence(
+  cloudflareSentryHandle,
+  sentryHandle(),
+  customHandle
+);
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`
 export const handleError = handleErrorWithSentry();

@@ -8,6 +8,7 @@
 - **TypeScript strict**: All code must be typed, no `any` without justification
 - **Package manager**: Use `npm`, not pnpm
 - **Node version**: Run `source ~/.nvm/nvm.sh && nvm use` at the start of every terminal session to load the version pinned in `.nvmrc` (currently 22.14)
+- **Lint before committing**: Run `npm run lint` before every commit; fix any reported issues (use `npm run format` for Prettier fixes and edit by hand for ESLint) until it passes. Do not commit with lint errors.
 
 ## Non-Obvious Architecture
 
