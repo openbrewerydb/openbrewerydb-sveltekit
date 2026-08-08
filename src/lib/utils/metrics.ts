@@ -1,9 +1,9 @@
-const numberFormatter = new Intl.NumberFormat();
-const decimalFormatter = new Intl.NumberFormat(undefined, {
+const numberFormatter = new Intl.NumberFormat('en-US');
+const decimalFormatter = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
-const compactFormatter = new Intl.NumberFormat(undefined, {
+const compactFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
   maximumFractionDigits: 2,
 });
