@@ -197,7 +197,7 @@
             </div>
           {:else}
             <div
-              class="rounded-lg overflow-hidden shadow-md border border-gray-200 bg-gray-100 flex items-center justify-center h-full min-h-[200px]"
+              class="rounded-lg overflow-hidden shadow-md border border-gray-200 bg-gray-100 flex items-center justify-center h-full min-h-50"
             >
               <p class="text-gray-500 italic">No location data available</p>
             </div>
