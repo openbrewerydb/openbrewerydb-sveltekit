@@ -17,6 +17,7 @@
   } from '@lucide/svelte';
   import SEO from '$lib/components/SEO.svelte';
   import MetricCard from '$lib/components/MetricCard.svelte';
+  import MetricTrends from '$lib/components/MetricTrends.svelte';
 
   interface Props {
     data: PageData;
@@ -240,6 +241,8 @@
         </div>
       </div>
     </section>
+
+    <MetricTrends history={data.metrics.history ?? null} />
 
     <section class="mb-16">
       <div class="flex items-center justify-center mb-6">
