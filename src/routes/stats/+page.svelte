@@ -51,7 +51,7 @@
     </p>
 
     <section class="mt-8">
-      <div class="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-300 rounded-xl p-6 shadow-sm">
+      <div class="bg-linear-to-br from-amber-50 to-amber-100 border border-amber-300 rounded-xl p-6 shadow-sm">
         <p class="text-sm font-medium text-amber-800 uppercase tracking-wide">
           Requests per day, average
         </p>
@@ -112,6 +112,15 @@
       <p>
         Data is refreshed hourly from Cloudflare traffic logs. If the "last updated" time is more
         than 90 minutes old, the collector is behind and values may be stale.
+      </p>
+      <p>
+        Metrics are collected by the
+        <a
+          href="https://github.com/openbrewerydb/openbrewerydb-metrics"
+          class="text-amber-700 underline decoration-amber-300 hover:text-amber-800"
+          rel="noopener noreferrer"
+          target="_blank">openbrewerydb-metrics</a
+        > worker.
       </p>
     </section>
   {/if}

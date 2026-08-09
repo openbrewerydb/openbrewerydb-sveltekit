@@ -70,6 +70,11 @@
     }))
   );
 
+  const bandwidthTooltipProps = {
+    root: { variant: 'none' as const, classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } },
+    item: { format: formatBytes },
+  };
+
   function toggle(set: SvelteSet<MetricSeriesKey>, key: MetricSeriesKey) {
     if (set.has(key)) {
       set.delete(key);
@@ -252,7 +257,7 @@
               color: METRIC_COLORS.www,
             },
           ]}
-          props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
+          props={{ tooltip: bandwidthTooltipProps, yAxis: { format: formatBytes } }}
         />
       </div>
 
