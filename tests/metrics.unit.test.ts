@@ -109,11 +109,15 @@ describe('isValidPayload', () => {
   });
 
   it('rejects invalid last_updated', () => {
-    expect(isValidPayload({ ...validPayload, last_updated: '2024-02-30T00:00:00Z' })).toBe(false);
+    expect(
+      isValidPayload({ ...validPayload, last_updated: '2024-02-30T00:00:00Z' })
+    ).toBe(false);
   });
 
   it('rejects non-ISO last_updated', () => {
-    expect(isValidPayload({ ...validPayload, last_updated: 'Jan 15 2024' })).toBe(false);
+    expect(
+      isValidPayload({ ...validPayload, last_updated: 'Jan 15 2024' })
+    ).toBe(false);
   });
 
   it('rejects invalid hourly timestamp', () => {

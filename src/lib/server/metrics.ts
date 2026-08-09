@@ -10,7 +10,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 export function isValidISODateTime(value: string): boolean {
-  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(\.\d+)?(Z|[+-]\d{2}:\d{2})$/.exec(value);
+  const m =
+    /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(\.\d+)?(Z|[+-]\d{2}:\d{2})$/.exec(
+      value
+    );
   if (!m) return false;
   const [, y, mo, d, h, mi, s] = m.map(Number) as number[];
   const dt = new Date(Date.UTC(y, mo - 1, d, h, mi, s));
