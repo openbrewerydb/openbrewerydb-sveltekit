@@ -15,13 +15,9 @@
   type Range = '24h' | '7d';
   let range = $state<Range>('24h');
 
-  let hidden = new SvelteSet<MetricSeriesKey>();
-
-  const requestKeys = $derived(
-    (['api', 'www', 'other'] as MetricSeriesKey[]).filter(
-      (k) => !hidden.has(k)
-    )
-  );
+  let hourlyHidden = new SvelteSet<MetricSeriesKey>();
+  let dailyHidden = new SvelteSet<MetricSeriesKey>();
+  let visitHidden = new SvelteSet<MetricSeriesKey>();
 
   const hourlyBuckets = $derived(
     metrics ? toHourly(metrics.hourly.samples) : []
@@ -34,7 +30,13 @@
     metrics ? toDaily(metrics.daily.samples) : []
   );
 
-  const requestSeries = $derived(
+  const requestKeys = $derived(
+    (['api', 'www', 'other'] as MetricSeriesKey[]).filter(
+      (k) => !hourlyHidden.has(k)
+    )
+  );
+
+  const hourlySeries = $derived(
     requestKeys.map((key) => ({
       key,
       label: METRIC_LABELS[key],
@@ -42,8 +44,22 @@
     }))
   );
 
+  const dailyKeys = $derived(
+    (['api', 'www', 'other'] as MetricSeriesKey[]).filter(
+      (k) => !dailyHidden.has(k)
+    )
+  );
+
+  const dailySeries = $derived(
+    dailyKeys.map((key) => ({
+      key,
+      label: METRIC_LABELS[key],
+      color: METRIC_COLORS[key],
+    }))
+  );
+
   const visitKeys = $derived(
-    (['www', 'other'] as MetricSeriesKey[]).filter((k) => !hidden.has(k))
+    (['www', 'other'] as MetricSeriesKey[]).filter((k) => !visitHidden.has(k))
   );
 
   const visitSeries = $derived(
@@ -54,11 +70,11 @@
     }))
   );
 
-  function toggleSeries(key: MetricSeriesKey) {
-    if (hidden.has(key)) {
-      hidden.delete(key);
+  function toggle(set: SvelteSet<MetricSeriesKey>, key: MetricSeriesKey) {
+    if (set.has(key)) {
+      set.delete(key);
     } else {
-      hidden.add(key);
+      set.add(key);
     }
   }
 </script>
@@ -99,7 +115,7 @@
           data={visibleHourly}
           x="date"
           yBaseline={0}
-          series={requestSeries}
+          series={hourlySeries}
           seriesLayout="stack"
           props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
@@ -116,13 +132,13 @@
         {#each (['api', 'www', 'other'] as MetricSeriesKey[]) as key (key)}
           <button
             type="button"
-            class="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm transition-opacity {hidden.has(
+            class="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm transition-opacity {hourlyHidden.has(
               key
             )
               ? 'opacity-40'
               : 'hover:bg-gray-50'}"
             style="border-color: {METRIC_COLORS[key]};"
-            onclick={() => toggleSeries(key)}
+            onclick={() => toggle(hourlyHidden, key)}
           >
             <span
               class="h-3 w-3 rounded-full"
@@ -144,7 +160,7 @@
           data={dailyBuckets}
           x="date"
           yBaseline={0}
-          series={requestSeries}
+          series={dailySeries}
           seriesLayout="stack"
           props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
@@ -155,6 +171,27 @@
         UTC days. Today is excluded to avoid a misleading partial-day bar. Each bar is segmented by
         the same API / Website / Other breakdown as the hourly chart above.
       </p>
+
+      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Daily series">
+        {#each (['api', 'www', 'other'] as MetricSeriesKey[]) as key (key)}
+          <button
+            type="button"
+            class="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm transition-opacity {dailyHidden.has(
+              key
+            )
+              ? 'opacity-40'
+              : 'hover:bg-gray-50'}"
+            style="border-color: {METRIC_COLORS[key]};"
+            onclick={() => toggle(dailyHidden, key)}
+          >
+            <span
+              class="h-3 w-3 rounded-full"
+              style="background-color: {METRIC_COLORS[key]};"
+            ></span>
+            {METRIC_LABELS[key]}
+          </button>
+        {/each}
+      </div>
     </section>
 
     <section class="space-y-4">
@@ -178,6 +215,27 @@
         Other (any other referrer). API traffic is excluded because API clients typically do not send
         a Referer header. The range toggle (24h / 7d) mirrors the hourly requests chart above.
       </p>
+
+      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Visit series">
+        {#each (['www', 'other'] as MetricSeriesKey[]) as key (key)}
+          <button
+            type="button"
+            class="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm transition-opacity {visitHidden.has(
+              key
+            )
+              ? 'opacity-40'
+              : 'hover:bg-gray-50'}"
+            style="border-color: {METRIC_COLORS[key]};"
+            onclick={() => toggle(visitHidden, key)}
+          >
+            <span
+              class="h-3 w-3 rounded-full"
+              style="background-color: {METRIC_COLORS[key]};"
+            ></span>
+            {METRIC_LABELS[key]}
+          </button>
+        {/each}
+      </div>
     </section>
 
     <section class="space-y-4">
