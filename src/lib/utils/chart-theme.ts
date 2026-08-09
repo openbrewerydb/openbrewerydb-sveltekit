@@ -16,3 +16,19 @@ export const METRIC_LABELS: Record<MetricSeriesKey, string> = {
   www: 'Website',
   other: 'Other',
 };
+
+/**
+ * Shared LayerChart tooltip styling — keeps the amber-bordered white card
+ * consistent across every chart and avoids repeating the same props object.
+ */
+export const CHART_TOOLTIP_PROPS = {
+  tooltip: {
+    root: {
+      variant: 'none' as const,
+      classes: {
+        container:
+          'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800',
+      },
+    },
+  },
+};

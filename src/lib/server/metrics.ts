@@ -1,6 +1,6 @@
 import type { MetricsBreakdown, MetricsPayload } from '$lib/types/metrics';
 
-const METRICS_URL =
+export const METRICS_SOURCE_URL =
   'https://openbrewerydb-metrics.wandering-leaf-studios.workers.dev/';
 
 const FETCH_TIMEOUT_MS = 5_000;
@@ -128,7 +128,7 @@ export function isValidPayload(value: unknown): value is MetricsPayload {
 export async function getMetrics(
   fetchImpl: typeof fetch = globalThis.fetch
 ): Promise<MetricsPayload | null> {
-  const request = new Request(METRICS_URL, {
+  const request = new Request(METRICS_SOURCE_URL, {
     headers: { accept: 'application/json' },
   });
 
