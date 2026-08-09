@@ -99,6 +99,7 @@
             class="px-3 py-1.5 text-sm font-medium rounded-l-lg {range === '24h'
               ? 'bg-amber-600 text-white'
               : 'text-gray-700 hover:bg-gray-50'}"
+            aria-pressed={range === '24h'}
             onclick={() => (range = '24h')}
           >
             24h
@@ -108,6 +109,7 @@
             class="px-3 py-1.5 text-sm font-medium rounded-r-lg {range === '7d'
               ? 'bg-amber-600 text-white'
               : 'text-gray-700 hover:bg-gray-50'}"
+            aria-pressed={range === '7d'}
             onclick={() => (range = '7d')}
           >
             7d
@@ -142,6 +144,7 @@
             )
               ? 'opacity-40'
               : 'hover:bg-gray-50'}"
+            aria-pressed={!hourlyHidden.has(key)}
             style="border-color: {METRIC_COLORS[key]};"
             onclick={() => toggle(hourlyHidden, key)}
           >
@@ -186,6 +189,7 @@
             )
               ? 'opacity-40'
               : 'hover:bg-gray-50'}"
+            aria-pressed={!dailyHidden.has(key)}
             style="border-color: {METRIC_COLORS[key]};"
             onclick={() => toggle(dailyHidden, key)}
           >
@@ -230,6 +234,7 @@
             )
               ? 'opacity-40'
               : 'hover:bg-gray-50'}"
+            aria-pressed={!visitHidden.has(key)}
             style="border-color: {METRIC_COLORS[key]};"
             onclick={() => toggle(visitHidden, key)}
           >
