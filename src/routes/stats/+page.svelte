@@ -22,7 +22,7 @@
   const error = $derived(data.error);
 
   const apiShare = $derived(
-    metrics
+    metrics && metrics.totals.last_7_days.requests.total > 0
       ? metrics.totals.last_7_days.requests.api /
           metrics.totals.last_7_days.requests.total
       : 0
