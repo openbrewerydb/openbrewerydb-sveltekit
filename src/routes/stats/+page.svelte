@@ -31,7 +31,7 @@
 
 <SEO title="Statistics" description="Real-time usage statistics for OpenBreweryDB." />
 
-<div class="max-w-6xl mx-auto px-4 py-8">
+<div class="max-w-6xl mx-auto">
   <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Statistics</h1>
 
   {#if error || !metrics}
