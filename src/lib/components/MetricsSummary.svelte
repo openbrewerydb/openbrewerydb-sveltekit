@@ -1,20 +1,20 @@
 <script lang="ts">
-  import type { MetricsData } from '$lib/types/metrics';
+  import type { MetricsPayload } from '$lib/types/metrics';
   import {
-    formatBandwidth,
+    formatBytes,
     formatRelativeTime,
-    isDataStale,
+    isStale,
   } from '$lib/utils/metrics';
   import { BarChart3, Activity, Users, HardDrive } from '@lucide/svelte';
   import MetricCard from './MetricCard.svelte';
 
   interface Props {
-    metrics: MetricsData | null;
+    metrics: MetricsPayload | null;
   }
 
   let { metrics }: Props = $props();
 
-  const period = $derived(metrics?.periods.last_7_days);
+  const period = $derived(metrics?.totals.last_7_days);
 </script>
 
 <section class="max-w-6xl mx-auto px-4" aria-labelledby="metrics-title">
@@ -62,7 +62,7 @@
           <HardDrive class="w-8 h-8 text-amber-600" />
         </div>
         <div class="text-3xl font-bold text-gray-900 mb-1">
-          {formatBandwidth(period.bandwidth_tb)}
+          {formatBytes(period.bandwidth_bytes)}
         </div>
         <div class="text-sm font-medium text-gray-700 mb-2">Bandwidth</div>
         <div class="text-xs text-gray-600">7 days</div>
@@ -70,7 +70,7 @@
     </div>
 
     <div class="text-center mt-3 text-sm text-gray-600">
-      {#if isDataStale(metrics.last_updated)}
+      {#if isStale(metrics.last_updated)}
         <p class="text-amber-600 font-medium mb-2">
           ⚠️ Metrics data may be outdated
         </p>

@@ -15,4 +15,7 @@ export default defineConfig({
     sveltekit(),
     tailwindcss(),
   ],
+  test: {
+    include: ['tests/**/*.unit.test.ts'],
+  },
 });

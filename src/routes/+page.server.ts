@@ -1,9 +1,9 @@
 import type { PageServerLoad } from './$types';
-import type { MetricsData } from '$lib/types/metrics';
+import { getMetrics } from '$lib/server/metrics';
 import { API_URL } from '$lib/utils';
 import searchSuggestions from '$lib/data/search-suggestions.json';
 
-export const load: PageServerLoad = async ({ platform, fetch }) => {
+export const load: PageServerLoad = async ({ fetch }) => {
   // Fetch live dataset metadata from the API
   let dbMetrics = null;
   try {
@@ -21,20 +21,7 @@ export const load: PageServerLoad = async ({ platform, fetch }) => {
     console.error('Error fetching brewery metadata for homepage:', error);
   }
 
-  // Load existing Cloudflare traffic metrics
-  const kv = platform?.env?.OBDB_METRICS;
-  let metrics = null;
-
-  if (kv) {
-    try {
-      const value = await kv.get('transparency_dashboard', 'text');
-      if (value) {
-        metrics = JSON.parse(value) as MetricsData;
-      }
-    } catch (error) {
-      console.error('Error loading metrics from KV:', error);
-    }
-  }
+  const metrics = await getMetrics(fetch);
 
   // Select 3 random search suggestions
   let selectedSuggestions: string[] = ['California', 'Dogfish', 'Portland'];
