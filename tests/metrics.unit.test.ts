@@ -133,4 +133,58 @@ describe('getMetrics', () => {
     const result = await getMetrics(fetchImpl);
     expect(result).toBeNull();
   });
+
+  it('returns null when hourly samples are missing', async () => {
+    const bad = { ...payload, hourly: { window_hours: 1 } };
+    const fetchImpl: typeof fetch = async () =>
+      new Response(JSON.stringify(bad), { status: 200 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toBeNull();
+  });
+
+  it('returns null when an hourly sample has non-numeric requests', async () => {
+    const bad = {
+      ...payload,
+      hourly: {
+        ...payload.hourly,
+        samples: [
+          {
+            ...payload.hourly.samples[0],
+            requests: { api: 'x', www: 1, other: 1, total: 3 },
+          },
+        ],
+      },
+    };
+    const fetchImpl: typeof fetch = async () =>
+      new Response(JSON.stringify(bad), { status: 200 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toBeNull();
+  });
+
+  it('returns null when a daily sample has an invalid date', async () => {
+    const bad = {
+      ...payload,
+      daily: {
+        ...payload.daily,
+        samples: [
+          {
+            ...payload.daily.samples[0],
+            date: 'not-a-date',
+          },
+        ],
+      },
+    };
+    const fetchImpl: typeof fetch = async () =>
+      new Response(JSON.stringify(bad), { status: 200 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toBeNull();
+  });
+
+  it('returns null when totals are missing', async () => {
+    const bad = { ...payload, totals: undefined };
+    const fetchImpl: typeof fetch = async () =>
+      new Response(JSON.stringify(bad), { status: 200 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toBeNull();
+  });
 });
