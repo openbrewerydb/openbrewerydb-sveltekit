@@ -101,6 +101,7 @@
           yBaseline={0}
           series={requestSeries}
           seriesLayout="stack"
+          props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
       </div>
 
@@ -138,6 +139,7 @@
           yBaseline={0}
           series={requestSeries}
           seriesLayout="stack"
+          props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
       </div>
     </section>
@@ -154,6 +156,7 @@
           yBaseline={0}
           series={visitSeries}
           seriesLayout="stack"
+          props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
       </div>
     </section>
@@ -172,6 +175,7 @@
               color: METRIC_COLORS.www,
             },
           ]}
+          props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
       </div>
     </section>

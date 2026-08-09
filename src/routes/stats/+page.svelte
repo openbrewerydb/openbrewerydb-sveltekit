@@ -51,7 +51,7 @@
     </p>
 
     <section class="mt-8">
-      <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+      <div class="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-300 rounded-xl p-6 shadow-sm">
         <p class="text-sm font-medium text-amber-800 uppercase tracking-wide">
           Requests per day, average
         </p>
