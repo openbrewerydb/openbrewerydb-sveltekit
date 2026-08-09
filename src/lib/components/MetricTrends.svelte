@@ -2,7 +2,7 @@
   import { AreaChart, BarChart } from 'layerchart';
   import { SvelteSet } from 'svelte/reactivity';
   import type { MetricsPayload } from '$lib/types/metrics';
-  import { toHourly, toDaily } from '$lib/utils/metrics';
+  import { toHourly, toDaily, formatBytes } from '$lib/utils/metrics';
   import { METRIC_COLORS, METRIC_LABELS } from '$lib/utils/chart-theme';
   import type { MetricSeriesKey } from '$lib/utils/chart-theme';
 
@@ -105,6 +105,13 @@
         />
       </div>
 
+      <p class="text-xs text-gray-500">
+        Stacked area chart of hourly request counts split by origin: API (api.openbrewerydb.org),
+        Website (www.openbrewerydb.org), and Other (any other host or direct). The 24h view shows the
+        most recent 24 hours; 7d shows the full {metrics.hourly.window_hours}-hour window. Use the
+        legend buttons to toggle series visibility. All times are UTC.
+      </p>
+
       <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Series">
         {#each (['api', 'www', 'other'] as MetricSeriesKey[]) as key (key)}
           <button
@@ -142,6 +149,12 @@
           props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
       </div>
+
+      <p class="text-xs text-gray-500">
+        Stacked bar chart of daily request totals over the last {metrics.daily.window_days} complete
+        UTC days. Today is excluded to avoid a misleading partial-day bar. Each bar is segmented by
+        the same API / Website / Other breakdown as the hourly chart above.
+      </p>
     </section>
 
     <section class="space-y-4">
@@ -159,6 +172,12 @@
           props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
       </div>
+
+      <p class="text-xs text-gray-500">
+        Visits are derived from the Referer header and attributed to www (www.openbrewerydb.org) or
+        Other (any other referrer). API traffic is excluded because API clients typically do not send
+        a Referer header. The range toggle (24h / 7d) mirrors the hourly requests chart above.
+      </p>
     </section>
 
     <section class="space-y-4">
@@ -178,6 +197,13 @@
           props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
         />
       </div>
+
+      <p class="text-xs text-gray-500">
+        Total bandwidth served per hour across all origins (API, website, and other). This includes
+        response bodies, headers, and overhead. Values are shown in bytes; the 7-day total is
+        {formatBytes(metrics.totals.last_7_days.bandwidth_bytes)}. The range toggle mirrors the
+        hourly requests chart above.
+      </p>
     </section>
   </div>
 {/if}
