@@ -13,7 +13,7 @@ const cloudflareSentryHandle: Handle = dev
   ? ({ event, resolve }) => resolve(event)
   : initCloudflareSentryHandle({
       dsn: 'https://a5831fe9174e1bb01a828906b51574ba@o4509011200704512.ingest.us.sentry.io/4509183525322752',
-      tracesSampleRate: 1.0,
+      tracesSampleRate: 0.1,
     });
 
 const customHandle: Handle = ({ event, resolve }) => {
@@ -31,9 +31,13 @@ const customHandle: Handle = ({ event, resolve }) => {
   });
 };
 
+const sentryRequestHandle: Handle = dev
+  ? ({ event, resolve }) => resolve(event)
+  : sentryHandle();
+
 export const handle = sequence(
   cloudflareSentryHandle,
-  sentryHandle(),
+  sentryRequestHandle,
   customHandle
 );
 
