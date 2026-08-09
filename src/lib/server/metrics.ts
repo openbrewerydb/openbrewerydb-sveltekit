@@ -9,6 +9,33 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
 }
 
+export function isValidISODateTime(value: string): boolean {
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(\.\d+)?(Z|[+-]\d{2}:\d{2})$/.exec(value);
+  if (!m) return false;
+  const [, y, mo, d, h, mi, s] = m.map(Number) as number[];
+  const dt = new Date(Date.UTC(y, mo - 1, d, h, mi, s));
+  return (
+    dt.getUTCFullYear() === y &&
+    dt.getUTCMonth() === mo - 1 &&
+    dt.getUTCDate() === d &&
+    dt.getUTCHours() === h &&
+    dt.getUTCMinutes() === mi &&
+    dt.getUTCSeconds() === s
+  );
+}
+
+export function isValidISODate(value: string): boolean {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!m) return false;
+  const [, y, mo, d] = m.map(Number) as number[];
+  const dt = new Date(Date.UTC(y, mo - 1, d));
+  return (
+    dt.getUTCFullYear() === y &&
+    dt.getUTCMonth() === mo - 1 &&
+    dt.getUTCDate() === d
+  );
+}
+
 function isMetricsBreakdown(value: unknown): value is MetricsBreakdown {
   return (
     isRecord(value) &&
@@ -19,12 +46,12 @@ function isMetricsBreakdown(value: unknown): value is MetricsBreakdown {
   );
 }
 
-function isValidPayload(value: unknown): value is MetricsPayload {
+export function isValidPayload(value: unknown): value is MetricsPayload {
   if (!isRecord(value)) return false;
 
   if (
     typeof value.last_updated !== 'string' ||
-    Number.isNaN(Date.parse(value.last_updated))
+    !isValidISODateTime(value.last_updated)
   ) {
     return false;
   }
@@ -41,7 +68,7 @@ function isValidPayload(value: unknown): value is MetricsPayload {
     if (
       !isRecord(sample) ||
       typeof sample.timestamp !== 'string' ||
-      Number.isNaN(Date.parse(sample.timestamp)) ||
+      !isValidISODateTime(sample.timestamp) ||
       !isMetricsBreakdown(sample.requests) ||
       !isMetricsBreakdown(sample.visits) ||
       typeof sample.bandwidth_bytes !== 'number'
@@ -62,7 +89,7 @@ function isValidPayload(value: unknown): value is MetricsPayload {
     if (
       !isRecord(sample) ||
       typeof sample.date !== 'string' ||
-      Number.isNaN(Date.parse(`${sample.date}T00:00:00Z`)) ||
+      !isValidISODate(sample.date) ||
       !isMetricsBreakdown(sample.requests) ||
       !isMetricsBreakdown(sample.visits) ||
       typeof sample.bandwidth_bytes !== 'number'
