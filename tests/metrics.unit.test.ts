@@ -1,95 +1,136 @@
-import { test } from 'node:test';
-import assert from 'node:assert/strict';
+import { describe, it, expect } from 'vitest';
 import {
   formatNumber,
   formatCompactNumber,
-  formatBandwidth,
-  normalizeHistory,
-} from '../src/lib/utils/metrics.ts';
-import type { MetricsHistory } from '../src/lib/types/metrics.ts';
+  formatBytes,
+  isStale,
+  toDaily,
+} from '../src/lib/utils/metrics';
+import { getMetrics } from '../src/lib/server/metrics';
 
-// Pins locale to en-US so SSR and browser output match. Reverting to the
-// runtime default locale breaks these assertions.
-test('formatNumber produces en-US grouped output', () => {
-  assert.equal(formatNumber(1234567), '1,234,567');
+describe('formatters', () => {
+  it('formatNumber produces en-US grouped output', () => {
+    expect(formatNumber(1234567)).toBe('1,234,567');
+  });
+
+  it('formatCompactNumber produces en-US compact output', () => {
+    expect(formatCompactNumber(1500000)).toBe('1.5M');
+  });
+
+  it('formatBytes scales through units', () => {
+    expect(formatBytes(1)).toBe('1.00 B');
+    expect(formatBytes(1024)).toBe('1.00 KB');
+    expect(formatBytes(1024 * 1024)).toBe('1.00 MB');
+    expect(formatBytes(1024 * 1024 * 1024 * 1.5)).toBe('1.50 GB');
+    expect(formatBytes(1024 * 1024 * 1024 * 1024 * 1.5)).toBe('1.50 TB');
+  });
 });
 
-test('formatCompactNumber produces en-US compact output', () => {
-  assert.equal(formatCompactNumber(1500000), '1.5M');
+describe('isStale', () => {
+  it('returns true after the 90-minute threshold', () => {
+    const past = new Date(Date.now() - 100 * 60 * 1000).toISOString();
+    expect(isStale(past)).toBe(true);
+  });
+
+  it('returns false before the 90-minute threshold', () => {
+    const recent = new Date(Date.now() - 30 * 60 * 1000).toISOString();
+    expect(isStale(recent)).toBe(false);
+  });
+
+  it('respects a custom threshold', () => {
+    const recent = new Date(Date.now() - 30 * 1000).toISOString();
+    expect(isStale(recent, 1)).toBe(false);
+
+    const past = new Date(Date.now() - 2 * 60 * 1000).toISOString();
+    expect(isStale(past, 1)).toBe(true);
+  });
 });
 
-test('formatBandwidth produces en-US decimal output', () => {
-  assert.equal(formatBandwidth(1.5), '1.50 TB');
-  assert.equal(formatBandwidth(0.5), '512.00 GB');
+describe('toDaily', () => {
+  it('parses UTC day boundaries', () => {
+    const [bucket] = toDaily([
+      {
+        date: '2026-08-09',
+        requests: { api: 1, www: 2, other: 3, total: 6 },
+        visits: { api: 0, www: 1, other: 1, total: 2 },
+        bandwidth_bytes: 1024,
+      },
+    ]);
+
+    expect(bucket.date.toISOString()).toBe('2026-08-09T00:00:00.000Z');
+    expect(bucket.api).toBe(1);
+    expect(bucket.www).toBe(2);
+    expect(bucket.other).toBe(3);
+    expect(bucket.visitsWww).toBe(1);
+    expect(bucket.bandwidth_bytes).toBe(1024);
+  });
 });
 
-const HOUR = 60 * 60 * 1000;
-const baseHour = Date.UTC(2026, 0, 1, 12, 0, 0); // 2026-01-01 12:00 UTC
-const iso = (offsetHours: number) =>
-  new Date(baseHour + offsetHours * HOUR).toISOString();
-
-function sample(offsetHours: number) {
-  return {
-    timestamp: iso(offsetHours),
-    requests: { api: 100, www: 50, other: 0, total: 150 },
-    visits: { api: 0, www: 30, other: 0, total: 30 },
-    bandwidth_tb: 0.1,
+describe('getMetrics', () => {
+  const payload = {
+    last_updated: '2026-08-09T00:00:00.000Z',
+    hourly: {
+      window_hours: 1,
+      samples: [
+        {
+          timestamp: '2026-08-09T00:00:00.000Z',
+          requests: { api: 1, www: 1, other: 1, total: 3 },
+          visits: { api: 0, www: 1, other: 1, total: 2 },
+          bandwidth_bytes: 1,
+        },
+      ],
+    },
+    daily: {
+      window_days: 1,
+      samples: [
+        {
+          date: '2026-08-08',
+          requests: { api: 1, www: 1, other: 1, total: 3 },
+          visits: { api: 0, www: 1, other: 1, total: 2 },
+          bandwidth_bytes: 1,
+        },
+      ],
+    },
+    totals: {
+      last_24_hours: {
+        requests: { api: 1, www: 1, other: 1, total: 3 },
+        visits: { api: 0, www: 1, other: 1, total: 2 },
+        bandwidth_bytes: 1,
+      },
+      last_7_days: {
+        requests: { api: 1, www: 1, other: 1, total: 3 },
+        visits: { api: 0, www: 1, other: 1, total: 2 },
+        bandwidth_bytes: 1,
+      },
+      requests_per_day_avg: 3,
+    },
   };
-}
 
-test('normalizeHistory returns empty for absent/empty history', () => {
-  assert.deepEqual(normalizeHistory(null), []);
-  assert.deepEqual(normalizeHistory(undefined), []);
-  assert.deepEqual(normalizeHistory({ window_hours: 24, samples: [] }), []);
-});
+  it('returns a valid payload on a successful fetch', async () => {
+    const fetchImpl: typeof fetch = async () =>
+      new Response(JSON.stringify(payload), { status: 200 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toEqual(payload);
+  });
 
-test('normalizeHistory fills a missing middle hour as null (gap)', () => {
-  const history: MetricsHistory = {
-    window_hours: 3,
-    samples: [sample(0), sample(2)], // hour 1 missing
-  };
-  const buckets = normalizeHistory(history);
-  assert.equal(buckets.length, 3);
-  assert.equal(buckets[0].requests!.api, 100); // hour 0
-  assert.equal(buckets[1].requests, null); // hour 1 gap
-  assert.equal(buckets[2].requests!.api, 100); // hour 2
-  // Every bucket has a timestamp spanning the window.
-  assert.equal(
-    buckets[2].timestamp.getTime() - buckets[0].timestamp.getTime(),
-    2 * HOUR
-  );
-});
+  it('returns null on non-ok response', async () => {
+    const fetchImpl: typeof fetch = async () =>
+      new Response('', { status: 500 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toBeNull();
+  });
 
-test('normalizeHistory builds up: buckets before first sample are null', () => {
-  const history: MetricsHistory = {
-    window_hours: 5,
-    samples: [sample(3), sample(4)], // first sample at hour 3
-  };
-  const buckets = normalizeHistory(history);
-  assert.equal(buckets.length, 5);
-  assert.equal(buckets[0].requests, null); // before first sample
-  assert.equal(buckets[1].requests, null);
-  assert.equal(buckets[2].requests, null);
-  assert.equal(buckets[3].requests!.api, 100); // first real sample
-  assert.equal(buckets[4].requests!.api, 100);
-});
+  it('returns null on unparseable body', async () => {
+    const fetchImpl: typeof fetch = async () =>
+      new Response('not-json', { status: 200 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toBeNull();
+  });
 
-test('normalizeHistory respects windowHours override', () => {
-  const history: MetricsHistory = {
-    window_hours: 24,
-    samples: [sample(0), sample(1)],
-  };
-  const buckets = normalizeHistory(history, 2);
-  assert.equal(buckets.length, 2);
-});
-
-test('normalizeHistory ignores samples with invalid timestamps', () => {
-  const history: MetricsHistory = {
-    window_hours: 2,
-    samples: [{ ...sample(0), timestamp: 'not-a-date' }, sample(1)],
-  };
-  const buckets = normalizeHistory(history);
-  assert.equal(buckets.length, 2);
-  assert.equal(buckets[0].requests, null); // invalid -> gap
-  assert.equal(buckets[1].requests!.api, 100);
+  it('returns null when required fields are missing', async () => {
+    const fetchImpl: typeof fetch = async () =>
+      new Response(JSON.stringify({ last_updated: 'now' }), { status: 200 });
+    const result = await getMetrics(fetchImpl);
+    expect(result).toBeNull();
+  });
 });

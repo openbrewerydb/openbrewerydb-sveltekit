@@ -8,9 +8,10 @@
     label: string;
     subtitle?: string;
     breakdown?: Array<{ label: string; value: number }>;
+    format?: (n: number) => string;
   }
 
-  let { icon: Icon, value, label, subtitle, breakdown }: Props = $props();
+  let { icon: Icon, value, label, subtitle, breakdown, format = formatCompactNumber }: Props = $props();
 </script>
 
 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
@@ -18,7 +19,7 @@
     <Icon class="w-8 h-8 text-amber-600" />
   </div>
   <div class="text-3xl font-bold text-gray-900 mb-1">
-    {formatCompactNumber(value)}
+    {format(value)}
   </div>
   <div class="text-sm font-medium text-gray-700 mb-2">
     {label}

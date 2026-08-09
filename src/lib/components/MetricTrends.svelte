@@ -1,165 +1,179 @@
 <script lang="ts">
-  import { AreaChart } from 'layerchart';
-  import type { MetricsHistory } from '$lib/types/metrics';
-  import { normalizeHistory } from '$lib/utils/metrics';
+  import { AreaChart, BarChart } from 'layerchart';
+  import { SvelteSet } from 'svelte/reactivity';
+  import type { MetricsPayload } from '$lib/types/metrics';
+  import { toHourly, toDaily } from '$lib/utils/metrics';
+  import { METRIC_COLORS, METRIC_LABELS } from '$lib/utils/chart-theme';
+  import type { MetricSeriesKey } from '$lib/utils/chart-theme';
 
   interface Props {
-    history: MetricsHistory | null;
+    metrics: MetricsPayload | null;
   }
 
-  let { history }: Props = $props();
+  let { metrics }: Props = $props();
 
-  const buckets = $derived(normalizeHistory(history));
+  type Range = '24h' | '7d';
+  let range = $state<Range>('24h');
 
-  const hasData = $derived(
-    buckets.length > 0 && buckets.some((b) => b.requests !== null)
-  );
+  let hidden = new SvelteSet<MetricSeriesKey>();
 
-  const xDomain = $derived(
-    buckets.length > 0
-      ? [buckets[0].timestamp, buckets[buckets.length - 1].timestamp]
-      : undefined
-  );
-
-  // Max stacked totals for y-axis (anchored at 0).
-  const maxRequests = $derived(
-    Math.max(
-      0,
-      ...buckets.map(
-        (b) =>
-          (b.requests?.api ?? 0) +
-          (b.requests?.www ?? 0) +
-          (b.requests?.other ?? 0)
-      )
+  const requestKeys = $derived(
+    (['api', 'www', 'other'] as MetricSeriesKey[]).filter(
+      (k) => !hidden.has(k)
     )
   );
-  const maxVisits = $derived(
-    Math.max(
-      0,
-      ...buckets.map((b) => (b.visits?.www ?? 0) + (b.visits?.other ?? 0))
-    )
+
+  const hourlyBuckets = $derived(
+    metrics ? toHourly(metrics.hourly.samples) : []
   );
-  const maxBandwidth = $derived(
-    Math.max(0, ...buckets.map((b) => b.bandwidth_tb ?? 0))
+  const visibleHourly = $derived(
+    range === '24h' ? hourlyBuckets.slice(-24) : hourlyBuckets
   );
 
-  const definedRequests = (d: (typeof buckets)[number]) => d.requests !== null;
-  const definedVisits = (d: (typeof buckets)[number]) => d.visits !== null;
-  const definedBandwidth = (d: (typeof buckets)[number]) =>
-    d.bandwidth_tb !== null;
+  const dailyBuckets = $derived(
+    metrics ? toDaily(metrics.daily.samples) : []
+  );
 
-  const requestsSeries = [
-    {
-      key: 'api',
-      label: 'API',
-      value: (d: (typeof buckets)[number]) => d.requests?.api ?? 0,
-      color: '#d97706',
-      props: { defined: definedRequests },
-    },
-    {
-      key: 'www',
-      label: 'Website',
-      value: (d: (typeof buckets)[number]) => d.requests?.www ?? 0,
-      color: '#f59e0b',
-      props: { defined: definedRequests },
-    },
-    {
-      key: 'other',
-      label: 'Other',
-      value: (d: (typeof buckets)[number]) => d.requests?.other ?? 0,
-      color: '#fbbf24',
-      props: { defined: definedRequests },
-    },
-  ];
+  const requestSeries = $derived(
+    requestKeys.map((key) => ({
+      key,
+      label: METRIC_LABELS[key],
+      color: METRIC_COLORS[key],
+    }))
+  );
 
-  const visitsSeries = [
-    {
-      key: 'www',
-      label: 'Website',
-      value: (d: (typeof buckets)[number]) => d.visits?.www ?? 0,
-      color: '#f59e0b',
-      props: { defined: definedVisits },
-    },
-    {
-      key: 'other',
-      label: 'Other',
-      value: (d: (typeof buckets)[number]) => d.visits?.other ?? 0,
-      color: '#fbbf24',
-      props: { defined: definedVisits },
-    },
-  ];
+  const visitKeys = $derived(
+    (['www', 'other'] as MetricSeriesKey[]).filter((k) => !hidden.has(k))
+  );
 
-  const bandwidthSeries = [
-    {
-      key: 'bandwidth',
-      label: 'Bandwidth',
-      value: (d: (typeof buckets)[number]) => d.bandwidth_tb ?? 0,
-      color: '#d97706',
-      props: { defined: definedBandwidth },
-    },
-  ];
+  const visitSeries = $derived(
+    visitKeys.map((key) => ({
+      key: key === 'www' ? 'visitsWww' : 'visitsOther',
+      label: METRIC_LABELS[key],
+      color: METRIC_COLORS[key],
+    }))
+  );
 
-  const xAccessor = (d: (typeof buckets)[number]) => d.timestamp;
+  function toggleSeries(key: MetricSeriesKey) {
+    if (hidden.has(key)) {
+      hidden.delete(key);
+    } else {
+      hidden.add(key);
+    }
+  }
 </script>
 
-<section class="mb-16">
-  <div class="flex items-center justify-center mb-6">
-    <h2 class="text-3xl font-bold text-gray-900">Metric Trends</h2>
-  </div>
+{#if metrics}
+  <div class="space-y-12">
+    <section class="space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <h3 class="text-xl font-semibold text-amber-700">Hourly requests</h3>
+        <div
+          class="inline-flex rounded-lg border border-gray-200 bg-white shadow-sm"
+          role="group"
+          aria-label="Hourly range"
+        >
+          <button
+            type="button"
+            class="px-3 py-1.5 text-sm font-medium rounded-l-lg {range === '24h'
+              ? 'bg-amber-600 text-white'
+              : 'text-gray-700 hover:bg-gray-50'}"
+            onclick={() => (range = '24h')}
+          >
+            24h
+          </button>
+          <button
+            type="button"
+            class="px-3 py-1.5 text-sm font-medium rounded-r-lg {range === '7d'
+              ? 'bg-amber-600 text-white'
+              : 'text-gray-700 hover:bg-gray-50'}"
+            onclick={() => (range = '7d')}
+          >
+            7d
+          </button>
+        </div>
+      </div>
 
-  {#if !hasData}
-    <div class="bg-white rounded-lg shadow-md p-8 border border-gray-200 text-center">
-      <p class="text-gray-600">
-        Trends will appear as hourly data is collected.
+      <div class="h-72 w-full">
+        <AreaChart
+          data={visibleHourly}
+          x="date"
+          yBaseline={0}
+          series={requestSeries}
+          seriesLayout="stack"
+        />
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Series">
+        {#each (['api', 'www', 'other'] as MetricSeriesKey[]) as key (key)}
+          <button
+            type="button"
+            class="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm transition-opacity {hidden.has(
+              key
+            )
+              ? 'opacity-40'
+              : 'hover:bg-gray-50'}"
+            style="border-color: {METRIC_COLORS[key]};"
+            onclick={() => toggleSeries(key)}
+          >
+            <span
+              class="h-3 w-3 rounded-full"
+              style="background-color: {METRIC_COLORS[key]};"
+            ></span>
+            {METRIC_LABELS[key]}
+          </button>
+        {/each}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-amber-700">Daily sustained scale</h3>
+      <p class="text-sm text-gray-600">
+        Last {metrics.daily.window_days} complete days, UTC. Today is not yet shown.
       </p>
-    </div>
-  {:else}
-    <div class="space-y-8">
-      <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-        <h3 class="text-lg font-semibold text-gray-900 mb-4">Requests per hour</h3>
-        <div class="h-64">
-          <AreaChart
-            ssr
-            data={buckets}
-            x={xAccessor}
-            xDomain={xDomain}
-            yDomain={[0, maxRequests]}
-            series={requestsSeries}
-            seriesLayout="stack"
-          />
-        </div>
+      <div class="h-72 w-full">
+        <BarChart
+          data={dailyBuckets}
+          x="date"
+          yBaseline={0}
+          series={requestSeries}
+          seriesLayout="stack"
+        />
       </div>
+    </section>
 
-      <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-        <h3 class="text-lg font-semibold text-gray-900 mb-4">Visits per hour</h3>
-        <div class="h-64">
-          <AreaChart
-            ssr
-            data={buckets}
-            x={xAccessor}
-            xDomain={xDomain}
-            yDomain={[0, maxVisits]}
-            series={visitsSeries}
-            seriesLayout="stack"
-          />
-        </div>
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-amber-700">Visits</h3>
+      <p class="text-sm text-gray-600">
+        API visits are omitted — visits are referrer-derived and API clients do not send a referrer.
+      </p>
+      <div class="h-72 w-full">
+        <AreaChart
+          data={visibleHourly}
+          x="date"
+          yBaseline={0}
+          series={visitSeries}
+          seriesLayout="stack"
+        />
       </div>
+    </section>
 
-      <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-        <h3 class="text-lg font-semibold text-gray-900 mb-4">
-          Bandwidth per hour
-        </h3>
-        <div class="h-64">
-          <AreaChart
-            ssr
-            data={buckets}
-            x={xAccessor}
-            xDomain={xDomain}
-            yDomain={[0, maxBandwidth]}
-            series={bandwidthSeries}
-          />
-        </div>
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-amber-700">Bandwidth</h3>
+      <div class="h-72 w-full">
+        <AreaChart
+          data={visibleHourly}
+          x="date"
+          yBaseline={0}
+          series={[
+            {
+              key: 'bandwidth_bytes',
+              label: 'Bandwidth',
+              color: METRIC_COLORS.www,
+            },
+          ]}
+        />
       </div>
-    </div>
-  {/if}
-</section>
+    </section>
+  </div>
+{/if}

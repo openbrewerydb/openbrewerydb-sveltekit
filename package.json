@@ -22,7 +22,8 @@
     "test:e2e:chromium": "playwright test --project=chromium",
     "test:e2e:debug": "playwright test --debug",
     "test:e2e:codegen": "playwright codegen",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "test:unit": "vitest run"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

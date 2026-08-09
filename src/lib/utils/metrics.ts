@@ -1,8 +1,4 @@
-import type {
-  MetricsBreakdown,
-  MetricsHistory,
-  MetricsSample,
-} from '$lib/types/metrics';
+import type { HourlySample, DailySample } from '$lib/types/metrics';
 
 const numberFormatter = new Intl.NumberFormat('en-US');
 const decimalFormatter = new Intl.NumberFormat('en-US', {
@@ -22,16 +18,15 @@ export function formatCompactNumber(num: number): string {
   return compactFormatter.format(num);
 }
 
-export function formatBandwidth(tb: number): string {
-  if (tb >= 1) {
-    return `${decimalFormatter.format(tb)} TB`;
+export function formatBytes(bytes: number): string {
+  const UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+  let value = bytes;
+  let unitIndex = 0;
+  while (value >= 1024 && unitIndex < UNITS.length - 1) {
+    value /= 1024;
+    unitIndex += 1;
   }
-  const gb = tb * 1024;
-  if (gb >= 1) {
-    return `${decimalFormatter.format(gb)} GB`;
-  }
-  const mb = gb * 1024;
-  return `${decimalFormatter.format(mb)} MB`;
+  return `${decimalFormatter.format(value)} ${UNITS[unitIndex]}`;
 }
 
 export function formatRelativeTime(isoString: string): string {
@@ -71,74 +66,63 @@ export function formatAbsoluteTime(isoString: string): string {
   });
 }
 
-export function isDataStale(
+const STALE_THRESHOLD_MINUTES = 90;
+
+export function isStale(
   isoString: string,
-  hoursThreshold: number = 48
+  minutesThreshold: number = STALE_THRESHOLD_MINUTES
 ): boolean {
   const date = new Date(isoString);
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
-  const diffHours = diffMs / (1000 * 60 * 60);
-  return diffHours > hoursThreshold;
+  const diffMinutes = diffMs / (1000 * 60);
+  return diffMinutes > minutesThreshold;
 }
 
-export const DEFAULT_TREND_WINDOW_HOURS = 24;
-
-export interface TrendBucket {
-  timestamp: Date;
-  requests: MetricsBreakdown | null;
-  visits: MetricsBreakdown | null;
-  bandwidth_tb: number | null;
+export interface HourlyBucket {
+  date: Date;
+  api: number;
+  www: number;
+  other: number;
+  total: number;
+  visitsWww: number;
+  visitsOther: number;
+  bandwidth_bytes: number;
 }
 
-const HOUR_MS = 60 * 60 * 1000;
+export function toHourly(samples: HourlySample[]): HourlyBucket[] {
+  return samples.map((s) => ({
+    date: new Date(s.timestamp),
+    api: s.requests.api,
+    www: s.requests.www,
+    other: s.requests.other,
+    total: s.requests.total,
+    visitsWww: s.visits.www,
+    visitsOther: s.visits.other,
+    bandwidth_bytes: s.bandwidth_bytes,
+  }));
+}
 
-/**
- * Expand a MetricsHistory into a fixed-width window of hourly buckets
- * (oldest -> newest). Every bucket carries a `timestamp` so the chart's
- * x-axis spans the full window; buckets with no sample have `null`
- * metric fields so d3's `defined` accessor renders a gap there. Buckets
- * before the first real sample are also null, so the line "builds up"
- * from the first sample rather than starting mid-window.
- */
-export function normalizeHistory(
-  history: MetricsHistory | null | undefined,
-  windowHours?: number
-): TrendBucket[] {
-  if (
-    !history ||
-    !Array.isArray(history.samples) ||
-    history.samples.length === 0
-  ) {
-    return [];
-  }
+export interface DailyBucket {
+  date: Date;
+  api: number;
+  www: number;
+  other: number;
+  total: number;
+  visitsWww: number;
+  visitsOther: number;
+  bandwidth_bytes: number;
+}
 
-  const window =
-    windowHours ?? history.window_hours ?? DEFAULT_TREND_WINDOW_HOURS;
-
-  const byHour = new Map<number, MetricsSample>();
-  let newestMs = 0;
-  for (const sample of history.samples) {
-    const ts = new Date(sample.timestamp).getTime();
-    if (Number.isNaN(ts)) continue;
-    const bucketMs = Math.floor(ts / HOUR_MS) * HOUR_MS;
-    byHour.set(bucketMs, sample);
-    if (bucketMs > newestMs) newestMs = bucketMs;
-  }
-
-  if (newestMs === 0) return [];
-
-  const buckets: TrendBucket[] = [];
-  for (let i = window - 1; i >= 0; i--) {
-    const bucketMs = newestMs - i * HOUR_MS;
-    const sample = byHour.get(bucketMs);
-    buckets.push({
-      timestamp: new Date(bucketMs),
-      requests: sample?.requests ?? null,
-      visits: sample?.visits ?? null,
-      bandwidth_tb: sample?.bandwidth_tb ?? null,
-    });
-  }
-
-  return buckets;
+export function toDaily(samples: DailySample[]): DailyBucket[] {
+  return samples.map((s) => ({
+    date: new Date(`${s.date}T00:00:00Z`),
+    api: s.requests.api,
+    www: s.requests.www,
+    other: s.requests.other,
+    total: s.requests.total,
+    visitsWww: s.visits.www,
+    visitsOther: s.visits.other,
+    bandwidth_bytes: s.bandwidth_bytes,
+  }));
 }
