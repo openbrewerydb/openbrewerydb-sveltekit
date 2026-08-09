@@ -61,7 +61,9 @@ describe('toDaily', () => {
     expect(bucket.api).toBe(1);
     expect(bucket.www).toBe(2);
     expect(bucket.other).toBe(3);
+    expect(bucket.total).toBe(6);
     expect(bucket.visitsWww).toBe(1);
+    expect(bucket.visitsOther).toBe(1);
     expect(bucket.bandwidth_bytes).toBe(1024);
   });
 });
