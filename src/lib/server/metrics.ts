@@ -3,6 +3,8 @@ import type { MetricsBreakdown, MetricsPayload } from '$lib/types/metrics';
 const METRICS_URL =
   'https://openbrewerydb-metrics.wandering-leaf-studios.workers.dev/';
 
+const FETCH_TIMEOUT_MS = 5_000;
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
 }
@@ -116,8 +118,11 @@ export async function getMetrics(
     }
   }
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
   try {
-    const response = await fetchImpl(request);
+    const response = await fetchImpl(request, { signal: controller.signal });
     if (!response.ok) return null;
 
     const parsed: unknown = await response.json();
@@ -140,5 +145,7 @@ export async function getMetrics(
     return parsed;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeout);
   }
 }
