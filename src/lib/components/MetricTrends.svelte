@@ -86,6 +86,16 @@
 
 {#if metrics}
   <div class="space-y-12">
+    <div class="space-y-1">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-500">
+        Recent activity
+      </h3>
+      <p class="text-xs text-gray-400">
+        Three views of the same hourly window — the 24h / 7d toggle on the first chart applies to
+        all three.
+      </p>
+    </div>
+
     <section class="space-y-4">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <h3 class="text-xl font-semibold text-amber-700">Hourly requests</h3>
@@ -147,51 +157,6 @@
             aria-pressed={!hourlyHidden.has(key)}
             style="border-color: {METRIC_COLORS[key]};"
             onclick={() => toggle(hourlyHidden, key)}
-          >
-            <span
-              class="h-3 w-3 rounded-full"
-              style="background-color: {METRIC_COLORS[key]};"
-            ></span>
-            {METRIC_LABELS[key]}
-          </button>
-        {/each}
-      </div>
-    </section>
-
-    <section class="space-y-4">
-      <h3 class="text-xl font-semibold text-amber-700">Daily sustained scale</h3>
-      <p class="text-sm text-gray-600">
-        Last {metrics.daily.window_days} complete days, UTC. Today is not yet shown.
-      </p>
-      <div class="h-72 w-full">
-        <BarChart
-          data={dailyBuckets}
-          x="date"
-          yBaseline={0}
-          series={dailySeries}
-          seriesLayout="stack"
-          props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
-        />
-      </div>
-
-      <p class="text-xs text-gray-500">
-        Stacked bar chart of daily request totals over the last {metrics.daily.window_days} complete
-        UTC days. Today is excluded to avoid a misleading partial-day bar. Each bar is segmented by
-        the same API / Website / Other breakdown as the hourly chart above.
-      </p>
-
-      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Daily series">
-        {#each (['api', 'www', 'other'] as MetricSeriesKey[]) as key (key)}
-          <button
-            type="button"
-            class="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm transition-opacity {dailyHidden.has(
-              key
-            )
-              ? 'opacity-40'
-              : 'hover:bg-gray-50'}"
-            aria-pressed={!dailyHidden.has(key)}
-            style="border-color: {METRIC_COLORS[key]};"
-            onclick={() => toggle(dailyHidden, key)}
           >
             <span
               class="h-3 w-3 rounded-full"
@@ -272,6 +237,63 @@
         {formatBytes(metrics.totals.last_7_days.bandwidth_bytes)}. The range toggle mirrors the
         hourly requests chart above.
       </p>
+    </section>
+
+    <hr class="border-gray-200" />
+
+    <div class="space-y-1">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-500">
+        Sustained scale
+      </h3>
+      <p class="text-xs text-gray-400">
+        Day-over-day totals over complete UTC days — the stable baseline behind the live numbers
+        above.
+      </p>
+    </div>
+
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-amber-700">Daily sustained scale</h3>
+      <p class="text-sm text-gray-600">
+        Last {metrics.daily.window_days} complete days, UTC. Today is not yet shown.
+      </p>
+      <div class="h-72 w-full">
+        <BarChart
+          data={dailyBuckets}
+          x="date"
+          yBaseline={0}
+          series={dailySeries}
+          seriesLayout="stack"
+          props={{ tooltip: { root: { variant: 'none', classes: { container: 'bg-white border border-amber-300 rounded-lg shadow-md p-2 text-sm text-gray-800' } } } }}
+        />
+      </div>
+
+      <p class="text-xs text-gray-500">
+        Stacked bar chart of daily request totals over the last {metrics.daily.window_days} complete
+        UTC days. Today is excluded to avoid a misleading partial-day bar. Each bar is segmented by
+        the same API / Website / Other breakdown as the hourly chart above.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Daily series">
+        {#each (['api', 'www', 'other'] as MetricSeriesKey[]) as key (key)}
+          <button
+            type="button"
+            class="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm transition-opacity {dailyHidden.has(
+              key
+            )
+              ? 'opacity-40'
+              : 'hover:bg-gray-50'}"
+            aria-pressed={!dailyHidden.has(key)}
+            style="border-color: {METRIC_COLORS[key]};"
+            onclick={() => toggle(dailyHidden, key)}
+          >
+            <span
+              class="h-3 w-3 rounded-full"
+              style="background-color: {METRIC_COLORS[key]};"
+            ></span>
+            {METRIC_LABELS[key]}
+          </button>
+        {/each}
+      </div>
     </section>
   </div>
 {/if}

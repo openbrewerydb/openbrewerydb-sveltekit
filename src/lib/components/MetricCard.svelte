@@ -14,7 +14,7 @@
   let { icon: Icon, value, label, subtitle, breakdown, format = formatCompactNumber }: Props = $props();
 </script>
 
-<div class="bg-amber-50 rounded-xl shadow-sm p-6 border border-amber-200">
+<div class="bg-white rounded-xl shadow-sm p-6 border border-amber-200">
   <div class="flex items-center justify-between mb-3">
     <Icon class="w-8 h-8 text-amber-600" />
   </div>
