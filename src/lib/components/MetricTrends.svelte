@@ -8,9 +8,10 @@
 
   interface Props {
     metrics: MetricsPayload | null;
+    sourceUrl: string;
   }
 
-  let { metrics }: Props = $props();
+  let { metrics, sourceUrl }: Props = $props();
 
   type Range = '24h' | '7d';
   let range = $state<Range>('24h');
@@ -84,6 +85,23 @@
   }
 </script>
 
+{#snippet chartCredit()}
+  <span class="ml-1">
+    [<a
+      href="https://layerchart.com"
+      class="underline decoration-gray-300 hover:text-amber-700"
+      rel="noopener noreferrer"
+      target="_blank">Data Viz: LayerChart</a
+    >]
+    [<a
+      href={sourceUrl}
+      class="underline decoration-gray-300 hover:text-amber-700"
+      rel="noopener noreferrer"
+      target="_blank">Data Source: Cloudflare</a
+    >]
+  </span>
+{/snippet}
+
 {#if metrics}
   <div class="space-y-12">
     <div class="space-y-1">
@@ -143,7 +161,7 @@
         Stacked area chart of hourly request counts split by origin: API (api.openbrewerydb.org),
         Website (www.openbrewerydb.org), and Other (any other host or direct). The 24h view shows the
         most recent 24 hours; 7d shows the full {metrics.hourly.window_hours}-hour window. Use the
-        legend buttons to toggle series visibility. All times are UTC.
+        legend buttons to toggle series visibility. All times are UTC.{@render chartCredit()}
       </p>
 
       <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Series">
@@ -189,7 +207,7 @@
         <span class="font-serif font-semibold text-gray-700">Figure 2.</span>
         Visits are derived from the Referer header and attributed to www (www.openbrewerydb.org) or
         Other (any other referrer). API traffic is excluded because API clients typically do not send
-        a Referer header. The range toggle (24h / 7d) mirrors the hourly requests chart above.
+        a Referer header. The range toggle (24h / 7d) mirrors the hourly requests chart above.{@render chartCredit()}
       </p>
 
       <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Visit series">
@@ -238,7 +256,7 @@
         Total bandwidth served per hour across all origins (API, website, and other). This includes
         response bodies, headers, and overhead. Values are shown in bytes; the 7-day total is
         {formatBytes(metrics.totals.last_7_days.bandwidth_bytes)}. The range toggle mirrors the
-        hourly requests chart above.
+        hourly requests chart above.{@render chartCredit()}
       </p>
     </section>
 
@@ -274,7 +292,7 @@
         <span class="font-serif font-semibold text-gray-700">Figure 4.</span>
         Stacked bar chart of daily request totals over the last {metrics.daily.window_days} complete
         UTC days. Today is excluded to avoid a misleading partial-day bar. Each bar is segmented by
-        the same API / Website / Other breakdown as the hourly chart above.
+        the same API / Website / Other breakdown as the hourly chart above.{@render chartCredit()}
       </p>
 
       <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Daily series">

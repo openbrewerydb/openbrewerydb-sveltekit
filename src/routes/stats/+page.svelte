@@ -115,7 +115,7 @@
 
     <section class="mt-12">
       <h2 class="text-2xl font-bold text-gray-900 mb-6">Traffic trends</h2>
-      <MetricTrends {metrics} />
+      <MetricTrends {metrics} {sourceUrl} />
     </section>
 
     <section class="mt-12 max-w-3xl">

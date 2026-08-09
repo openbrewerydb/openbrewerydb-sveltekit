@@ -34,6 +34,18 @@ test.describe('Stats page', () => {
     await expect(page.getByText('Figure 1.')).toBeVisible();
     await expect(page.getByText('Figure 4.')).toBeVisible();
 
+    // Per-figure credit: [Data Viz: LayerChart] [Data Source: Cloudflare]
+    const layerchartCredit = page.getByRole('link', {
+      name: 'Data Viz: LayerChart',
+    });
+    await expect(layerchartCredit.first()).toBeVisible();
+    await expect(layerchartCredit).toHaveCount(4);
+    const cloudflareCredit = page.getByRole('link', {
+      name: 'Data Source: Cloudflare',
+    });
+    await expect(cloudflareCredit.first()).toBeVisible();
+    await expect(cloudflareCredit).toHaveCount(4);
+
     // Table 1 caption for the summary metric cards
     await expect(page.getByText('Table 1. Summary metrics')).toBeVisible();
 
