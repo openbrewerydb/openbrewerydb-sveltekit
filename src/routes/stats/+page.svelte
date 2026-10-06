@@ -29,7 +29,7 @@
   );
 </script>
 
-<SEO title="Statistics" description="Real-time usage statistics for OpenBreweryDB." />
+<SEO title="Statistics" description="Hourly usage statistics for OpenBreweryDB." />
 
 <div class="max-w-6xl mx-auto">
   <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Statistics</h1>
@@ -110,8 +110,9 @@
         to avoid a misleading partial-day drop.
       </p>
       <p>
-        Data is refreshed hourly from Cloudflare traffic logs. If the "last updated" time is more
-        than 90 minutes old, the collector is behind and values may be stale.
+        Data is collected hourly from Cloudflare traffic logs and cached at the edge, so figures
+        can lag real time by up to ~2 hours. If the "last updated" time is more than ~2.5 hours
+        old, the collector is likely failing and values may be stale.
       </p>
       <p>
         Metrics are collected by the

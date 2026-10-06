@@ -66,7 +66,10 @@ export function formatAbsoluteTime(isoString: string): string {
   });
 }
 
-const STALE_THRESHOLD_MINUTES = 90;
+// The collector runs hourly and responses are cached at three layers (worker
+// ~5m, Cache API 1h, page s-maxage 1h), so a healthy pipeline can render data
+// ~2h old. 150m clears that ceiling; one missed cron run (~185m) trips it.
+const STALE_THRESHOLD_MINUTES = 150;
 
 export function isStale(
   isoString: string,
