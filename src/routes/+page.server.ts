@@ -21,6 +21,10 @@ export const load: PageServerLoad = async ({ fetch, setHeaders }) => {
     console.error('Error fetching brewery metadata for homepage:', error);
   }
 
+  if (!dbMetrics) {
+    setHeaders({ 'cache-control': 'no-store' });
+  }
+
   const { metrics, cache } = await getMetrics(fetch);
   setHeaders({ 'x-obdb-cache': cache });
 

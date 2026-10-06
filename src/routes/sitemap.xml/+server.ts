@@ -9,6 +9,7 @@ const staticPaths = [
   '/about',
   '/news',
   '/changelogs',
+  '/documentation',
 ];
 
 function xmlEscape(s: string) {
