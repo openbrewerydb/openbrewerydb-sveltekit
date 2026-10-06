@@ -24,6 +24,9 @@ const config = {
   extensions: ['.svelte', '.svx', '.md'],
 
   kit: {
+    prerender: {
+      origin: 'https://www.openbrewerydb.org',
+    },
     adapter: adapter({
       fallback: 'plaintext',
       routes: {

@@ -1,6 +1,14 @@
-import type { PageServerLoad } from './$types';
-import { getPostBySegments } from '$lib/posts';
+import type { EntryGenerator, PageServerLoad } from './$types';
+import { getAllPosts, getPostBySegments } from '$lib/posts';
 import { error } from '@sveltejs/kit';
+
+export const prerender = true;
+export const entries: EntryGenerator = () =>
+  getAllPosts().map((p) => ({
+    yyyy: p.segments[0],
+    mm: p.segments[1],
+    slug: p.segments[2],
+  }));
 
 export const load: PageServerLoad = async ({ params }) => {
   const { yyyy, mm, slug } = params as {
