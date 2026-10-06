@@ -124,10 +124,15 @@ export function isValidPayload(value: unknown): value is MetricsPayload {
  * Fetch the latest metrics payload from the worker, using the Cloudflare
  * Cache API with a 1-hour TTL when available. This keeps the data layer
  * off KV and ensures one fetch per hour is cached at the edge.
+ *
+ * Returns the cache source so callers can surface `x-obdb-cache` for
+ * post-deploy verification that the edge cache is actually hitting.
  */
+export type MetricsCacheSource = 'cache-hit' | 'cache-miss' | 'no-cache-api';
+
 export async function getMetrics(
   fetchImpl: typeof fetch = globalThis.fetch
-): Promise<MetricsPayload | null> {
+): Promise<{ metrics: MetricsPayload | null; cache: MetricsCacheSource }> {
   const request = new Request(METRICS_URL, {
     headers: { accept: 'application/json' },
   });
@@ -141,7 +146,9 @@ export async function getMetrics(
       const cached = await cfCache.default.match(request);
       if (cached) {
         const parsed: unknown = await cached.json();
-        if (isValidPayload(parsed)) return parsed;
+        if (isValidPayload(parsed)) {
+          return { metrics: parsed, cache: 'cache-hit' };
+        }
       }
     } catch {
       // ignore and fetch live
@@ -153,10 +160,20 @@ export async function getMetrics(
 
   try {
     const response = await fetchImpl(request, { signal: controller.signal });
-    if (!response.ok) return null;
+    if (!response.ok) {
+      return {
+        metrics: null,
+        cache: cfCache?.default ? 'cache-miss' : 'no-cache-api',
+      };
+    }
 
     const parsed: unknown = await response.json();
-    if (!isValidPayload(parsed)) return null;
+    if (!isValidPayload(parsed)) {
+      return {
+        metrics: null,
+        cache: cfCache?.default ? 'cache-miss' : 'no-cache-api',
+      };
+    }
 
     if (cfCache?.default) {
       try {
@@ -172,9 +189,15 @@ export async function getMetrics(
       }
     }
 
-    return parsed;
+    return {
+      metrics: parsed,
+      cache: cfCache?.default ? 'cache-miss' : 'no-cache-api',
+    };
   } catch {
-    return null;
+    return {
+      metrics: null,
+      cache: cfCache?.default ? 'cache-miss' : 'no-cache-api',
+    };
   } finally {
     clearTimeout(timeout);
   }
