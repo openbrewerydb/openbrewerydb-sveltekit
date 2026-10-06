@@ -14,10 +14,18 @@ test.describe('Stats page', () => {
     await expect(page.getByRole('button', { name: '24h' })).toBeVisible();
     await expect(page.getByRole('button', { name: '7d' })).toBeVisible();
 
-    const chart = page.locator('svg').first();
+    // Scope to the trends section so the first svg is the chart, not an
+    // aria-hidden lucide nav icon (which Playwright treats as hidden).
+    const chart = page
+      .locator('section', {
+        has: page.getByRole('heading', { name: 'Traffic trends' }),
+      })
+      .locator('svg')
+      .first();
     await expect(chart).toBeVisible();
 
-    const apiButton = page.getByRole('button', { name: 'API' });
+    // There are two API legend toggles (hourly and daily charts); use the first.
+    const apiButton = page.getByRole('button', { name: 'API' }).first();
     await expect(apiButton).toBeVisible();
     await apiButton.click();
     await expect(apiButton).toHaveClass(/opacity-40/);
