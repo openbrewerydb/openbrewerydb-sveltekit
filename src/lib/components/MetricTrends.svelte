@@ -12,18 +12,12 @@
 
   let { metrics }: Props = $props();
 
-  type Range = '24h' | '7d';
-  let range = $state<Range>('24h');
-
   let hourlyHidden = new SvelteSet<MetricSeriesKey>();
   let dailyHidden = new SvelteSet<MetricSeriesKey>();
   let visitHidden = new SvelteSet<MetricSeriesKey>();
 
   const hourlyBuckets = $derived(
     metrics ? toHourly(metrics.hourly.samples) : []
-  );
-  const visibleHourly = $derived(
-    range === '24h' ? hourlyBuckets.slice(-24) : hourlyBuckets
   );
 
   const dailyBuckets = $derived(
@@ -91,45 +85,16 @@
         Recent activity
       </h3>
       <p class="text-xs text-gray-400">
-        Three views of the same hourly window — the 24h / 7d toggle on the first chart applies to
-        all three.
+        Three views of the same hourly window.
       </p>
     </div>
 
     <section class="space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <h3 class="text-xl font-semibold text-amber-700">Hourly requests</h3>
-        <div
-          class="inline-flex rounded-lg border border-gray-200 bg-white shadow-sm"
-          role="group"
-          aria-label="Hourly range"
-        >
-          <button
-            type="button"
-            class="px-3 py-1.5 text-sm font-medium rounded-l-lg {range === '24h'
-              ? 'bg-amber-600 text-white'
-              : 'text-gray-700 hover:bg-gray-50'}"
-            aria-pressed={range === '24h'}
-            onclick={() => (range = '24h')}
-          >
-            24h
-          </button>
-          <button
-            type="button"
-            class="px-3 py-1.5 text-sm font-medium rounded-r-lg {range === '7d'
-              ? 'bg-amber-600 text-white'
-              : 'text-gray-700 hover:bg-gray-50'}"
-            aria-pressed={range === '7d'}
-            onclick={() => (range = '7d')}
-          >
-            7d
-          </button>
-        </div>
-      </div>
+      <h3 class="text-xl font-semibold text-amber-700">Hourly requests</h3>
 
       <div class="h-72 w-full">
         <AreaChart
-          data={visibleHourly}
+          data={hourlyBuckets}
           x="date"
           yBaseline={0}
           series={hourlySeries}
@@ -139,10 +104,10 @@
       </div>
 
       <p class="text-xs text-gray-500">
-        Stacked area chart of hourly request counts split by origin: API (api.openbrewerydb.org),
-        Website (www.openbrewerydb.org), and Other (any other host or direct). The 24h view shows the
-        most recent 24 hours; 7d shows the full {metrics.hourly.window_hours}-hour window. Use the
-        legend buttons to toggle series visibility. All times are UTC.
+        Stacked area chart of hourly request counts over the last {metrics.hourly.window_hours}
+        hours, split by origin: API (api.openbrewerydb.org), Website (www.openbrewerydb.org), and
+        Other (any other host or direct). Use the legend buttons to toggle series visibility. All
+        times are UTC.
       </p>
 
       <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Series">
@@ -175,7 +140,7 @@
       </p>
       <div class="h-72 w-full">
         <AreaChart
-          data={visibleHourly}
+          data={hourlyBuckets}
           x="date"
           yBaseline={0}
           series={visitSeries}
@@ -187,7 +152,7 @@
       <p class="text-xs text-gray-500">
         Visits are derived from the Referer header and attributed to www (www.openbrewerydb.org) or
         Other (any other referrer). API traffic is excluded because API clients typically do not send
-        a Referer header. The range toggle (24h / 7d) mirrors the hourly requests chart above.
+        a Referer header.
       </p>
 
       <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Visit series">
@@ -217,7 +182,7 @@
       <h3 class="text-xl font-semibold text-amber-700">Bandwidth</h3>
       <div class="h-72 w-full">
         <AreaChart
-          data={visibleHourly}
+          data={hourlyBuckets}
           x="date"
           yBaseline={0}
           series={[
@@ -234,8 +199,7 @@
       <p class="text-xs text-gray-500">
         Total bandwidth served per hour across all origins (API, website, and other). This includes
         response bodies, headers, and overhead. Values are shown in bytes; the 7-day total is
-        {formatBytes(metrics.totals.last_7_days.bandwidth_bytes)}. The range toggle mirrors the
-        hourly requests chart above.
+        {formatBytes(metrics.totals.last_7_days.bandwidth_bytes)}.
       </p>
     </section>
 
