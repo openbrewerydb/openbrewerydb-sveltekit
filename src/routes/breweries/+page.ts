@@ -2,7 +2,7 @@ import { API_URL } from '$lib/utils';
 import { redirect } from '@sveltejs/kit';
 import type { Brewery, Metadata } from '$lib/types';
 
-export async function load({ url }) {
+export async function load({ url, fetch }) {
   const rawQuery = url.searchParams.get('query');
   const query = (rawQuery ?? '').trim();
   const byState = url.searchParams.get('by_state');

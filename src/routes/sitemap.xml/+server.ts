@@ -1,5 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 
+export const prerender = true;
+
 const staticPaths = [
   '/',
   '/breweries',
@@ -7,6 +9,7 @@ const staticPaths = [
   '/about',
   '/news',
   '/changelogs',
+  '/documentation',
 ];
 
 function xmlEscape(s: string) {

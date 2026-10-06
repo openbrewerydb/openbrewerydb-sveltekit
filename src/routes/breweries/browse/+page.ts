@@ -8,7 +8,7 @@ interface BreweryMetaResponse {
   by_type: Record<string, number>;
 }
 
-export async function load() {
+export async function load({ fetch }) {
   try {
     const response = await fetch(`${API_URL}/breweries/meta`);
 

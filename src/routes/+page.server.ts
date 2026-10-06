@@ -3,7 +3,7 @@ import { getMetrics } from '$lib/server/metrics';
 import { API_URL } from '$lib/utils';
 import searchSuggestions from '$lib/data/search-suggestions.json';
 
-export const load: PageServerLoad = async ({ fetch }) => {
+export const load: PageServerLoad = async ({ fetch, setHeaders }) => {
   // Fetch live dataset metadata from the API
   let dbMetrics = null;
   try {
@@ -21,7 +21,12 @@ export const load: PageServerLoad = async ({ fetch }) => {
     console.error('Error fetching brewery metadata for homepage:', error);
   }
 
-  const metrics = await getMetrics(fetch);
+  if (!dbMetrics) {
+    setHeaders({ 'cache-control': 'no-store' });
+  }
+
+  const { metrics, cache } = await getMetrics(fetch);
+  setHeaders({ 'x-obdb-cache': cache });
 
   // Select 3 random search suggestions
   let selectedSuggestions: string[] = ['California', 'Dogfish', 'Portland'];
