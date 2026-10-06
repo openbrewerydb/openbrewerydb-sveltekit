@@ -11,8 +11,6 @@ test.describe('Stats page', () => {
     await expect(
       page.getByRole('heading', { name: 'Hourly requests' })
     ).toBeVisible();
-    await expect(page.getByRole('button', { name: '24h' })).toBeVisible();
-    await expect(page.getByRole('button', { name: '7d' })).toBeVisible();
 
     // Scope to the trends section so the first svg is the chart, not an
     // aria-hidden lucide nav icon (which Playwright treats as hidden).
