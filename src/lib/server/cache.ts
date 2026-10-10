@@ -17,3 +17,16 @@ export function edgeCacheTtl(pathname: string): number {
   }
   return 86400;
 }
+
+/**
+ * Full cache-control value for GET responses. Browsers always revalidate
+ * (max-age=0); shared caches keep the copy for s-maxage, serve it while
+ * revalidating, and may serve it stale through origin 5xxs. Cache hits also
+ * skip the Worker entirely, which is what preserves the daily quota.
+ * Dynamic 404s get a short TTL so bot retries (e.g. bad brewery ids) don't
+ * re-invoke the Worker, without pinning a wrong answer to the edge for a day.
+ */
+export function edgeCacheControl(pathname: string, status: number): string {
+  const ttl = status === 404 ? 300 : edgeCacheTtl(pathname);
+  return `max-age=0, s-maxage=${ttl}, stale-while-revalidate=60, stale-if-error=86400`;
+}

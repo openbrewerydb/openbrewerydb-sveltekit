@@ -8,12 +8,13 @@ interface BreweryMetaResponse {
   by_type: Record<string, number>;
 }
 
-export async function load({ fetch }) {
+export async function load({ fetch, setHeaders }) {
   try {
     const response = await fetch(`${API_URL}/breweries/meta`);
 
     if (!response.ok) {
       console.error(`❌ API request failed with status ${response.status}`);
+      setHeaders({ 'cache-control': 'no-store' });
       return {
         byCountry: [],
         byState: [],
@@ -48,6 +49,7 @@ export async function load({ fetch }) {
     };
   } catch (error) {
     console.error('❌ Error fetching brewery metadata:', error);
+    setHeaders({ 'cache-control': 'no-store' });
     return {
       byCountry: [],
       byState: [],

@@ -1,8 +1,8 @@
 import { API_URL } from '$lib/utils';
-import { redirect } from '@sveltejs/kit';
+import { error, isHttpError, redirect } from '@sveltejs/kit';
 import type { Brewery, Metadata } from '$lib/types';
 
-export async function load({ url, fetch }) {
+export async function load({ url, fetch, setHeaders }) {
   const rawQuery = url.searchParams.get('query');
   const query = (rawQuery ?? '').trim();
   const byState = url.searchParams.get('by_state');
@@ -27,10 +27,18 @@ export async function load({ url, fetch }) {
     };
   }
 
-  try {
-    let breweries: Brewery[] = [];
-    let meta: Metadata;
+  // Upstream failures throw 503 (never cached by the hook) so the edge can
+  // serve a stale good copy via stale-if-error instead of a degraded page.
+  const unavailable = (cause: unknown): never => {
+    console.error('❌ Error fetching brewery data:', cause);
+    setHeaders({ 'cache-control': 'no-store' });
+    error(503, 'Brewery data is temporarily unavailable');
+  };
 
+  let breweries: Brewery[] = [];
+  let meta: Metadata;
+
+  try {
     if (query) {
       // Calculate start index and map it to API batch page number of size 200
       const svelteStart = (page - 1) * per_page;
@@ -41,16 +49,7 @@ export async function load({ url, fetch }) {
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
-        return {
-          breweries: [],
-          meta: {
-            total: '0',
-            page: page.toString(),
-            per_page: per_page.toString(),
-            query: query,
-          },
-          error: `Request failed with status ${response.status}`,
-        };
+        return unavailable(`search status ${response.status}`);
       }
 
       const apiBreweries: Brewery[] = await response.json();
@@ -95,17 +94,10 @@ export async function load({ url, fetch }) {
       const response = await fetch(apiUrl);
       const metaResponse = await fetch(metaUrl);
 
-      if (!response.ok) {
-        return {
-          breweries: [],
-          meta: {
-            total: '0',
-            page: page.toString(),
-            per_page: per_page.toString(),
-            query: '',
-          },
-          error: `Request failed with status ${response.status}`,
-        };
+      if (!response.ok || !metaResponse.ok) {
+        return unavailable(
+          `list status ${response.status}, meta status ${metaResponse.status}`
+        );
       }
 
       breweries = await response.json();
@@ -118,22 +110,13 @@ export async function load({ url, fetch }) {
         query: '',
       };
     }
-
-    return {
-      breweries,
-      meta,
-    };
-  } catch (error) {
-    console.error('❌ Error fetching brewery data:', error);
-    return {
-      breweries: [],
-      meta: {
-        total: '0',
-        page: page.toString(),
-        per_page: per_page.toString(),
-        query,
-      },
-      error: 'Failed to fetch brewery data',
-    };
+  } catch (cause) {
+    if (isHttpError(cause)) throw cause;
+    return unavailable(cause);
   }
+
+  return {
+    breweries,
+    meta,
+  };
 }

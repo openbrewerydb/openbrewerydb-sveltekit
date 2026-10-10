@@ -6,7 +6,7 @@ import {
   initCloudflareSentryHandle,
   sentryHandle,
 } from '@sentry/sveltekit';
-import { edgeCacheTtl } from '$lib/server/cache';
+import { edgeCacheControl } from '$lib/server/cache';
 
 // Cloudflare Sentry needs the workerd Sentry binding, which only exists in
 // deployed Workers. Initializing it in dev crashes workerd's SQLite.
@@ -35,13 +35,13 @@ const customHandle: Handle = async ({ event, resolve }) => {
   // per request. Requires the zone Cache Rule to honor origin headers.
   if (
     event.request.method === 'GET' &&
-    response.ok &&
+    (response.ok || response.status === 404) &&
     !response.headers.has('cache-control')
   ) {
     const headers = new Headers(response.headers);
     headers.set(
       'cache-control',
-      `max-age=0, s-maxage=${edgeCacheTtl(event.url.pathname)}`
+      edgeCacheControl(event.url.pathname, response.status)
     );
     return new Response(response.body, {
       status: response.status,

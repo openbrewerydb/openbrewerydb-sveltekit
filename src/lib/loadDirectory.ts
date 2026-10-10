@@ -1,3 +1,4 @@
+import { error } from '@sveltejs/kit';
 import type { Brewery, Metadata } from '$lib/types';
 import { API_URL } from '$lib/utils';
 
@@ -33,6 +34,11 @@ export async function loadDirectory({
 
   const breweryResults = await fetch(apiUrl);
   const metaResults = await fetch(metaUrl);
+
+  // A 503 is never edge-cached, so stale-if-error can serve the last good copy.
+  if (!breweryResults.ok || !metaResults.ok) {
+    error(503, 'Brewery data is temporarily unavailable');
+  }
 
   const breweries: Brewery[] = await breweryResults.json();
   const meta: Metadata = await metaResults.json();
