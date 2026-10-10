@@ -34,6 +34,22 @@ layout: page
 
 <NavTabs {data} />
 
+## Bulk data
+
+Need the whole dataset? Download it directly instead of enumerating API
+requests or scraping pages. Bulk crawling consumes the limited free hosting
+that keeps this service online.
+
+- [breweries.json](https://raw.githubusercontent.com/openbrewerydb/openbrewerydb/master/breweries.json)
+- [breweries.csv](https://raw.githubusercontent.com/openbrewerydb/openbrewerydb/master/breweries.csv)
+- [breweries.sql](https://raw.githubusercontent.com/openbrewerydb/openbrewerydb/master/breweries.sql)
+- [Dataset repository](https://github.com/openbrewerydb/openbrewerydb)
+
+The API below is for targeted lookups. For bulk collection, use the files
+above.
+
+---
+
 ## Single Brewery
 
 Get a single brewery.

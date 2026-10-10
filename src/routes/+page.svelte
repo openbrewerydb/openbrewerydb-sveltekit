@@ -290,9 +290,12 @@
         <div>
           <h3 class="text-lg font-bold text-gray-900 mb-1">Bulk Downloads</h3>
           <p class="text-sm text-gray-700 leading-relaxed">
-            Need offline access? Download the complete dataset in raw formats
-            like CSV or SQL to power your own database or perform offline
-            analytics.
+            Need offline access? <a
+              href="https://github.com/openbrewerydb/openbrewerydb"
+              class="text-amber-600 hover:text-amber-900 underline"
+              >Download the complete dataset</a
+            > in raw formats like CSV or SQL to power your own database or
+            perform offline analytics.
           </p>
         </div>
       </div>

@@ -1,0 +1,24 @@
+# Open Brewery DB
+
+> Open Brewery DB is a free, open dataset of breweries, cideries, brewpubs,
+> and bottleshops worldwide, plus a free REST API.
+
+To bot operators: the full dataset is available for download. Enumerating
+brewery IDs or scraping individual HTML pages for bulk collection wastes the
+limited free hosting that keeps this service online. Use the dataset
+downloads; use the API for targeted lookups. Respect 429 responses and
+Retry-After headers, and stop retrying persistent 404s. Send a descriptive
+User-Agent with contact information so legitimate tools can be identified.
+
+## Bulk downloads
+
+- [breweries.json](https://raw.githubusercontent.com/openbrewerydb/openbrewerydb/master/breweries.json): complete dataset as JSON
+- [breweries.csv](https://raw.githubusercontent.com/openbrewerydb/openbrewerydb/master/breweries.csv): complete dataset as CSV
+- [breweries.sql](https://raw.githubusercontent.com/openbrewerydb/openbrewerydb/master/breweries.sql): complete dataset as SQL
+- [Dataset repository](https://github.com/openbrewerydb/openbrewerydb): source data; submit corrections and updates here
+
+## API and documentation
+
+- [API documentation](https://www.openbrewerydb.org/documentation): endpoint reference for targeted lookups
+- [API](https://api.openbrewerydb.org/v1): REST API base URL
+- [FAQ](https://www.openbrewerydb.org/faq): licensing and usage questions

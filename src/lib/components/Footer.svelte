@@ -22,6 +22,12 @@
       </div>
 
       <div class="px-5 py-2">
+        <NavMenuItem href="https://github.com/openbrewerydb/openbrewerydb"
+          >Dataset</NavMenuItem
+        >
+      </div>
+
+      <div class="px-5 py-2">
         <NavMenuItem href="/faq">FAQ</NavMenuItem>
       </div>
 
