@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-cloudflare';
+import { workerRoutes } from './worker-routes.js';
 import { mdsvex } from 'mdsvex';
 import { sveltePreprocess } from 'svelte-preprocess';
 import abbr from 'remark-abbr';
@@ -30,7 +31,7 @@ const config = {
     adapter: adapter({
       fallback: 'plaintext',
       routes: {
-        include: ['/*'],
+        include: workerRoutes,
         exclude: ['<all>'],
       },
     }),

@@ -9,13 +9,9 @@ test.describe('Brewery Details', () => {
   /**
    * Should display a not found message when brewery ID does not exist.
    */
-  test('should show not found message for invalid brewery id', async ({
-    page,
-  }) => {
-    const invalidId = 'invalid-id';
-    await page.goto(`/b/${invalidId}`);
-    await expect(
-      page.getByText(`Brewery with ID ${invalidId} does not exist.`)
-    ).toBeVisible();
+  test('should return 404 for invalid brewery id', async ({ page }) => {
+    const response = await page.goto('/b/invalid-id');
+    expect(response?.status()).toBe(404);
+    await expect(page.getByText(/brewery not found/i)).toBeVisible();
   });
 });

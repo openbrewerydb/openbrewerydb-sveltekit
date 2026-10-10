@@ -1,12 +1,42 @@
+import { error } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 import type { Brewery } from '$lib/types';
 import { API_URL } from '$lib/utils';
-export async function load({ fetch, params }) {
-  const { id }: { id: string } = params;
 
-  const breweryResults = await fetch(`${API_URL}/breweries/${id}`);
-  let brewery: Brewery | null = null;
-  if (breweryResults.ok) {
-    brewery = await breweryResults.json();
+const BREWERY_ID =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+export const load: PageLoad = async ({ fetch, params, setHeaders }) => {
+  const { id } = params;
+
+  if (id.length !== 36 || !BREWERY_ID.test(id)) {
+    error(404, 'Brewery not found');
   }
+
+  let response: Response;
+  try {
+    response = await fetch(`${API_URL}/breweries/${id.toLowerCase()}`);
+  } catch {
+    setHeaders({ 'cache-control': 'no-store' });
+    error(503, 'Brewery data is temporarily unavailable');
+  }
+
+  if (response.status === 404) {
+    error(404, 'Brewery not found');
+  }
+
+  if (!response.ok) {
+    setHeaders({ 'cache-control': 'no-store' });
+    error(503, 'Brewery data is temporarily unavailable');
+  }
+
+  let brewery: Brewery;
+  try {
+    brewery = await response.json();
+  } catch {
+    setHeaders({ 'cache-control': 'no-store' });
+    error(502, 'Brewery data returned an invalid response');
+  }
+
   return { brewery, id };
-}
+};
