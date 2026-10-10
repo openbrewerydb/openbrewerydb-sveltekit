@@ -16,7 +16,9 @@ describe('workerRoutes allowlist', () => {
   it('has no splat rule overlapping another rule (wrangler rejects those)', () => {
     const splats = workerRoutes.filter((r) => r.endsWith('*'));
     for (const rule of workerRoutes) {
-      expect(splats.filter((s) => rule !== s && rule.startsWith(s.slice(0, -1)))).toEqual([]);
+      expect(
+        splats.filter((s) => rule !== s && rule.startsWith(s.slice(0, -1)))
+      ).toEqual([]);
     }
   });
 
