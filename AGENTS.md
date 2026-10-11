@@ -58,4 +58,4 @@ GITHUB_TOKEN=your_github_token      # Required for data build scripts
 - Uses Cloudflare Pages/Workers via `@sveltejs/adapter-cloudflare`
 - Config: `wrangler.toml`, `svelte.config.js`
 - Auto-deploys on push to main via GitHub integration
-- Edge caching depends on zone Cache Rules (dashboard-only); see README → Deployment for the required config
+- Only `/`, `/stats`, `__data.json` invoke the Function (`workerRoutes`); `/b/*` + `/breweries/*` are CSR via SPA fallback (`spaRoutes` in `worker-routes.js`). Edge caching for the SSR paths depends on zone Cache Rules (dashboard-only); see README → Deployment

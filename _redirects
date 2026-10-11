@@ -1,1 +1,9 @@
+/b /404 200
+/breweries /404 200
 /documentation/* /documentation 301
+
+# SPA fallback for CSR-only routes (ssr = false, excluded from the Function in
+# _routes.json): proxy to the SvelteKit shell emitted as 404.html. Destination
+# must be /404 (Pages-normalized), not /404.html — the latter 308-redirects.
+/b/* /404 200
+/breweries/* /404 200

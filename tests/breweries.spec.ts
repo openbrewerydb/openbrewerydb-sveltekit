@@ -11,9 +11,10 @@ test.describe('Breweries Listing', () => {
    */
   test('should display heading', async ({ page }) => {
     await page.goto('/breweries');
+    // CSR route: content appears only after the app shell boots
     await expect(
       page.getByRole('heading', { name: /Search Breweries/i, level: 1 })
-    ).toBeVisible();
+    ).toBeVisible({ timeout: 15000 });
   });
 
   /**
@@ -22,7 +23,7 @@ test.describe('Breweries Listing', () => {
   test('landing shows CTA when no query', async ({ page }) => {
     await page.goto('/breweries');
     const cta = page.getByRole('link', { name: /Browse Breweries/i });
-    await expect(cta).toBeVisible();
+    await expect(cta).toBeVisible({ timeout: 15000 });
     await expect(cta).toHaveAttribute('href', '/breweries/browse');
   });
 
@@ -33,9 +34,9 @@ test.describe('Breweries Listing', () => {
     page,
   }) => {
     await page.goto('/breweries?query=');
-    await expect(page).toHaveURL('/breweries');
+    await expect(page).toHaveURL('/breweries', { timeout: 15000 });
 
     await page.goto('/breweries?query=%20%20%20');
-    await expect(page).toHaveURL('/breweries');
+    await expect(page).toHaveURL('/breweries', { timeout: 15000 });
   });
 });

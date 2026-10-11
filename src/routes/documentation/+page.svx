@@ -238,8 +238,6 @@ Get a random brewery.
 
 `https://api.openbrewerydb.org/v1/breweries/random`
 
-<RunButton endpoint="https://api.openbrewerydb.org/v1/breweries/random" />
-
 #### Query Parameters
 
 | Parameter | Type    | Required | Description                                             |

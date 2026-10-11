@@ -10,7 +10,13 @@ export const workerRoutes = [
   '/stats',
   '/stats/',
   '/stats/__data.json',
-  '/breweries',
-  '/breweries/*',
-  '/b/*',
 ];
+
+/**
+ * Client-rendered routes served by the SPA fallback (index.html) on asset
+ * miss. These must be in _routes.json exclude so adapter-cloudflare's
+ * `fallback: 'spa'` serves the shell instead of a plaintext 404 — and they
+ * must stay OUT of `workerRoutes` so enumeration of /b/<uuid> or
+ * /breweries/<state>/<city> never reaches the Function.
+ */
+export const spaRoutes = ['/b', '/b/*', '/breweries', '/breweries/*'];
