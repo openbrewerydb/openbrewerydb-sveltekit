@@ -1,15 +1,14 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import type { Brewery } from '$lib/types';
-import { API_URL } from '$lib/utils';
+import { API_URL, BREWERY_ID_REGEX } from '$lib/utils';
 
-const BREWERY_ID =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+export const ssr = false;
 
 export const load: PageLoad = async ({ fetch, params, setHeaders }) => {
   const { id } = params;
 
-  if (id.length !== 36 || !BREWERY_ID.test(id)) {
+  if (id.length !== 36 || !BREWERY_ID_REGEX.test(id)) {
     error(404, 'Brewery not found');
   }
 

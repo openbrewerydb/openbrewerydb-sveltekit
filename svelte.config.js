@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-cloudflare';
-import { workerRoutes } from './worker-routes.js';
+import { workerRoutes, spaRoutes } from './worker-routes.js';
 import { mdsvex } from 'mdsvex';
 import { sveltePreprocess } from 'svelte-preprocess';
 import abbr from 'remark-abbr';
@@ -29,10 +29,10 @@ const config = {
       origin: 'https://www.openbrewerydb.org',
     },
     adapter: adapter({
-      fallback: 'plaintext',
+      fallback: 'spa',
       routes: {
         include: workerRoutes,
-        exclude: ['<all>'],
+        exclude: ['<all>', ...spaRoutes],
       },
     }),
   },

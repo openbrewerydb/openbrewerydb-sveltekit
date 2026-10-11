@@ -1,5 +1,9 @@
 export const API_URL = 'https://api.openbrewerydb.org/v1';
 
+/** Matches an OBDB brewery id (UUID v4 shape). */
+export const BREWERY_ID_REGEX =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export function titleCase(str: string) {
   return str.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();

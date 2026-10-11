@@ -9,9 +9,13 @@ test.describe('Brewery Details', () => {
   /**
    * Should display a not found message when brewery ID does not exist.
    */
-  test('should return 404 for invalid brewery id', async ({ page }) => {
+  test('should show not-found for invalid brewery id', async ({ page }) => {
+    // /b/* is client-rendered: the SPA shell returns 200 and the load's
+    // error(404) renders client-side.
     const response = await page.goto('/b/invalid-id');
-    expect(response?.status()).toBe(404);
-    await expect(page.getByText(/brewery not found/i)).toBeVisible();
+    expect(response?.status()).toBe(200);
+    await expect(page.getByText(/brewery not found/i)).toBeVisible({
+      timeout: 15000,
+    });
   });
 });

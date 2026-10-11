@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { workerRoutes } from '../worker-routes.js';
+import { workerRoutes, spaRoutes } from '../worker-routes.js';
 
 // Mirrors Cloudflare's wildcard semantics: `*` matches any characters,
 // including `/`. Cloudflare's engine is authoritative — this guards against
@@ -29,26 +29,15 @@ describe('workerRoutes allowlist', () => {
       '/stats',
       '/stats/',
       '/stats/__data.json',
-      '/breweries',
-      '/breweries/*',
-      '/b/*',
     ]);
   });
 
-  it.each([
-    '/',
-    '/__data.json',
-    '/stats',
-    '/stats/',
-    '/stats/__data.json',
-    '/breweries',
-    '/breweries/',
-    '/breweries/browse',
-    '/breweries/united_states/ohio/columbus/2',
-    '/b/b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0',
-  ])('invokes the Worker for %s', (pathname) => {
-    expect(invokesWorker(pathname)).toBe(true);
-  });
+  it.each(['/', '/__data.json', '/stats', '/stats/', '/stats/__data.json'])(
+    'invokes the Worker for %s',
+    (pathname) => {
+      expect(invokesWorker(pathname)).toBe(true);
+    }
+  );
 
   it.each([
     '/wp/',
@@ -64,7 +53,39 @@ describe('workerRoutes allowlist', () => {
     '/statsx',
     '/breweriesx',
     '/b',
+    // CSR routes served by the SPA fallback — must never reach the Function
+    '/breweries',
+    '/breweries/',
+    '/breweries/browse',
+    '/breweries/united_states/ohio/columbus/2',
+    '/b/b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0',
   ])('does not invoke the Worker for %s', (pathname) => {
     expect(invokesWorker(pathname)).toBe(false);
   });
+});
+
+describe('spaRoutes fallback list', () => {
+  const servesFallback = (pathname: string): boolean =>
+    spaRoutes.some((rule) =>
+      rule.endsWith('*')
+        ? pathname.startsWith(rule.slice(0, -1))
+        : pathname === rule
+    );
+
+  it.each([
+    '/b',
+    '/b/b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0',
+    '/breweries',
+    '/breweries/browse',
+    '/breweries/united_states/ohio/columbus/2',
+  ])('serves the SPA fallback for %s', (pathname) => {
+    expect(servesFallback(pathname)).toBe(true);
+  });
+
+  it.each(['/', '/stats', '/about', '/documentation', '/breweriesx', '/bx'])(
+    'does not serve the SPA fallback for %s',
+    (pathname) => {
+      expect(servesFallback(pathname)).toBe(false);
+    }
+  );
 });

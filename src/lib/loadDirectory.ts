@@ -1,5 +1,6 @@
+import { error } from '@sveltejs/kit';
 import type { Brewery, Metadata } from '$lib/types';
-import { API_URL } from '$lib/utils';
+import { API_URL, BREWERY_ID_REGEX } from '$lib/utils';
 
 type Filters = {
   by_country: string;
@@ -22,6 +23,14 @@ export async function loadDirectory({
   page: string | undefined;
   breweryType: string | null;
 }) {
+  // Probes like /breweries/<uuid> match [country] and would fan out to a
+  // doomed API call; 404 before fetching.
+  for (const value of Object.values(filters)) {
+    if (value && BREWERY_ID_REGEX.test(value)) {
+      error(404, 'Not found');
+    }
+  }
+
   const params = new URLSearchParams({ page: page ?? '1' });
   for (const [key, value] of Object.entries(filters)) {
     if (value) params.set(key, value);

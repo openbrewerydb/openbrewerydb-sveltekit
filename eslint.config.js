@@ -8,7 +8,7 @@ import globals from 'globals';
 
 export default [
   {
-    ignores: ['*.cjs', '.svelte-kit/**', 'build/**', 'dist/**'],
+    ignores: ['*.cjs', '.svelte-kit/**', '.wrangler/**', 'build/**', 'dist/**'],
   },
   {
     ...js.configs.recommended,
