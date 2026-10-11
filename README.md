@@ -89,6 +89,20 @@ src/
 
 This project is configured to deploy on Cloudflare using the `@sveltejs/adapter-cloudflare`. The build process automatically optimizes for Cloudflare's edge network.
 
+### Edge Caching (Cloudflare Cache Rules)
+
+The free Workers plan allows 100k requests/day, shared across the account. Only paths listed in `worker-routes.js` invoke the Pages Function; all other routes serve static assets. The server hook in `src/hooks.server.ts` adds `s-maxage` (TTLs in `src/lib/server/cache.ts`) so the CDN can serve repeat hits without invoking the Function — but only when a zone **Cache Rule** makes these responses eligible. These rules live in the Cloudflare dashboard (zone → Caching → Cache Rules), not in this repo. Currently active:
+
+1. **Honor origin cache headers** — `Request Method equals GET` → Eligible for cache, Edge TTL, Browser TTL
+2. **Cache Pages Function HTML** — hostname `www.openbrewerydb.org` and paths matching `worker-routes.js` (`/`, `/__data.json`, `/stats*`, `/breweries*`, `/b/*`) → Eligible for cache, Edge TTL, Browser TTL
+
+Rule 1 already covers every GET, so rule 2 is redundant unless the function paths need different TTL treatment. If either rule is removed, verify caching still works:
+
+```bash
+curl -s -o /dev/null -D - https://www.openbrewerydb.org/ | grep -i cf-cache-status
+# run twice — second response should show "HIT"; "DYNAMIC" means no rule applies
+```
+
 ### Environment Variables
 
 Create a `.env` file for local development:

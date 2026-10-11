@@ -58,3 +58,4 @@ GITHUB_TOKEN=your_github_token      # Required for data build scripts
 - Uses Cloudflare Pages/Workers via `@sveltejs/adapter-cloudflare`
 - Config: `wrangler.toml`, `svelte.config.js`
 - Auto-deploys on push to main via GitHub integration
+- Edge caching depends on zone Cache Rules (dashboard-only); see README → Deployment for the required config
