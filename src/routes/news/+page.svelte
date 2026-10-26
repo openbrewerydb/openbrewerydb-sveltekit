@@ -2,14 +2,14 @@
   import { formatLocalDateTime } from '$lib/utils';
   import SEO from '$lib/components/SEO.svelte';
 
-  const { data } = $props<{
+  const { data }: {
     data: {
       posts: Array<{
         href: string;
         meta: { title?: string; description?: string; date?: string };
       }>;
     };
-  }>();
+  } = $props();
 
   const title = 'News';
   const description =

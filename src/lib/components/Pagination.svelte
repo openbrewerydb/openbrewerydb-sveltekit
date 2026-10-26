@@ -7,7 +7,7 @@
     context = 'country',
     breweryType = undefined,
     onPageChange = undefined,
-  } = $props<{
+  }: {
     meta: { page: string; total: string; per_page: string };
     country: string;
     state?: string;
@@ -15,7 +15,7 @@
     context?: 'country' | 'state' | 'city' | 'search';
     breweryType?: string;
     onPageChange?: (page: number) => void;
-  }>();
+  } = $props();
 
   let page = $derived(+meta.page);
   let totalPages = $derived(Math.ceil(+meta.total / +meta.per_page));

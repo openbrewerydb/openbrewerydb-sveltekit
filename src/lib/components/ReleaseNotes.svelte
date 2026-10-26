@@ -1,10 +1,10 @@
 <script lang="ts">
   import { linkify } from '$lib/utils';
 
-  const { text, truncated = false } = $props<{
+  const { text, truncated = false }: {
     text?: string;
     truncated?: boolean;
-  }>();
+  } = $props();
 </script>
 
 {#if text}
