@@ -35,53 +35,36 @@
     "@sveltejs/adapter-cloudflare": "^8.0.1",
     "@sveltejs/kit": "^3.1.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
-    "@types/geojson": "^7946.0.16",
     "@types/node": "^26.6.5",
     "@types/prismjs": "^1.26.6",
     "@typescript-eslint/eslint-plugin": "^8.71.2",
     "@typescript-eslint/parser": "^8.71.2",
-    "@vitest/mocker": "^5.0.5",
-    "autoprefixer": "^10.6.1",
-    "devalue": "^5.9.4",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.23.1",
     "globals": "^17.13.0",
     "mdsvex": "^0.12.8",
     "prettier": "^3.9.10",
-    "prettier-plugin-svelte": "^4.1.1",
+    "prismjs": "^1.30.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "rehype-urls": "^1.2.0",
     "remark-abbr": "^1.4.2",
-    "sharp": "^0.35.5",
     "svelte": "^5.57.2",
     "svelte-check": "^4.7.7",
     "svelte-eslint-parser": "^1.9.0",
-    "svelte-preprocess": "^6.0.5",
     "tailwindcss": "^4.2.0",
-    "tslib": "^2.8.1",
     "typescript": "^6.0.3",
-    "undici": "^8.12.2",
     "vite": "^8.3.4",
-    "vitest": "^4.1.11",
-    "wrangler": "^4.151.1"
+    "vitest": "^4.1.11"
   },
   "type": "module",
   "dependencies": {
     "@lucide/svelte": "^1.59.0",
     "@tailwindcss/vite": "^4.3.3",
-    "d3-geo": "^3.1.1",
-    "d3-scale-chromatic": "^3.1.0",
-    "layerchart": "^2.8.1",
-    "postcss": "^8.5.31",
-    "topojson-client": "^3.1.0",
-    "us-atlas": "^3.0.1"
+    "layerchart": "^2.8.1"
   },
   "overrides": {
-    "miniflare": {
-      "undici": "7.30.1"
-    },
     "runed": {
       "@sveltejs/kit": "^3.1.0"
     }
@@ -89,7 +72,6 @@
   "allowScripts": {
     "@sentry/cli": true,
     "esbuild": true,
-    "svelte-preprocess": false,
     "workerd": true
   },
   "imports": {

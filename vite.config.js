@@ -1,7 +1,6 @@
 import adapter from '@sveltejs/adapter-cloudflare';
 import { workerRoutes, spaRoutes } from './worker-routes.js';
 import { mdsvex } from 'mdsvex';
-import { sveltePreprocess } from 'svelte-preprocess';
 import abbr from 'remark-abbr';
 import urls from 'rehype-urls';
 import slug from 'rehype-slug';
@@ -76,7 +75,6 @@ export default defineConfig({
             addListClasses,
           ],
         }),
-        sveltePreprocess(),
       ],
 
       adapter: adapter({
