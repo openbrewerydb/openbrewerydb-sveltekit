@@ -6,12 +6,26 @@ import abbr from 'remark-abbr';
 import urls from 'rehype-urls';
 import slug from 'rehype-slug';
 import autoLinkHeadings from 'rehype-autolink-headings';
-import addClasses from 'rehype-add-classes';
 import path from 'node:path';
 import { sentrySvelteKit } from '@sentry/sveltekit';
 import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
+
+function addListClasses() {
+  const classes = { ul: 'list-disc', ol: 'list-decimal' };
+  const visit = (node) => {
+    if (node.type === 'element' && classes[node.tagName]) {
+      node.properties ??= {};
+      node.properties.className = [
+        ...(node.properties.className ?? []),
+        classes[node.tagName],
+      ];
+    }
+    node.children?.forEach(visit);
+  };
+  return (tree) => visit(tree);
+}
 
 function processUrl(url, node) {
   if (node.tagName === 'a') {
@@ -59,7 +73,7 @@ export default defineConfig({
                 content: { type: 'text', value: '#' },
               },
             ],
-            [addClasses, { ul: 'list-disc', ol: 'list-decimal' }],
+            addListClasses,
           ],
         }),
         sveltePreprocess(),
