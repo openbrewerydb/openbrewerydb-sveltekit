@@ -1,10 +1,10 @@
 <script lang="ts">
   import { Search } from '@lucide/svelte';
 
-  let { onSearch, initialQuery = '' } = $props<{
+  let { onSearch, initialQuery = '' }: {
     onSearch: (query: string) => Promise<void>;
     initialQuery?: string;
-  }>();
+  } = $props();
 
   let query = $state('');
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import ReleaseNotes from '$lib/components/ReleaseNotes.svelte';
 
-  const { repoKey, repo } = $props<{
+  const { repoKey, repo }: {
     repoKey: string;
     repo: {
       type: string;
@@ -31,7 +31,7 @@
         }>;
       } | null;
     };
-  }>();
+  } = $props();
 
   function fmtDate(iso?: string | null) {
     if (!iso) return '';
