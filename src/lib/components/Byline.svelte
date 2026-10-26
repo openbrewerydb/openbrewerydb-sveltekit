@@ -1,6 +1,6 @@
 <script lang="ts">
-  import authorsMapRaw from '$lib/data/github-authors.json';
-  import { formatLocalDateTime } from '$lib/utils';
+  import authorsMapRaw from '#lib/data/github-authors.json';
+  import { formatLocalDateTime } from '#lib/utils.js';
 
   let { authors, date }: { authors?: string[]; date?: string } = $props();
 

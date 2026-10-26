@@ -1,7 +1,28 @@
+import adapter from '@sveltejs/adapter-cloudflare';
+import { workerRoutes, spaRoutes } from './worker-routes.js';
+import { mdsvex } from 'mdsvex';
+import { sveltePreprocess } from 'svelte-preprocess';
+import abbr from 'remark-abbr';
+import urls from 'rehype-urls';
+import slug from 'rehype-slug';
+import autoLinkHeadings from 'rehype-autolink-headings';
+import addClasses from 'rehype-add-classes';
+import path from 'node:path';
 import { sentrySvelteKit } from '@sentry/sveltekit';
 import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
+
+function processUrl(url, node) {
+  if (node.tagName === 'a') {
+    node.properties.class = 'text-link';
+
+    if (!url.href.startsWith('/')) {
+      node.properties.target = '_blank';
+      node.properties.rel = 'noreferrer';
+    }
+  }
+}
 
 export default defineConfig({
   plugins: [
@@ -12,7 +33,44 @@ export default defineConfig({
       },
       environment: process.env.NODE_ENV,
     }),
-    sveltekit(),
+
+    sveltekit({
+      compilerOptions: {},
+      extensions: ['.svelte', '.svx', '.md'],
+      preprocess: [
+        mdsvex({
+          extensions: ['.svx', '.md'],
+          layout: {
+            page: path.resolve(process.cwd(), 'src/layouts/page.svelte'),
+            news: path.resolve(process.cwd(), 'src/layouts/news.svelte'),
+          },
+          remarkPlugins: [abbr],
+          rehypePlugins: [
+            [urls, processUrl],
+            slug,
+            [
+              autoLinkHeadings,
+              {
+                behavior: 'append',
+                properties: {
+                  className: ['anchor-link'],
+                  'aria-hidden': 'true',
+                },
+                content: { type: 'text', value: '#' },
+              },
+            ],
+            [addClasses, { ul: 'list-disc', ol: 'list-decimal' }],
+          ],
+        }),
+        sveltePreprocess(),
+      ],
+
+      adapter: adapter({
+        fallback: 'spa',
+        routes: { include: workerRoutes, exclude: ['<all>', ...spaRoutes] },
+      }),
+      paths: { origin: 'https://www.openbrewerydb.org' },
+    }),
     tailwindcss(),
   ],
   test: {

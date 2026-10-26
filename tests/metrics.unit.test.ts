@@ -3,8 +3,8 @@ import {
   isValidISODateTime,
   isValidISODate,
   isValidPayload,
-} from '$lib/server/metrics';
-import type { MetricsPayload } from '$lib/types/metrics';
+} from '#lib/server/metrics.js';
+import type { MetricsPayload } from '#lib/types/metrics.js';
 
 const validBreakdown = { api: 1, www: 2, other: 3, total: 6 };
 

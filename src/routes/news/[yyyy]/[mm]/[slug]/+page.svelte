@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Component } from 'svelte';
-  import SEO from '$lib/components/SEO.svelte';
+  import SEO from '#lib/components/SEO.svelte';
 
   interface Props {
     data: {

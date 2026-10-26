@@ -1,11 +1,11 @@
 <script>
-  import BreweriesTable from '$lib/components/BreweriesTable.svelte';
-  import BreweryCard from '$lib/components/BreweryCard.svelte';
-  import DirectoryHeading from '$lib/components/DirectoryHeading.svelte';
-  import DirectoryMeta from '$lib/components/DirectoryMeta.svelte';
-  import Pagination from '$lib/components/Pagination.svelte';
-  import { locationString } from '$lib/utils';
-  import SEO from '$lib/components/SEO.svelte';
+  import BreweriesTable from '#lib/components/BreweriesTable.svelte';
+  import BreweryCard from '#lib/components/BreweryCard.svelte';
+  import DirectoryHeading from '#lib/components/DirectoryHeading.svelte';
+  import DirectoryMeta from '#lib/components/DirectoryMeta.svelte';
+  import Pagination from '#lib/components/Pagination.svelte';
+  import { locationString } from '#lib/utils.js';
+  import SEO from '#lib/components/SEO.svelte';
 
   let { data } = $props();
 

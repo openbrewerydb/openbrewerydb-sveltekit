@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { linkify } from '$lib/utils';
+  import { linkify } from '#lib/utils.js';
 
   const { text, truncated = false }: {
     text?: string;

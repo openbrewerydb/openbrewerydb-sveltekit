@@ -1,5 +1,5 @@
 <script lang="ts">
-  import contributorsData from '$lib/data/contributors.json';
+  import contributorsData from '#lib/data/contributors.json';
 
   interface Contributor {
     login: string;

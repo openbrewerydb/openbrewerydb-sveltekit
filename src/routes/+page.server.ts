@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
-import { getMetrics } from '$lib/server/metrics';
-import { API_URL } from '$lib/utils';
-import searchSuggestions from '$lib/data/search-suggestions.json';
+import { getMetrics } from '#lib/server/metrics.js';
+import { API_URL } from '#lib/utils.js';
+import searchSuggestions from '#lib/data/search-suggestions.json';
 
 export const load: PageServerLoad = async ({ fetch, setHeaders }) => {
   // Fetch live dataset metadata from the API

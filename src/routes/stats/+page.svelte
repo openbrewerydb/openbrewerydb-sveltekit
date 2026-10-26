@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import type { MetricsPayload } from '$lib/types/metrics';
+  import type { MetricsPayload } from '#lib/types/metrics.js';
   import {
     formatBytes,
     formatCompactNumber,
     formatRelativeTime,
     isStale,
-  } from '$lib/utils/metrics';
+  } from '#lib/utils/metrics.js';
   import { BarChart3, Activity, Users, HardDrive } from '@lucide/svelte';
-  import MetricCard from '$lib/components/MetricCard.svelte';
-  import MetricTrends from '$lib/components/MetricTrends.svelte';
-  import SEO from '$lib/components/SEO.svelte';
+  import MetricCard from '#lib/components/MetricCard.svelte';
+  import MetricTrends from '#lib/components/MetricTrends.svelte';
+  import SEO from '#lib/components/SEO.svelte';
 
   interface Props {
     data: PageData;

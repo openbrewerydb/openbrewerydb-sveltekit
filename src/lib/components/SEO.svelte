@@ -57,7 +57,8 @@
   const merged = $derived(mergeSEO(parent, value ?? shorthand));
 
   const finalCanonical = $derived(
-    merged.canonical || (page?.url ? canonicalFrom(page.url) : undefined)
+    merged.canonical ||
+      (page?.url ? canonicalFrom(new URL(page.url.href)) : undefined)
   );
 
   const finalTitle = $derived(
@@ -68,8 +69,9 @@
   const ogSiteName = $derived(merged.openGraph?.siteName);
   const ogImage = $derived(merged.openGraph?.image);
   const ogUrl = $derived(merged.openGraph?.url || finalCanonical);
-  const absOgUrl = $derived(absoluteFrom(ogUrl, page?.url));
-  const absOgImage = $derived(absoluteFrom(ogImage, page?.url));
+  const baseUrl = $derived(page?.url ? new URL(page.url.href) : undefined);
+  const absOgUrl = $derived(absoluteFrom(ogUrl, baseUrl));
+  const absOgImage = $derived(absoluteFrom(ogImage, baseUrl));
   const robotsContent = $derived(formatRobotsMeta(merged.robots));
 </script>
 

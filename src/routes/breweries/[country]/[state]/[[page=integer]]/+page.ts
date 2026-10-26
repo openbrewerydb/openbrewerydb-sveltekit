@@ -1,4 +1,4 @@
-import { loadDirectory } from '$lib/loadDirectory';
+import { loadDirectory } from '#lib/loadDirectory.js';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params, url }) {

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { MetricsPayload } from '$lib/types/metrics';
+  import type { MetricsPayload } from '#lib/types/metrics.js';
   import {
     formatBytes,
     formatRelativeTime,
     isStale,
-  } from '$lib/utils/metrics';
+  } from '#lib/utils/metrics.js';
   import { BarChart3, Activity, Users, HardDrive } from '@lucide/svelte';
   import MetricCard from './MetricCard.svelte';
 

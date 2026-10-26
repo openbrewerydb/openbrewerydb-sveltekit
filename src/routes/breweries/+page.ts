@@ -1,6 +1,6 @@
-import { API_URL } from '$lib/utils';
+import { API_URL } from '#lib/utils.js';
 import { redirect } from '@sveltejs/kit';
-import type { Brewery, Metadata } from '$lib/types';
+import type { Brewery, Metadata } from '#lib/types.js';
 
 export async function load({ url, fetch }) {
   const rawQuery = url.searchParams.get('query');

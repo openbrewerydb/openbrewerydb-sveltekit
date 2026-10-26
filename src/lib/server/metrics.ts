@@ -1,4 +1,4 @@
-import type { MetricsBreakdown, MetricsPayload } from '$lib/types/metrics';
+import type { MetricsBreakdown, MetricsPayload } from '#lib/types/metrics.js';
 
 const METRICS_URL =
   'https://openbrewerydb-metrics.wandering-leaf-studios.workers.dev/';

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { AreaChart, BarChart } from 'layerchart';
   import { SvelteSet } from 'svelte/reactivity';
-  import type { MetricsPayload } from '$lib/types/metrics';
-  import { toHourly, toDaily, formatBytes } from '$lib/utils/metrics';
-  import { METRIC_COLORS, METRIC_LABELS } from '$lib/utils/chart-theme';
-  import type { MetricSeriesKey } from '$lib/utils/chart-theme';
+  import type { MetricsPayload } from '#lib/types/metrics.js';
+  import { toHourly, toDaily, formatBytes } from '#lib/utils/metrics.js';
+  import { METRIC_COLORS, METRIC_LABELS } from '#lib/utils/chart-theme.js';
+  import type { MetricSeriesKey } from '#lib/utils/chart-theme.js';
 
   interface Props {
     metrics: MetricsPayload | null;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { titleCase } from '$lib/utils';
+  import { titleCase } from '#lib/utils.js';
 
   interface Props {
     city?: string | undefined;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ReleaseNotes from '$lib/components/ReleaseNotes.svelte';
+  import ReleaseNotes from '#lib/components/ReleaseNotes.svelte';
 
   const { repoKey, repo }: {
     repoKey: string;

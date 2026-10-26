@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { getMetrics } from '$lib/server/metrics';
+import { getMetrics } from '#lib/server/metrics.js';
 
 export const load: PageServerLoad = async ({ fetch, setHeaders }) => {
   const { metrics, cache } = await getMetrics(fetch);

@@ -1,7 +1,7 @@
 <script>
-  import changelogs from '$lib/data/changelogs.json';
-  import RepoChangelog from '$lib/components/RepoChangelog.svelte';
-  import SEO from '$lib/components/SEO.svelte';
+  import changelogs from '#lib/data/changelogs.json';
+  import RepoChangelog from '#lib/components/RepoChangelog.svelte';
+  import SEO from '#lib/components/SEO.svelte';
 
   const entries = $derived(Object.entries(changelogs.repos || {}));
   const title = 'Changelogs';

@@ -7,7 +7,7 @@
     BuildingIcon,
     HomeIcon,
   } from '@lucide/svelte';
-  import SEO from '$lib/components/SEO.svelte';
+  import SEO from '#lib/components/SEO.svelte';
 
   interface Props {
     data: import('./$types').PageData;

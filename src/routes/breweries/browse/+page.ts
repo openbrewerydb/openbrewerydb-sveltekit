@@ -1,5 +1,5 @@
-import { API_URL } from '$lib/utils';
-import stateCountryMapping from '$lib/data/state-country-mapping.json';
+import { API_URL } from '#lib/utils.js';
+import stateCountryMapping from '#lib/data/state-country-mapping.json';
 
 interface BreweryMetaResponse {
   total: string;

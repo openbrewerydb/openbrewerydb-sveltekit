@@ -1,5 +1,5 @@
 import type { EntryGenerator, PageServerLoad } from './$types';
-import { getAllPosts, getPostBySegments } from '$lib/posts';
+import { getAllPosts, getPostBySegments } from '#lib/posts.js';
 import { error } from '@sveltejs/kit';
 
 export const prerender = true;

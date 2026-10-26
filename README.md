@@ -1,6 +1,6 @@
 # Open Brewery DB
 
-A free, open-source dataset and API for brewery, cidery, brewpub, and bottleshop information worldwide. Built with Svelte 5, SvelteKit 2, TypeScript, and TailwindCSS 4.
+A free, open-source dataset and API for brewery, cidery, brewpub, and bottleshop information worldwide. Built with Svelte 5, SvelteKit 3, TypeScript, and TailwindCSS 4.
 
 ## 🍺 What is Open Brewery DB?
 
@@ -17,7 +17,7 @@ Open Brewery DB is a community-driven project that maintains a comprehensive dat
 ## 🚀 Tech Stack
 
 - **Framework**: Svelte 5
-- **Backend**: SvelteKit 2
+- **Backend**: SvelteKit 3
 - **Language**: TypeScript
 - **Styling**: TailwindCSS 4
 - **Deployment**: Cloudflare Pages/Workers
@@ -91,7 +91,7 @@ This project is configured to deploy on Cloudflare using the `@sveltejs/adapter-
 
 ### Edge Caching (Cloudflare Cache Rules)
 
-The free Workers plan allows 100k requests/day, shared across the account. Only paths listed in `workerRoutes` (in `worker-routes.js`) invoke the Pages Function: `/`, `/stats`, and their `__data.json` endpoints. Everything else is static — and `/b/*` + `/breweries/*` are client-rendered via the SPA fallback (`spaRoutes`, `fallback: 'spa'` in `svelte.config.js`), so enumerating brewery URLs never reaches the Function.
+The free Workers plan allows 100k requests/day, shared across the account. Only paths listed in `workerRoutes` (in `worker-routes.js`) invoke the Pages Function: `/`, `/stats`, and their `__data.json` endpoints. Everything else is static — and `/b/*` + `/breweries/*` are client-rendered via the SPA fallback (`spaRoutes`, `fallback: 'spa'` in `vite.config.js`), so enumerating brewery URLs never reaches the Function.
 
 The server hook in `src/hooks.server.ts` adds `s-maxage` (TTLs in `src/lib/server/cache.ts`) so the CDN can serve repeat hits to `/` and `/stats` without invoking the Function — but only when a zone **Cache Rule** makes these responses eligible. These rules live in the Cloudflare dashboard (zone → Caching → Cache Rules), not in this repo. Currently active:
 

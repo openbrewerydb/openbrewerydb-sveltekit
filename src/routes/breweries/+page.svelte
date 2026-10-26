@@ -1,11 +1,11 @@
 <script lang="ts">
-  import BreweriesTable from '$lib/components/BreweriesTable.svelte';
-  import BreweryCard from '$lib/components/BreweryCard.svelte';
-  import BrewerySearchForm from '$lib/components/BrewerySearchForm.svelte';
-  import Pagination from '$lib/components/Pagination.svelte';
+  import BreweriesTable from '#lib/components/BreweriesTable.svelte';
+  import BreweryCard from '#lib/components/BreweryCard.svelte';
+  import BrewerySearchForm from '#lib/components/BrewerySearchForm.svelte';
+  import Pagination from '#lib/components/Pagination.svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
-  import SEO from '$lib/components/SEO.svelte';
+  import SEO from '#lib/components/SEO.svelte';
   import {
     getBreweries,
     getLoading,
@@ -17,7 +17,7 @@
     getTotalBreweries,
     getTotalPages,
     getSearchQuery,
-  } from '$lib/stores/breweries.svelte';
+  } from '#lib/stores/breweries.svelte.js';
   import { SvelteURLSearchParams } from 'svelte/reactivity';
 
   let { data } = $props();
@@ -40,14 +40,14 @@
 
   async function handlePageChange(newPage: number) {
     if (newPage !== getCurrentPage()) {
-      const params = new SvelteURLSearchParams(page.url.searchParams);
+      const params = new SvelteURLSearchParams(page.url.search);
       params.set('page', newPage.toString());
       await goto(`/breweries?${params.toString()}`, { replaceState: true });
     }
   }
 
   function removeParam(param: string): string {
-    const params = new SvelteURLSearchParams(page.url.searchParams);
+    const params = new SvelteURLSearchParams(page.url.search);
     params.delete(param);
     params.delete('page');
     return params.toString();

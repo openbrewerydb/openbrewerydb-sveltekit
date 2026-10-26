@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { edgeCacheTtl } from '$lib/server/cache';
+import { edgeCacheTtl } from '#lib/server/cache.js';
 
 describe('edgeCacheTtl', () => {
   it('caches metrics-backed pages for 1 hour', () => {
