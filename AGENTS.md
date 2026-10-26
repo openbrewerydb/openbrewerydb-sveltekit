@@ -46,6 +46,13 @@ Require `GITHUB_TOKEN` environment variable:
 - `npm run changelogs:build` - changelog data
 - `npm run contributors:build` - contributor data
 
+## Dependency Maintenance
+
+- Dependabot (`.github/dependabot.yml`) opens a weekly grouped minor/patch PR plus individual major PRs, with a 7-day cooldown
+- Local catch-up: `npm run deps:update` (in-range bumps, versions ≥7 days old), review the `package.json`/lockfile diff, then `npm run format && npm run check && npm run test:unit && npm run lint`. `npm run deps:check` is the read-only version
+- Majors are manual: `npm i <pkg>@latest`, one at a time
+- `allowScripts` uses name-only approvals so bumps don't invalidate them. If `deps:update` lists a new package with install scripts, review it, then `npm approve-scripts --no-allow-scripts-pin <pkg> && npm rebuild <pkg>`
+
 ## Environment Variables
 
 ```env
