@@ -10,13 +10,13 @@
     Download,
     Heart,
   } from '@lucide/svelte';
-  import GithubIcon from '$lib/components/GithubIcon.svelte';
-  import { formatNumber } from '$lib/utils/metrics';
-  import SEO from '$lib/components/SEO.svelte';
-  import Hero from '$lib/components/Hero.svelte';
-  import MetricsSummary from '$lib/components/MetricsSummary.svelte';
-  import SponsorshipSection from '$lib/components/SponsorshipSection.svelte';
-  import Contributors from '$lib/components/Contributors.svelte';
+  import GithubIcon from '#lib/components/GithubIcon.svelte';
+  import { formatNumber } from '#lib/utils/metrics.js';
+  import SEO from '#lib/components/SEO.svelte';
+  import Hero from '#lib/components/Hero.svelte';
+  import MetricsSummary from '#lib/components/MetricsSummary.svelte';
+  import SponsorshipSection from '#lib/components/SponsorshipSection.svelte';
+  import Contributors from '#lib/components/Contributors.svelte';
 
   interface Props {
     data: PageData;

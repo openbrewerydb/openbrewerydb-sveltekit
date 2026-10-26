@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Footer from '$lib/components/Footer.svelte';
-  import MobileNav from '$lib/components/MobileNav.svelte';
-  import Nav from '$lib/components/Nav.svelte';
-  import SEOProvider from '$lib/components/SEOProvider.svelte';
+  import Footer from '#lib/components/Footer.svelte';
+  import MobileNav from '#lib/components/MobileNav.svelte';
+  import Nav from '#lib/components/Nav.svelte';
+  import SEOProvider from '#lib/components/SEOProvider.svelte';
   import '../styles/tailwind.css';
   interface Props {
     children?: import('svelte').Snippet;

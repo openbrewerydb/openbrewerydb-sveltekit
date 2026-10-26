@@ -24,7 +24,7 @@ export type PostItem = {
   meta: NewsFrontmatter;
 };
 
-const modules = import.meta.glob<PostModule>('$lib/data/posts/**/*.{md,svx}', {
+const modules = import.meta.glob<PostModule>('#lib/data/posts/**/*.{md,svx}', {
   eager: true,
 });
 

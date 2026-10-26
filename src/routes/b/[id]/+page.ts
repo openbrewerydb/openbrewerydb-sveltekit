@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import type { Brewery } from '$lib/types';
-import { API_URL, BREWERY_ID_REGEX } from '$lib/utils';
+import type { Brewery } from '#lib/types.js';
+import { API_URL, BREWERY_ID_REGEX } from '#lib/utils.js';
 
 export const ssr = false;
 

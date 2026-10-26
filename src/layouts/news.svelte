@@ -1,7 +1,7 @@
 <script lang="ts">
-  import MarkdownContent from '$lib/components/MarkdownContent.svelte';
-  import Byline from '$lib/components/Byline.svelte';
-  import SEO from '$lib/components/SEO.svelte';
+  import MarkdownContent from '#lib/components/MarkdownContent.svelte';
+  import Byline from '#lib/components/Byline.svelte';
+  import SEO from '#lib/components/SEO.svelte';
 
   interface Props {
     title?: string;

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { formatLocalDateTime } from '$lib/utils';
-  import SEO from '$lib/components/SEO.svelte';
+  import { formatLocalDateTime } from '#lib/utils.js';
+  import SEO from '#lib/components/SEO.svelte';
 
   const { data }: {
     data: {

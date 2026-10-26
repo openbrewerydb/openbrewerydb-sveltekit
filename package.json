@@ -32,8 +32,8 @@
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.64.1",
     "@sentry/sveltekit": "^10.76.2",
-    "@sveltejs/adapter-cloudflare": "^7.2.9",
-    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/adapter-cloudflare": "^8.0.1",
+    "@sveltejs/kit": "^3.1.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.20",
@@ -86,5 +86,9 @@
     "esbuild": true,
     "svelte-preprocess": false,
     "workerd": true
+  },
+  "imports": {
+    "#lib": "./src/lib/index.js",
+    "#lib/*": "./src/lib/*"
   }
 }

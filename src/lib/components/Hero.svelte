@@ -1,5 +1,5 @@
 <script lang="ts">
-  import logo from '$lib/assets/obdb-logo.png';
+  import logo from '#lib/assets/obdb-logo.png';
 
   interface Props {
     title: string;

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { LucideIcon } from '@lucide/svelte';
-  import { formatCompactNumber, formatNumber } from '$lib/utils/metrics';
+  import { formatCompactNumber, formatNumber } from '#lib/utils/metrics.js';
 
   interface Props {
     icon: LucideIcon;

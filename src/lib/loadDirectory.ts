@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import type { Brewery, Metadata } from '$lib/types';
-import { API_URL, BREWERY_ID_REGEX } from '$lib/utils';
+import type { Brewery, Metadata } from '#lib/types.js';
+import { API_URL, BREWERY_ID_REGEX } from '#lib/utils.js';
 
 type Filters = {
   by_country: string;

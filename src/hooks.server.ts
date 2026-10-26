@@ -1,12 +1,12 @@
-import { dev } from '$app/environment';
-import type { Handle } from '@sveltejs/kit';
-import { sequence } from '@sveltejs/kit/hooks';
+import { dev } from '$app/env';
+import { sequence, type Handle } from '@sveltejs/kit/hooks';
+
 import {
   handleErrorWithSentry,
   initCloudflareSentryHandle,
   sentryHandle,
 } from '@sentry/sveltekit';
-import { edgeCacheTtl } from '$lib/server/cache';
+import { edgeCacheTtl } from '#lib/server/cache.js';
 
 // Cloudflare Sentry needs the workerd Sentry binding, which only exists in
 // deployed Workers. Initializing it in dev crashes workerd's SQLite.

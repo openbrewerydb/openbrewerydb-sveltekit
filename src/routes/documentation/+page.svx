@@ -4,9 +4,9 @@ layout: page
 ---
 
 <script>
-  import RunButton from '$lib/components/RunButton.svelte';
-  import NavTabs from '$lib/components/NavTabs.svelte';
-  import BackToTop from '$lib/components/BackToTop.svelte';
+  import RunButton from '#lib/components/RunButton.svelte';
+  import NavTabs from '#lib/components/NavTabs.svelte';
+  import BackToTop from '#lib/components/BackToTop.svelte';
 
   const data = [
     {

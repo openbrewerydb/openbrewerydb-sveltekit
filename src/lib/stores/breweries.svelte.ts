@@ -1,4 +1,4 @@
-import type { Brewery, Metadata } from '$lib/types';
+import type { Brewery, Metadata } from '#lib/types.js';
 
 const store = $state({
   breweries: [] as Brewery[],

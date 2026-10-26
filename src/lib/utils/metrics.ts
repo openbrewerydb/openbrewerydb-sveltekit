@@ -1,4 +1,4 @@
-import type { HourlySample, DailySample } from '$lib/types/metrics';
+import type { HourlySample, DailySample } from '#lib/types/metrics.js';
 
 const numberFormatter = new Intl.NumberFormat('en-US');
 const decimalFormatter = new Intl.NumberFormat('en-US', {
