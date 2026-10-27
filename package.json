@@ -37,7 +37,7 @@
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@types/node": "^26.6.5",
     "@types/prismjs": "^1.26.6",
-    "@typescript-eslint/eslint-plugin": "^8.71.2",
+    "@typescript-eslint/eslint-plugin": "^8.72.0",
     "@typescript-eslint/parser": "^8.71.2",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
@@ -60,7 +60,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@lucide/svelte": "^1.59.0",
+    "@lucide/svelte": "^1.60.0",
     "@tailwindcss/vite": "^4.3.3",
     "layerchart": "^2.8.1"
   },
