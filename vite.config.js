@@ -6,7 +6,7 @@ import urls from 'rehype-urls';
 import slug from 'rehype-slug';
 import autoLinkHeadings from 'rehype-autolink-headings';
 import path from 'node:path';
-import { sentrySvelteKit } from '@sentry/sveltekit';
+import { sentrySvelteKit } from '@sentry/sveltekit/vite';
 import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
@@ -40,11 +40,8 @@ function processUrl(url, node) {
 export default defineConfig({
   plugins: [
     sentrySvelteKit({
-      sourceMapsUploadOptions: {
-        org: 'open-brewery-db',
-        project: 'obdb-sveltekit',
-      },
-      environment: process.env.NODE_ENV,
+      org: 'open-brewery-db',
+      project: 'obdb-sveltekit',
     }),
 
     sveltekit({

@@ -7,6 +7,7 @@ import {
   sentryHandle,
 } from '@sentry/sveltekit';
 import { edgeCacheTtl } from '#lib/server/cache.js';
+import { sentryDataCollection } from '#lib/sentry.js';
 
 // Cloudflare Sentry needs the workerd Sentry binding, which only exists in
 // deployed Workers. Initializing it in dev crashes workerd's SQLite.
@@ -15,6 +16,7 @@ const cloudflareSentryHandle: Handle = dev
   : initCloudflareSentryHandle({
       dsn: 'https://a5831fe9174e1bb01a828906b51574ba@o4509011200704512.ingest.us.sentry.io/4509183525322752',
       tracesSampleRate: 0.1,
+      dataCollection: sentryDataCollection,
     });
 
 const customHandle: Handle = async ({ event, resolve }) => {
