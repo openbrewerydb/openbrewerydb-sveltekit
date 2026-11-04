@@ -1,11 +1,13 @@
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 import * as Sentry from '@sentry/sveltekit';
 import { dev } from '$app/env';
+import { sentryDataCollection } from '#lib/sentry.js';
 
 Sentry.init({
   dsn: 'https://a5831fe9174e1bb01a828906b51574ba@o4509011200704512.ingest.us.sentry.io/4509183525322752',
   tracesSampleRate: 0.1,
   enabled: !dev,
+  dataCollection: sentryDataCollection,
 
   replaysSessionSampleRate: 0.01,
 
