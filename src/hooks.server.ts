@@ -2,6 +2,7 @@ import { dev } from '$app/env';
 import { sequence, type Handle } from '@sveltejs/kit/hooks';
 
 import {
+  consoleLoggingIntegration,
   handleErrorWithSentry,
   initCloudflareSentryHandle,
   sentryHandle,
@@ -17,6 +18,9 @@ const cloudflareSentryHandle: Handle = dev
       dsn: 'https://a5831fe9174e1bb01a828906b51574ba@o4509011200704512.ingest.us.sentry.io/4509183525322752',
       tracesSampleRate: 0.1,
       dataCollection: sentryDataCollection,
+      integrations: [
+        consoleLoggingIntegration({ levels: ['log', 'warn', 'error'] }),
+      ],
     });
 
 const customHandle: Handle = async ({ event, resolve }) => {
