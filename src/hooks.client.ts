@@ -9,6 +9,11 @@ Sentry.init({
   enabled: !dev,
   dataCollection: sentryDataCollection,
 
+  // Browser profiling requires the Document-Policy: js-profiling response
+  // header (set via _headers for static assets and hooks.server for SSR).
+  profileSessionSampleRate: 0.1,
+  profileLifecycle: 'trace',
+
   replaysSessionSampleRate: 0.01,
 
   // If the entire session is not sampled, use the below sample rate to sample
@@ -16,7 +21,7 @@ Sentry.init({
   replaysOnErrorSampleRate: 1.0,
 
   // If you don't want to use Session Replay, just remove the line below:
-  integrations: [replayIntegration()],
+  integrations: [replayIntegration(), Sentry.browserProfilingIntegration()],
 });
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`

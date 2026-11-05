@@ -1,6 +1,7 @@
 <script lang="ts">
   import Prism from 'prismjs';
   import { Loader2, Play } from '@lucide/svelte';
+  import * as Sentry from '@sentry/sveltekit';
 
 
 
@@ -44,6 +45,9 @@
       console.error(error);
     } finally {
       isLoading = false;
+      Sentry.metrics.count('api_docs_run', 1, {
+        attributes: { endpoint, ok: !hasError },
+      });
     }
   };
 </script>

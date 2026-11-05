@@ -1,6 +1,13 @@
 import { API_URL } from '#lib/utils.js';
 import { redirect } from '@sveltejs/kit';
+import * as Sentry from '@sentry/sveltekit';
 import type { Brewery, Metadata } from '#lib/types.js';
+
+// Count each search once (first page), not every pagination click.
+const countSearch = (page: number, outcome: string) => {
+  if (page === 1)
+    Sentry.metrics.count('brewery_search', 1, { attributes: { outcome } });
+};
 
 export async function load({ url, fetch }) {
   const rawQuery = url.searchParams.get('query');
@@ -41,6 +48,7 @@ export async function load({ url, fetch }) {
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
+        countSearch(page, 'error');
         return {
           breweries: [],
           meta: {
@@ -55,6 +63,7 @@ export async function load({ url, fetch }) {
 
       const apiBreweries: Brewery[] = await response.json();
       breweries = apiBreweries.slice(localOffset, localOffset + per_page);
+      countSearch(page, apiBreweries.length ? 'results' : 'no_results');
 
       let total: number;
       if (apiBreweries.length < 200) {
@@ -125,6 +134,7 @@ export async function load({ url, fetch }) {
     };
   } catch (error) {
     console.error('❌ Error fetching brewery data:', error);
+    if (query) countSearch(page, 'error');
     return {
       breweries: [],
       meta: {

@@ -33,26 +33,33 @@ const customHandle: Handle = async ({ event, resolve }) => {
     },
   });
 
-  // Let the edge cache repeat hits (bots included) so the Worker doesn't run
-  // per request. Requires the zone Cache Rule to honor origin headers.
-  if (
+  const headers = new Headers(response.headers);
+  const isHtml = headers.get('content-type')?.includes('text/html') ?? false;
+  const cacheable =
     event.request.method === 'GET' &&
     response.ok &&
-    !response.headers.has('cache-control')
-  ) {
-    const headers = new Headers(response.headers);
+    !headers.has('cache-control');
+
+  if (!isHtml && !cacheable) return response;
+
+  // js-profiling enables Sentry browser profiling on SSR documents (static
+  // assets get it from _headers).
+  if (isHtml) headers.set('Document-Policy', 'js-profiling');
+
+  // Let the edge cache repeat hits (bots included) so the Worker doesn't run
+  // per request. Requires the zone Cache Rule to honor origin headers.
+  if (cacheable) {
     headers.set(
       'cache-control',
       `max-age=0, s-maxage=${edgeCacheTtl(event.url.pathname)}`
     );
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers,
-    });
   }
 
-  return response;
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
 };
 
 const sentryRequestHandle: Handle = dev

@@ -1,0 +1,5 @@
+# Document-Policy: js-profiling enables Sentry browser profiling. Applies to
+# static assets only (incl. the SPA shell at /b/* and /breweries/*); SSR
+# responses get the same header in hooks.server.ts.
+/*
+  Document-Policy: js-profiling
