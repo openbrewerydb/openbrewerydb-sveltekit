@@ -1,4 +1,5 @@
 import { error } from '@sveltejs/kit';
+import * as Sentry from '@sentry/sveltekit';
 import type { PageLoad } from './$types';
 import type { Brewery } from '#lib/types.js';
 import { API_URL, BREWERY_ID_REGEX } from '#lib/utils.js';
@@ -21,6 +22,9 @@ export const load: PageLoad = async ({ fetch, params, setHeaders }) => {
   }
 
   if (response.status === 404) {
+    Sentry.metrics.count('brewery_view', 1, {
+      attributes: { status: 'not_found' },
+    });
     error(404, 'Brewery not found');
   }
 
@@ -37,5 +41,6 @@ export const load: PageLoad = async ({ fetch, params, setHeaders }) => {
     error(502, 'Brewery data returned an invalid response');
   }
 
+  Sentry.metrics.count('brewery_view', 1, { attributes: { status: 'found' } });
   return { brewery, id };
 };
